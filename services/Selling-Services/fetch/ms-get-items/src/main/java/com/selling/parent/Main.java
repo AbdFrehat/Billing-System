@@ -1,4 +1,4 @@
-package com.sales.fetch;
+package com.selling.parent;
 
 public class Main {
     public static void main(String[] args) {
