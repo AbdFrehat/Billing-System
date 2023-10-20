@@ -1,7 +1,6 @@
 rootProject.name = "Selling-Services"
-include("fetch:ms-get-items")
-findProject(":fetch:ms-get-items")?.name = "ms-get-items"
-
+include("fetch:fetch-items-ms")
+findProject(":fetch:fetch-items-ms")?.name = "fetch-items-ms"
 
 pluginManagement {
     plugins {
