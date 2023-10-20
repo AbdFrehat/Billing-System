@@ -1,27 +1,24 @@
 plugins {
-    java
+    id("java")
 }
-
 group = "com.selling.parent"
 version = "1.0-SNAPSHOT"
 
-
-allprojects {
+subprojects {
     apply(plugin = "java")
     repositories {
         mavenCentral()
     }
-}
-repositories {
-    mavenCentral()
-}
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
+    java {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    tasks.test {
+        useJUnitPlatform()
+    }
 }
 
-tasks.test {
-    useJUnitPlatform()
-}
+
 
 
 
