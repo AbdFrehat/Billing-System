@@ -1,4 +1,4 @@
-package com.sales.fetch.items.enums;
+package com.selling.shared.models.enums;
 
 public enum PurchaseMethod {
 

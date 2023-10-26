@@ -1,6 +1,7 @@
 rootProject.name = "Selling-Services"
 include("fetch:fetch-items-ms")
 findProject(":fetch:fetch-items-ms")?.name = "fetch-items-ms"
+include("models")
 
 pluginManagement {
     plugins {
@@ -10,3 +11,4 @@ pluginManagement {
         id("io.spring.dependency-management").version(springDependencyManagementVersion)
     }
 }
+
