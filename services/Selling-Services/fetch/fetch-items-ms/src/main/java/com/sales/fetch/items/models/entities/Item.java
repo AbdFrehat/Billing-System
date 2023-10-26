@@ -12,8 +12,12 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Item implements AbstractItem {
+
     private String name;
+
     private List<String> tags;
+
     private BigDecimal price;
+
     private int quantity;
 }

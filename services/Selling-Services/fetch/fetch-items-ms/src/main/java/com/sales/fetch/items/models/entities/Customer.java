@@ -9,8 +9,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Customer implements AbstractCustomer {
+    
     private String gender;
+
     private int age;
+
     private String email;
+
     private int satisfaction;
 }

@@ -5,7 +5,10 @@ import java.util.List;
 
 public interface AbstractItem {
     String getName();
+
     List<String> getTags();
+
     BigDecimal getPrice();
+
     int getQuantity();
 }
