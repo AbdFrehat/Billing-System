@@ -5,8 +5,8 @@ findProject(":fetch:fetch-items-ms")?.name = "fetch-items-ms"
 pluginManagement {
     plugins {
         val springFrameworkBootVersion: String by settings
-        val springDependencyManagement: String by settings
+        val springDependencyManagementVersion: String by settings
         id("org.springframework.boot").version(springFrameworkBootVersion)
-        id("io.spring.dependency-management").version(springDependencyManagement)
+        id("io.spring.dependency-management").version(springDependencyManagementVersion)
     }
 }

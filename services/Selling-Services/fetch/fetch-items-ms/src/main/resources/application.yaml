@@ -4,9 +4,3 @@ spring:
       uri: mongodb://localhost:27017/sample_supplies
   webflux:
     base-path: /selling/fetch/v1/
-
-
-
-logging:
-  level:
-    org.springframework.data.mongodb.core: DEBUG
