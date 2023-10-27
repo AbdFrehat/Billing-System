@@ -15,7 +15,6 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/items")
 public class ItemsController {
 
     private ItemsService itemsService;

@@ -1,7 +1,10 @@
 rootProject.name = "Selling-Services"
+
 include("fetch:fetch-items-ms")
-findProject(":fetch:fetch-items-ms")?.name = "fetch-items-ms"
+include("fetch:fetch-sales-ms")
 include("models")
+findProject(":fetch:fetch-items-ms")?.name = "fetch-items-ms"
+findProject(":fetch:fetch-sales-ms")?.name = "fetch-sales-ms"
 
 pluginManagement {
     plugins {
