@@ -39,7 +39,7 @@ public class JasperReportServiceImpl implements ReportService {
 
     private List<ItemDTO> createDTOItems(List<Item> items) {
         return items.stream().map(item ->
-                new ItemDTO().builder()
+                ItemDTO.builder()
                         .name(item.getName())
                         .price(item.getPrice())
                         .tags(new JRBeanCollectionDataSource(item.getTags().stream().map(TagDTO::new).toList()))

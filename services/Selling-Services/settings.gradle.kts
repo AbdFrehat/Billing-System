@@ -4,11 +4,13 @@ include("fetch:fetch-items-ms")
 include("fetch:fetch-stores-ms")
 include("fetch:fetch-customer-ms")
 include("reports:receipt-generator-ms")
+include("reports:calc-price-ms")
 include("models")
 findProject(":fetch:fetch-items-ms")?.name = "fetch-items-ms"
 findProject(":fetch:fetch-stores-ms")?.name = "fetch-stores-ms"
 findProject(":fetch:fetch-customer-ms")?.name = "fetch-customer-ms"
 findProject(":reports:receipt-generator-ms")?.name = "receipt-generator-ms"
+findProject(":reports:calc-price-ms")?.name = "calc-price-ms"
 
 pluginManagement {
     plugins {

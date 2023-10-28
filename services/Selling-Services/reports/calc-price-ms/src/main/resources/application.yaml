@@ -1,0 +1,5 @@
+spring:
+  webflux:
+    base-path: /selling/calc/price/v1/
+server:
+  port: 6014
