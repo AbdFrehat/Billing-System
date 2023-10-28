@@ -1,0 +1,5 @@
+spring:
+  webflux:
+    base-path: /selling/generate/sale/report/v1/
+server:
+  port: 6000

@@ -4,3 +4,5 @@ spring:
       uri: mongodb://localhost:27017/sample_supplies
   webflux:
     base-path: /selling/fetch/stores/v1/
+server:
+  port: 6012
