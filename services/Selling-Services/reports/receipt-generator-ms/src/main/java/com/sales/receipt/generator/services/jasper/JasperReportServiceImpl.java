@@ -42,7 +42,7 @@ public class JasperReportServiceImpl implements ReportService {
                 new ItemDTO().builder()
                         .name(item.getName())
                         .price(item.getPrice())
-                        .tagsDataSource(new JRBeanCollectionDataSource(item.getTags().stream().map(TagDTO::new).toList()))
+                        .tags(new JRBeanCollectionDataSource(item.getTags().stream().map(TagDTO::new).toList()))
                         .quantity(item.getQuantity())
                         .build()
         ).toList();

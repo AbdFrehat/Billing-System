@@ -16,7 +16,7 @@ public class ItemDTO {
 
     private String name;
 
-    private JRBeanCollectionDataSource tagsDataSource;
+    private JRBeanCollectionDataSource tags;
 
     private BigDecimal price;
 
