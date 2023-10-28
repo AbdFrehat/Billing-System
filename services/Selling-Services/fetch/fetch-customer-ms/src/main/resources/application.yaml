@@ -1,0 +1,6 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/sample_supplies
+  webflux:
+    base-path: /selling/fetch/sales/v1/
