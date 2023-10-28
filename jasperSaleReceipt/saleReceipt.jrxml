@@ -56,6 +56,60 @@
 			<rightPen lineWidth="0.5" lineColor="#000000"/>
 		</box>
 	</style>
+	<style name="Table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 3_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 3_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
 	<subDataset name="customerDS" uuid="74e4319c-5d02-4fd2-a660-3ea1daf1d6a5">
 		<queryString>
 			<![CDATA[]]>
@@ -67,18 +121,27 @@
 	</subDataset>
 	<subDataset name="itemsDS" uuid="681c81e4-553c-4424-817b-b2c9e0a11040">
 		<parameter name="totalPrice" class="java.lang.Double"/>
+		<parameter name="totalQuantity" class="java.lang.String"/>
 		<queryString>
 			<![CDATA[]]>
 		</queryString>
 		<field name="name" class="java.lang.String"/>
-		<field name="tags" class="java.lang.String"/>
-		<field name="price" class="java.lang.Double"/>
+		<field name="tags" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+		<field name="price" class="java.math.BigDecimal"/>
 		<field name="quantity" class="java.lang.Integer"/>
+	</subDataset>
+	<subDataset name="tagsDS" uuid="5577aff9-6165-4212-be86-4fba2b6bac45">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="tag" class="java.lang.String"/>
 	</subDataset>
 	<parameter name="saleDate" class="java.util.Date"/>
 	<parameter name="storeLocation" class="java.lang.String"/>
-	<parameter name="couponUsed" class="java.lang.Boolean"/>
+	<parameter name="couponUsed" class="java.lang.String"/>
 	<parameter name="purchaseMethod" class="java.lang.String"/>
+	<parameter name="customerDS" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="itemsDS" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -125,7 +188,7 @@
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="customerDS" uuid="4200805d-3e56-4ffa-beb7-0b67eb6b8978">
-						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						<dataSourceExpression><![CDATA[$P{customerDS}]]></dataSourceExpression>
 					</datasetRun>
 					<jr:column width="139" uuid="6a461e70-851b-46c0-8ff9-7057a833b480">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
@@ -210,13 +273,13 @@
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="itemsDS" uuid="f0b8a14b-de86-42f6-884d-29ddfd10e298">
-						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						<dataSourceExpression><![CDATA[$P{itemsDS}]]></dataSourceExpression>
 					</datasetRun>
 					<jr:column width="139" uuid="29b813f2-c0d9-4b1c-a7a3-7a846d2bbaf9">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
-						<jr:tableFooter style="Table 1_TH" height="60" rowSpan="2">
+						<jr:tableFooter style="Table 1_TH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="139" height="60" uuid="33f3fdd9-7c81-48c7-a01e-6d7bf5e17915"/>
+								<reportElement x="0" y="0" width="139" height="30" uuid="33f3fdd9-7c81-48c7-a01e-6d7bf5e17915"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Total]]></text>
 							</staticText>
@@ -238,13 +301,6 @@
 					</jr:column>
 					<jr:columnGroup width="416" uuid="12dac991-4748-4e41-8b6f-224e0fdeab59">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Columns [3]"/>
-						<jr:tableFooter style="Table 1_TH" height="30" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="416" height="30" uuid="274732bf-1fc9-4f90-afde-6ae6408daa63"/>
-								<textElement textAlignment="Left" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[" " + $P{totalPrice}]]></textFieldExpression>
-							</textField>
-						</jr:tableFooter>
 						<jr:column width="138" uuid="0bc46fbf-f9fd-4e45-845c-4545b09a01be">
 							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
 							<jr:tableFooter style="Table 1_TH" height="30" rowSpan="1"/>
@@ -256,16 +312,39 @@
 								</staticText>
 							</jr:columnHeader>
 							<jr:detailCell style="Table 1_TD" height="30">
-								<textField>
-									<reportElement x="0" y="0" width="138" height="30" uuid="0940da4a-951d-44ce-9d2c-5c4a0516075f"/>
-									<textElement textAlignment="Center" verticalAlignment="Middle"/>
-									<textFieldExpression><![CDATA[$F{tags}]]></textFieldExpression>
-								</textField>
+								<componentElement>
+									<reportElement x="0" y="0" width="138" height="30" uuid="5959907d-8f5f-43c7-bb15-17982f34c5eb">
+										<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+										<property name="com.jaspersoft.studio.table.style.table_header" value="Table 3_TH"/>
+										<property name="com.jaspersoft.studio.table.style.column_header" value="Table 3_CH"/>
+										<property name="com.jaspersoft.studio.table.style.detail" value="Table 3_TD"/>
+									</reportElement>
+									<jr:table>
+										<datasetRun subDataset="tagsDS" uuid="ec2ca310-9747-415b-b1b8-910cc8a6cf8a">
+											<dataSourceExpression><![CDATA[$F{tags}]]></dataSourceExpression>
+										</datasetRun>
+										<jr:column width="138" uuid="51f6cb8d-2a07-47f4-8f91-251ad24ba452">
+											<jr:detailCell style="Table 3_TD" height="30">
+												<textField>
+													<reportElement x="0" y="0" width="138" height="30" uuid="e57aa506-ffff-44f2-a455-dfa9375d6a48"/>
+													<textElement textAlignment="Center" verticalAlignment="Middle"/>
+													<textFieldExpression><![CDATA[$F{tag}]]></textFieldExpression>
+												</textField>
+											</jr:detailCell>
+										</jr:column>
+									</jr:table>
+								</componentElement>
 							</jr:detailCell>
 						</jr:column>
 						<jr:column width="139" uuid="f720d653-ec58-45a5-80c0-3850b4cfc3ca">
 							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
-							<jr:tableFooter style="Table 1_TH" height="30" rowSpan="1"/>
+							<jr:tableFooter style="Table 1_TH" height="30" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="139" height="30" uuid="274732bf-1fc9-4f90-afde-6ae6408daa63"/>
+									<textElement textAlignment="Left" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[" " + $P{totalPrice}]]></textFieldExpression>
+								</textField>
+							</jr:tableFooter>
 							<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1">
 								<staticText>
 									<reportElement x="0" y="0" width="139" height="30" uuid="313eca84-3505-4118-9d9a-43374102ed71"/>
@@ -283,7 +362,13 @@
 						</jr:column>
 						<jr:column width="139" uuid="3e10d8d2-614a-4b37-b227-3d52c41f261e">
 							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
-							<jr:tableFooter style="Table 1_TH" height="30" rowSpan="1"/>
+							<jr:tableFooter style="Table 1_TH" height="30" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="139" height="30" uuid="cc667545-1e4c-45f8-9405-22bcba14f207"/>
+									<textElement textAlignment="Left" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[" " + $P{totalQuantity}]]></textFieldExpression>
+								</textField>
+							</jr:tableFooter>
 							<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1">
 								<staticText>
 									<reportElement x="0" y="0" width="139" height="30" uuid="b15e64af-4c6e-4f8c-a236-fb9768a0b6a0"/>
