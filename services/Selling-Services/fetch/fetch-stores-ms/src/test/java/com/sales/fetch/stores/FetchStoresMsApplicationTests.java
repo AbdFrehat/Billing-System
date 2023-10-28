@@ -1,10 +1,11 @@
-package com.example.fetchcustomerms;
+package com.sales.fetch.stores;
+
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class FetchCustomerMsApplicationTests {
+public class FetchStoresMsApplicationTests {
 
     @Test
     void contextLoads() {
