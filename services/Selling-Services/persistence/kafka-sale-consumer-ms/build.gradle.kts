@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.sale.persistence"
-version = "0.0.1-SNAPSHOT"
+version = "1.0.0-SNAPSHOT"
 
 dependencies {
     implementation(project(":models"))

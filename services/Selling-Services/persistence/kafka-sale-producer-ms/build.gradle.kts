@@ -5,12 +5,12 @@ plugins {
 }
 
 group = "com.sale.persistence"
-version = "0.0.1-SNAPSHOT"
+version = "1.0.0-SNAPSHOT"
 
 dependencies {
     implementation("org.projectlombok:lombok:${project.findProperty("lombokVersion")}")
     implementation(project(":models"))
-    implementation("org.springframework.boot:spring-boot-starter")
+    implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("org.springframework.kafka:spring-kafka")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.kafka:spring-kafka-test")
