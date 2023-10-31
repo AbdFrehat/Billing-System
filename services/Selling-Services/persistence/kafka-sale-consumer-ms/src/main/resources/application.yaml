@@ -1,1 +1,21 @@
+spring:
+  kafka:
+    bootstrap-servers: 127.0.0.1:9092
+    default-topic: persistence.sale.json
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      auto-offset-reset: latest
+      group-id: persistence.sale.consumers
+      properties:
+        spring:
+          json:
+            value:
+              default:
+                type: 'com.sale.persistence.kafka.sale.consumer.entities.Sale'
+      client-id: 1
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/sample_supplies
+
 

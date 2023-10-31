@@ -10,6 +10,7 @@ version = "1.0.0-SNAPSHOT"
 dependencies {
     implementation(project(":models"))
     implementation("org.projectlombok:lombok:${project.findProperty("lombokVersion")}")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.15.3")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
     implementation("org.springframework.boot:spring-boot-starter")
