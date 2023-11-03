@@ -10,11 +10,9 @@ version = "1.0-SNAPSHOT"
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	implementation("jakarta.validation:jakarta.validation-api:${project.findProperty("jakartaValidationApiVersion")}")
-	implementation("org.projectlombok:lombok:${project.findProperty("lombokVersion")}")
 	implementation("net.sf.jasperreports:jasperreports:${project.findProperty("jasperReportsVersion")}")
 	implementation("com.github.librepdf:openpdf:${project.findProperty("openPdfVersion")}")
 	implementation(project(":models"))
-	annotationProcessor("org.projectlombok:lombok:${project.findProperty("lombokVersion")}")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
 }

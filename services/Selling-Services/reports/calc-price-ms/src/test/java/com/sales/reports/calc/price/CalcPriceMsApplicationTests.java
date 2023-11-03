@@ -1,4 +1,4 @@
-package com.sales.reports.calcpricems;
+package com.sales.reports.calc.price;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

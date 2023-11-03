@@ -4,7 +4,7 @@ plugins {
 group = "com.selling.parent"
 version = "1.0-SNAPSHOT"
 
-subprojects {
+allprojects {
     apply(plugin = "java")
     repositories {
         mavenCentral()
@@ -16,8 +16,11 @@ subprojects {
     tasks.test {
         useJUnitPlatform()
     }
+    dependencies {
+        implementation("org.projectlombok:lombok:${project.findProperty("lombokVersion")}")
+        annotationProcessor("org.projectlombok:lombok:${project.findProperty("lombokVersion")}")
+    }
 }
-
 
 
 
