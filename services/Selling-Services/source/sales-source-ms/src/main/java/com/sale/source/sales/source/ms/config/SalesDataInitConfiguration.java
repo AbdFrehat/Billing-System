@@ -1,0 +1,45 @@
+package com.sale.source.sales.source.ms.config;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sale.source.sales.source.ms.model.data.SalesData;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.SpringApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
+
+import java.io.IOException;
+
+@Configuration
+@Slf4j
+public class SalesDataInitConfiguration {
+
+    private ResourceLoader resourceLoader;
+
+    private ObjectMapper objectMapper;
+
+    private Resource resource;
+
+    private ApplicationContext context;
+
+    public SalesDataInitConfiguration(ResourceLoader resourceLoader, ObjectMapper objectMapper, ApplicationContext context) {
+        this.resourceLoader = resourceLoader;
+        this.objectMapper = objectMapper;
+        this.context = context;
+        resource = resourceLoader.getResource("classpath:sales.data.json");
+    }
+
+    @Bean
+    public SalesData salesData() {
+        try {
+            return objectMapper.readValue(resource.getFile(), SalesData.class);
+        } catch (IOException e) {
+            log.error("Unable to read sales.data.json: {}", e.getMessage());
+            SpringApplication.exit(context, () -> 0);
+            return null;
+        }
+
+    }
+}

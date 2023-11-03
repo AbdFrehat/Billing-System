@@ -1,0 +1,8 @@
+spring:
+  webflux:
+    base-path: /selling/source/sale/v1/
+server:
+  port: 6016
+
+emit:
+  duration: 1000
