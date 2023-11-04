@@ -8,3 +8,7 @@ spring:
     name: fetch-items-ms
 server:
   port: 6011
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/selling/fetch/eureka/
