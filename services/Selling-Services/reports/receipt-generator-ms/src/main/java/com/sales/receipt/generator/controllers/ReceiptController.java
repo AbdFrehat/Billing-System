@@ -16,7 +16,7 @@ import reactor.core.publisher.Mono;
 public class ReceiptController {
 
 
-    private ReceiptService receiptService;
+    private final ReceiptService receiptService;
 
     public ReceiptController(ReceiptService receiptService) {
         this.receiptService = receiptService;
@@ -26,7 +26,7 @@ public class ReceiptController {
     public ResponseEntity<Mono<byte[]>> generateReceiptReport(@RequestBody Sale sale) {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_PDF);
-        httpHeaders.setContentDispositionFormData("filename", "receipt" + sale.getId() + ".pdf");
+        httpHeaders.setContentDispositionFormData("filename", "receipt-" + sale.getId() + ".pdf");
         return new ResponseEntity(receiptService.generateReport(sale), httpHeaders, HttpStatus.OK);
     }
 }

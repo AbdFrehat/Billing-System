@@ -62,6 +62,8 @@ public class JasperReportServiceImpl implements ReportService {
         properties.put("storeLocation", sale.getStoreLocation());
         properties.put("purchaseMethod", sale.getPurchaseMethod().toString());
         properties.put("couponUsed", sale.isCouponUsed() ? "Yes" : "No");
+        properties.put("totalPrice", sale.getTotalPrice());
+        properties.put("totalQuantity", sale.getTotalQuantity());
         return properties;
     }
 }

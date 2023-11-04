@@ -120,8 +120,8 @@
 		<field name="satisfaction" class="java.lang.Integer"/>
 	</subDataset>
 	<subDataset name="itemsDS" uuid="681c81e4-553c-4424-817b-b2c9e0a11040">
-		<parameter name="totalPrice" class="java.lang.Double"/>
-		<parameter name="totalQuantity" class="java.lang.String"/>
+		<parameter name="totalPrice" class="java.math.BigDecimal"/>
+		<parameter name="totalQuantity" class="java.lang.Integer"/>
 		<queryString>
 			<![CDATA[]]>
 		</queryString>
@@ -142,6 +142,8 @@
 	<parameter name="purchaseMethod" class="java.lang.String"/>
 	<parameter name="customerDS" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
 	<parameter name="itemsDS" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="totalPrice" class="java.math.BigDecimal"/>
+	<parameter name="totalQuantity" class="java.lang.Integer"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -272,7 +274,13 @@
 					<property name="com.jaspersoft.studio.table.style.detail" value="Table 1_TD"/>
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="itemsDS" uuid="f0b8a14b-de86-42f6-884d-29ddfd10e298">
+					<datasetRun subDataset="itemsDS" uuid="7b2d1ac1-7bd6-4fb6-94f9-cf0b6073db1e">
+						<datasetParameter name="totalPrice">
+							<datasetParameterExpression><![CDATA[$P{totalPrice}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="totalQuantity">
+							<datasetParameterExpression><![CDATA[$P{totalQuantity}]]></datasetParameterExpression>
+						</datasetParameter>
 						<dataSourceExpression><![CDATA[$P{itemsDS}]]></dataSourceExpression>
 					</datasetRun>
 					<jr:column width="139" uuid="29b813f2-c0d9-4b1c-a7a3-7a846d2bbaf9">
@@ -341,8 +349,8 @@
 							<jr:tableFooter style="Table 1_TH" height="30" rowSpan="1">
 								<textField>
 									<reportElement x="0" y="0" width="139" height="30" uuid="274732bf-1fc9-4f90-afde-6ae6408daa63"/>
-									<textElement textAlignment="Left" verticalAlignment="Middle"/>
-									<textFieldExpression><![CDATA[" " + $P{totalPrice}]]></textFieldExpression>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$P{totalPrice}  + "$"]]></textFieldExpression>
 								</textField>
 							</jr:tableFooter>
 							<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1">
@@ -365,7 +373,7 @@
 							<jr:tableFooter style="Table 1_TH" height="30" rowSpan="1">
 								<textField>
 									<reportElement x="0" y="0" width="139" height="30" uuid="cc667545-1e4c-45f8-9405-22bcba14f207"/>
-									<textElement textAlignment="Left" verticalAlignment="Middle"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
 									<textFieldExpression><![CDATA[" " + $P{totalQuantity}]]></textFieldExpression>
 								</textField>
 							</jr:tableFooter>

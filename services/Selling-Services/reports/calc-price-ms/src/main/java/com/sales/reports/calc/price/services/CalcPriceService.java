@@ -2,11 +2,11 @@ package com.sales.reports.calc.price.services;
 
 import com.sales.reports.calc.price.models.entites.Item;
 import com.sales.reports.calc.price.models.responses.CalcPriceResponse;
-
-import java.util.List;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 public interface CalcPriceService {
 
-    CalcPriceResponse buildCalcPriceResponse(List<Item> items);
+    Mono<CalcPriceResponse> buildCalcPriceResponse(Flux<Item> items);
 
 }

@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
@@ -16,15 +17,15 @@ import java.util.List;
 @RestController
 public class CalcPriceController {
 
-    private CalcPriceService calcPriceService;
+    private final CalcPriceService calcPriceService;
 
     public CalcPriceController(CalcPriceService calcPriceService) {
         this.calcPriceService = calcPriceService;
     }
 
     @PostMapping
-    public ResponseEntity<Mono<CalcPriceResponse>> getCalcPriceResponse(@RequestBody @Valid List<Item> items) {
-        return new ResponseEntity(calcPriceService.buildCalcPriceResponse(items), HttpStatus.OK);
+    public ResponseEntity<Mono<CalcPriceResponse>> getCalcPriceResponse(@RequestBody @Valid Flux<Item> items) {
+        return new ResponseEntity<>(calcPriceService.buildCalcPriceResponse(items), HttpStatus.OK);
     }
 
 }

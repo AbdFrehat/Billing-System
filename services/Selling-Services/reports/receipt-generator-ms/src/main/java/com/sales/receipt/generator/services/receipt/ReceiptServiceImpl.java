@@ -1,6 +1,8 @@
 package com.sales.receipt.generator.services.receipt;
 
+import com.sales.receipt.generator.client.CalcPriceClient;
 import com.sales.receipt.generator.models.entities.Sale;
+import com.sales.receipt.generator.models.responses.CalcPriceResponse;
 import com.sales.receipt.generator.services.jasper.ReportService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.Resource;
@@ -15,27 +17,35 @@ import java.io.IOException;
 @Service
 public class ReceiptServiceImpl implements ReceiptService {
 
-    private ResourceLoader resourceLoader;
+    private final ResourceLoader resourceLoader;
 
-    private ReportService reportService;
+    private final ReportService reportService;
 
-    public ReceiptServiceImpl(ResourceLoader resourceLoader, ReportService reportService) {
+    private final CalcPriceClient calcPriceClient;
+
+    public ReceiptServiceImpl(ResourceLoader resourceLoader, ReportService reportService, CalcPriceClient calcPriceClient) {
         this.resourceLoader = resourceLoader;
         this.reportService = reportService;
+        this.calcPriceClient = calcPriceClient;
     }
 
     @Override
     public Mono<byte[]> generateReport(Sale sale) {
         Resource resource = resourceLoader.getResource("classpath:jasper/saleReceipt.jrxml");
-        if (resource != null) {
+        return retrieveCalcPriceResponse(sale).flatMap(calcPriceResponse -> {
             try {
                 return Mono.just(reportService.createReport(sale, resource));
             } catch (IOException e) {
-                log.error("An error happened while reading the report template: {}", e.getMessage());
+                log.error("Jasper Report is not found in order to generate the Receipt");
             }
-        } else {
-            log.error("Jasper Report is not found in order to generate the Receipt");
-        }
-        return Mono.empty();
+            return Mono.empty();
+        });
+    }
+
+    private Mono<CalcPriceResponse> retrieveCalcPriceResponse(Sale sale) {
+        return calcPriceClient.retrieveCalcPrice(sale.getItems()).doOnSuccess(calcPriceResponse -> {
+            sale.setTotalQuantity(calcPriceResponse.getTotalQuantity());
+            sale.setTotalPrice(calcPriceResponse.getTotalPrice());
+        });
     }
 }
