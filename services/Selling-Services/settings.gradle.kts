@@ -6,6 +6,7 @@ include("fetch:fetch-customer-ms")
 include("fetch:fetch-eureka-server")
 include("reports:receipt-generator-ms")
 include("reports:calc-price-ms")
+include("reports:report-eureka-server")
 include("persistence:kafka-sale-producer-ms")
 include("persistence:kafka-sale-consumer-ms")
 include("source:sales-source-ms")
@@ -16,6 +17,7 @@ findProject(":fetch:fetch-customer-ms")?.name = "fetch-customer-ms"
 findProject(":fetch:fetch-eureka-server")?.name = "fetch-eureka-server"
 findProject(":reports:receipt-generator-ms")?.name = "receipt-generator-ms"
 findProject(":reports:calc-price-ms")?.name = "calc-price-ms"
+findProject(":reports:report-eureka-server")?.name = "report-eureka-server"
 findProject(":persistence:kafka-sale-producer-ms")?.name = "kafka-sale-producer-ms"
 findProject(":persistence:kafka-sale-consumer-ms")?.name = "kafka-sale-consumer-ms"
 findProject(":source:sales-source-ms")?.name = "sales-source-ms"

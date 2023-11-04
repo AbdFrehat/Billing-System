@@ -2,6 +2,10 @@ spring:
   application:
     name: calc-price-ms
   webflux:
-    base-path: /selling/calc/price/v1/
+    base-path: /selling/reports/calc/price/v1/
 server:
   port: 6014
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8001/selling/reports/eureka/

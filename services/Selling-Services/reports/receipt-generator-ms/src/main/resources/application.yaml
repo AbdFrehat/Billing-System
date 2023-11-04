@@ -2,6 +2,10 @@ spring:
   application:
     name: receipt-generator-ms
   webflux:
-    base-path: /selling/generate/sale/report/v1/
+    base-path: /selling/reports/generate/sale/v1/
 server:
   port: 6013
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8001/selling/reports/eureka/

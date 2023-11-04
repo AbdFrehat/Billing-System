@@ -4,9 +4,8 @@ plugins {
 	id("io.spring.dependency-management")
 }
 
-group = "com.sales.fetch"
+group = "com.sales.reports"
 version = "1.0.0-SNAPSHOT"
-
 
 dependencies {
 	implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server")
@@ -19,5 +18,3 @@ dependencyManagement {
 		mavenBom("org.springframework.cloud:spring-cloud-dependencies:${project.findProperty("springCloudVersion")}")
 	}
 }
-
-
