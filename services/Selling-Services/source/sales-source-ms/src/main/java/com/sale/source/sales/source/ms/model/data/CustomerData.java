@@ -13,7 +13,7 @@ public class CustomerData {
 
     private List<String> genderValues;
 
-    private satisfactionRange satisfactionRange;
+    private SatisfactionRange satisfactionRange;
 
     private AgeRange ageRange;
 
@@ -24,7 +24,7 @@ public class CustomerData {
     public static class AgeRange extends Range {
     }
 
-    public static class satisfactionRange extends Range {
+    public static class SatisfactionRange extends Range {
     }
 
 }

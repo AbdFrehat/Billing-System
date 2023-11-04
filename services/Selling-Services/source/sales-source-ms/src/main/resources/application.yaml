@@ -6,3 +6,6 @@ server:
 
 emit:
   duration: 1000
+  max:
+    items: 10
+    tags: 3
