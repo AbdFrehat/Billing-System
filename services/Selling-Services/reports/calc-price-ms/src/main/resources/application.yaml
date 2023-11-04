@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: calc-price-ms
   webflux:
     base-path: /selling/calc/price/v1/
 server:

@@ -4,5 +4,7 @@ spring:
       uri: mongodb://localhost:27017/sample_supplies
   webflux:
     base-path: /selling/fetch/sale/items/v1/
+  application:
+    name: fetch-items-ms
 server:
   port: 6011

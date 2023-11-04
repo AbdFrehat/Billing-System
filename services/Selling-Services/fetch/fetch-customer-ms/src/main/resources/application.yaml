@@ -4,5 +4,13 @@ spring:
       uri: mongodb://localhost:27017/sample_supplies
   webflux:
     base-path: /selling/fetch/sale/customer/v1/
+  application:
+    name: fetch-customer-ms
 server:
   port: 6010
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+  instance:
+    hostname: localhost

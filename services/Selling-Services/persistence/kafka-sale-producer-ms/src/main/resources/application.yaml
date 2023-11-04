@@ -1,6 +1,8 @@
 server:
   port: 6015
 spring:
+  application:
+    name: kafka-sale-producer-ms
   kafka:
     bootstrap-servers: 127.0.0.1:9092
     template:

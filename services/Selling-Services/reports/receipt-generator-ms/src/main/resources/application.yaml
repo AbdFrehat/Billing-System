@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: receipt-generator-ms
   webflux:
     base-path: /selling/generate/sale/report/v1/
 server:
