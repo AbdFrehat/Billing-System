@@ -16,16 +16,13 @@ import java.io.IOException;
 @Slf4j
 public class SalesDataInitConfiguration {
 
-    private ResourceLoader resourceLoader;
+    private final ObjectMapper objectMapper;
 
-    private ObjectMapper objectMapper;
+    private final Resource resource;
 
-    private Resource resource;
-
-    private ApplicationContext context;
+    private final ApplicationContext context;
 
     public SalesDataInitConfiguration(ResourceLoader resourceLoader, ObjectMapper objectMapper, ApplicationContext context) {
-        this.resourceLoader = resourceLoader;
         this.objectMapper = objectMapper;
         this.context = context;
         resource = resourceLoader.getResource("classpath:sales.data.json");
