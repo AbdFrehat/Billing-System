@@ -2,7 +2,7 @@ spring:
   application:
     name: sales-source-ms
   webflux:
-    base-path: /selling/source/sale/v1/
+    base-path: /selling/source/poll/sale/v1/
 server:
   port: 6016
 

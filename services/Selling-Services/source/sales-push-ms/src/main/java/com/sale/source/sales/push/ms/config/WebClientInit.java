@@ -1,4 +1,4 @@
-package com.sales.receipt.generator.config;
+package com.sale.source.sales.push.ms.config;
 
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;

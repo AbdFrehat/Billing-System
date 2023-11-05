@@ -18,6 +18,9 @@ spring:
             add:
               type:
                 headers: false
-
   webflux:
     base-path: /selling/persistence/sale/v1/
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8002/selling/persistence/eureka/

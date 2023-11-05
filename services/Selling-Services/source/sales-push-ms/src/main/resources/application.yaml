@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: sales-source-ms
+  webflux:
+    base-path:  /selling/source/push/sale/v1/
+server:
+  port: 6017
+
+emit:
+  duration: 1000
+  max:
+    items: 10
+    tags: 3
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8002/selling/persistence/eureka/
