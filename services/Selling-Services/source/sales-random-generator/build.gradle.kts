@@ -11,8 +11,8 @@ version = "1.0.0-SNAPSHOT"
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
-    implementation("com.fasterxml.jackson.core:jackson-core:2.15.3")
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.15.3")
+    implementation("com.fasterxml.jackson.core:jackson-core:${project.findProperty("fasterxmlJackson")}")
+    implementation("com.fasterxml.jackson.core:jackson-databind:${project.findProperty("fasterxmlJackson")}")
     implementation(project(":models"))
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }

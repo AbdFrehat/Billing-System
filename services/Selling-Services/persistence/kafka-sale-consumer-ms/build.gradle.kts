@@ -8,10 +8,11 @@ group = "com.sale.persistence"
 version = "1.0.0-SNAPSHOT"
 
 dependencies {
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.15.3")
+    implementation("com.fasterxml.jackson.core:jackson-databind:${project.findProperty("fasterxmlJackson")}")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
     implementation("org.springframework.boot:spring-boot-starter")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.kafka:spring-kafka")
     implementation(project(":models"))
     testImplementation("org.springframework.kafka:spring-kafka-test")
