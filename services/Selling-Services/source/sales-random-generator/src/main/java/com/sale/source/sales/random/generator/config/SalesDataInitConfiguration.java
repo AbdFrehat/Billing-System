@@ -1,7 +1,7 @@
-package com.sale.source.sales.source.ms.config;
+package com.sale.source.sales.random.generator.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sale.source.sales.source.ms.model.data.SalesData;
+import com.sale.source.sales.random.generator.model.data.SalesData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ApplicationContext;

@@ -1,4 +1,4 @@
-package com.sale.source.sales.source.ms.model.entities;
+package com.sale.source.sales.random.generator.model.entities;
 
 import com.selling.shared.models.entities.AbstractItem;
 import lombok.AllArgsConstructor;

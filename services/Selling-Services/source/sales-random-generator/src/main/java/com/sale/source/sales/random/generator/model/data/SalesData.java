@@ -1,4 +1,4 @@
-package com.sale.source.sales.source.ms.model.data;
+package com.sale.source.sales.random.generator.model.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

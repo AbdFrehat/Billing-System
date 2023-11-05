@@ -10,6 +10,7 @@ include("reports:report-eureka-server")
 include("persistence:kafka-sale-producer-ms")
 include("persistence:kafka-sale-consumer-ms")
 include("source:sales-source-ms")
+include("source:sales-random-generator")
 include("models")
 findProject(":fetch:fetch-items-ms")?.name = "fetch-items-ms"
 findProject(":fetch:fetch-stores-ms")?.name = "fetch-stores-ms"
@@ -21,6 +22,7 @@ findProject(":reports:report-eureka-server")?.name = "report-eureka-server"
 findProject(":persistence:kafka-sale-producer-ms")?.name = "kafka-sale-producer-ms"
 findProject(":persistence:kafka-sale-consumer-ms")?.name = "kafka-sale-consumer-ms"
 findProject(":source:sales-source-ms")?.name = "sales-source-ms"
+findProject(":source:sales-random-generator")?.name = "sales-random-generator"
 
 pluginManagement {
     plugins {

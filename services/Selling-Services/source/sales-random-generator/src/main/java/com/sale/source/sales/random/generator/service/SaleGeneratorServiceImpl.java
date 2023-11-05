@@ -1,15 +1,15 @@
-package com.sale.source.sales.source.ms.service;
+package com.sale.source.sales.random.generator.service;
 
-import com.sale.source.sales.source.ms.model.data.CustomerData;
-import com.sale.source.sales.source.ms.model.data.ItemsData;
-import com.sale.source.sales.source.ms.model.data.SalesData;
-import com.sale.source.sales.source.ms.model.entities.Customer;
-import com.sale.source.sales.source.ms.model.entities.Item;
-import com.sale.source.sales.source.ms.model.entities.Sale;
+
+import com.sale.source.sales.random.generator.model.data.CustomerData;
+import com.sale.source.sales.random.generator.model.data.ItemsData;
+import com.sale.source.sales.random.generator.model.data.SalesData;
+import com.sale.source.sales.random.generator.model.entities.Customer;
+import com.sale.source.sales.random.generator.model.entities.Item;
+import com.sale.source.sales.random.generator.model.entities.Sale;
 import com.selling.shared.models.enums.PurchaseMethod;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
