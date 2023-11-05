@@ -1,0 +1,13 @@
+server:
+  port: 8002
+  servlet:
+    context-path: /selling/persistence/
+spring:
+  application:
+    name: fetch-eureka-server
+eureka:
+  client:
+    registerWithEureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:8002/selling/persistence/eureka/

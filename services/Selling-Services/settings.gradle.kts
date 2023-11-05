@@ -9,6 +9,7 @@ include("reports:calc-price-ms")
 include("reports:report-eureka-server")
 include("persistence:kafka-sale-producer-ms")
 include("persistence:kafka-sale-consumer-ms")
+include("persistence:persistence-eureka-server")
 include("source:sales-source-ms")
 include("source:sales-random-generator")
 include("models")
@@ -21,6 +22,7 @@ findProject(":reports:calc-price-ms")?.name = "calc-price-ms"
 findProject(":reports:report-eureka-server")?.name = "report-eureka-server"
 findProject(":persistence:kafka-sale-producer-ms")?.name = "kafka-sale-producer-ms"
 findProject(":persistence:kafka-sale-consumer-ms")?.name = "kafka-sale-consumer-ms"
+findProject(":persistence:persistence-eureka-server")?.name = "persistence-eureka-server"
 findProject(":source:sales-source-ms")?.name = "sales-source-ms"
 findProject(":source:sales-random-generator")?.name = "sales-random-generator"
 
