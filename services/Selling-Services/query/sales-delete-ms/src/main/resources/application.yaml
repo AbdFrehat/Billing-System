@@ -1,0 +1,11 @@
+spring:
+  webflux:
+    base-path: /selling/query/delete/sale/v1/
+  application:
+    name: sales-delete-ms
+server:
+  port: 6020
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8003/selling/query/eureka/

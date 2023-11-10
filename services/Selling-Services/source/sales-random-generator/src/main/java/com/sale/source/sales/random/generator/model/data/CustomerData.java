@@ -1,5 +1,6 @@
 package com.sale.source.sales.random.generator.model.data;
 
+import com.selling.shared.models.commons.Range;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,10 +22,10 @@ public class CustomerData {
 
 
     @Data
-    public static class AgeRange extends Range {
+    public static class AgeRange extends Range<Integer> {
     }
 
-    public static class SatisfactionRange extends Range {
+    public static class SatisfactionRange extends Range<Integer> {
     }
 
 }

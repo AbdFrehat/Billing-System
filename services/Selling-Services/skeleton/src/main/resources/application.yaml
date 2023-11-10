@@ -1,0 +1,11 @@
+spring:
+  webflux:
+    base-path: /skeleton/v1/
+  application:
+    name: skeleton-ms
+server:
+  port: 8080
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/skeleton/

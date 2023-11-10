@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class SaleProducerController {
-    private MessageProducerService messageProducerService;
+    private final MessageProducerService messageProducerService;
 
     public SaleProducerController(MessageProducerService messageProducerService) {
         this.messageProducerService = messageProducerService;
@@ -19,7 +19,7 @@ public class SaleProducerController {
     @PostMapping
     public ResponseEntity<Void> sendMessage(@RequestBody Sale sale) {
         messageProducerService.sendMessage(sale);
-        return new ResponseEntity(HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
 }

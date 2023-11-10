@@ -1,0 +1,11 @@
+spring:
+  webflux:
+    base-path: /selling/query/update/sale/v1/
+  application:
+    name: sales-update-ms
+server:
+  port: 6021
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8003/selling/query/eureka/

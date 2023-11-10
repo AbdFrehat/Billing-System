@@ -1,0 +1,11 @@
+spring:
+  webflux:
+    base-path: /selling/query/save/sale/v1/
+  application:
+    name: sales-save-ms
+server:
+  port: 6019
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8003/selling/query/eureka/

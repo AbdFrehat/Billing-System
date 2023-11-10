@@ -1,5 +1,6 @@
 package com.sale.source.sales.random.generator.model.data;
 
+import com.selling.shared.models.commons.Range;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,11 +21,11 @@ public class ItemsData {
     private QuantityRange quantityRange;
 
 
-    public static class PriceRange extends Range {
+    public static class PriceRange extends Range<Integer> {
 
     }
 
-    public static class QuantityRange extends Range {
+    public static class QuantityRange extends Range<Integer> {
     }
 
 }
