@@ -1,6 +1,6 @@
 package com.sales.query.shared.models.command;
 
-import lombok.AllArgsConstructor;
+import com.selling.shared.models.commands.QueryCommandAbstract;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,8 +8,7 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-public class QueryCommand {
+public class QueryCommand implements QueryCommandAbstract {
 
     private List<QueryField> queryFields;
 

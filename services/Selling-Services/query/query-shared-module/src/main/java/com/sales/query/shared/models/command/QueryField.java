@@ -1,6 +1,7 @@
 package com.sales.query.shared.models.command;
 
 import com.fasterxml.jackson.annotation.JsonRawValue;
+import com.selling.shared.models.commands.QueryFieldAbstract;
 import com.selling.shared.models.commons.Range;
 import com.selling.shared.models.enums.FieldsType;
 import lombok.AllArgsConstructor;
@@ -14,7 +15,7 @@ import java.util.LinkedHashMap;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class QueryField {
+public class QueryField implements QueryFieldAbstract {
 
     private String field;
 
@@ -26,7 +27,7 @@ public class QueryField {
     public Object getValue() {
         if (fieldsType.equals(FieldsType.RANGE)) {
             if (value instanceof LinkedHashMap<?, ?> list) {
-                return new Range<Object>(list.get("min"), list.get("max"));
+                return new Range<>(list.get("min"), list.get("max"));
             }
         }
         if (fieldsType.equals(FieldsType.LIST)) {
