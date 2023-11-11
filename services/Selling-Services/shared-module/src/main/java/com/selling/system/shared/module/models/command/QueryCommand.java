@@ -1,4 +1,4 @@
-package com.selling.system.query.shared.module.command;
+package com.selling.system.shared.module.models.command;
 
 import com.selling.system.shared.module.models.commands.QueryCommandAbstract;
 import jakarta.validation.Valid;

@@ -1,6 +1,6 @@
 package com.selling.system.query.shared.module.service;
 
-import com.selling.system.query.shared.module.command.QueryCommand;
+import com.selling.system.shared.module.models.command.QueryCommand;
 import org.springframework.data.mongodb.core.query.Query;
 
 /**

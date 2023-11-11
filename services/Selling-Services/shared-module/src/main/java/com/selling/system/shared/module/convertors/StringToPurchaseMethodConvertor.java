@@ -1,4 +1,4 @@
-package com.selling.system.query.shared.module.convertors;
+package com.selling.system.shared.module.convertors;
 
 import com.selling.system.shared.module.models.enums.PurchaseMethod;
 import com.selling.system.shared.module.models.exceptions.PurchaseMethodNotFoundException;

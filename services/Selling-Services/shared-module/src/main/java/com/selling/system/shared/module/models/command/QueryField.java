@@ -1,7 +1,7 @@
-package com.selling.system.query.shared.module.command;
+package com.selling.system.shared.module.models.command;
 
 import com.fasterxml.jackson.annotation.JsonRawValue;
-import com.selling.system.query.shared.module.convertors.ObjectToObjectsConvertor;
+import com.selling.system.shared.module.convertors.ObjectToObjectsConvertor;
 import com.selling.system.shared.module.models.annotations.ValidFieldTypeEnum;
 import com.selling.system.shared.module.models.commands.QueryFieldAbstract;
 import com.selling.system.shared.module.models.enums.FieldType;

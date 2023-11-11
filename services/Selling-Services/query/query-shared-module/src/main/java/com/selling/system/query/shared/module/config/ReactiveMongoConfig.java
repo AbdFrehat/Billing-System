@@ -1,7 +1,6 @@
 package com.selling.system.query.shared.module.config;
 
-import com.selling.system.query.shared.module.convertors.FieldTypeConvertor;
-import com.selling.system.query.shared.module.convertors.StringToPurchaseMethodConvertor;
+import com.selling.system.shared.module.convertors.StringToPurchaseMethodConvertor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;

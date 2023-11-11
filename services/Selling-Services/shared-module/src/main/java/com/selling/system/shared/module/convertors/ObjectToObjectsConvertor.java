@@ -1,6 +1,6 @@
-package com.selling.system.query.shared.module.convertors;
+package com.selling.system.shared.module.convertors;
 
-import com.selling.system.query.shared.module.command.QueryField;
+import com.selling.system.shared.module.models.command.QueryField;
 import com.selling.system.shared.module.models.commons.Range;
 import com.selling.system.shared.module.models.enums.FieldType;
 import com.selling.system.shared.module.models.exceptions.BadConvertorException;
