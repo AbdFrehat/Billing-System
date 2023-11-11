@@ -19,8 +19,8 @@ spring:
               type:
                 headers: false
   webflux:
-    base-path: /selling/persistence/sale/v1/
+    base-path: /selling/kafka/sale/v1/
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8002/selling/persistence/eureka/
+      defaultZone: http://localhost:8002/selling/kafka/eureka/
