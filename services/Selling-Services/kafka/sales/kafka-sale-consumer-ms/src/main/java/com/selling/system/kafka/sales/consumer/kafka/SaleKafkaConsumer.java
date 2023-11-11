@@ -1,0 +1,25 @@
+package com.selling.system.kafka.sales.consumer.kafka;
+
+import com.selling.system.kafka.sales.consumer.entities.Sale;
+import com.selling.system.kafka.sales.consumer.repositories.SalesRepository;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+@Service
+public class SaleKafkaConsumer {
+
+    private final SalesRepository salesRepository;
+
+    public SaleKafkaConsumer(SalesRepository salesRepository) {
+        this.salesRepository = salesRepository;
+    }
+
+    @KafkaListener(topics = "${spring.kafka.default-topic}")
+    @Transactional
+    public void consumerSaleMessage(@Payload Sale sale) {
+        this.salesRepository.save(sale).subscribe();
+    }
+
+}

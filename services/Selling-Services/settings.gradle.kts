@@ -18,13 +18,13 @@ findProject(":reports:receipt-generator-ms")?.name = "receipt-generator-ms"
 findProject(":reports:calc-price-ms")?.name = "calc-price-ms"
 findProject(":reports:report-eureka-server")?.name = "report-eureka-server"
 
-//Persistence Category
-include("persistence:kafka-sale-producer-ms")
-include("persistence:kafka-sale-consumer-ms")
-include("persistence:persistence-eureka-server")
-findProject(":persistence:kafka-sale-producer-ms")?.name = "kafka-sale-producer-ms"
-findProject(":persistence:kafka-sale-consumer-ms")?.name = "kafka-sale-consumer-ms"
-findProject(":persistence:persistence-eureka-server")?.name = "persistence-eureka-server"
+//Kafka Category
+include("kafka:sales:kafka-sale-producer-ms")
+include("kafka:sales:kafka-sale-consumer-ms")
+include("kafka:kafka-eureka-server")
+findProject(":kafka:sales:kafka-sale-producer-ms")?.name = "kafka-sale-producer-ms"
+findProject(":kafka:sales:kafka-sale-consumer-ms")?.name = "kafka-sale-consumer-ms"
+findProject(":kafka:persistence-eureka-server")?.name = "kafka-eureka-server"
 
 
 //Source Category
