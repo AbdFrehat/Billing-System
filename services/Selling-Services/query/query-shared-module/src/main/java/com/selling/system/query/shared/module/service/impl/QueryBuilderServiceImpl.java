@@ -50,7 +50,7 @@ public class QueryBuilderServiceImpl implements QueryBuilderService {
 
     private Criteria buildCriteria(QueryField queryField) {
         Criteria criteria = new Criteria();
-        switch (queryField.getFieldsType()) {
+        switch (queryField.getFieldType()) {
             case OTHER -> criteria = Criteria.where(queryField.getField()).is(queryField.getValue());
             case STRING -> criteria = Criteria.where(queryField.getField()).regex((String) queryField.getValue());
             case RANGE -> {

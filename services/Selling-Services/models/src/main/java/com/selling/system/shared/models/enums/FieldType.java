@@ -1,6 +1,6 @@
 package com.selling.system.shared.models.enums;
 
-public enum FieldsType {
+public enum FieldType {
     RANGE,
     STRING,
     OTHER,

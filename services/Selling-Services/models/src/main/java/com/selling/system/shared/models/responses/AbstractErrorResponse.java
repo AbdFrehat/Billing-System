@@ -6,6 +6,6 @@ public interface AbstractErrorResponse {
 
     String getExceptionName();
 
-    String getMessage();
+    Object getMessage();
 
 }

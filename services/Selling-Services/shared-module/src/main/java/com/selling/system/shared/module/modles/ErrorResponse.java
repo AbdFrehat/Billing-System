@@ -12,5 +12,5 @@ public class ErrorResponse implements AbstractErrorResponse {
 
     private String exceptionName;
 
-    private String message;
+    private Object message;
 }

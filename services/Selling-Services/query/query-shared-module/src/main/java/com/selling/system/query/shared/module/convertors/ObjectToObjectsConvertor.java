@@ -2,7 +2,7 @@ package com.selling.system.query.shared.module.convertors;
 
 import com.selling.system.query.shared.module.command.QueryField;
 import com.selling.system.shared.models.commons.Range;
-import com.selling.system.shared.models.enums.FieldsType;
+import com.selling.system.shared.models.enums.FieldType;
 import com.selling.system.shared.models.exceptions.BadConvertorException;
 
 import java.util.LinkedHashMap;
@@ -21,7 +21,7 @@ public class ObjectToObjectsConvertor {
             return QueryField.builder()
                     .field((String) fieldsMap.get("field"))
                     .value(fieldsMap.get("value"))
-                    .fieldsType(FieldsType.valueOf((String) fieldsMap.get("fieldType")))
+                    .fieldType(FieldType.valueOf((String) fieldsMap.get("fieldType")))
                     .build();
         }
         throw new BadConvertorException("Unable to convert the provided object to queryField");

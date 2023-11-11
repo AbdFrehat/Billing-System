@@ -1,6 +1,6 @@
 package com.selling.system.shared.models.commands;
 
-import com.selling.system.shared.models.enums.FieldsType;
+import com.selling.system.shared.models.enums.FieldType;
 
 public interface QueryFieldAbstract {
 
@@ -8,6 +8,6 @@ public interface QueryFieldAbstract {
 
     Object getValue();
 
-    FieldsType getFieldsType();
+    FieldType getFieldType();
 
 }
