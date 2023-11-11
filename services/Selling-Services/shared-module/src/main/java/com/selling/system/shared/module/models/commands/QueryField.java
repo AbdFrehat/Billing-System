@@ -1,4 +1,4 @@
-package com.selling.system.shared.module.models.command;
+package com.selling.system.shared.module.models.commands;
 
 import com.fasterxml.jackson.annotation.JsonRawValue;
 import com.selling.system.shared.module.convertors.ObjectToObjectsConvertor;

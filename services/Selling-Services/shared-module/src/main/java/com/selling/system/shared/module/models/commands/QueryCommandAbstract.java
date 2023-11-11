@@ -6,4 +6,8 @@ public interface QueryCommandAbstract {
 
     List<? extends QueryFieldAbstract> getQueryFields();
 
+    int getPage();
+
+    int getSize();
+
 }

@@ -1,6 +1,6 @@
 package com.selling.system.query.shared.module.service;
 
-import com.selling.system.shared.module.models.command.QueryCommand;
+import com.selling.system.shared.module.models.commands.QueryCommand;
 import com.selling.system.query.shared.module.entites.Sale;
 import reactor.core.publisher.Flux;
 

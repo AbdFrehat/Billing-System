@@ -1,6 +1,6 @@
 package com.selling.system.query.shared.module.service.impl;
 
-import com.selling.system.shared.module.models.command.QueryCommand;
+import com.selling.system.shared.module.models.commands.QueryCommand;
 import com.selling.system.query.shared.module.entites.Sale;
 import com.selling.system.query.shared.module.repository.SalesRepository;
 import com.selling.system.query.shared.module.service.QueryBuilderService;

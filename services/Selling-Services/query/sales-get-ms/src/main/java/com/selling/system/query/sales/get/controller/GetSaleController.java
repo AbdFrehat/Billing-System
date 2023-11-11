@@ -1,6 +1,6 @@
 package com.selling.system.query.sales.get.controller;
 
-import com.selling.system.shared.module.models.command.QueryCommand;
+import com.selling.system.shared.module.models.commands.QueryCommand;
 import com.selling.system.query.shared.module.entites.Sale;
 import com.selling.system.query.shared.module.service.SalesService;
 import jakarta.validation.Valid;
