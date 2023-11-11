@@ -1,6 +1,6 @@
 package com.selling.system.query.shared.module.command;
 
-import com.selling.system.shared.models.commands.QueryCommandAbstract;
+import com.selling.system.shared.module.models.commands.QueryCommandAbstract;
 import jakarta.validation.Valid;
 import lombok.Data;
 import lombok.NoArgsConstructor;

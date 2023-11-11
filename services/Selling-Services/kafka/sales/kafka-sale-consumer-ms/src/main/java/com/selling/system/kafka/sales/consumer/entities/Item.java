@@ -1,6 +1,6 @@
 package com.selling.system.kafka.sales.consumer.entities;
 
-import com.selling.system.shared.models.entities.AbstractItem;
+import com.selling.system.shared.module.models.entities.AbstractItem;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

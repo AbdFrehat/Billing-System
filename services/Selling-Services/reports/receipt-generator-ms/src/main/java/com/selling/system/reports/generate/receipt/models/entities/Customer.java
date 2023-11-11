@@ -1,6 +1,6 @@
 package com.selling.system.reports.generate.receipt.models.entities;
 
-import com.selling.system.shared.models.entities.AbstractCustomer;
+import com.selling.system.shared.module.models.entities.AbstractCustomer;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -13,7 +13,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("com.fasterxml.jackson.core:jackson-core:${project.findProperty("fasterxmlJackson")}")
     implementation("com.fasterxml.jackson.core:jackson-databind:${project.findProperty("fasterxmlJackson")}")
-    implementation(project(":models"))
+    implementation(project(":shared-module"))
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 

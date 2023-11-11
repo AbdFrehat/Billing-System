@@ -1,7 +1,7 @@
 package com.selling.system.fetch.customer.models.entites;
 
-import com.selling.system.shared.models.entities.AbstractSale;
-import com.selling.system.shared.models.enums.PurchaseMethod;
+import com.selling.system.shared.module.models.entities.AbstractSale;
+import com.selling.system.shared.module.models.enums.PurchaseMethod;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -12,7 +12,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
         scanBasePackages = {
                 "com.selling.system.query.shared.module",
                 "com.selling.system.shared.module",
-                "com.selling.system.query.sales.get"
+                "com.selling.system.query.sales.get",
         })
 @EnableDiscoveryClient
 @OpenAPIDefinition(info = @Info(title = "APIs", version = "1.0", description = "Documentation APIs v1.0"))

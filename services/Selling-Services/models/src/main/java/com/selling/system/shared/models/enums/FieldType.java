@@ -5,4 +5,5 @@ public enum FieldType {
     STRING,
     OTHER,
     LIST
+
 }

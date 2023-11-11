@@ -7,7 +7,7 @@ import com.selling.system.source.random.generator.sales.model.data.SalesData;
 import com.selling.system.source.random.generator.sales.model.entities.Customer;
 import com.selling.system.source.random.generator.sales.model.entities.Item;
 import com.selling.system.source.random.generator.sales.model.entities.Sale;
-import com.selling.system.shared.models.enums.PurchaseMethod;
+import com.selling.system.shared.module.models.enums.PurchaseMethod;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import java.math.BigDecimal;

@@ -3,7 +3,7 @@ package com.selling.system.query.shared.module.service.impl;
 import com.selling.system.query.shared.module.command.QueryCommand;
 import com.selling.system.query.shared.module.command.QueryField;
 import com.selling.system.query.shared.module.service.QueryBuilderService;
-import com.selling.system.shared.models.commons.Range;
+import com.selling.system.shared.module.models.commons.Range;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;

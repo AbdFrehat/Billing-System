@@ -1,6 +1,6 @@
 package com.selling.system.reports.calc.price.models.responses;
 
-import com.selling.system.shared.models.responses.AbstractCalcPriceResponse;
+import com.selling.system.shared.module.models.responses.AbstractCalcPriceResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

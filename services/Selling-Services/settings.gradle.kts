@@ -52,7 +52,6 @@ findProject(":query:query-shared-module")?.name = "query-shared-module"
 
 
 //Commons
-include("models")
 include("shared-module")
 include("skeleton")
 

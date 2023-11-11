@@ -1,6 +1,6 @@
 package com.selling.system.source.random.generator.sales.model.entities;
 
-import com.selling.system.shared.models.entities.AbstractCustomer;
+import com.selling.system.shared.module.models.entities.AbstractCustomer;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

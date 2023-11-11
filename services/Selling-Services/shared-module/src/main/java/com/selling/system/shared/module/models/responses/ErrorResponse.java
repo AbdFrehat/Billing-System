@@ -1,6 +1,5 @@
-package com.selling.system.shared.module.modles;
+package com.selling.system.shared.module.models.responses;
 
-import com.selling.system.shared.models.responses.AbstractErrorResponse;
 import lombok.Builder;
 import lombok.Data;
 

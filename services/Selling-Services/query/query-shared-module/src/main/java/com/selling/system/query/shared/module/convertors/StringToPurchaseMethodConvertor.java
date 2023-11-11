@@ -1,17 +1,19 @@
 package com.selling.system.query.shared.module.convertors;
 
-import com.selling.system.shared.models.enums.PurchaseMethod;
+import com.selling.system.shared.module.models.enums.PurchaseMethod;
+import com.selling.system.shared.module.models.exceptions.PurchaseMethodNotFoundException;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.lang.NonNull;
 
 public class StringToPurchaseMethodConvertor implements Converter<String, PurchaseMethod> {
 
     @Override
-    public PurchaseMethod convert(String source) {
+    public PurchaseMethod convert(@NonNull String purchaseMethodValue) {
         for (PurchaseMethod purchaseMethod : PurchaseMethod.values()) {
-            if (purchaseMethod.getValue().equals(source)) {
+            if (purchaseMethod.getValue().equals(purchaseMethodValue)) {
                 return purchaseMethod;
             }
         }
-        return null;
+        throw new PurchaseMethodNotFoundException("Purchase Method Not Found");
     }
 }

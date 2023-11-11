@@ -16,6 +16,9 @@ public class GetSaleController {
 
     private final SalesService salesService;
 
+
+
+
     public GetSaleController(SalesService salesService) {
         this.salesService = salesService;
     }

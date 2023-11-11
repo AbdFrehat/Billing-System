@@ -1,6 +1,6 @@
 package com.selling.system.source.random.generator.sales.model.data;
 
-import com.selling.system.shared.models.commons.Range;
+import com.selling.system.shared.module.models.commons.Range;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

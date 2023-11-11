@@ -26,7 +26,7 @@ public interface SalesService {
      * </ul>
      *
      * @param queryCommand: {@link QueryCommand} contains the list of fields that the query searches on.
-     * @return {@code Flux<Sale>} to be sent back in the response.
+     * @return {@link Flux}<{@link Sale}> to be sent back in the response.
      * @author Abd Frehat
      * @since 1.0
      */

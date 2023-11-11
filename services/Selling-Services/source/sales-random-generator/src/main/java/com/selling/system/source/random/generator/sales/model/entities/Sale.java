@@ -1,7 +1,7 @@
 package com.selling.system.source.random.generator.sales.model.entities;
 
-import com.selling.system.shared.models.entities.AbstractSale;
-import com.selling.system.shared.models.enums.PurchaseMethod;
+import com.selling.system.shared.module.models.entities.AbstractSale;
+import com.selling.system.shared.module.models.enums.PurchaseMethod;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

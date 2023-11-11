@@ -2,8 +2,9 @@ package com.selling.system.query.shared.module.command;
 
 import com.fasterxml.jackson.annotation.JsonRawValue;
 import com.selling.system.query.shared.module.convertors.ObjectToObjectsConvertor;
-import com.selling.system.shared.models.commands.QueryFieldAbstract;
-import com.selling.system.shared.models.enums.FieldType;
+import com.selling.system.shared.module.models.annotations.ValidFieldTypeEnum;
+import com.selling.system.shared.module.models.commands.QueryFieldAbstract;
+import com.selling.system.shared.module.models.enums.FieldType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -25,6 +26,7 @@ public class QueryField implements QueryFieldAbstract {
     private Object value;
 
     @NotNull(message = "QueryField.fieldType can not be null")
+    @ValidFieldTypeEnum(message = "QueryField.fieldType is not supported", regexp = "RANGE|STRING|OTHER|LIST")
     private FieldType fieldType;
 
     public Object getValue() {

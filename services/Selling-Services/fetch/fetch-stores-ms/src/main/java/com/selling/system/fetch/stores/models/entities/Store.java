@@ -1,6 +1,6 @@
 package com.selling.system.fetch.stores.models.entities;
 
-import com.selling.system.shared.models.entities.AbstractStore;
+import com.selling.system.shared.module.models.entities.AbstractStore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
