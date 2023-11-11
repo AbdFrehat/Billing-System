@@ -4,7 +4,7 @@ plugins {
     id("io.spring.dependency-management")
 }
 
-group = "com.sales.query.delete"
+group = "com.selling.system.query.sales.delete"
 version = "1.0.0-SNAPSHOT"
 
 

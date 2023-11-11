@@ -28,10 +28,10 @@ findProject(":persistence:persistence-eureka-server")?.name = "persistence-eurek
 
 
 //Source Category
-include("source:sales-source-ms")
+include("source:sales-pull-ms")
 include("source:sales-push-ms")
 include("source:sales-random-generator")
-findProject(":source:sales-source-ms")?.name = "sales-source-ms"
+findProject(":source:sales-pull-ms")?.name = "sales-pull-ms"
 findProject(":source:sales-push-ms")?.name = "sales-push-ms"
 findProject(":source:sales-random-generator")?.name = "sales-random-generator"
 
@@ -53,6 +53,7 @@ findProject(":query:query-shared-module")?.name = "query-shared-module"
 
 //Commons
 include("models")
+include("shared-module")
 include("skeleton")
 
 

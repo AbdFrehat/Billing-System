@@ -4,7 +4,7 @@ plugins {
 	id("io.spring.dependency-management")
 }
 
-group = "com.sales.reports"
+group = "com.selling.system.reports.eureka.server"
 version = "1.0.0-SNAPSHOT"
 
 dependencies {

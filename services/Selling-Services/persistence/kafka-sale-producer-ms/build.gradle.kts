@@ -4,7 +4,7 @@ plugins {
     id("io.spring.dependency-management")
 }
 
-group = "com.sale.persistence"
+group = "com.selling.system.persistence.sales.producer"
 version = "1.0.0-SNAPSHOT"
 
 dependencies {

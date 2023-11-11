@@ -4,7 +4,7 @@ plugins {
     id("io.spring.dependency-management")
 }
 
-group = "com.sales.query.shared"
+group = "com.selling.system.query.shared.module"
 version = "1.0.0-SNAPSHOT"
 
 

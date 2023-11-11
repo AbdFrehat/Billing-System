@@ -4,7 +4,7 @@ plugins {
 	id("io.spring.dependency-management")
 }
 
-group = "com.sales.query"
+group = "com.selling.system.query.eureka.server"
 version = "1.0.0-SNAPSHOT"
 
 

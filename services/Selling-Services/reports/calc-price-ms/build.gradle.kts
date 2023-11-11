@@ -4,8 +4,8 @@ plugins {
     id("io.spring.dependency-management")
 }
 
-group = "com.sales.reports"
-version = "1.0-SNAPSHOT"
+group = "com.selling.system.reports.calc.price"
+version = "1.0.0-SNAPSHOT"
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-webflux")

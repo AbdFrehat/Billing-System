@@ -4,8 +4,8 @@ plugins {
     id("io.spring.dependency-management")
 }
 
-group = "com.sales.fetch"
-version = "1.0-SNAPSHOT"
+group = "com.selling.system.fetch.customer"
+version = "1.0.0-SNAPSHOT"
 
 
 dependencies {

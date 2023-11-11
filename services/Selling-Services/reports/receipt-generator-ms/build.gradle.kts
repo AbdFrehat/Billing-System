@@ -4,7 +4,7 @@ plugins {
 	id("io.spring.dependency-management")
 }
 
-group = "com.sales.reports"
+group = "com.selling.system.reports.generate.receipt"
 version = "1.0-SNAPSHOT"
 
 dependencies {
