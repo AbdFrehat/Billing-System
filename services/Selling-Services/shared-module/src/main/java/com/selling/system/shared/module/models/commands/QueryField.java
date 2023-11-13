@@ -3,7 +3,7 @@ package com.selling.system.shared.module.models.commands;
 import com.fasterxml.jackson.annotation.JsonRawValue;
 import com.selling.system.shared.module.convertors.ObjectToObjectsConvertor;
 import com.selling.system.shared.module.models.annotations.ValidFieldTypeEnum;
-import com.selling.system.shared.module.models.commands.QueryFieldAbstract;
+import com.selling.system.shared.module.models.commons.Range;
 import com.selling.system.shared.module.models.enums.FieldType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -30,10 +30,10 @@ public class QueryField implements QueryFieldAbstract {
     private FieldType fieldType;
 
     public Object getValue() {
-        if (fieldType.equals(FieldType.RANGE)) {
+        if (fieldType.equals(FieldType.RANGE) && !(value instanceof Range<?>)) {
             return ObjectToObjectsConvertor.toRange(this.value);
         }
-        if (fieldType.equals(FieldType.LIST)) {
+        if (fieldType.equals(FieldType.LIST) && !(value instanceof QueryField)) {
             return ObjectToObjectsConvertor.toQueryFiled(value);
         }
         return value;

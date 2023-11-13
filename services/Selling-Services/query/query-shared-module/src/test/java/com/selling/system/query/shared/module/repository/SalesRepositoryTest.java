@@ -114,14 +114,14 @@ class SalesRepositoryTest {
                 .saveSale(sale)
                 .block();
         assert sale != null;
-        sale.setPurchaseMethod(PurchaseMethod.PHONE);
+        sale.setPurchaseMethod(PurchaseMethod.PHONE.getValue());
         this.salesRepository.updateSale(sale).block();
         Flux<Sale> sales = this.salesRepository
                 .getSales(new Query(Criteria.where("id").is("sale8")));
         StepVerifier.create(sales)
                 .assertNext(s -> {
                     assert s != null;
-                    assert s.getPurchaseMethod().equals(PurchaseMethod.PHONE);
+                    assert s.getPurchaseMethod().equals(PurchaseMethod.PHONE.getValue());
                 }).verifyComplete();
     }
 

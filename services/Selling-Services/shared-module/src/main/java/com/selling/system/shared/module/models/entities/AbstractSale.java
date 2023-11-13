@@ -1,7 +1,5 @@
 package com.selling.system.shared.module.models.entities;
 
-import com.selling.system.shared.module.models.enums.PurchaseMethod;
-
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +16,6 @@ public interface AbstractSale {
 
     boolean isCouponUsed();
 
-    PurchaseMethod getPurchaseMethod();
-
+    String getPurchaseMethod();
 
 }

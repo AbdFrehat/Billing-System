@@ -1,8 +1,13 @@
 package com.selling.system.query.shared.module.service;
 
+import com.mongodb.client.result.DeleteResult;
 import com.selling.system.shared.module.models.commands.QueryCommand;
 import com.selling.system.query.shared.module.entites.Sale;
+import org.springframework.data.mongodb.core.query.Query;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
+import java.util.List;
 
 /**
  * This SalesService interface acts as a service layer between the controller and the
@@ -31,4 +36,14 @@ public interface SalesService {
      * @since 1.0
      */
     Flux<Sale> getSales(QueryCommand queryCommand);
+
+    Mono<Sale> saveSale(Sale sale);
+
+    Flux<Sale> saveSales(List<Sale> sales);
+
+    Mono<Sale> updateSale(Sale sale);
+
+    Mono<DeleteResult> deleteSale(Sale sale);
+
+    Mono<DeleteResult> deleteSales(Query query);
 }
