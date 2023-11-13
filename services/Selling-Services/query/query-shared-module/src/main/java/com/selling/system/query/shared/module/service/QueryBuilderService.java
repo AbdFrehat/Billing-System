@@ -15,6 +15,8 @@ import org.springframework.data.mongodb.core.query.Query;
 public interface QueryBuilderService {
 
     /**
+     * This method is used to build the {@link Query} object based on the passed {@link QueryCommand} object.
+     *
      * @param queryCommand: {@link QueryCommand} contains the list of filed that the query searches on.
      * @return returns query: {@link Query} object to be used with mongoTemplate for searching and updating operations.
      * @author Abd Frehat

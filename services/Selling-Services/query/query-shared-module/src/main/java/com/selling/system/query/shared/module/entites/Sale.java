@@ -3,6 +3,7 @@ package com.selling.system.query.shared.module.entites;
 import com.selling.system.shared.module.models.entities.AbstractSale;
 import com.selling.system.shared.module.models.enums.PurchaseMethod;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -15,6 +16,7 @@ import java.util.List;
 @Document(collection = "sales")
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Sale implements AbstractSale {
 
     @Id

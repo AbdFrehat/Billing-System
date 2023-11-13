@@ -16,5 +16,6 @@ dependencies {
     implementation(project(":shared-module"))
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test")
+    testImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo")
 }
 

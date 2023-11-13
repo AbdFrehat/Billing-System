@@ -2,6 +2,7 @@ package com.selling.system.query.shared.module.entites;
 
 import com.selling.system.shared.module.models.entities.AbstractItem;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Item implements AbstractItem {
 
     private String name;

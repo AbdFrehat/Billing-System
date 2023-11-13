@@ -23,6 +23,8 @@ public class QueryBuilderServiceImpl implements QueryBuilderService {
 
 
     /**
+     * This method is used to build the {@link Query} object based on the passed {@link QueryCommand} object.
+     *
      * @param queryCommand: {@link QueryCommand} contains the list of fields that the query searches on.
      * @return returns query: {@link Query} object to be used with mongoTemplate for searching and updating operations.
      * @author Abd Frehat
@@ -37,6 +39,16 @@ public class QueryBuilderServiceImpl implements QueryBuilderService {
         return query;
     }
 
+    /**
+     * This method is used to paginate the response or not, it depends on the size and page number values.
+     * If both are zero that means the client does not care about them and in that case all documents will be
+     * retrieved.
+     *
+     * @param queryCommand {@link QueryCommand} which is used to get the page and size values.
+     * @param query        {@link Query} which is used to add the {@link PageRequest} object to the {@link Query} one.
+     * @author Abd Frehat
+     * @since 1.0
+     */
     private void addPageable(QueryCommand queryCommand, Query query) {
         int page = queryCommand.getPage();
         int size = queryCommand.getSize();
@@ -55,7 +67,6 @@ public class QueryBuilderServiceImpl implements QueryBuilderService {
      * * @author Abd Frehat
      * * @since 1.0
      */
-
     private Criteria buildCriteria(QueryField queryField) {
         Criteria criteria = new Criteria();
         switch (queryField.getFieldType()) {
