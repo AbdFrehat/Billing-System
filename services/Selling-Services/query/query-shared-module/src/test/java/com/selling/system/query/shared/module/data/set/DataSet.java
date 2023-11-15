@@ -91,7 +91,6 @@ public class DataSet {
                         .purchaseMethod(PurchaseMethod.ONLINE.getValue())
                         .build()
         );
-
         QUERY_FIELD_MAP.put("sale.id", QueryField.builder()
                 .field("id")
                 .value("sale1")

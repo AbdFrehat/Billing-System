@@ -42,12 +42,14 @@ include("query:sales-save-ms")
 include("query:sales-get-ms")
 include("query:sales-update-ms")
 include("query:query-shared-module")
+include("query:query-manager-ms")
 findProject(":query:query-eureka-server")?.name = "query-eureka-server"
 findProject(":query:sales-delete-ms")?.name = "sales-delete-ms"
 findProject(":query:sales-save-ms")?.name = "sales-save-ms"
 findProject(":query:sales-get-ms")?.name = "sales-get-ms"
 findProject(":query:sales-update-ms")?.name = "sales-update-ms"
 findProject(":query:query-shared-module")?.name = "query-shared-module"
+findProject(":query:query-manager-ms")?.name = "query-manager-ms"
 
 
 

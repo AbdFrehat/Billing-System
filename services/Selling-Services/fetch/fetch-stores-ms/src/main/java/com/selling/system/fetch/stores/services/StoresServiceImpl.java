@@ -1,7 +1,7 @@
 package com.selling.system.fetch.stores.services;
 
-import com.selling.system.fetch.stores.models.entities.Store;
 import com.selling.system.fetch.stores.repositores.StoresRepository;
+import com.selling.system.fetch.stores.models.entities.Store;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 

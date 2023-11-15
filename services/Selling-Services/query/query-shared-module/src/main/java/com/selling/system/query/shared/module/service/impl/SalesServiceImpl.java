@@ -2,11 +2,10 @@ package com.selling.system.query.shared.module.service.impl;
 
 import com.mongodb.client.result.DeleteResult;
 import com.selling.system.query.shared.module.entites.Sale;
-import com.selling.system.query.shared.module.repository.SalesRepository;
 import com.selling.system.query.shared.module.service.QueryBuilderService;
 import com.selling.system.query.shared.module.service.SalesService;
 import com.selling.system.shared.module.models.commands.QueryCommand;
-import org.springframework.data.mongodb.core.query.Query;
+import com.selling.system.query.shared.module.repository.SalesRepository;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -77,7 +76,7 @@ public class SalesServiceImpl implements SalesService {
 
 
     @Override
-    public Mono<DeleteResult> deleteSales(Query query) {
-        return this.salesRepository.deleteSales(query);
+    public Mono<DeleteResult> deleteSales(QueryCommand queryCommand) {
+        return this.salesRepository.deleteSales(queryBuilderService.buildQuery(queryCommand));
     }
 }

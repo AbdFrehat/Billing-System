@@ -1,9 +1,8 @@
 package com.selling.system.query.shared.module.service;
 
 import com.mongodb.client.result.DeleteResult;
-import com.selling.system.shared.module.models.commands.QueryCommand;
 import com.selling.system.query.shared.module.entites.Sale;
-import org.springframework.data.mongodb.core.query.Query;
+import com.selling.system.shared.module.models.commands.QueryCommand;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -45,5 +44,5 @@ public interface SalesService {
 
     Mono<DeleteResult> deleteSale(Sale sale);
 
-    Mono<DeleteResult> deleteSales(Query query);
+    Mono<DeleteResult> deleteSales(QueryCommand queryCommand);
 }

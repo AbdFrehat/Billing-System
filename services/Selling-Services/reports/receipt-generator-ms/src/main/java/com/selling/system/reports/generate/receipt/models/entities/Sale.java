@@ -27,7 +27,7 @@ public class Sale implements AbstractSale {
 
     private boolean couponUsed;
 
-    private PurchaseMethod purchaseMethod;
+    private String purchaseMethod;
 
     private BigDecimal totalPrice = BigDecimal.ZERO;
 

@@ -1,10 +1,10 @@
 package com.selling.system.source.random.generator.sales.service;
 
 
+import com.selling.system.source.random.generator.sales.model.entities.Customer;
 import com.selling.system.source.random.generator.sales.model.data.CustomerData;
 import com.selling.system.source.random.generator.sales.model.data.ItemsData;
 import com.selling.system.source.random.generator.sales.model.data.SalesData;
-import com.selling.system.source.random.generator.sales.model.entities.Customer;
 import com.selling.system.source.random.generator.sales.model.entities.Item;
 import com.selling.system.source.random.generator.sales.model.entities.Sale;
 import com.selling.system.shared.module.models.enums.PurchaseMethod;
@@ -44,7 +44,7 @@ public class SaleGeneratorServiceImpl implements SaleGeneratorService {
         return Sale.builder()
                 .saleDate(new Date())
                 .couponUsed(salesData.getCouponUsedValues().get(threadLocalRandom.nextInt(salesData.getCouponUsedValues().size())))
-                .purchaseMethod(getRandomPurchaseMethod(threadLocalRandom))
+                .purchaseMethod(getRandomPurchaseMethod(threadLocalRandom).getValue())
                 .storeLocation(salesData.getStoreLocationValues().get(threadLocalRandom.nextInt(salesData.getStoreLocationValues().size())))
                 .customer(getRandomCustomer(threadLocalRandom)
                         .build())

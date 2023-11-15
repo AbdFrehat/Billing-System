@@ -1,7 +1,7 @@
 package com.selling.system.query.shared.module.service;
 
-import com.selling.system.query.shared.module.data.set.DataSet;
 import com.selling.system.query.shared.module.entites.Sale;
+import com.selling.system.query.shared.module.data.set.DataSet;
 import com.selling.system.shared.module.models.commands.QueryCommand;
 import com.selling.system.shared.module.models.commands.QueryField;
 import org.junit.jupiter.api.AfterEach;
@@ -11,10 +11,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.mongodb.core.query.Query;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @DataMongoTest
@@ -31,7 +31,7 @@ class SalesServiceTest {
 
     @AfterEach
     void tearDown() {
-        salesService.deleteSales(new Query()).block();
+        salesService.deleteSales(QueryCommand.builder().queryFields(new ArrayList<>()).build()).block();
     }
 
     //Integration test for getSales SalesService method when querying the documents with specific id.
@@ -108,7 +108,7 @@ class SalesServiceTest {
     }
 
     @Test
-    @Order(5)
+    @Order(6)
     void getSalesByCustomersAgeAndStoreLocation() {
         QueryCommand queryCommand = new QueryCommand();
         List<QueryField> queryFields = List.of(
@@ -123,7 +123,7 @@ class SalesServiceTest {
     }
 
     @Test
-    @Order(6)
+    @Order(7)
     void getSalesByCustomersAgeWithPagination() {
         QueryCommand queryCommand = new QueryCommand();
         List<QueryField> queryFields = List.of(

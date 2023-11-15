@@ -1,7 +1,6 @@
 package com.selling.system.query.shared.module.entites;
 
 import com.selling.system.shared.module.models.entities.AbstractSale;
-import com.selling.system.shared.module.models.enums.PurchaseMethod;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

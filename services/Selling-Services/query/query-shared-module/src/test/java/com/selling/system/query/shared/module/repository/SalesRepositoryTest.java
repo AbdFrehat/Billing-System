@@ -1,8 +1,8 @@
 package com.selling.system.query.shared.module.repository;
 
-import com.selling.system.query.shared.module.data.set.DataSet;
 import com.selling.system.query.shared.module.entites.Sale;
 import com.selling.system.shared.module.models.enums.PurchaseMethod;
+import com.selling.system.query.shared.module.data.set.DataSet;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;

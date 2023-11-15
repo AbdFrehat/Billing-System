@@ -1,4 +1,4 @@
-package com.sale.source.sales.push.ms;
+package com.selling.system.source.push.sales;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

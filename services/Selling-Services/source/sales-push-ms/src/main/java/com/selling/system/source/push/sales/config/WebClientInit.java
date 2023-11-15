@@ -1,4 +1,4 @@
-package com.sale.source.sales.push.ms.config;
+package com.selling.system.source.push.sales.config;
 
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;

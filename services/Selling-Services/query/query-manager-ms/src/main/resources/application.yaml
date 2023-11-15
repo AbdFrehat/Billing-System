@@ -1,0 +1,11 @@
+spring:
+  webflux:
+    base-path: /selling/query/manager/sale/v1/
+  application:
+    name: query-manager-ms
+server:
+  port: 6022
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8003/selling/query/eureka/
