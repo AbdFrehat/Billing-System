@@ -1,6 +1,5 @@
 package com.selling.system.query.manager.sales.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.selling.system.query.manager.sales.service.SalesClientService;
 import com.selling.system.shared.module.models.commands.QueryCommand;
 import com.selling.system.shared.module.models.responses.QueryResponse;
@@ -22,8 +21,9 @@ public class SalesRouterController {
     }
 
     @PostMapping
-    public ResponseEntity<Mono<QueryResponse>> routeQueryServe(@RequestBody @Valid QueryCommand queryCommand) {
-        return ResponseEntity.ok().body(salesClientService.sendRequest(queryCommand));
+    public Mono<ResponseEntity<QueryResponse>> routeQueryServe(@RequestBody @Valid QueryCommand queryCommand) {
+        return salesClientService.sendRequest(queryCommand)
+                .map(queryResponse -> ResponseEntity.ok().body(queryResponse));
     }
 
 

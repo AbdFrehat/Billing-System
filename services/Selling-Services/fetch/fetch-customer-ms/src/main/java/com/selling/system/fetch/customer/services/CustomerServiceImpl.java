@@ -1,15 +1,15 @@
 package com.selling.system.fetch.customer.services;
 
-import com.selling.system.fetch.customer.models.entites.Customer;
 import com.selling.system.fetch.customer.models.entites.SaleDocument;
 import com.selling.system.fetch.customer.repositories.CustomerRepository;
+import com.selling.system.shared.module.models.entities.Customer;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
-    private CustomerRepository customerRepository;
+    private final CustomerRepository customerRepository;
 
     public CustomerServiceImpl(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;

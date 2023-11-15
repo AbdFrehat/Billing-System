@@ -1,10 +1,10 @@
 package com.selling.system.query.shared.module.data.set;
 
-import com.selling.system.query.shared.module.entites.Customer;
-import com.selling.system.query.shared.module.entites.Item;
 import com.selling.system.query.shared.module.entites.SaleDocument;
 import com.selling.system.shared.module.models.commands.QueryField;
 import com.selling.system.shared.module.models.commons.Range;
+import com.selling.system.shared.module.models.entities.Customer;
+import com.selling.system.shared.module.models.entities.Item;
 import com.selling.system.shared.module.models.enums.FieldType;
 import com.selling.system.shared.module.models.enums.PurchaseMethod;
 

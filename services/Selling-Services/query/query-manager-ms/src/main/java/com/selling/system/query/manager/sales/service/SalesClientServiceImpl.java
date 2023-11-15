@@ -1,7 +1,6 @@
 package com.selling.system.query.manager.sales.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.selling.system.shared.module.models.entities.Sale;
 import com.selling.system.shared.module.models.commands.QueryCommand;
 import com.selling.system.shared.module.models.responses.QueryResponse;
 import org.springframework.http.MediaType;
@@ -26,8 +25,6 @@ public class SalesClientServiceImpl implements SalesClientService {
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(queryCommand)
                 .retrieve()
-                .bodyToFlux(Sale.class)
-                .collectList()
-                .map(sales -> QueryResponse.builder().data(sales).build());
+                .bodyToMono(QueryResponse.class);
     }
 }

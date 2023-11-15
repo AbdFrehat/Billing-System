@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Mono;
 
 @RestController
 @Slf4j
@@ -22,7 +23,10 @@ public class GetSaleController {
     }
 
     @PostMapping
-    ResponseEntity<QueryResponse> getSales(@RequestBody @Valid QueryCommand queryCommand) {
-        return ResponseEntity.ok().body(QueryResponse.builder().data(salesService.getSales(queryCommand)).build());
+    Mono<ResponseEntity<QueryResponse>> getSales(@RequestBody @Valid QueryCommand queryCommand) {
+        return salesService.getSales(queryCommand)
+                .collectList()
+                .map(saleDocuments -> QueryResponse.builder().data(saleDocuments).build())
+                .map(queryResponse -> ResponseEntity.ok().body(queryResponse));
     }
 }

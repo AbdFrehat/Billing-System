@@ -1,8 +1,8 @@
 package com.selling.system.fetch.items.services;
 
 import com.selling.system.fetch.items.models.entities.SaleDocument;
-import com.selling.system.fetch.items.models.entities.Item;
 import com.selling.system.fetch.items.repositories.SalesRepository;
+import com.selling.system.shared.module.models.entities.Item;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
