@@ -1,7 +1,7 @@
 package com.selling.system.reports.generate.receipt.client;
 
-import com.selling.system.reports.generate.receipt.models.entities.Item;
 import com.selling.system.reports.generate.receipt.models.responses.CalcPriceResponse;
+import com.selling.system.shared.module.models.entities.Item;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;

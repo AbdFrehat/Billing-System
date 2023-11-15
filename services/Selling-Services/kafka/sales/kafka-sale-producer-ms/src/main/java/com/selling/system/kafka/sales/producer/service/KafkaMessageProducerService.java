@@ -1,6 +1,6 @@
 package com.selling.system.kafka.sales.producer.service;
 
-import com.selling.system.kafka.sales.producer.entities.Sale;
+import com.selling.system.shared.module.models.entities.Sale;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 

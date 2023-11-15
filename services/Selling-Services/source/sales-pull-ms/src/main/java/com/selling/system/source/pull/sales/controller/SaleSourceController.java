@@ -1,7 +1,7 @@
 package com.selling.system.source.pull.sales.controller;
 
 import com.selling.system.source.random.generator.sales.service.SaleGeneratorService;
-import com.selling.system.source.random.generator.sales.model.entities.Sale;
+import com.selling.system.shared.module.models.entities.Sale;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.http.codec.ServerSentEvent;

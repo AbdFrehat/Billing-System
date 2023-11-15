@@ -1,22 +1,25 @@
-package com.selling.sales.kafka.sales.consumer.entities;
+package com.selling.system.query.shared.module.entites;
 
 import com.selling.system.shared.module.models.entities.AbstractSale;
-import com.selling.system.shared.module.models.enums.PurchaseMethod;
+import com.selling.system.shared.module.models.entities.Customer;
+import com.selling.system.shared.module.models.entities.Item;
+import com.selling.system.shared.module.models.entities.Sale;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 @Data
-@Document(collection = "sales")
-@AllArgsConstructor
 @NoArgsConstructor
-public class Sale implements AbstractSale, Serializable {
+@AllArgsConstructor
+@Builder
+@Document(collection = "sales")
+public class SaleDocument implements AbstractSale {
 
     @Id
     private String id;
@@ -30,6 +33,6 @@ public class Sale implements AbstractSale, Serializable {
     private Customer customer;
 
     private boolean couponUsed;
-    
+
     private String purchaseMethod;
 }

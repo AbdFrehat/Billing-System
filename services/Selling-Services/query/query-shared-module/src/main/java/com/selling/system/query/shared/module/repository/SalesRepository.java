@@ -1,7 +1,7 @@
 package com.selling.system.query.shared.module.repository;
 
 import com.mongodb.client.result.DeleteResult;
-import com.selling.system.query.shared.module.entites.Sale;
+import com.selling.system.query.shared.module.entites.SaleDocument;
 import org.springframework.data.mongodb.core.query.Query;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -27,51 +27,51 @@ public interface SalesRepository {
      * This method is used to retrieve one or more sales documents based on the provided query.
      *
      * @param query {@link Query} contains the needed documents to be retrieved from the database.
-     * @return {@link Flux}<{@link Sale}> which represents the retrieved sales based on the provided query.
+     * @return {@link Flux}<{@link SaleDocument}> which represents the retrieved sales based on the provided query.
      * @author Abd Frehat
      * @since 1.0
      */
-    Flux<Sale> getSales(Query query);
+    Flux<SaleDocument> getSales(Query query);
 
     /**
      * This method is used to save  sales object in the database.
      *
-     * @param sale: {@link Sale}
-     * @return {@link Mono}<{@link Sale}> which contains the saved document with the assigned identity.
+     * @param sale: {@link SaleDocument}
+     * @return {@link Mono}<{@link SaleDocument}> which contains the saved document with the assigned identity.
      * @author Abd Frehat
      * @since 1.0
      */
-    Mono<Sale> saveSale(Sale sale);
+    Mono<SaleDocument> saveSale(SaleDocument sale);
 
     /**
      * This method is used to save list of sales objects in single batch.
      *
-     * @param sales: {@link List}<{@link Sale}>
-     * @return {@link Flux}<{@link Sale}> which contains the saved documents with the assigned identities.
+     * @param sales: {@link List}<{@link SaleDocument}>
+     * @return {@link Flux}<{@link SaleDocument}> which contains the saved documents with the assigned identities.
      * @author Abd Frehat
      * @since 1.0
      */
-    Flux<Sale> saveSales(List<Sale> sales);
+    Flux<SaleDocument> saveSales(List<SaleDocument> sales);
 
     /**
      * This method is used to update the provided sale.
      *
-     * @param sale {@link Sale} contains sale object which will be updated with the new object values
+     * @param sale {@link SaleDocument} contains sale object which will be updated with the new object values
      * @return {@link Mono}<{@link DeleteResult}> which represents the updated sale object from the database.
      * @author Abd Frehat
      * @since 1.0
      */
-    Mono<Sale> updateSale(Sale sale);
+    Mono<SaleDocument> updateSale(SaleDocument sale);
 
     /**
      * This method is used to delete the provided sale object from the database.
      *
-     * @param sale {@link Sale} contains the needed sale to be deleted from the database.
+     * @param sale {@link SaleDocument} contains the needed sale to be deleted from the database.
      * @return {@link Mono}<{@link DeleteResult}> which represents status of deleted documents.
      * @author Abd Frehat
      * @since 1.0
      */
-    Mono<DeleteResult> deleteSale(Sale sale);
+    Mono<DeleteResult> deleteSale(SaleDocument sale);
 
     /**
      * This method is used to delete one or more sales documents based on the provided query.

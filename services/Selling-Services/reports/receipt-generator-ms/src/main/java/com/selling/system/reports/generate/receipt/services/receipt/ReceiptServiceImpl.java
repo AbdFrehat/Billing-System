@@ -1,7 +1,8 @@
 package com.selling.system.reports.generate.receipt.services.receipt;
 
 import com.selling.system.reports.generate.receipt.client.CalcPriceClient;
-import com.selling.system.reports.generate.receipt.models.entities.Sale;
+import com.selling.system.reports.generate.receipt.models.entities.RecieptSale;
+import com.selling.system.shared.module.models.entities.Sale;
 import com.selling.system.reports.generate.receipt.models.responses.CalcPriceResponse;
 import com.selling.system.reports.generate.receipt.services.jasper.ReportService;
 import lombok.extern.slf4j.Slf4j;
@@ -30,7 +31,7 @@ public class ReceiptServiceImpl implements ReceiptService {
     }
 
     @Override
-    public Mono<byte[]> generateReport(Sale sale) {
+    public Mono<byte[]> generateReport(RecieptSale sale) {
         Resource resource = resourceLoader.getResource("classpath:jasper/saleReceipt.jrxml");
         return retrieveCalcPriceResponse(sale).flatMap(calcPriceResponse -> {
             try {
@@ -42,7 +43,7 @@ public class ReceiptServiceImpl implements ReceiptService {
         });
     }
 
-    private Mono<CalcPriceResponse> retrieveCalcPriceResponse(Sale sale) {
+    private Mono<CalcPriceResponse> retrieveCalcPriceResponse(RecieptSale sale) {
         return calcPriceClient.retrieveCalcPrice(sale.getItems()).doOnSuccess(calcPriceResponse -> {
             sale.setTotalQuantity(calcPriceResponse.getTotalQuantity());
             sale.setTotalPrice(calcPriceResponse.getTotalPrice());

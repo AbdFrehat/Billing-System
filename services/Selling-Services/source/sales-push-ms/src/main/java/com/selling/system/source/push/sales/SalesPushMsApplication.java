@@ -6,8 +6,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication(scanBasePackages = {
-        "com.sale.source.sales.push.ms",
-        "com.sale.source.sales.random.generator"
+        "com.selling.system.source.push.sales",
+        "com.selling.system.source.random.generator.sales"
 })
 @EnableScheduling
 @EnableDiscoveryClient

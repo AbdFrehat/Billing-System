@@ -1,6 +1,6 @@
 package com.selling.system.fetch.items.services;
 
-import com.selling.system.fetch.items.models.entities.Sale;
+import com.selling.system.fetch.items.models.entities.SaleDocument;
 import com.selling.system.fetch.items.models.entities.Item;
 import com.selling.system.fetch.items.repositories.SalesRepository;
 import org.springframework.stereotype.Service;
@@ -20,6 +20,6 @@ public class ItemsServiceImpl implements ItemsService {
 
     @Override
     public Mono<List<Item>> getItems(String saleId) {
-        return salesRepository.findItemsBySaleId(saleId).map(Sale::getItems);
+        return salesRepository.findItemsBySaleId(saleId).map(SaleDocument::getItems);
     }
 }

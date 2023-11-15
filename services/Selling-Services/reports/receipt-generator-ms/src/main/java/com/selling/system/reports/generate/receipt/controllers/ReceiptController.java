@@ -1,6 +1,6 @@
 package com.selling.system.reports.generate.receipt.controllers;
 
-import com.selling.system.reports.generate.receipt.models.entities.Sale;
+import com.selling.system.reports.generate.receipt.models.entities.RecieptSale;
 import com.selling.system.reports.generate.receipt.services.receipt.ReceiptService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -23,7 +23,7 @@ public class ReceiptController {
     }
 
     @PostMapping
-    public ResponseEntity<Mono<byte[]>> generateReceiptReport(@RequestBody Sale sale) {
+    public ResponseEntity<Mono<byte[]>> generateReceiptReport(@RequestBody RecieptSale sale) {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_PDF);
         httpHeaders.setContentDispositionFormData("filename", "receipt-" + sale.getId() + ".pdf");

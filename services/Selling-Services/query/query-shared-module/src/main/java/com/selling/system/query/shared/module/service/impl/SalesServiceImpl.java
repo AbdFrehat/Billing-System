@@ -1,7 +1,7 @@
 package com.selling.system.query.shared.module.service.impl;
 
 import com.mongodb.client.result.DeleteResult;
-import com.selling.system.query.shared.module.entites.Sale;
+import com.selling.system.query.shared.module.entites.SaleDocument;
 import com.selling.system.query.shared.module.service.QueryBuilderService;
 import com.selling.system.query.shared.module.service.SalesService;
 import com.selling.system.shared.module.models.commands.QueryCommand;
@@ -45,32 +45,32 @@ public class SalesServiceImpl implements SalesService {
      * </ul>
      *
      * @param queryCommand: {@link QueryCommand} contains the list of fields that the query searches on.
-     * @return {@link Flux}<{@link Sale}> to be sent back in the response.
+     * @return {@link Flux}<{@link SaleDocument}> to be sent back in the response.
      * @author Abd Frehat
      * @since 1.0
      */
     @Override
-    public Flux<Sale> getSales(QueryCommand queryCommand) {
+    public Flux<SaleDocument> getSales(QueryCommand queryCommand) {
         return this.salesRepository.getSales(queryBuilderService.buildQuery(queryCommand));
     }
 
     @Override
-    public Mono<Sale> saveSale(Sale sale) {
+    public Mono<SaleDocument> saveSale(SaleDocument sale) {
         return this.salesRepository.saveSale(sale);
     }
 
     @Override
-    public Flux<Sale> saveSales(List<Sale> sales) {
+    public Flux<SaleDocument> saveSales(List<SaleDocument> sales) {
         return this.salesRepository.saveSales(sales);
     }
 
     @Override
-    public Mono<Sale> updateSale(Sale sale) {
+    public Mono<SaleDocument> updateSale(SaleDocument sale) {
         return this.salesRepository.updateSale(sale);
     }
 
     @Override
-    public Mono<DeleteResult> deleteSale(Sale sale) {
+    public Mono<DeleteResult> deleteSale(SaleDocument sale) {
         return this.salesRepository.deleteSale(sale);
     }
 

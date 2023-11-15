@@ -1,6 +1,6 @@
 package com.selling.sales.kafka.sales.consumer.kafka;
 
-import com.selling.sales.kafka.sales.consumer.entities.Sale;
+import com.selling.sales.kafka.sales.consumer.entities.SaleDocument;
 import com.selling.sales.kafka.sales.consumer.repositories.SalesRepository;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -18,8 +18,8 @@ public class SaleKafkaConsumer {
 
     @KafkaListener(topics = "${spring.kafka.default-topic}")
     @Transactional
-    public void consumerSaleMessage(@Payload Sale sale) {
-        this.salesRepository.save(sale).subscribe();
+    public void consumerSaleMessage(@Payload SaleDocument saleDocument) {
+        this.salesRepository.save(saleDocument).subscribe();
     }
 
 }

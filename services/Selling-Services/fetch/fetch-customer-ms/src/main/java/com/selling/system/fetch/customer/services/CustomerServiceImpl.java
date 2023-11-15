@@ -1,7 +1,7 @@
 package com.selling.system.fetch.customer.services;
 
 import com.selling.system.fetch.customer.models.entites.Customer;
-import com.selling.system.fetch.customer.models.entites.Sale;
+import com.selling.system.fetch.customer.models.entites.SaleDocument;
 import com.selling.system.fetch.customer.repositories.CustomerRepository;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
@@ -17,6 +17,6 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Mono<Customer> getCustomer(String saleId) {
-        return customerRepository.findCustomerBySaleId(saleId).map(Sale::getCustomer);
+        return customerRepository.findCustomerBySaleId(saleId).map(SaleDocument::getCustomer);
     }
 }

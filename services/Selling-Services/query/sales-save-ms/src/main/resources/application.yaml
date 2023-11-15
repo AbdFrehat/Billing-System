@@ -1,6 +1,9 @@
 spring:
   webflux:
     base-path: /selling/query/save/sale/v1/
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/sample_supplies
   application:
     name: sales-save-ms
 server:

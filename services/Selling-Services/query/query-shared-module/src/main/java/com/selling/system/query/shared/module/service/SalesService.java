@@ -1,7 +1,7 @@
 package com.selling.system.query.shared.module.service;
 
 import com.mongodb.client.result.DeleteResult;
-import com.selling.system.query.shared.module.entites.Sale;
+import com.selling.system.query.shared.module.entites.SaleDocument;
 import com.selling.system.shared.module.models.commands.QueryCommand;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -30,19 +30,19 @@ public interface SalesService {
      * </ul>
      *
      * @param queryCommand: {@link QueryCommand} contains the list of fields that the query searches on.
-     * @return {@link Flux}<{@link Sale}> to be sent back in the response.
+     * @return {@link Flux}<{@link SaleDocument}> to be sent back in the response.
      * @author Abd Frehat
      * @since 1.0
      */
-    Flux<Sale> getSales(QueryCommand queryCommand);
+    Flux<SaleDocument> getSales(QueryCommand queryCommand);
 
-    Mono<Sale> saveSale(Sale sale);
+    Mono<SaleDocument> saveSale(SaleDocument sale);
 
-    Flux<Sale> saveSales(List<Sale> sales);
+    Flux<SaleDocument> saveSales(List<SaleDocument> sales);
 
-    Mono<Sale> updateSale(Sale sale);
+    Mono<SaleDocument> updateSale(SaleDocument sale);
 
-    Mono<DeleteResult> deleteSale(Sale sale);
+    Mono<DeleteResult> deleteSale(SaleDocument sale);
 
     Mono<DeleteResult> deleteSales(QueryCommand queryCommand);
 }

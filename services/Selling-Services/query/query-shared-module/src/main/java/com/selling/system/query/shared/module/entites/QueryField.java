@@ -1,10 +1,9 @@
-package com.selling.system.shared.module.models.commands;
+package com.selling.system.query.shared.module.entites;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonRawValue;
-import com.fasterxml.jackson.annotation.JsonValue;
 import com.selling.system.shared.module.convertors.ObjectToObjectsConvertor;
 import com.selling.system.shared.module.models.annotations.ValidFieldTypeEnum;
+import com.selling.system.shared.module.models.commands.QueryFieldAbstract;
 import com.selling.system.shared.module.models.commons.Range;
 import com.selling.system.shared.module.models.enums.FieldType;
 import jakarta.validation.constraints.NotBlank;

@@ -2,9 +2,9 @@ package com.selling.system.reports.generate.receipt.services.jasper;
 
 import com.selling.system.reports.generate.receipt.models.dto.ItemDTO;
 import com.selling.system.reports.generate.receipt.models.dto.TagDTO;
-import com.selling.system.reports.generate.receipt.models.entities.Customer;
-import com.selling.system.reports.generate.receipt.models.entities.Item;
-import com.selling.system.reports.generate.receipt.models.entities.Sale;
+import com.selling.system.reports.generate.receipt.models.entities.RecieptSale;
+import com.selling.system.shared.module.models.entities.Customer;
+import com.selling.system.shared.module.models.entities.Item;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
@@ -21,7 +21,7 @@ import java.util.Map;
 @Slf4j
 public class JasperReportServiceImpl implements ReportService {
     @Override
-    public byte[] createReport(Sale sale, Resource resource) throws IOException {
+    public byte[] createReport(RecieptSale sale, Resource resource) throws IOException {
         try {
             JasperReport jasperReport = JasperCompileManager.compileReport(resource.getInputStream());
             Map<String, Object> reportProperties = createReportProperties(sale);
@@ -52,7 +52,7 @@ public class JasperReportServiceImpl implements ReportService {
         return new JRBeanCollectionDataSource(Arrays.asList(customer));
     }
 
-    private Map<String, Object> createReportProperties(Sale sale) {
+    private Map<String, Object> createReportProperties(RecieptSale sale) {
         Map<String, Object> properties = new HashMap<>();
         JRBeanCollectionDataSource customerDataSource = createCustomerDataSource(sale.getCustomer());
         JRBeanCollectionDataSource itemsDataSource = createItemsDataSource(sale.getItems());

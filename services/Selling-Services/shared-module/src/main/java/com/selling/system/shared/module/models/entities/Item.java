@@ -1,6 +1,5 @@
-package com.selling.system.query.manager.sales.models.entites;
+package com.selling.system.shared.module.models.entities;
 
-import com.selling.system.shared.module.models.entities.AbstractItem;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

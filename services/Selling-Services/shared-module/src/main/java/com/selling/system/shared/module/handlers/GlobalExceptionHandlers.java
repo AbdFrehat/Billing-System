@@ -1,9 +1,7 @@
 package com.selling.system.shared.module.handlers;
 
 import com.selling.system.shared.module.models.constants.ExceptionsConstantCodes;
-import com.selling.system.shared.module.models.exceptions.BadConvertorException;
-import com.selling.system.shared.module.models.exceptions.FieldTypeNotFoundException;
-import com.selling.system.shared.module.models.exceptions.PurchaseMethodNotFoundException;
+import com.selling.system.shared.module.models.exceptions.*;
 import com.selling.system.shared.module.models.responses.ErrorResponse;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
@@ -16,7 +14,7 @@ import java.util.List;
 import java.util.Objects;
 
 
-//@ControllerAdvice
+@ControllerAdvice
 public class GlobalExceptionHandlers {
 
     @ExceptionHandler(BadConvertorException.class)
@@ -48,6 +46,28 @@ public class GlobalExceptionHandlers {
                 .body(ErrorResponse.builder()
                         .exceptionName(PurchaseMethodNotFoundException.class.getSimpleName())
                         .errorCode(ExceptionsConstantCodes.PURCHASE_METHOD_NOT_FOUND_EXCEPTION)
+                        .message(ex.getMessage())
+                        .build());
+    }
+
+    @ExceptionHandler(PayloadBadFormatException.class)
+    public ResponseEntity<ErrorResponse> handlePayloadBadFormatException(PayloadBadFormatException ex) {
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(ErrorResponse.builder()
+                        .exceptionName(PayloadBadFormatException.class.getSimpleName())
+                        .errorCode(ExceptionsConstantCodes.PAYLOAD_BAD_FORMAT_EXCEPTION)
+                        .message(ex.getMessage())
+                        .build());
+    }
+
+    @ExceptionHandler(QueryMethodNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleQueryMethodNotFoundException(QueryMethodNotFoundException ex) {
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(ErrorResponse.builder()
+                        .exceptionName(QueryMethodNotFoundException.class.getSimpleName())
+                        .errorCode(ExceptionsConstantCodes.QUERY_METHOD_NOT_FOUND_EXCEPTION)
                         .message(ex.getMessage())
                         .build());
     }

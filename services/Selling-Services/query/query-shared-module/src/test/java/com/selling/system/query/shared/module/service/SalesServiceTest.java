@@ -1,6 +1,6 @@
 package com.selling.system.query.shared.module.service;
 
-import com.selling.system.query.shared.module.entites.Sale;
+import com.selling.system.query.shared.module.entites.SaleDocument;
 import com.selling.system.query.shared.module.data.set.DataSet;
 import com.selling.system.shared.module.models.commands.QueryCommand;
 import com.selling.system.shared.module.models.commands.QueryField;
@@ -43,7 +43,7 @@ class SalesServiceTest {
                 DataSet.QUERY_FIELD_MAP.get("sale.id")
         );
         queryCommand.setQueryFields(queryFields);
-        Flux<Sale> sales = salesService.getSales(queryCommand);
+        Flux<SaleDocument> sales = salesService.getSales(queryCommand);
         StepVerifier.create(sales)
                 .assertNext(sale -> {
                     assert sale.getId().equals("sale1");
@@ -59,7 +59,7 @@ class SalesServiceTest {
                 DataSet.QUERY_FIELD_MAP.get("sale.items.tags")
         );
         queryCommand.setQueryFields(queryFields);
-        Flux<Sale> sales = salesService.getSales(queryCommand);
+        Flux<SaleDocument> sales = salesService.getSales(queryCommand);
         StepVerifier.create(sales)
                 .expectNextCount(2)
                 .verifyComplete();
@@ -73,7 +73,7 @@ class SalesServiceTest {
                 DataSet.QUERY_FIELD_MAP.get("sale.item.price")
         );
         queryCommand.setQueryFields(queryFields);
-        Flux<Sale> sales = salesService.getSales(queryCommand);
+        Flux<SaleDocument> sales = salesService.getSales(queryCommand);
         StepVerifier.create(sales)
                 .expectNextCount(1)
                 .verifyComplete();
@@ -87,7 +87,7 @@ class SalesServiceTest {
                 DataSet.QUERY_FIELD_MAP.get("sale.item.price.range")
         );
         queryCommand.setQueryFields(queryFields);
-        Flux<Sale> sales = salesService.getSales(queryCommand);
+        Flux<SaleDocument> sales = salesService.getSales(queryCommand);
         StepVerifier.create(sales)
                 .expectNextCount(2)
                 .verifyComplete();
@@ -101,7 +101,7 @@ class SalesServiceTest {
                 DataSet.QUERY_FIELD_MAP.get("sale.customer.age")
         );
         queryCommand.setQueryFields(queryFields);
-        Flux<Sale> sales = salesService.getSales(queryCommand);
+        Flux<SaleDocument> sales = salesService.getSales(queryCommand);
         StepVerifier.create(sales)
                 .expectNextCount(2)
                 .verifyComplete();
@@ -116,7 +116,7 @@ class SalesServiceTest {
                 DataSet.QUERY_FIELD_MAP.get("sale.storeLocation")
         );
         queryCommand.setQueryFields(queryFields);
-        Flux<Sale> sales = salesService.getSales(queryCommand);
+        Flux<SaleDocument> sales = salesService.getSales(queryCommand);
         StepVerifier.create(sales)
                 .expectNextCount(1)
                 .verifyComplete();
@@ -132,7 +132,7 @@ class SalesServiceTest {
         queryCommand.setQueryFields(queryFields);
         queryCommand.setPage(0);
         queryCommand.setSize(1);
-        Flux<Sale> sales = salesService.getSales(queryCommand);
+        Flux<SaleDocument> sales = salesService.getSales(queryCommand);
         StepVerifier.create(sales)
                 .expectNextCount(1)
                 .verifyComplete();

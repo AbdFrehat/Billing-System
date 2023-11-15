@@ -1,6 +1,6 @@
 package com.selling.system.query.shared.module.repository;
 
-import com.selling.system.query.shared.module.entites.Sale;
+import com.selling.system.query.shared.module.entites.SaleDocument;
 import com.selling.system.shared.module.models.enums.PurchaseMethod;
 import com.selling.system.query.shared.module.data.set.DataSet;
 import org.junit.jupiter.api.*;
@@ -39,7 +39,7 @@ class SalesRepositoryTest {
 
     @AfterEach
     void tearDown() {
-        mongoTemplate.remove(new Query(), Sale.class).block();
+        mongoTemplate.remove(new Query(), SaleDocument.class).block();
     }
 
     //Integration test for getSales SalesRepository method.
@@ -47,7 +47,7 @@ class SalesRepositoryTest {
     @Order(1)
     void getSales() {
         //Test when passing an empty Query object all sales documents are be retrieved
-        Flux<Sale> sales = salesRepository.getSales(new Query());
+        Flux<SaleDocument> sales = salesRepository.getSales(new Query());
         StepVerifier.create(sales)
                 .assertNext(sale -> {
                     assert sale.getId().equals("sale1");
@@ -74,10 +74,10 @@ class SalesRepositoryTest {
     @Test
     @Order(2)
     void saveSale() {
-        Sale sale = DataSet.SALES.get(0);
+        SaleDocument sale = DataSet.SALES.get(0);
         sale.setId("sale4");
         this.salesRepository.saveSale(sale).block();
-        Flux<Sale> sales = this.salesRepository
+        Flux<SaleDocument> sales = this.salesRepository
                 .getSales(new Query(Criteria.where("id").is("sale4")));
         StepVerifier.create(sales)
                 .assertNext(insertedSale -> {
@@ -90,15 +90,15 @@ class SalesRepositoryTest {
     @Test
     @Order(3)
     void saveSales() throws InterruptedException {
-        Sale sale1 = DataSet.SALES.get(0);
+        SaleDocument sale1 = DataSet.SALES.get(0);
         sale1.setId("sale5");
-        Sale sale2 = DataSet.SALES.get(1);
+        SaleDocument sale2 = DataSet.SALES.get(1);
         sale2.setId("sale6");
-        Sale sale3 = DataSet.SALES.get(2);
+        SaleDocument sale3 = DataSet.SALES.get(2);
         sale3.setId("sale7");
-        List<Sale> sales = List.of(sale1, sale2, sale3);
+        List<SaleDocument> sales = List.of(sale1, sale2, sale3);
         this.salesRepository.saveSales(sales).blockLast();
-        Flux<Sale> insertedSales = salesRepository.getSales(new Query());
+        Flux<SaleDocument> insertedSales = salesRepository.getSales(new Query());
         StepVerifier.create(insertedSales)
                 .expectNextCount(6)
                 .verifyComplete();
@@ -108,7 +108,7 @@ class SalesRepositoryTest {
     @Test
     @Order(4)
     void updateSale() {
-        Sale sale = DataSet.SALES.get(0);
+        SaleDocument sale = DataSet.SALES.get(0);
         sale.setId("sale8");
         sale = this.salesRepository
                 .saveSale(sale)
@@ -116,7 +116,7 @@ class SalesRepositoryTest {
         assert sale != null;
         sale.setPurchaseMethod(PurchaseMethod.PHONE.getValue());
         this.salesRepository.updateSale(sale).block();
-        Flux<Sale> sales = this.salesRepository
+        Flux<SaleDocument> sales = this.salesRepository
                 .getSales(new Query(Criteria.where("id").is("sale8")));
         StepVerifier.create(sales)
                 .assertNext(s -> {
@@ -129,7 +129,7 @@ class SalesRepositoryTest {
     @Test
     @Order(5)
     void deleteSale() {
-        Sale sale = DataSet.SALES.get(0);
+        SaleDocument sale = DataSet.SALES.get(0);
         sale.setId("sale9");
         sale = this.salesRepository
                 .saveSale(sale)
@@ -140,7 +140,7 @@ class SalesRepositoryTest {
                 .blockFirst();
         assert sale != null;
         this.salesRepository.deleteSale(sale).block();
-        Flux<Sale> sales = this.salesRepository
+        Flux<SaleDocument> sales = this.salesRepository
                 .getSales(new Query(Criteria.where("id").is("sale9")));
         StepVerifier.create(sales)
                 .verifyComplete();
@@ -151,7 +151,7 @@ class SalesRepositoryTest {
     @Order(6)
     void deleteSales() {
         this.salesRepository.deleteSales(new Query()).block();
-        Flux<Sale> sales = this.salesRepository.getSales(new Query());
+        Flux<SaleDocument> sales = this.salesRepository.getSales(new Query());
         StepVerifier.create(sales)
                 .verifyComplete();
     }

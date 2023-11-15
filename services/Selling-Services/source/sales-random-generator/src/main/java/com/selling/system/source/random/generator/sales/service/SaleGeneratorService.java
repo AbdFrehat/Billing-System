@@ -1,7 +1,7 @@
 package com.selling.system.source.random.generator.sales.service;
 
 
-import com.selling.system.source.random.generator.sales.model.entities.Sale;
+import com.selling.system.shared.module.models.entities.Sale;
 
 public interface SaleGeneratorService {
 

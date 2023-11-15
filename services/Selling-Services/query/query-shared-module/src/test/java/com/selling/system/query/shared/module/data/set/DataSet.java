@@ -2,7 +2,7 @@ package com.selling.system.query.shared.module.data.set;
 
 import com.selling.system.query.shared.module.entites.Customer;
 import com.selling.system.query.shared.module.entites.Item;
-import com.selling.system.query.shared.module.entites.Sale;
+import com.selling.system.query.shared.module.entites.SaleDocument;
 import com.selling.system.shared.module.models.commands.QueryField;
 import com.selling.system.shared.module.models.commons.Range;
 import com.selling.system.shared.module.models.enums.FieldType;
@@ -19,7 +19,7 @@ public class DataSet {
 
     public static final List<Customer> CUSTOMERS;
 
-    public static final List<Sale> SALES;
+    public static final List<SaleDocument> SALES;
 
     public static final Map<String, QueryField> QUERY_FIELD_MAP = new HashMap<>();
 
@@ -66,7 +66,7 @@ public class DataSet {
                         .build()
         );
         SALES = List.of(
-                Sale.builder()
+                SaleDocument.builder()
                         .id("sale1")
                         .items(List.of(ITEMS.get(0), ITEMS.get(1)))
                         .customer(CUSTOMERS.get(0))
@@ -74,7 +74,7 @@ public class DataSet {
                         .couponUsed(false)
                         .purchaseMethod(PurchaseMethod.IN_STORE.getValue())
                         .build(),
-                Sale.builder()
+                SaleDocument.builder()
                         .id("sale2")
                         .items(List.of(ITEMS.get(2), ITEMS.get(3)))
                         .customer(CUSTOMERS.get(1))
@@ -82,7 +82,7 @@ public class DataSet {
                         .couponUsed(false)
                         .purchaseMethod(PurchaseMethod.PHONE.getValue())
                         .build(),
-                Sale.builder()
+                SaleDocument.builder()
                         .id("sale3")
                         .items(List.of(ITEMS.get(4)))
                         .customer(CUSTOMERS.get(1))
