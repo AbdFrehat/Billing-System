@@ -1,4 +1,4 @@
-package com.selling.system.sales.reports.calc.price.models.responses;
+package com.selling.system.reports.calc.price.models.responses;
 
 import com.selling.system.shared.module.models.responses.AbstractCalcPriceResponse;
 import lombok.AllArgsConstructor;

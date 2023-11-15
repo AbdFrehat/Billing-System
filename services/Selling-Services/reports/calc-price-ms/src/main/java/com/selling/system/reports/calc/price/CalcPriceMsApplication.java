@@ -1,4 +1,4 @@
-package com.selling.system.sales.reports.calc.price;
+package com.selling.system.reports.calc.price;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

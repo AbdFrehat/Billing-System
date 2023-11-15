@@ -1,4 +1,4 @@
-package com.selling.system.sales.reports.calc.price.models.entites;
+package com.selling.system.reports.calc.price.models.entites;
 
 import com.selling.system.shared.module.models.entities.AbstractItem;
 import lombok.AllArgsConstructor;

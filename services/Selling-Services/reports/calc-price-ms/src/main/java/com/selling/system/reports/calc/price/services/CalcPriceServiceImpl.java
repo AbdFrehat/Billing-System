@@ -1,7 +1,7 @@
-package com.selling.system.sales.reports.calc.price.services;
+package com.selling.system.reports.calc.price.services;
 
-import com.selling.system.sales.reports.calc.price.models.responses.CalcPriceResponse;
-import com.selling.system.sales.reports.calc.price.models.entites.Item;
+import com.selling.system.reports.calc.price.models.responses.CalcPriceResponse;
+import com.selling.system.reports.calc.price.models.entites.Item;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
