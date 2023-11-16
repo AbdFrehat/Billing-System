@@ -70,6 +70,11 @@ public class SalesServiceImpl implements SalesService {
     }
 
     @Override
+    public Flux<SaleDocument> updateSales(List<SaleDocument> sales) {
+        return this.salesRepository.updateSales(sales);
+    }
+
+    @Override
     public Mono<DeleteResult> deleteSale(SaleDocument sale) {
         return this.salesRepository.deleteSale(sale);
     }

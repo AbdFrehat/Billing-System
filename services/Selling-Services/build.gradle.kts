@@ -14,7 +14,7 @@ allprojects {
         targetCompatibility = JavaVersion.VERSION_17
     }
     tasks.test {
-        useJUnitPlatform()
+        useJUnit()
     }
     dependencies {
         implementation("org.projectlombok:lombok:${project.findProperty("lombokVersion")}")

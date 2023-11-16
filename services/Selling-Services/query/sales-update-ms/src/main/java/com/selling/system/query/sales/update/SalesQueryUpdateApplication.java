@@ -1,13 +1,16 @@
-package com.selling.system.query.sales.get;
+package com.selling.system.query.sales.update;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories;
 
-@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
-@EnableReactiveMongoRepositories
+@SpringBootApplication(exclude = DataSourceAutoConfiguration.class,
+        scanBasePackages = {
+                "com.selling.system.query.shared.module",
+                "com.selling.system.shared.module",
+                "com.selling.system.query.sales.update"
+        })
 @EnableDiscoveryClient
 public class SalesQueryUpdateApplication {
 

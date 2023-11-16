@@ -3,6 +3,9 @@ spring:
     base-path: /selling/query/update/sale/v1/
   application:
     name: sales-update-ms
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/sample_supplies
 server:
   port: 6021
 eureka:

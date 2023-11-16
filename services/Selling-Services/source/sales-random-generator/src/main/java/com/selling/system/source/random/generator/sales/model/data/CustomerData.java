@@ -21,7 +21,6 @@ public class CustomerData {
     private List<String> emailValues;
 
 
-    @Data
     public static class AgeRange extends Range<Integer> {
     }
 

@@ -1,24 +1,26 @@
 package com.selling.system.query.shared.module.service;
 
-import com.selling.system.query.shared.module.entites.SaleDocument;
 import com.selling.system.query.shared.module.data.set.DataSet;
+import com.selling.system.query.shared.module.entites.SaleDocument;
 import com.selling.system.shared.module.models.commands.QueryCommand;
 import com.selling.system.shared.module.models.commands.QueryField;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
+import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @DataMongoTest
 @ComponentScan(basePackages = "com.selling.system.query.shared.module")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class SalesServiceTest {
 
     @Autowired

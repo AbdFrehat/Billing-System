@@ -9,6 +9,7 @@ public enum QueryMethod {
     SAVE_SALE("//SALES-SAVE-MS/selling/query/save/sale/"),
     SAVE_SALES("//SALES-SAVE-MS/selling/query/save/sale/"),
     UPDATE_SALE("//SALES-UPDATE-MS/selling/query/update/sale/"),
+    UPDATE_SALES("//SALES-UPDATE-MS/selling/query/update/sale/"),
     DELETE_SALE("//SALES-DELETE-MS/selling/query/delete/sale/"),
     DELETE_SALES("//SALES-DELETE-MS/selling/query/delete/sale/");
 
@@ -16,5 +17,5 @@ public enum QueryMethod {
         this.value = value;
     }
 
-    private String value;
+    private final String value;
 }

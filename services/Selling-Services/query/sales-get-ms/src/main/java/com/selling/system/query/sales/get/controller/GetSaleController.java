@@ -1,7 +1,7 @@
 package com.selling.system.query.sales.get.controller;
 
-import com.selling.system.query.shared.module.service.SalesService;
-import com.selling.system.shared.module.models.commands.QueryCommand;
+import com.selling.system.query.shared.module.entites.QueryCommandDTO;
+import com.selling.system.query.shared.module.service.QueryResponseService;
 import com.selling.system.shared.module.models.responses.QueryResponse;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -12,21 +12,17 @@ import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
 @RestController
-@Slf4j
 public class GetSaleController {
 
-    private final SalesService salesService;
+    private final QueryResponseService queryResponseService;
 
 
-    public GetSaleController(SalesService salesService) {
-        this.salesService = salesService;
+    public GetSaleController(QueryResponseService queryResponseService) {
+        this.queryResponseService = queryResponseService;
     }
 
     @PostMapping
-    Mono<ResponseEntity<QueryResponse>> getSales(@RequestBody @Valid QueryCommand queryCommand) {
-        return salesService.getSales(queryCommand)
-                .collectList()
-                .map(saleDocuments -> QueryResponse.builder().data(saleDocuments).build())
-                .map(queryResponse -> ResponseEntity.ok().body(queryResponse));
+    Mono<ResponseEntity<QueryResponse>> getSales(@RequestBody @Valid QueryCommandDTO queryCommand) {
+        return queryResponseService.buildQueryResponse(queryCommand);
     }
 }

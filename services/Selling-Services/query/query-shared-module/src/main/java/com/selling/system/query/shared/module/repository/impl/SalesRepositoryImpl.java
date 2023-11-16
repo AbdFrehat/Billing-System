@@ -89,6 +89,19 @@ public class SalesRepositoryImpl implements SalesRepository {
     }
 
     /**
+     * This method is used to update the provided sale.
+     *
+     * @param  sales: {@link List}<{@link SaleDocument}> contains list of sale objects which will be updated with the new objects values
+     * @return {@link Flux}<{@link SaleDocument}> which represents the updated sales objects from the database.
+     * @author Abd Frehat
+     * @since 1.0
+     */
+    @Override
+    public Flux<SaleDocument> updateSales(List<SaleDocument> sales) {
+        return Flux.concat(sales.stream().map(this.mongoTemplate::save).toList());
+    }
+
+    /**
      * This method is used to delete the provided sale object from the database.
      *
      * @param sale {@link SaleDocument} contains the needed sale to be deleted from the database.

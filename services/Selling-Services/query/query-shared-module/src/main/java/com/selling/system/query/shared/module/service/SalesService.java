@@ -13,10 +13,11 @@ import java.util.List;
  * repository.
  * Responsible for:
  * <ul
- *  <li>Building the Query objects.</li>
- *  <li>Paginate the response.</li>
- *  <li>Validate the Request.</li>
+ * <li>Building the Query objects.</li>
+ * <li>Paginate the response.</li>
+ * <li>Validate the Request.</li>
  * </ul>
+ *
  * @author Abd Frehat
  * @since 1.0
  */
@@ -41,6 +42,8 @@ public interface SalesService {
     Flux<SaleDocument> saveSales(List<SaleDocument> sales);
 
     Mono<SaleDocument> updateSale(SaleDocument sale);
+
+    Flux<SaleDocument> updateSales(List<SaleDocument> sale);
 
     Mono<DeleteResult> deleteSale(SaleDocument sale);
 

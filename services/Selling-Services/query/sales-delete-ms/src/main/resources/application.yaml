@@ -3,6 +3,9 @@ spring:
     base-path: /selling/query/delete/sale/v1/
   application:
     name: sales-delete-ms
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/sample_supplies
 server:
   port: 6020
 eureka:

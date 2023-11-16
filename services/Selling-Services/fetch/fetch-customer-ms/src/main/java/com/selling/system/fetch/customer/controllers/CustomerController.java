@@ -1,7 +1,7 @@
 package com.selling.system.fetch.customer.controllers;
 
-import com.selling.system.fetch.customer.models.entites.Customer;
 import com.selling.system.fetch.customer.services.CustomerService;
+import com.selling.system.shared.module.models.entities.Customer;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono;
 @RestController
 public class CustomerController {
 
-    private CustomerService customerService;
+    private final CustomerService customerService;
 
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
