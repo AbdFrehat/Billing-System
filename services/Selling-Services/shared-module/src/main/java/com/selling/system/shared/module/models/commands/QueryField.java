@@ -1,8 +1,6 @@
 package com.selling.system.shared.module.models.commands;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonRawValue;
-import com.fasterxml.jackson.annotation.JsonValue;
 import com.selling.system.shared.module.convertors.ObjectToObjectsConvertor;
 import com.selling.system.shared.module.models.annotations.ValidFieldTypeEnum;
 import com.selling.system.shared.module.models.commons.Range;
@@ -32,11 +30,11 @@ public class QueryField implements QueryFieldAbstract, Serializable {
 
     @NotNull(message = "QueryField.fieldType can not be null")
     @JsonProperty(value = "fieldType")
-    @ValidFieldTypeEnum(message = "QueryField.fieldType is not supported", regexp = "RANGE|STRING|OTHER|LIST")
+    @ValidFieldTypeEnum(message = "QueryField.fieldType is not supported", regexp = "RANGE|STRING|OTHER|LIST|DATE|RANGE_DATE")
     private FieldType fieldType;
 
     public Object getValue() {
-        if (fieldType.equals(FieldType.RANGE) && !(this.value instanceof Range<?>)) {
+        if ((fieldType.equals(FieldType.RANGE) | (fieldType.equals(FieldType.RANGE_DATE))) && !(this.value instanceof Range<?>)) {
             this.value = ObjectToObjectsConvertor.toRange(this.value);
             return this.value;
         }

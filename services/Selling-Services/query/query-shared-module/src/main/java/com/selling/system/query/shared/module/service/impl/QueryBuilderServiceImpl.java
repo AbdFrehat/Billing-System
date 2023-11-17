@@ -9,6 +9,10 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
+import java.time.format.DateTimeFormatter;
+
+import static com.selling.system.shared.module.utils.DateUtil.convertStringToDate;
+
 /**
  * The class QueryBuilderServiceImpl implements QueryBuilderService interface which is used to
  * generate queries using buildQuery method and criteria by buildCriteria.
@@ -80,6 +84,17 @@ public class QueryBuilderServiceImpl implements QueryBuilderService {
             case LIST -> {
                 if (queryField.getValue() instanceof QueryField) {
                     criteria = Criteria.where(queryField.getField()).elemMatch(buildCriteria((QueryField) queryField.getValue()));
+                }
+            }
+            case DATE -> {
+                criteria = Criteria.where(queryField.getField())
+                        .is(convertStringToDate((String) queryField.getValue(), DateTimeFormatter.ISO_OFFSET_DATE_TIME));
+            }
+            case RANGE_DATE -> {
+                if (queryField.getValue() instanceof Range<?> range) {
+                    criteria = Criteria.where(queryField.getField())
+                            .lte(convertStringToDate((String) range.getMax(), DateTimeFormatter.ISO_OFFSET_DATE_TIME))
+                            .gte(convertStringToDate((String) range.getMin(), DateTimeFormatter.ISO_OFFSET_DATE_TIME));
                 }
             }
         }

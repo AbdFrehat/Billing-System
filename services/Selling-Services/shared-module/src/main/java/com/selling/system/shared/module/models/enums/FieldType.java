@@ -4,6 +4,8 @@ public enum FieldType {
     RANGE,
     STRING,
     OTHER,
-    LIST
+    LIST,
+    DATE,
+    RANGE_DATE
 
 }

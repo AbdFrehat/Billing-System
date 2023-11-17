@@ -1,5 +1,6 @@
 package com.selling.system.shared.module.handlers;
 
+import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import com.selling.system.shared.module.models.constants.ExceptionsConstantCodes;
 import com.selling.system.shared.module.models.exceptions.*;
 import com.selling.system.shared.module.models.responses.ErrorResponse;
@@ -68,6 +69,17 @@ public class GlobalExceptionHandlers {
                 .body(ErrorResponse.builder()
                         .exceptionName(QueryMethodNotFoundException.class.getSimpleName())
                         .errorCode(ExceptionsConstantCodes.QUERY_METHOD_NOT_FOUND_EXCEPTION)
+                        .message(ex.getMessage())
+                        .build());
+    }
+
+    @ExceptionHandler(MismatchedInputException.class)
+    public ResponseEntity<ErrorResponse> handleQueryMethodNotFoundException(MismatchedInputException ex) {
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(ErrorResponse.builder()
+                        .exceptionName(MismatchedInputException.class.getSimpleName())
+                        .errorCode(ExceptionsConstantCodes.MISMATCHED_INPUT_EXCEPTION)
                         .message(ex.getMessage())
                         .build());
     }
