@@ -8,7 +8,7 @@ group = "com.selling.system.kafka.sales.consumer"
 version = "1.0.0-SNAPSHOT"
 
 dependencies {
-    implementation("com.fasterxml.jackson.core:jackson-databind:${project.findProperty("fasterxmlJackson")}")
+    implementation("com.fasterxml.jackson.core:jackson-databind:${project.findProperty("fasterxmlJacksonVersion")}")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
     implementation("org.springframework.boot:spring-boot-starter")

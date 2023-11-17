@@ -12,3 +12,10 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8003/selling/query/eureka/
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
+  api-docs:
+    groups:
+      enabled: true
+    path: /api/docs
