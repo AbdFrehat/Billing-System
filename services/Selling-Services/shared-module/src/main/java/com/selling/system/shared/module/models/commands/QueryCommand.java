@@ -53,7 +53,12 @@ public class QueryCommand implements QueryCommandAbstract {
     @ValidFieldTypeEnum(message = "QueryCommand.queryMethod is not supported", regexp = "GET_SALES|SAVE_SALE|SAVE_SALES|UPDATE_SALE|UPDATE_SALES|DELETE_SALE|DELETE_SALES")
     protected QueryMethod queryMethod;
 
+    @JsonProperty(value = "sort")
+    @Valid
+    protected SortField sortField;
+
     /**
+     *
      * The payload to do the operation on like DELETE, SAVE and UPDATE object(s)
      */
     @JsonProperty(value = "payload")

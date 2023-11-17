@@ -3,8 +3,10 @@ package com.selling.system.query.shared.module.service.impl;
 import com.selling.system.query.shared.module.service.QueryBuilderService;
 import com.selling.system.shared.module.models.commands.QueryCommand;
 import com.selling.system.shared.module.models.commands.QueryField;
+import com.selling.system.shared.module.models.commands.SortField;
 import com.selling.system.shared.module.models.commons.Range;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
@@ -40,6 +42,7 @@ public class QueryBuilderServiceImpl implements QueryBuilderService {
         for (QueryField queryField : queryCommand.getQueryFields())
             query.addCriteria(buildCriteria(queryField));
         this.addPageable(queryCommand, query);
+        this.addSorting(queryCommand, query);
         return query;
     }
 
@@ -58,6 +61,13 @@ public class QueryBuilderServiceImpl implements QueryBuilderService {
         int size = queryCommand.getSize();
         if (page != 0 || size != 0)
             query.with(PageRequest.of(page, size));
+    }
+
+    private void addSorting(QueryCommand queryCommand, Query query) {
+        SortField sortField = queryCommand.getSortField();
+        if (sortField != null) {
+            query.with(Sort.by(Sort.Direction.valueOf(sortField.getDirection()), sortField.getField()));
+        }
     }
 
     /**

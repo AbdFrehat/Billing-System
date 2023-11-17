@@ -29,6 +29,7 @@ public class GlobalExceptionHandlers {
                         .build());
     }
 
+
     @ExceptionHandler(FieldTypeNotFoundException.class)
     private ResponseEntity<ErrorResponse> handleFieldNotFoundException(FieldTypeNotFoundException ex) {
         return ResponseEntity
