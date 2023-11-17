@@ -43,6 +43,7 @@ public class QueryBuilderServiceImpl implements QueryBuilderService {
             query.addCriteria(buildCriteria(queryField));
         this.addPageable(queryCommand, query);
         this.addSorting(queryCommand, query);
+        query.fields().exclude(queryCommand.getExcludedFields());
         return query;
     }
 
