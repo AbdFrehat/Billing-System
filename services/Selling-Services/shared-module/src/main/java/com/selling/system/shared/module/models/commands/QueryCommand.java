@@ -11,6 +11,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -66,5 +67,17 @@ public class QueryCommand implements QueryCommandAbstract {
     @JsonProperty(value = "payload")
     protected Object payload;
 
+    @Override
+    public String toString() {
+        return "QueryCommand{" +
+                "queryFields=" + queryFields +
+                ", page=" + page +
+                ", size=" + size +
+                ", queryMethod=" + queryMethod +
+                ", sortField=" + sortField +
+                ", excludedFields=" + Arrays.toString(excludedFields) +
+                ", payload=" + "xx" +
+                '}';
+    }
 }
 
