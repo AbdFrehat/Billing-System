@@ -5,21 +5,13 @@ import com.selling.system.query.shared.module.service.interpreter.ExpressionBuil
 import com.selling.system.query.shared.module.service.interpreter.impl.operatprs.AndExpression;
 import com.selling.system.query.shared.module.service.interpreter.impl.operatprs.NotExpression;
 import com.selling.system.query.shared.module.service.interpreter.impl.operatprs.OrExpression;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import java.util.Stack;
 import java.util.StringTokenizer;
 
 @Service
-@Scope("prototype")
 public class ExpressionBuilderImpl implements ExpressionBuilder {
-
-    private final Stack<String> operatorsStack = new Stack<>();
-
-    private final Stack<String> parenthesisStack = new Stack<>();
-
-    private final Stack<CriteriaExpression> criteriaExpressionStack = new Stack<>();
 
     @Override
     public CriteriaExpression build(String expression) {
@@ -28,14 +20,16 @@ public class ExpressionBuilderImpl implements ExpressionBuilder {
 
     private CriteriaExpression parse(String expression) {
         StringTokenizer tokenizer = new StringTokenizer(expression);
-
+        Stack<String> parenthesisStack = new Stack<>();
+        Stack<CriteriaExpression> criteriaExpressionStack = new Stack<>();
+        Stack<String> operatorsStack = new Stack<>();
         while (tokenizer.hasMoreTokens()) {
             String token;
             switch (token = tokenizer.nextToken()) {
                 case "AND", "OR", "NOT" -> operatorsStack.push(token);
                 case "(" -> parenthesisStack.push(token);
                 case ")" -> {
-                    criteriaExpressionStack.push(buildOperatorExpression());
+                    criteriaExpressionStack.push(buildOperatorExpression(criteriaExpressionStack, operatorsStack));
                     parenthesisStack.pop();
                 }
                 default -> {
@@ -47,7 +41,8 @@ public class ExpressionBuilderImpl implements ExpressionBuilder {
         return criteriaExpressionStack.pop();
     }
 
-    private CriteriaExpression buildOperatorExpression() {
+    private CriteriaExpression buildOperatorExpression(Stack<CriteriaExpression> criteriaExpressionStack,
+                                                       Stack<String> operatorsStack ) {
         return switch (operatorsStack.pop()) {
             case "AND" -> new AndExpression(criteriaExpressionStack.pop(), criteriaExpressionStack.pop());
             case "OR" -> new OrExpression(criteriaExpressionStack.pop(), criteriaExpressionStack.pop());

@@ -3,6 +3,7 @@ package com.selling.system.query.shared.module.service.impl;
 import com.selling.system.query.shared.module.service.QueryBuilderService;
 import com.selling.system.query.shared.module.service.interpreter.ExpressionBuilder;
 import com.selling.system.shared.module.models.commands.QueryCommand;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.query.Query;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
  * @since 1.0
  */
 @Service
+@Slf4j
 public class QueryBuilderServiceImpl implements QueryBuilderService {
 
     private final ExpressionBuilder expressionBuilder;
@@ -39,6 +41,7 @@ public class QueryBuilderServiceImpl implements QueryBuilderService {
         var query = new Query();
         var criteriaExpression = expressionBuilder.build(queryCommand.getExpression());
         query.addCriteria(criteriaExpression.interpret(queryCommand.getQueryFields()));
+        log.info("ExpressionBuilder: {}", expressionBuilder);
         this.addPageable(queryCommand, query);
         this.addSorting(queryCommand, query);
         query.fields().exclude(queryCommand.getExcludedFields());
