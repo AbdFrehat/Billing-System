@@ -6,13 +6,9 @@ import com.selling.system.shared.module.models.enums.QueryMethod;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.Map;
 
 /**
  * This Data class represents the needed fields to query the data and update them.
@@ -21,16 +17,17 @@ import java.util.List;
  * @since 1.0
  */
 @Data
+@ToString(exclude = "payload")
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class QueryCommand implements QueryCommandAbstract {
 
     /**
-     * List of QueryFields which represent the search criteria.
+     * Map of QueryFields which represent the search criteria.
      */
     @JsonProperty(value = "queryFields")
-    protected List<@Valid QueryField> queryFields;
+    protected Map<String, @Valid QueryField> queryFields;
 
     /**
      * The page number of paginated results. Must be greater than zero.
@@ -67,17 +64,9 @@ public class QueryCommand implements QueryCommandAbstract {
     @JsonProperty(value = "payload")
     protected Object payload;
 
-    @Override
-    public String toString() {
-        return "QueryCommand{" +
-                "queryFields=" + queryFields +
-                ", page=" + page +
-                ", size=" + size +
-                ", queryMethod=" + queryMethod +
-                ", sortField=" + sortField +
-                ", excludedFields=" + Arrays.toString(excludedFields) +
-                ", payload=" + "xx" +
-                '}';
-    }
+    @JsonProperty(value = "expression")
+    private String expression;
+
+
 }
 
