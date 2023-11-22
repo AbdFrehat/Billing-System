@@ -46,8 +46,10 @@ public class QueryBuilderServiceImpl implements QueryBuilderService {
             query.addCriteria(buildCriteria(queryField));
         });
         log.info("ExpressionBuilder: {}", expressionBuilder);
-        addPageable(queryCommand, query);
-        addSorting(queryCommand, query);
+        if(!queryCommand.isCount()) {
+            addPageable(queryCommand, query);
+            addSorting(queryCommand, query);
+        }
         query.fields().exclude(queryCommand.getExcludedFields());
         return query;
     }

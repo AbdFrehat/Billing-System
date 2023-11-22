@@ -129,4 +129,8 @@ public class SalesRepositoryImpl implements SalesRepository {
     }
 
 
+    @Override
+    public Mono<Long> count(Query query) {
+        return mongoTemplate.count(query, SaleDocument.class);
+    }
 }

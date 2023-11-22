@@ -9,9 +9,13 @@ import com.selling.system.shared.module.models.responses.QueryResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
+
+import static com.selling.system.query.shared.module.util.QueryResponseMapperUtil.mapFluxToResponse;
+import static com.selling.system.query.shared.module.util.QueryResponseMapperUtil.mapMonoToResponse;
 
 @Service
 @Slf4j
@@ -28,48 +32,37 @@ public class QueryResponseServiceImpl implements QueryResponseService {
         switch (queryCommand.getQueryMethod()) {
             case UPDATE_SALE -> {
                 log.info("UPDATE_SALE Command is called");
-                return salesService.updateSale((SaleDocument) queryCommand.getPayload())
-                        .map(saleDocument -> QueryResponse.builder().data(saleDocument).build())
-                        .map(queryResponse -> ResponseEntity.ok().body(queryResponse));
+                return mapMonoToResponse(salesService.updateSale((SaleDocument) queryCommand.getPayload()));
             }
             case UPDATE_SALES -> {
                 log.info("UPDATE_SALES Command is called");
-                return salesService.updateSales((List<SaleDocument>) queryCommand.getPayload())
-                        .collectList()
-                        .map(saleDocuments -> QueryResponse.builder().data(saleDocuments).build())
-                        .map(queryResponse -> ResponseEntity.ok().body(queryResponse));
+                return mapFluxToResponse(salesService.updateSales((List<SaleDocument>) queryCommand.getPayload()));
             }
             case GET_SALES, GET_OPT_SALES, GET_FREE_SALES -> {
+                if (queryCommand.isCount()) {
+                    return mapMonoToResponse(salesService.count(queryCommand));
+                }
                 log.info("GET_SALES Command is called");
-                return salesService.getSales(queryCommand)
-                        .collectList()
-                        .map(saleDocuments -> QueryResponse.builder().data(saleDocuments).build())
-                        .map(queryResponse -> ResponseEntity.ok().body(queryResponse));
+                return mapFluxToResponse(salesService.getSales(queryCommand));
             }
             case SAVE_SALE -> {
                 log.info("SAVE_SALE Command is called");
-                return salesService.saveSale((SaleDocument) queryCommand.getPayload())
-                        .map(saleDocument -> QueryResponse.builder().data(saleDocument).build())
-                        .map(queryResponse -> ResponseEntity.ok().body(queryResponse));
+                return mapMonoToResponse(salesService.saveSale((SaleDocument) queryCommand.getPayload()));
             }
             case SAVE_SALES -> {
                 log.info("SAVE_SALES Command is called");
-                return salesService.saveSales((List<SaleDocument>) queryCommand.getPayload())
-                        .collectList()
-                        .map(saleDocuments -> QueryResponse.builder().data(saleDocuments).build())
-                        .map(queryResponse -> ResponseEntity.ok().body(queryResponse));
+                return mapFluxToResponse(salesService.saveSales((List<SaleDocument>) queryCommand.getPayload()));
             }
             case DELETE_SALE -> {
+                if (queryCommand.isCount()) {
+                    return mapMonoToResponse(salesService.count(queryCommand));
+                }
                 log.info("DELETE_SALE Command is called");
-                return salesService.deleteSale((SaleDocument) queryCommand.getPayload())
-                        .map(deleteResult -> QueryResponse.builder().data(deleteResult).build())
-                        .map(queryResponse -> ResponseEntity.ok().body(queryResponse));
+                return mapMonoToResponse(salesService.deleteSale((SaleDocument) queryCommand.getPayload()));
             }
             case DELETE_SALES -> {
                 log.info("DELETE_SALES Command is called");
-                return salesService.deleteSales(queryCommand)
-                        .map(deleteResult -> QueryResponse.builder().data(deleteResult).build())
-                        .map(queryResponse -> ResponseEntity.ok().body(queryResponse));
+                return mapMonoToResponse(salesService.deleteSales(queryCommand));
             }
         }
         throw new QueryMethodNotFoundException("The provided query method is not supported.");

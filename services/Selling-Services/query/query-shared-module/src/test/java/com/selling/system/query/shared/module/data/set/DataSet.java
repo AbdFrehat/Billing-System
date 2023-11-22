@@ -1,6 +1,7 @@
 package com.selling.system.query.shared.module.data.set;
 
 import com.selling.system.query.shared.module.entites.CustomerDocument;
+import com.selling.system.query.shared.module.entites.ItemDocument;
 import com.selling.system.query.shared.module.entites.SaleDocument;
 import com.selling.system.shared.module.models.commands.QueryField;
 import com.selling.system.shared.module.models.commons.Range;
@@ -16,7 +17,7 @@ import java.util.Map;
 
 public class DataSet {
 
-    public static final List<Item> ITEMS;
+    public static final List<ItemDocument> ITEMS;
 
     public static final List<CustomerDocument> CUSTOMERS;
 
@@ -26,27 +27,27 @@ public class DataSet {
 
     static {
         ITEMS = List.of(
-                Item.builder()
+                ItemDocument.builder()
                         .name("Item1")
                         .price(new BigDecimal("1.0"))
                         .tags(List.of("tag1"))
                         .build(),
-                Item.builder()
+                ItemDocument.builder()
                         .name("Item2")
                         .price(new BigDecimal("2.0"))
                         .tags(List.of("tag1", "tag2"))
                         .build(),
-                Item.builder()
+                ItemDocument.builder()
                         .name("Item3")
                         .price(new BigDecimal("3.0"))
                         .tags(List.of("tag1", "tag2", "tag3"))
                         .build(),
-                Item.builder()
+                ItemDocument.builder()
                         .name("Item4")
                         .price(new BigDecimal("4.0"))
                         .tags(List.of("tag1", "tag2", "tag3", "tag4"))
                         .build(),
-                Item.builder()
+                ItemDocument.builder()
                         .name("Item5")
                         .price(new BigDecimal("5.0"))
                         .tags(List.of("tag1", "tag2", "tag3", "tag4", "tag5"))

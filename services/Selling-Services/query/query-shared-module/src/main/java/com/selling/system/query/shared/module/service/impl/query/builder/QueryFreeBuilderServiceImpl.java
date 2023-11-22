@@ -44,8 +44,10 @@ public class QueryFreeBuilderServiceImpl implements QueryBuilderService {
         var query = new Query();
         query.addCriteria(buildTextCriteria(queryCommand.getQueryFields().get(FieldType.FREE.name())));
         log.info("ExpressionBuilder: {}", expressionBuilder);
-        addPageable(queryCommand, query);
-        addSorting(queryCommand, query);
+        if(!queryCommand.isCount()) {
+            addPageable(queryCommand, query);
+            addSorting(queryCommand, query);
+        }
         query.fields().exclude(queryCommand.getExcludedFields());
         return query;
     }

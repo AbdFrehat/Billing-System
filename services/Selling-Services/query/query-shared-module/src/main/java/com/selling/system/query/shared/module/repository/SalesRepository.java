@@ -66,7 +66,7 @@ public interface SalesRepository {
     /**
      * This method is used to update the provided sale.
      *
-     * @param  sales: {@link List}<{@link SaleDocument}> contains list of sale objects which will be updated with the new objects values
+     * @param sales: {@link List}<{@link SaleDocument}> contains list of sale objects which will be updated with the new objects values
      * @return {@link Flux}<{@link SaleDocument}> which represents the updated sales objects from the database.
      * @author Abd Frehat
      * @since 1.0
@@ -92,5 +92,7 @@ public interface SalesRepository {
      * @since 1.0
      */
     Mono<DeleteResult> deleteSales(Query query);
+
+    Mono<Long> count(Query query);
 
 }

@@ -68,6 +68,9 @@ public class QueryCommand implements QueryCommandAbstract {
     @JsonProperty(value = "expression")
     private String expression;
 
+    @JsonProperty(value = "count")
+    private boolean count = false;
+
 
 }
 
