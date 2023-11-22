@@ -34,6 +34,8 @@ public class SalesServiceImpl implements SalesService {
 
     private final SalesRepository salesRepository;
 
+    private String value;
+
     public SalesServiceImpl(QueryBuilderService queryBuilderService, SalesRepository salesRepository) {
         this.queryBuilderService = queryBuilderService;
         this.salesRepository = salesRepository;

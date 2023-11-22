@@ -1,8 +1,8 @@
 package com.selling.system.query.shared.module.convertors;
 
+import com.selling.system.query.shared.module.entites.CustomerDocument;
+import com.selling.system.query.shared.module.entites.ItemDocument;
 import com.selling.system.query.shared.module.entites.SaleDocument;
-import com.selling.system.shared.module.models.entities.Customer;
-import com.selling.system.shared.module.models.entities.Item;
 import com.selling.system.shared.module.models.exceptions.PayloadBadFormatException;
 
 import java.math.BigDecimal;
@@ -14,10 +14,10 @@ import java.util.List;
 
 public class QueryObjectToObjectsConvertor {
 
-    public static Customer toCustomer(Object object) {
+    public static CustomerDocument toCustomer(Object object) {
         if (object instanceof LinkedHashMap<?, ?> list) {
             try {
-                return Customer.builder()
+                return CustomerDocument.builder()
                         .age((int) ((LinkedHashMap<?, ?>) list.get("customer")).get("age"))
                         .satisfaction((Integer) ((LinkedHashMap<?, ?>) list.get("customer")).get("satisfaction"))
                         .gender((String) ((LinkedHashMap<?, ?>) list.get("customer")).get("gender"))
@@ -31,9 +31,9 @@ public class QueryObjectToObjectsConvertor {
         }
     }
 
-    public static List<Item> toItems(List<?> items) {
+    public static List<ItemDocument> toItems(List<?> items) {
         try {
-            return items.stream().map(item -> (LinkedHashMap<?, ?>) item).map(item -> Item.builder()
+            return items.stream().map(item -> (LinkedHashMap<?, ?>) item).map(item -> ItemDocument.builder()
                     .name((String) item.get("name"))
                     .price(BigDecimal.valueOf((double) item.get("price")))
                     .quantity((int) item.get("quantity"))

@@ -6,6 +6,8 @@ import lombok.Getter;
 public enum QueryMethod {
 
     GET_SALES("//SALES-GET-MS/selling/query/get/sale/"),
+    GET_FREE_SALES("//SALES-FREE-GET-MS/selling/query/get/free/sale/"),
+    GET_OPT_SALES("//SALES-OPT-GET-MS/selling/query/get/opt/sale/"),
     SAVE_SALE("//SALES-SAVE-MS/selling/query/save/sale/"),
     SAVE_SALES("//SALES-SAVE-MS/selling/query/save/sale/"),
     UPDATE_SALE("//SALES-UPDATE-MS/selling/query/update/sale/"),

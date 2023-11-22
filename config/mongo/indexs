@@ -1,0 +1,10 @@
+db.sales.createIndex(
+  { purchaseMethod: "text", storeLocation: "text" },
+  {
+    name: "sales_text_index",
+    weights: { storeLocation: 1, purchaseMethod: 2 },
+    default_language: "english",
+    language_override: "language",
+    textIndexVersion: 3,
+  }
+);

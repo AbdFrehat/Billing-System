@@ -1,13 +1,16 @@
-package com.selling.system.query.shared.module.service.impl;
+package com.selling.system.query.shared.module.service.impl.query.builder;
 
 import com.selling.system.query.shared.module.service.QueryBuilderService;
 import com.selling.system.query.shared.module.service.interpreter.ExpressionBuilder;
+import com.selling.system.query.shared.module.util.CriteriaBuilderUtil;
 import com.selling.system.shared.module.models.commands.QueryCommand;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
+
+import static com.selling.system.query.shared.module.util.CriteriaBuilderUtil.buildCriteria;
+import static com.selling.system.query.shared.module.util.QueryBuilderUtil.addPageable;
+import static com.selling.system.query.shared.module.util.QueryBuilderUtil.addSorting;
 
 /**
  * The class QueryBuilderServiceImpl implements QueryBuilderService interface which is used to
@@ -18,7 +21,7 @@ import org.springframework.stereotype.Service;
  * @author Abd Frehat
  * @since 1.0
  */
-@Service
+@Service("query-builder")
 @Slf4j
 public class QueryBuilderServiceImpl implements QueryBuilderService {
 
@@ -39,37 +42,14 @@ public class QueryBuilderServiceImpl implements QueryBuilderService {
     @Override
     public Query buildQuery(QueryCommand queryCommand) {
         var query = new Query();
-        var criteriaExpression = expressionBuilder.build(queryCommand.getExpression());
-        query.addCriteria(criteriaExpression.interpret(queryCommand.getQueryFields()));
+        queryCommand.getQueryFields().forEach((s, queryField) -> {
+            query.addCriteria(buildCriteria(queryField));
+        });
         log.info("ExpressionBuilder: {}", expressionBuilder);
-        this.addPageable(queryCommand, query);
-        this.addSorting(queryCommand, query);
+        addPageable(queryCommand, query);
+        addSorting(queryCommand, query);
         query.fields().exclude(queryCommand.getExcludedFields());
         return query;
-    }
-
-    /**
-     * This method is used to paginate the response or not, it depends on the size and page number values.
-     * If both are zero that means the client does not care about them and in that case all documents will be
-     * retrieved.
-     *
-     * @param queryCommand {@link QueryCommand} which is used to get the page and size values.
-     * @param query        {@link Query} which is used to add the {@link PageRequest} object to the {@link Query} one.
-     * @author Abd Frehat
-     * @since 1.0
-     */
-    private void addPageable(QueryCommand queryCommand, Query query) {
-        var page = queryCommand.getPage();
-        var size = queryCommand.getSize();
-        if (page != 0 || size != 0)
-            query.with(PageRequest.of(page, size));
-    }
-
-    private void addSorting(QueryCommand queryCommand, Query query) {
-        var sortField = queryCommand.getSortField();
-        if (sortField != null) {
-            query.with(Sort.by(Sort.Direction.valueOf(sortField.getDirection()), sortField.getField()));
-        }
     }
 
 

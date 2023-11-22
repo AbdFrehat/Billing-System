@@ -30,7 +30,7 @@ public class QueryField implements QueryFieldAbstract, Serializable {
 
     @NotNull(message = "QueryField.fieldType can not be null")
     @JsonProperty(value = "fieldType")
-    @ValidFieldTypeEnum(message = "QueryField.fieldType is not supported", regexp = "RANGE|STRING|OTHER|LIST|DATE|RANGE_DATE")
+    @ValidFieldTypeEnum(message = "QueryField.fieldType is not supported", regexp = "RANGE|STRING|OTHER|LIST|DATE|RANGE_DATE|FREE")
     private FieldType fieldType;
 
     public Object getValue() {

@@ -1,5 +1,6 @@
 package com.selling.system.query.shared.module.data.set;
 
+import com.selling.system.query.shared.module.entites.CustomerDocument;
 import com.selling.system.query.shared.module.entites.SaleDocument;
 import com.selling.system.shared.module.models.commands.QueryField;
 import com.selling.system.shared.module.models.commons.Range;
@@ -17,7 +18,7 @@ public class DataSet {
 
     public static final List<Item> ITEMS;
 
-    public static final List<Customer> CUSTOMERS;
+    public static final List<CustomerDocument> CUSTOMERS;
 
     public static final List<SaleDocument> SALES;
 
@@ -52,13 +53,13 @@ public class DataSet {
                         .build()
         );
         CUSTOMERS = List.of(
-                Customer.builder()
+                CustomerDocument.builder()
                         .gender("M")
                         .satisfaction(3)
                         .email("male@male")
                         .age(18)
                         .build(),
-                Customer.builder()
+                CustomerDocument.builder()
                         .gender("F")
                         .satisfaction(4)
                         .email("female@female")

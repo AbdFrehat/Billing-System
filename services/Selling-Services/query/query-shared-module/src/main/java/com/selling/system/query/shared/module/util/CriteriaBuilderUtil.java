@@ -3,6 +3,7 @@ package com.selling.system.query.shared.module.util;
 import com.selling.system.shared.module.models.commands.QueryField;
 import com.selling.system.shared.module.models.commons.Range;
 import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.TextCriteria;
 import org.springframework.stereotype.Service;
 
 import java.time.format.DateTimeFormatter;
@@ -10,7 +11,7 @@ import java.time.format.DateTimeFormatter;
 import static com.selling.system.shared.module.utils.DateUtil.convertStringToDate;
 
 @Service
-public class CriteriaBuilderUtil{
+public class CriteriaBuilderUtil {
 
     /**
      * @param queryField: {@link QueryField} contains the needed information to create a Criteria from it:
@@ -51,5 +52,9 @@ public class CriteriaBuilderUtil{
             }
         }
         return criteria;
+    }
+
+    public static TextCriteria buildTextCriteria(QueryField queryField) {
+        return TextCriteria.forDefaultLanguage().matching((String) queryField.getValue());
     }
 }

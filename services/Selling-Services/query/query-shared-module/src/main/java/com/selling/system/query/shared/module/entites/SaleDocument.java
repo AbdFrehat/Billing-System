@@ -1,14 +1,12 @@
 package com.selling.system.query.shared.module.entites;
 
 import com.selling.system.shared.module.models.entities.AbstractSale;
-import com.selling.system.shared.module.models.entities.Customer;
-import com.selling.system.shared.module.models.entities.Item;
-import com.selling.system.shared.module.models.entities.Sale;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.TextIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
@@ -26,13 +24,15 @@ public class SaleDocument implements AbstractSale {
 
     private Date saleDate;
 
-    private List<Item> items;
+    private List<ItemDocument> items;
 
+    @TextIndexed
     private String storeLocation;
 
-    private Customer customer;
+    private CustomerDocument customer;
 
     private boolean couponUsed;
 
+    @TextIndexed
     private String purchaseMethod;
 }

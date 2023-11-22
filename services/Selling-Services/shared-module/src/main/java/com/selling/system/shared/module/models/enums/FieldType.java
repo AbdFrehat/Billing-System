@@ -6,6 +6,7 @@ public enum FieldType {
     OTHER,
     LIST,
     DATE,
-    RANGE_DATE
+    RANGE_DATE,
+    FREE
 
 }

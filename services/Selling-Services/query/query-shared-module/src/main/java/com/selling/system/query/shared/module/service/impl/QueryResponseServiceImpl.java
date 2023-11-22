@@ -39,7 +39,7 @@ public class QueryResponseServiceImpl implements QueryResponseService {
                         .map(saleDocuments -> QueryResponse.builder().data(saleDocuments).build())
                         .map(queryResponse -> ResponseEntity.ok().body(queryResponse));
             }
-            case GET_SALES -> {
+            case GET_SALES, GET_OPT_SALES, GET_FREE_SALES -> {
                 log.info("GET_SALES Command is called");
                 return salesService.getSales(queryCommand)
                         .collectList()

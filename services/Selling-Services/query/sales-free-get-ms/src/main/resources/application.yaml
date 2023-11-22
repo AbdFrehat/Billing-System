@@ -1,13 +1,15 @@
 spring:
   webflux:
-    base-path: /selling/query/delete/sale/v1/
-  application:
-    name: sales-delete-ms
+    base-path: /selling/query/get/free/sale/v1/
   data:
     mongodb:
       uri: mongodb://localhost:27017/sample_supplies
+  application:
+    name: sales-free-get-ms
+  autoconfigure:
+    exclude:
 server:
-  port: 6020
+  port: 6023
 eureka:
   client:
     service-url:
@@ -19,6 +21,9 @@ springdoc:
     groups:
       enabled: true
     path: /api/docs
+logging:
+  level:
+    org.springframework.data.mongodb.core.MongoTemplate: ERROR
 config:
   query:
-    builder: query-builder
+    builder: query-free-builder
