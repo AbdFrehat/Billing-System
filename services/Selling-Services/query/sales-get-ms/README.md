@@ -16,16 +16,18 @@ The sales-get-ms microservice is used to receive a Query command object, build t
 
 ##### The `QueryCommand` request body of the end point has the following structure:
 
-|      Name      |        Type        |                               Description                               |           Constraint           |
-| :------------: | :----------------: | :---------------------------------------------------------------------: | :----------------------------: |
-|  queryFields   | `List<QueryField>` |           list of the desired fields to search based on them            |               X                |
-|      page      |       `int`        |                   the paginated page to retrieve from                   | `0 < page < Integer.MAX_VALUE` |
-|      size      |       `int`        |               the size of paginated page to retrieve from               | `0 < size < Integer.MAX_VALUE` |
-|  queryMethod   |   `QueryMethod`    |                 they type of operation against the data                 |           GET_SALES            |
-|   sortField    |    `SortField`     | it describes the field to sort baesd on and the ordering of the sorting |            Not Null            |
-| excludedFields |     `String[]`     |      list of the excluded fields, that will not part of the result      |               X                |
-|      size      |       `int`        |               the size of paginated page to retrieve from               | `0 < size < Integer.MAX_VALUE` |
-|    payload     |      `object`      |
+|    Name     |           Type            |                                   Description                                    |           Constraint           |
+| :---------: | :-----------------------: | :------------------------------------------------------------------------------: | :----------------------------: |
+| queryFields | `Map<String, QueryField>` |                list of the desired fields to search based on them                |               X                |
+|    page     |           `int`           |                       the paginated page to retrieve from                        | `0 < page < Integer.MAX_VALUE` |
+|    size     |           `int`           |                   the size of paginated page to retrieve from                    | `0 < size < Integer.MAX_VALUE` |
+| queryMethod |       `QueryMethod`       |                     they type of operation against the data                      |           GET_SALES            |
+|  sortField  |        `SortField`        |     it describes the field to sort based on and the ordering of the sorting      |            Not Null            |
+|   exclude   |        `String[]`         |          list of the excluded fields, that will not part of the result           |               X                |
+|    size     |           `int`           |                   the size of paginated page to retrieve from                    | `0 < size < Integer.MAX_VALUE` |
+|   payload   |         `object`          |                                     Not Used                                     |               X                |
+| expression  |         `String`          |                                     Not Used                                     |               X                |
+|    count    |         `boolean`         | if it is true, the count of retrieved document will be returned without the data |               X                |
 
 ##### `QueryField` has the following structure:
 
@@ -121,7 +123,9 @@ The sales-get-ms microservice is used to receive a Query command object, build t
         "field": "customer.satisfaction"
     },
     "exclude": ["items", "customer"],
-    "payload": null
+    "payload": null,
+    "expression": null,
+    "count": false
 }
 ```
 
@@ -129,13 +133,13 @@ The sales-get-ms microservice is used to receive a Query command object, build t
 
 ```Json
 {
-    "queryFields": [
-        {
+    "queryFields":
+        "F1": {
             "field": "storeLocation",
             "value": "Denver",
             "fieldType": "STRING"
         }
-    ],
+    ,
     "page": 0,
     "size": 10,
     "queryMethod": "GET_SALES",
@@ -144,7 +148,9 @@ The sales-get-ms microservice is used to receive a Query command object, build t
         "field": "customer.satisfaction"
     },
     "exclude": [],
-    "payload": null
+    "payload": null,
+    "expression": null,
+    "count": false
 }
 ```
 
@@ -152,8 +158,8 @@ The sales-get-ms microservice is used to receive a Query command object, build t
 
 ```JSON
 {
-    "queryFields": [
-        {
+    "queryFields":
+        "F1": {
             "field": "items",
             "value": {
                 "field": "name",
@@ -162,7 +168,7 @@ The sales-get-ms microservice is used to receive a Query command object, build t
             },
             "fieldType": "LIST"
         }
-    ],
+    ,
     "page": 0,
     "size": 10,
     "queryMethod": "GET_SALES",
@@ -171,7 +177,9 @@ The sales-get-ms microservice is used to receive a Query command object, build t
         "field": "saleDate"
     },
     "exclude": [],
-    "payload": null
+    "payload": null,
+    "expression": null,
+    "count": false
 }
 ```
 
@@ -179,8 +187,8 @@ The sales-get-ms microservice is used to receive a Query command object, build t
 
 ```Json
 {
-    "queryFields": [
-        {
+    "queryFields":
+        "F1": {
             "field": "items",
             "value": {
                 "field": "name",
@@ -189,12 +197,12 @@ The sales-get-ms microservice is used to receive a Query command object, build t
             },
             "fieldType": "LIST"
         },
-        {
+        "F2": {
             "field": "storeLocation",
             "value": "Denver",
             "fieldType": "STRING"
         }
-    ],
+    ,
     "page": 0,
     "size": 10,
     "queryMethod": "GET_SALES",
@@ -203,6 +211,34 @@ The sales-get-ms microservice is used to receive a Query command object, build t
         "field": "saleDate"
     },
     "exclude": [],
-    "payload": null
+    "payload": null,
+    "expression": null,
+    "count": false
+}
+```
+
+- To retrieve the number of sales documents based on a field inside list of objects:
+
+```JSON
+{
+    "queryFields":
+        "F1": {
+            "field": "items",
+            "value": {
+                "field": "name",
+                "value": "envelopes",
+                "fieldType": "STRING"
+            },
+            "fieldType": "LIST"
+        }
+    ,
+    "page": 0,
+    "size": 10,
+    "queryMethod": "GET_SALES",
+    "sort": null
+    "exclude": [],
+    "payload": null,
+    "expression": null,
+    "count": true
 }
 ```

@@ -1,10 +1,10 @@
-# sales-get-ms
+# sales-opt-get-ms
 
 #### Description
 
 ---
 
-The sales-get-ms microservice is used to receive a Query command object, build the Query request and send it to the MongoDB server to retrieve the data.
+The sales-opt-get-ms microservice is used to receive a Query command object, build the Query request based on a logical expression and send it to the MongoDB server to retrieve the data.
 
 #### Endpoints
 
@@ -12,20 +12,22 @@ The sales-get-ms microservice is used to receive a Query command object, build t
 
 ##### It exposes only one endpoint at the following URL:
 
-`POST  /selling/query/get/sale/[version]/`
+`POST  /selling/query/get/opt/sale/[version]/`
 
 ##### The `QueryCommand` request body of the end point has the following structure:
 
-|      Name      |        Type        |                               Description                               |           Constraint           |
-| :------------: | :----------------: | :---------------------------------------------------------------------: | :----------------------------: |
-|  queryFields   | `List<QueryField>` |           list of the desired fields to search based on them            |               X                |
-|      page      |       `int`        |                   the paginated page to retrieve from                   | `0 < page < Integer.MAX_VALUE` |
-|      size      |       `int`        |               the size of paginated page to retrieve from               | `0 < size < Integer.MAX_VALUE` |
-|  queryMethod   |   `QueryMethod`    |                 they type of operation against the data                 |           GET_SALES            |
-|   sortField    |    `SortField`     | it describes the field to sort baesd on and the ordering of the sorting |            Not Null            |
-| excludedFields |     `String[]`     |      list of the excluded fields, that will not part of the result      |               X                |
-|      size      |       `int`        |               the size of paginated page to retrieve from               | `0 < size < Integer.MAX_VALUE` |
-|    payload     |      `object`      |
+|    Name     |           Type            |                                   Description                                    |           Constraint           |
+| :---------: | :-----------------------: | :------------------------------------------------------------------------------: | :----------------------------: |
+| queryFields | `Map<String, QueryField>` |                map of the desired fields to search based on them                 |               X                |
+|    page     |           `int`           |                       the paginated page to retrieve from                        | `0 < page < Integer.MAX_VALUE` |
+|    size     |           `int`           |                   the size of paginated page to retrieve from                    | `0 < size < Integer.MAX_VALUE` |
+| queryMethod |       `QueryMethod`       |                     they type of operation against the data                      |         GET_OPT_SALES          |
+|  sortField  |        `SortField`        |     it describes the field to sort based on and the ordering of the sorting      |            Not Null            |
+|   exclude   |        `String[]`         |          list of the excluded fields, that will not part of the result           |               X                |
+|    size     |           `int`           |                   the size of paginated page to retrieve from                    | `0 < size < Integer.MAX_VALUE` |
+|   payload   |         `object`          |                                     Not Used                                     |               X                |
+| expression  |         `String`          | Describes the logical operator that will be applied on the provided query fields |            Not Null            |
+|    count    |         `boolean`         | if it is true, the count of retrieved document will be returned without the data |               X                |
 
 ##### `QueryField` has the following structure:
 
@@ -99,110 +101,63 @@ The sales-get-ms microservice is used to receive a Query command object, build t
 
 #### Examples:
 
-- To retrieve sales documents between range of dates:
+- To retrieve sales documents using a logical expression.
 
 ```Json
 {
-    "queryFields": [
-        {
-            "field": "saleDate",
-            "value": {
-                "min": "2000-11-12T20:30:15.045+00:00",
-                "max": "2023-11-14T20:30:15.045+00:00"
-            },
-            "fieldType": "RANGE_DATE"
-        }
-    ],
-    "page": 0,
-    "size": 10,
-    "queryMethod": "GET_SALES",
-    "sort": {
-        "direction": "ASC",
-        "field": "customer.satisfaction"
-    },
-    "exclude": ["items", "customer"],
-    "payload": null
-}
-```
-
-- To retrieve sales documents based on specific string value:
-
-```Json
-{
-    "queryFields": [
-        {
-            "field": "storeLocation",
-            "value": "Denver",
+    {
+    "queryFields": {
+        "F1": {
+            "field": "purchaseMethod",
+            "value": "IN_STORE",
             "fieldType": "STRING"
-        }
-    ],
-    "page": 0,
-    "size": 10,
-    "queryMethod": "GET_SALES",
-    "sort": {
-        "direction": "ASC",
-        "field": "customer.satisfaction"
-    },
-    "exclude": [],
-    "payload": null
-}
-```
-
-- To retrieve sales documents based on a field inside list of objects:
-
-```JSON
-{
-    "queryFields": [
-        {
-            "field": "items",
-            "value": {
-                "field": "name",
-                "value": "envelopes",
-                "fieldType": "STRING"
-            },
-            "fieldType": "LIST"
-        }
-    ],
-    "page": 0,
-    "size": 10,
-    "queryMethod": "GET_SALES",
-    "sort": {
-        "direction": "DESC",
-        "field": "saleDate"
-    },
-    "exclude": [],
-    "payload": null
-}
-```
-
-- To retrieve sales docuemnts based on different criteria:
-
-```Json
-{
-    "queryFields": [
-        {
-            "field": "items",
-            "value": {
-                "field": "name",
-                "value": "envelopes",
-                "fieldType": "STRING"
-            },
-            "fieldType": "LIST"
         },
-        {
+        "F2": {
             "field": "storeLocation",
-            "value": "Denver",
+            "value": "Seattle",
             "fieldType": "STRING"
         }
-    ],
+    },
     "page": 0,
     "size": 10,
-    "queryMethod": "GET_SALES",
+    "queryMethod": "GET_OPT_SALES",
     "sort": {
         "direction": "DESC",
         "field": "saleDate"
     },
     "exclude": [],
-    "payload": null
+    "payload": null,
+    "expression": "( ( NOT ( F1 OR F2 ) ) OR F1 )",
+    "count": false
+}
+}
+```
+
+- To retrieve the number of sales documents using a logical expression.
+
+```Json
+{
+    {
+    "queryFields": {
+        "F1": {
+            "field": "purchaseMethod",
+            "value": "IN_STORE",
+            "fieldType": "STRING"
+        },
+        "F2": {
+            "field": "storeLocation",
+            "value": "Seattle",
+            "fieldType": "STRING"
+        }
+    },
+    "page": 0,
+    "size": 0,
+    "queryMethod": "GET_OPT_SALES",
+    "sort": null,
+    "exclude": [],
+    "payload": null,
+    "expression": "( ( NOT ( F1 OR F2 ) ) OR F1 )",
+    "count": true
+}
 }
 ```
