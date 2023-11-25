@@ -79,6 +79,6 @@ The sales-delete-ms microservice is used to delete a single or multiple sales do
 
 ##### The `QueryResponse` response body of the end point has the following structure:
 
-| Name |  Type  |           Description           |
-| :--: | :----: | :-----------------------------: |
-| data | `Long` | the number of deleted documents |
+| Name |   Type   |                               Description                                |
+| :--: | :------: | :----------------------------------------------------------------------: |
+| data | `Object` | it contains deletedCount filed which has the number of deleted documents |
