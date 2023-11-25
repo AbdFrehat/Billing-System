@@ -4,7 +4,7 @@ plugins {
     id("io.spring.dependency-management")
 }
 
-group = "com.selling.system.query.manager.sales"
+group = "com.selling.system.data.manager.sales"
 version = "1.0.0-SNAPSHOT"
 
 
