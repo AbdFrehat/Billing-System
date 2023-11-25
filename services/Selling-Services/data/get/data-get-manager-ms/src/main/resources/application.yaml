@@ -23,6 +23,6 @@ springdoc:
 config:
   services:
     context-path:
-      data-get-free-ms: "http://SALES-FREE-GET-MS/selling/data/get/free/sale/v1/"
-      data-get-ms: "http://SALES-GET-MS/selling/data/get/query/sale/v1/"
-      data-get-opt-ms: "http://SALES-OPT-GET-MS/selling/data/get/opt/sale/v1/"
+      data-get-free-ms: "http://DATA-GET-FREE-MS/selling/data/get/free/sale/v1/"
+      data-get-ms: "http://DATA-GET-MS/selling/data/get/query/sale/v1/"
+      data-get-opt-ms: "http://DATA-GET-OPT-MS/selling/data/get/opt/sale/v1/"

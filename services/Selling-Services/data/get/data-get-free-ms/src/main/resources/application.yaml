@@ -5,7 +5,7 @@ spring:
     mongodb:
       uri: mongodb://localhost:27017/sample_supplies
   application:
-    name: sales-free-get-ms
+    name: data-get-free-ms
 server:
   port: 6021
 eureka:

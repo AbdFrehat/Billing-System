@@ -5,7 +5,7 @@ spring:
     mongodb:
       uri: mongodb://localhost:27017/sample_supplies
   application:
-    name: sales-save-ms
+    name: data-save-ms
 server:
   port: 6025
 eureka:

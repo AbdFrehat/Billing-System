@@ -2,7 +2,7 @@ spring:
   webflux:
     base-path: /selling/query/update/sale/v1/
   application:
-    name: sales-update-ms
+    name: data-update-ms
   data:
     mongodb:
       uri: mongodb://localhost:27017/sample_supplies

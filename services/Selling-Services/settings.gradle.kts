@@ -44,12 +44,12 @@ findProject(":data:data-manager-ms")?.name = "data-manager-ms"
 //get Sub-Category
 include("data:get:data-get-manager-ms")
 include("data:get:data-get-ms")
-include("data:get:data-free-get-ms")
-include("data:get:data-opt-get-ms")
+include("data:get:data-get-free-ms")
+include("data:get:data-get-opt-ms")
 findProject(":data:get:data-get-manager-ms")?.name = "data-get-manager-ms"
 findProject(":data:get:data-get-ms")?.name = "data-get-ms"
-findProject(":data:get:data-free-get-ms")?.name = "data-free-get-ms"
-findProject(":data:get:data-opt-get-ms")?.name = "data-opt-get-ms"
+findProject(":data:get:data-get-free-ms")?.name = "data-get-free-ms"
+findProject(":data:get:data-get-opt-ms")?.name = "data-get-opt-ms"
 
 //save Sub-Category
 include("data:save:data-save-ms")

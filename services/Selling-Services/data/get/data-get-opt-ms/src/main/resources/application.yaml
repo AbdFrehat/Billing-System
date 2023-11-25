@@ -5,7 +5,7 @@ spring:
     mongodb:
       uri: mongodb://localhost:27017/sample_supplies
   application:
-    name: sales-opt-get-ms
+    name: data-get-opt-ms
   autoconfigure:
     exclude:
 server:
