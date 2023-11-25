@@ -36,30 +36,32 @@ findProject(":source:sales-push-ms")?.name = "sales-push-ms"
 findProject(":source:sales-random-generator")?.name = "sales-random-generator"
 
 //Query Category
-
-include("data:delete:sales-delete-ms")
-include("data:save:sales-save-ms")
-include("data:get:get-eureka-server")
-include("data:get:data-get-manager-ms")
-include("data:get:sales-get-ms")
-include("data:get:sales-free-get-ms")
-include("data:get:sales-opt-get-ms")
-include("data:update:sales-update-ms")
 include("data:data-shared-module")
 include("data:data-manager-ms")
-
-
-findProject(":data:delete:sales-delete-ms")?.name = "sales-delete-ms"
-findProject(":data:save:sales-save-ms")?.name = "sales-save-ms"
-findProject(":data:get:data-get-manager-ms")?.name = "data-get-manager-ms"
-findProject(":data:get:sales-get-ms")?.name = "sales-get-ms"
-findProject(":data:get:sales-free-get-ms")?.name = "sales-free-get-ms"
-findProject(":data:get:sales-opt-get-ms")?.name = "sales-opt-get-ms"
-findProject(":data:update:sales-update-ms")?.name = "sales-update-ms"
 findProject(":data:data-shared-module")?.name = "data-shared-module"
 findProject(":data:data-manager-ms")?.name = "data-manager-ms"
 
+//get Sub-Category
+include("data:get:data-get-manager-ms")
+include("data:get:data-get-ms")
+include("data:get:data-free-get-ms")
+include("data:get:data-opt-get-ms")
+findProject(":data:get:data-get-manager-ms")?.name = "data-get-manager-ms"
+findProject(":data:get:data-get-ms")?.name = "data-get-ms"
+findProject(":data:get:data-free-get-ms")?.name = "data-free-get-ms"
+findProject(":data:get:data-opt-get-ms")?.name = "data-opt-get-ms"
 
+//save Sub-Category
+include("data:save:data-save-ms")
+findProject(":data:save:data-save-ms")?.name = "data-save-ms"
+
+//delete Sub-Category
+include("data:delete:data-delete-ms")
+findProject(":data:delete:data-delete-ms")?.name = "data-delete-ms"
+
+//update Sub-Category
+include("data:update:data-update-ms")
+findProject(":data:update:data-update-ms")?.name = "data-update-ms"
 
 //Commons
 include("shared-module")
