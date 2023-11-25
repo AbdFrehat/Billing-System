@@ -37,21 +37,21 @@ findProject(":source:sales-random-generator")?.name = "sales-random-generator"
 
 //Query Category
 include("query:query-eureka-server")
-include("query:sales-delete-ms")
-include("query:sales-save-ms")
-include("query:sales-get-ms")
-include("query:sales-free-get-ms")
-include("query:sales-opt-get-ms")
-include("query:sales-update-ms")
+include("query:delete:sales-delete-ms")
+include("query:save:sales-save-ms")
+include("query:get:sales-get-ms")
+include("query:get:sales-free-get-ms")
+include("query:get:sales-opt-get-ms")
+include("query:update:sales-update-ms")
 include("query:query-shared-module")
 include("query:query-manager-ms")
 findProject(":query:query-eureka-server")?.name = "query-eureka-server"
-findProject(":query:sales-delete-ms")?.name = "sales-delete-ms"
-findProject(":query:sales-save-ms")?.name = "sales-save-ms"
-findProject(":query:sales-get-ms")?.name = "sales-get-ms"
-findProject(":query:sales-free-get-ms")?.name = "sales-free-get-ms"
-findProject(":query:sales-opt-get-ms")?.name = "sales-opt-get-ms"
-findProject(":query:sales-update-ms")?.name = "sales-update-ms"
+findProject(":query:delete:sales-delete-ms")?.name = "sales-delete-ms"
+findProject(":query:save:sales-save-ms")?.name = "sales-save-ms"
+findProject(":query:get:sales-get-ms")?.name = "sales-get-ms"
+findProject(":query:get:sales-free-get-ms")?.name = "sales-free-get-ms"
+findProject(":query:get:sales-opt-get-ms")?.name = "sales-opt-get-ms"
+findProject(":query:update:sales-update-ms")?.name = "sales-update-ms"
 findProject(":query:query-shared-module")?.name = "query-shared-module"
 findProject(":query:query-manager-ms")?.name = "query-manager-ms"
 
