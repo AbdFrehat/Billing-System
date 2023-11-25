@@ -1,6 +1,5 @@
 package com.selling.system.data.get.manager.sales.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.selling.system.shared.module.models.commands.QueryCommand;
 import com.selling.system.shared.module.models.enums.QueryMethod;
 import com.selling.system.shared.module.models.responses.QueryResponse;
@@ -8,6 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
+
+import java.util.Map;
 
 /**
  * This service class implements {@link SalesClientService} which the main goal for it to pass the query command based on the
@@ -21,8 +22,11 @@ public class SalesClientServiceImpl implements SalesClientService {
 
     private final WebClient webClient;
 
-    public SalesClientServiceImpl(WebClient.Builder webClientBuilder, ObjectMapper objectMapper) {
+    private final Map<String, String> servicesContextPath;
+
+    public SalesClientServiceImpl(WebClient.Builder webClientBuilder, Map<String, String> servicesContextPath) {
         this.webClient = webClientBuilder.build();
+        this.servicesContextPath = servicesContextPath;
     }
 
     /**
@@ -44,9 +48,9 @@ public class SalesClientServiceImpl implements SalesClientService {
 
     private String getUri(QueryMethod queryMethod) {
         return switch (queryMethod) {
-            case GET_SALES -> "http://SALES-GET-MS/selling/data/get/query/sale/v1/";
-            case GET_FREE_SALES -> "http://SALES-FREE-GET-MS/selling/data/get/free/sale/v1/";
-            case GET_OPT_SALES -> "http://SALES-OPT-GET-MS/selling/data/get/opt/sale/v1/";
+            case GET_SALES -> servicesContextPath.get("data-get-ms");
+            case GET_FREE_SALES -> servicesContextPath.get("data-get-free-ms");
+            case GET_OPT_SALES -> servicesContextPath.get("data-get-opt-ms");
             default -> throw new IllegalArgumentException();
         };
     }

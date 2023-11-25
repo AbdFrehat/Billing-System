@@ -20,3 +20,7 @@ springdoc:
     groups:
       enabled: true
     path: /api/docs
+config:
+  services:
+    context-path:
+      data-manager-ms: "http://DATA-GET-MANAGER-MS/selling/data/get/manager/sale/v1/"
