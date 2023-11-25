@@ -54,13 +54,13 @@ public class QueryResponseServiceImpl implements QueryResponseService {
                 return mapFluxToResponse(salesService.saveSales((List<SaleDocument>) queryCommand.getPayload()));
             }
             case DELETE_SALE -> {
-                if (queryCommand.isCount()) {
-                    return mapMonoToResponse(salesService.count(queryCommand));
-                }
                 log.info("DELETE_SALE Command is called");
                 return mapMonoToResponse(salesService.deleteSale((SaleDocument) queryCommand.getPayload()));
             }
             case DELETE_SALES -> {
+                if (queryCommand.isCount()) {
+                    return mapMonoToResponse(salesService.count(queryCommand));
+                }
                 log.info("DELETE_SALES Command is called");
                 return mapMonoToResponse(salesService.deleteSales(queryCommand));
             }

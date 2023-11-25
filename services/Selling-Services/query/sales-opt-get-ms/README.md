@@ -22,9 +22,8 @@ The sales-opt-get-ms microservice is used to receive a Query command object, bui
 |    page     |           `int`           |                       the paginated page to retrieve from                        | `0 < page < Integer.MAX_VALUE` |
 |    size     |           `int`           |                   the size of paginated page to retrieve from                    | `0 < size < Integer.MAX_VALUE` |
 | queryMethod |       `QueryMethod`       |                     they type of operation against the data                      |         GET_OPT_SALES          |
-|  sortField  |        `SortField`        |     it describes the field to sort based on and the ordering of the sorting      |            Not Null            |
+|  sortField  |        `SortField`        |     it describes the field to sort based on and the ordering of the sorting      |               X                |
 |   exclude   |        `String[]`         |          list of the excluded fields, that will not part of the result           |               X                |
-|    size     |           `int`           |                   the size of paginated page to retrieve from                    | `0 < size < Integer.MAX_VALUE` |
 |   payload   |         `object`          |                                     Not Used                                     |               X                |
 | expression  |         `String`          | Describes the logical operator that will be applied on the provided query fields |            Not Null            |
 |    count    |         `boolean`         | if it is true, the count of retrieved document will be returned without the data |               X                |

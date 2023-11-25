@@ -22,9 +22,8 @@ The sales-free-get-ms microservice is used to perform a free text search on the 
 |    page     |       `int`        |                       the paginated page to retrieve from                        | `0 < page < Integer.MAX_VALUE` |
 |    size     |       `int`        |                   the size of paginated page to retrieve from                    | `0 < size < Integer.MAX_VALUE` |
 | queryMethod |   `QueryMethod`    |                     they type of operation against the data                      |         GET_FREE_SALES         |
-|  sortField  |    `SortField`     |     it describes the field to sort based on and the ordering of the sorting      |            Not Null            |
+|  sortField  |    `SortField`     |     it describes the field to sort based on and the ordering of the sorting      |               X                |
 |   exclude   |     `String[]`     |          list of the excluded fields, that will not part of the result           |               X                |
-|    size     |       `int`        |                   the size of paginated page to retrieve from                    | `0 < size < Integer.MAX_VALUE` |
 |   payload   |      `object`      |                                     Not Used                                     |               X                |
 | expression  |      `String`      |                                     Not Used                                     |               X                |
 |    count    |     `boolean`      | if it is true, the count of retrieved document will be returned without the data |               X                |
@@ -104,5 +103,30 @@ The sales-free-get-ms microservice is used to perform a free text search on the 
     "payload": null,
     "expression": null,
     "count": false
+}
+```
+
+- To retrieve the count of sales documents by using free text search, this will returns all sales documents that has notepad value in it:
+
+```Json
+{
+    "queryFields": {
+        "FREE": {
+            "field": "FREE",
+            "value": "notepad",
+            "fieldType": "FREE"
+        }
+    },
+    "page": 0,
+    "size": 10,
+    "queryMethod": "GET_FREE_SALES",
+    "sort": {
+        "direction": "DESC",
+        "field": "saleDate"
+    },
+    "exclude": [],
+    "payload": null,
+    "expression": null,
+    "count": true
 }
 ```
