@@ -1,17 +1,17 @@
 spring:
   webflux:
-    base-path: /selling/query/update/sale/v1/
+    base-path: /selling/data/update/sale/v1/
   application:
     name: data-update-ms
   data:
     mongodb:
       uri: mongodb://localhost:27017/sample_supplies
 server:
-  port: 6032
+  port: 6031
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8007/selling/data/update/eureka/
+      defaultZone: http://localhost:6030/selling/data/update/manager/sale/v1/eureka/
 springdoc:
   swagger-ui:
     path: /swagger-ui

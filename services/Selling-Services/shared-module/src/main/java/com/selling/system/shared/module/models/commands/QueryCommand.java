@@ -69,7 +69,7 @@ public class QueryCommand implements QueryCommandAbstract {
     private String expression;
 
     @JsonProperty(value = "count")
-    private boolean count = false;
+    private boolean count;
 
 
 }

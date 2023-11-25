@@ -1,4 +1,4 @@
-package com.selling.system.data.sales.save;
+package com.selling.system.data.sales.update;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,13 +9,13 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
         scanBasePackages = {
                 "com.selling.system.data.shared.module",
                 "com.selling.system.shared.module",
-                "com.selling.system.data.sales.save"
+                "com.selling.system.data.sales.update"
         })
 @EnableDiscoveryClient
-public class SalesQuerySaveApplication {
+public class SaleUpdateApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SalesQuerySaveApplication.class, args);
+        SpringApplication.run(SaleUpdateApplication.class, args);
     }
 
 }

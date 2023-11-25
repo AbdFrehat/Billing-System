@@ -1,13 +1,13 @@
 spring:
   webflux:
-    base-path: /selling/data/save/sale/v1/
+    base-path: /selling/data/save/sales/v1/
   data:
     mongodb:
       uri: mongodb://localhost:27017/sample_supplies
   application:
-    name: data-save-ms
+    name: data-save-multi-ms
 server:
-  port: 6024
+  port: 6025
 eureka:
   client:
     service-url:

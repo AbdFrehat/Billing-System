@@ -1,0 +1,27 @@
+spring:
+  webflux:
+    base-path: /selling/data/update/manager/sale/v1/
+  application:
+    name: data-update-manager-ms
+server:
+  port: 6030
+  servlet:
+    context-path: /selling/data/update/manager/sale/v1/
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:6018/selling/data/manager/sale/v1/eureka/
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
+  api-docs:
+    groups:
+      enabled: true
+    path: /api/docs
+config:
+  services:
+    context-path:
+      data-update-ms: "http://DATA-UPDATE-MS/selling/data/update/sale/v1/"
+      data-update-multi-ms: "http://DATA-UPDATE-MULTI-MS/selling/data/update/sales/v1/"

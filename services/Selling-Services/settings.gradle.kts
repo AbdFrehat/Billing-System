@@ -52,16 +52,24 @@ findProject(":data:get:data-get-free-ms")?.name = "data-get-free-ms"
 findProject(":data:get:data-get-opt-ms")?.name = "data-get-opt-ms"
 
 //save Sub-Category
+include("data:save:data-save-manager-ms")
 include("data:save:data-save-ms")
+include("data:save:data-save-multi-ms")
+findProject(":data:save:data-save-manager-ms")?.name = "data-save-manager-ms"
 findProject(":data:save:data-save-ms")?.name = "data-save-ms"
+findProject(":data:save:data-save-multi-ms")?.name = "data-save-multi-ms"
 
 //delete Sub-Category
 include("data:delete:data-delete-ms")
 findProject(":data:delete:data-delete-ms")?.name = "data-delete-ms"
 
 //update Sub-Category
+include("data:update:data-update-manager-ms")
 include("data:update:data-update-ms")
+include("data:update:data-update-multi-ms")
+findProject(":data:update:data-update-manager-ms")?.name = "data-update-manager-ms"
 findProject(":data:update:data-update-ms")?.name = "data-update-ms"
+findProject(":data:update:data-update-multi-ms")?.name = "data-update-multi-ms"
 
 //Commons
 include("shared-module")

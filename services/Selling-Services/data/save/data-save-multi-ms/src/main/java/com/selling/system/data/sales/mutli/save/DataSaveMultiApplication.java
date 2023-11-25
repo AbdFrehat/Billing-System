@@ -1,4 +1,4 @@
-package com.selling.system.data.sales.update;
+package com.selling.system.data.sales.mutli.save;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,15 +7,15 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class,
         scanBasePackages = {
-                "com.selling.system.query.shared.module",
+                "com.selling.system.data.shared.module",
                 "com.selling.system.shared.module",
-                "com.selling.system.query.sales.update"
+                "com.selling.system.data.sales.save"
         })
 @EnableDiscoveryClient
-public class SalesQueryUpdateApplication {
+public class DataSaveMultiApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SalesQueryUpdateApplication.class, args);
+        SpringApplication.run(DataSaveMultiApplication.class, args);
     }
 
 }

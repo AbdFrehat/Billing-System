@@ -1,4 +1,4 @@
-package com.selling.system.data.sales.delete;
+package com.selling.system.data.sales.save;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,13 +9,13 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
         scanBasePackages = {
                 "com.selling.system.data.shared.module",
                 "com.selling.system.shared.module",
-                "com.selling.system.data.sales.delete"
+                "com.selling.system.data.sales.save"
         })
 @EnableDiscoveryClient
-public class SalesQueryDeleteApplication {
+public class DataSaveApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SalesQueryDeleteApplication.class, args);
+        SpringApplication.run(DataSaveApplication.class, args);
     }
 
 }

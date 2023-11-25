@@ -1,4 +1,4 @@
-package com.selling.system.data.manager.sales.service;
+package com.selling.system.data.update.manager.sales.service;
 
 import com.selling.system.shared.module.models.commands.QueryCommand;
 import com.selling.system.shared.module.models.enums.QueryMethod;
@@ -48,10 +48,8 @@ public class SalesClientServiceImpl implements SalesClientService {
 
     private String getUri(QueryMethod queryMethod) {
         return switch (queryMethod) {
-            case GET_SALES, GET_FREE_SALES, GET_OPT_SALES -> servicesContextPath.get("data-get-manager-ms");
-            case SAVE_SALE, SAVE_SALES -> servicesContextPath.get("data-save-manager-ms");
-            case  UPDATE_SALE, UPDATE_SALES -> servicesContextPath.get("data-update-manager-ms");
-            case DELETE_SALE, DELETE_SALES -> servicesContextPath.get("data-delete-manager-ms");
+            case UPDATE_SALE -> servicesContextPath.get("data-update-ms");
+            case UPDATE_SALES -> servicesContextPath.get("data-update-multi-ms");
             default -> throw new IllegalArgumentException();
         };
     }
