@@ -36,24 +36,24 @@ findProject(":source:sales-push-ms")?.name = "sales-push-ms"
 findProject(":source:sales-random-generator")?.name = "sales-random-generator"
 
 //Query Category
-include("query:query-eureka-server")
-include("query:delete:sales-delete-ms")
-include("query:save:sales-save-ms")
-include("query:get:sales-get-ms")
-include("query:get:sales-free-get-ms")
-include("query:get:sales-opt-get-ms")
-include("query:update:sales-update-ms")
-include("query:query-shared-module")
-include("query:query-manager-ms")
-findProject(":query:query-eureka-server")?.name = "query-eureka-server"
-findProject(":query:delete:sales-delete-ms")?.name = "sales-delete-ms"
-findProject(":query:save:sales-save-ms")?.name = "sales-save-ms"
-findProject(":query:get:sales-get-ms")?.name = "sales-get-ms"
-findProject(":query:get:sales-free-get-ms")?.name = "sales-free-get-ms"
-findProject(":query:get:sales-opt-get-ms")?.name = "sales-opt-get-ms"
-findProject(":query:update:sales-update-ms")?.name = "sales-update-ms"
-findProject(":query:query-shared-module")?.name = "query-shared-module"
-findProject(":query:query-manager-ms")?.name = "query-manager-ms"
+include("data:data-eureka-server")
+include("data:delete:sales-delete-ms")
+include("data:save:sales-save-ms")
+include("data:get:sales-get-ms")
+include("data:get:sales-free-get-ms")
+include("data:get:sales-opt-get-ms")
+include("data:update:sales-update-ms")
+include("data:data-shared-module")
+include("data:data-manager-ms")
+findProject(":data:data-eureka-server")?.name = "data-eureka-server"
+findProject(":data:delete:sales-delete-ms")?.name = "sales-delete-ms"
+findProject(":data:save:sales-save-ms")?.name = "sales-save-ms"
+findProject(":data:get:sales-get-ms")?.name = "sales-get-ms"
+findProject(":data:get:sales-free-get-ms")?.name = "sales-free-get-ms"
+findProject(":data:get:sales-opt-get-ms")?.name = "sales-opt-get-ms"
+findProject(":data:update:sales-update-ms")?.name = "sales-update-ms"
+findProject(":data:data-shared-module")?.name = "data-shared-module"
+findProject(":data:data-manager-ms")?.name = "data-manager-ms"
 
 
 
