@@ -1,6 +1,6 @@
 spring:
   webflux:
-    base-path: /selling/query/get/sale/v1/
+    base-path: /selling/data/get/query/sale/v1/
   data:
     mongodb:
       uri: mongodb://localhost:27017/sample_supplies
@@ -9,11 +9,11 @@ spring:
   autoconfigure:
     exclude:
 server:
-  port: 6018
+  port: 6020
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8003/selling/query/eureka/
+      defaultZone: http://localhost:6019/selling/data/get/manager/sale/v1/eureka/
 springdoc:
   swagger-ui:
     path: /swagger-ui

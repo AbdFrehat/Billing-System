@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication(scanBasePackages = {
-        "com.selling.system.query.shared.module",
+        "com.selling.system.data.shared.module",
 })
 public class QuerySharedModuleApplication {
 

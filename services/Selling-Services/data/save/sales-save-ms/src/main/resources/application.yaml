@@ -7,11 +7,11 @@ spring:
   application:
     name: sales-save-ms
 server:
-  port: 6019
+  port: 6025
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8003/selling/query/eureka/
+      defaultZone: http://localhost:8005/selling/data/save/eureka/
 springdoc:
   swagger-ui:
     path: /swagger-ui
@@ -19,3 +19,6 @@ springdoc:
     groups:
       enabled: true
     path: /api/docs
+config:
+  query:
+    builder: query-builder

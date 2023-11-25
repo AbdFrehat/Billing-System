@@ -1,8 +1,10 @@
 package com.selling.system.data.shared.module.config;
 
 import com.selling.system.data.shared.module.service.QueryBuilderService;
+import lombok.Builder;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -33,7 +35,7 @@ public class QueryBuilderQualifier {
             return queryOptBuilderService;
         if ("query-builder".equals(queryImplementation))
             return queryBuilderService;
-        throw new IllegalArgumentException("invalid or empty config.query.builder filed");
+        throw new IllegalArgumentException("invalid or empty config.query.builder field");
 
     }
 

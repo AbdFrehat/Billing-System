@@ -1,4 +1,4 @@
-package com.selling.system.data.manager.sales.service;
+package com.selling.system.data.get.manager.sales.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.selling.system.shared.module.models.commands.QueryCommand;
@@ -12,8 +12,9 @@ import reactor.core.publisher.Mono;
 /**
  * This service class implements {@link SalesClientService} which the main goal for it to pass the query command based on the
  * query method to the right service.
- * @since 1.0
+ *
  * @author Abd Frehat
+ * @since 1.0
  */
 @Service
 public class SalesClientServiceImpl implements SalesClientService {
@@ -26,6 +27,7 @@ public class SalesClientServiceImpl implements SalesClientService {
 
     /**
      * This method takes the request object, build the web client and select the uri based on the queryMethod inside {@link QueryCommand}
+     *
      * @param queryCommand represents the request object to be sent to the data microservices
      * @return {@link Mono}<{@link QueryResponse}> which represents the retrieved data from the query services.
      */
@@ -42,7 +44,9 @@ public class SalesClientServiceImpl implements SalesClientService {
 
     private String getUri(QueryMethod queryMethod) {
         return switch (queryMethod) {
-            case GET_SALES, GET_FREE_SALES, GET_OPT_SALES -> "http://DATA-GET-MANAGER-MS/selling/data/get/manager/sale/v1/";
+            case GET_SALES -> "http://SALES-GET-MS/selling/data/get/query/sale/v1/";
+            case GET_FREE_SALES -> "http://SALES-FREE-GET-MS/selling/data/get/free/sale/v1/";
+            case GET_OPT_SALES -> "http://SALES-OPT-GET-MS/selling/data/get/opt/sale/v1/";
             default -> throw new IllegalArgumentException();
         };
     }

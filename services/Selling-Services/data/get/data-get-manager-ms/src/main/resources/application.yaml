@@ -1,15 +1,15 @@
 spring:
   webflux:
-    base-path: /selling/data/manager/sale/v1/
+    base-path: /selling/data/get/manager/sale/v1/
   application:
-    name: data-manager-ms
+    name: data-get-manager-ms
 server:
-  port: 6018
+  port: 6019
   servlet:
-    context-path: /selling/data/manager/sale/v1/
+    context-path: /selling/data/get/manager/sale/v1/
 eureka:
   client:
-    register-with-eureka: false
+    register-with-eureka: true
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:6018/selling/data/manager/sale/v1/eureka/

@@ -7,11 +7,11 @@ spring:
     mongodb:
       uri: mongodb://localhost:27017/sample_supplies
 server:
-  port: 6021
+  port: 6032
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8003/selling/query/eureka/
+      defaultZone: http://localhost:8007/selling/data/update/eureka/
 springdoc:
   swagger-ui:
     path: /swagger-ui
@@ -19,3 +19,6 @@ springdoc:
     groups:
       enabled: true
     path: /api/docs
+config:
+  query:
+    builder: query-builder

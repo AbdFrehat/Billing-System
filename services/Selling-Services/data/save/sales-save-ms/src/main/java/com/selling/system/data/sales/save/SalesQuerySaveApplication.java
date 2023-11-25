@@ -7,9 +7,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class,
         scanBasePackages = {
-                "com.selling.system.query.shared.module",
+                "com.selling.system.data.shared.module",
                 "com.selling.system.shared.module",
-                "com.selling.system.query.sales.save"
+                "com.selling.system.data.sales.save"
         })
 @EnableDiscoveryClient
 public class SalesQuerySaveApplication {

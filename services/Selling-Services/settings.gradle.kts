@@ -36,18 +36,22 @@ findProject(":source:sales-push-ms")?.name = "sales-push-ms"
 findProject(":source:sales-random-generator")?.name = "sales-random-generator"
 
 //Query Category
-include("data:data-eureka-server")
+
 include("data:delete:sales-delete-ms")
 include("data:save:sales-save-ms")
+include("data:get:get-eureka-server")
+include("data:get:data-get-manager-ms")
 include("data:get:sales-get-ms")
 include("data:get:sales-free-get-ms")
 include("data:get:sales-opt-get-ms")
 include("data:update:sales-update-ms")
 include("data:data-shared-module")
 include("data:data-manager-ms")
-findProject(":data:data-eureka-server")?.name = "data-eureka-server"
+
+
 findProject(":data:delete:sales-delete-ms")?.name = "sales-delete-ms"
 findProject(":data:save:sales-save-ms")?.name = "sales-save-ms"
+findProject(":data:get:data-get-manager-ms")?.name = "data-get-manager-ms"
 findProject(":data:get:sales-get-ms")?.name = "sales-get-ms"
 findProject(":data:get:sales-free-get-ms")?.name = "sales-free-get-ms"
 findProject(":data:get:sales-opt-get-ms")?.name = "sales-opt-get-ms"

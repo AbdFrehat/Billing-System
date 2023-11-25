@@ -5,19 +5,14 @@ import lombok.Getter;
 @Getter
 public enum QueryMethod {
 
-    GET_SALES("//SALES-GET-MS/selling/query/get/sale/"),
-    GET_FREE_SALES("//SALES-FREE-GET-MS/selling/query/get/free/sale/"),
-    GET_OPT_SALES("//SALES-OPT-GET-MS/selling/query/get/opt/sale/"),
-    SAVE_SALE("//SALES-SAVE-MS/selling/query/save/sale/"),
-    SAVE_SALES("//SALES-SAVE-MS/selling/query/save/sale/"),
-    UPDATE_SALE("//SALES-UPDATE-MS/selling/query/update/sale/"),
-    UPDATE_SALES("//SALES-UPDATE-MS/selling/query/update/sale/"),
-    DELETE_SALE("//SALES-DELETE-MS/selling/query/delete/sale/"),
-    DELETE_SALES("//SALES-DELETE-MS/selling/query/delete/sale/");
+    GET_SALES,
+    GET_FREE_SALES,
+    GET_OPT_SALES,
+    SAVE_SALE,
+    SAVE_SALES,
+    UPDATE_SALE,
+    UPDATE_SALES,
+    DELETE_SALE,
+    DELETE_SALES,
 
-    QueryMethod(String value) {
-        this.value = value;
-    }
-
-    private final String value;
 }
