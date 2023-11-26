@@ -14,5 +14,6 @@ public enum QueryMethod {
     UPDATE_SALES,
     DELETE_SALE,
     DELETE_SALES,
+    DELETE_QUERY_SALES,
 
 }

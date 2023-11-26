@@ -1,0 +1,28 @@
+spring:
+  webflux:
+    base-path: /selling/data/delete/manager/sale/v1/
+  application:
+    name: data-delete-manager-ms
+server:
+  port: 6026
+  servlet:
+    context-path: /selling/data/delete/manager/sale/v1/
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:6018/selling/data/manager/sale/v1/eureka/
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
+  api-docs:
+    groups:
+      enabled: true
+    path: /api/docs
+config:
+  services:
+    context-path:
+      data-delete-ms: "http://DATA-DELETE-MS/selling/data/delete/sale/v1/"
+      data-delete-multi-ms: "http://DATA-DELETE-MULTI-MS/selling/data/delete/sales/v1/"
+      data-delete-query-ms: "http://DATA-DELETE-QUERY-MS/selling/data/delete/sales/query/v1/"

@@ -1,17 +1,17 @@
 spring:
   webflux:
-    base-path: /selling/query/delete/sale/v1/
+    base-path: /selling/data/delete/sale/v1/
   application:
-    name: delete-delete-ms
+    name: data-delete-ms
   data:
     mongodb:
       uri: mongodb://localhost:27017/sample_supplies
 server:
-  port: 6028
+  port: 6027
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8006/selling/data/delete/eureka/
+      defaultZone: http://localhost:6026/selling/data/delete/manager/sale/v1/eureka/
 springdoc:
   swagger-ui:
     path: /swagger-ui
@@ -19,6 +19,3 @@ springdoc:
     groups:
       enabled: true
     path: /api/docs
-config:
-  query:
-    builder: query-builder

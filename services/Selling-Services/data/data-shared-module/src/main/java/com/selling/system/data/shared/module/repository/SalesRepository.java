@@ -91,7 +91,9 @@ public interface SalesRepository {
      * @author Abd Frehat
      * @since 1.0
      */
-    Mono<DeleteResult> deleteSales(Query query);
+    Mono<DeleteResult> deleteSalesByQuery(Query query);
+
+    Mono<DeleteResult> deleteSales(List<SaleDocument> saleDocuments);
 
     Mono<Long> count(Query query);
 

@@ -24,7 +24,5 @@ springdoc:
 logging:
   level:
     org.springframework.data.mongodb.core.MongoTemplate: ERROR
-config:
-  query:
-    builder: query-opt-builder
+
 

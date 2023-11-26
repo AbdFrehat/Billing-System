@@ -124,8 +124,17 @@ public class SalesRepositoryImpl implements SalesRepository {
      * @since 1.0
      */
     @Override
-    public Mono<DeleteResult> deleteSales(Query query) {
+    public Mono<DeleteResult> deleteSalesByQuery(Query query) {
         return mongoTemplate.remove(query, SaleDocument.class);
+    }
+
+    @Override
+    public Mono<DeleteResult> deleteSales(List<SaleDocument> saleDocuments) {
+        return Flux.fromIterable(saleDocuments)
+                .flatMap(mongoTemplate::remove)
+                .map(DeleteResult::getDeletedCount)
+                .reduce(0L, Long::sum)
+                .flatMap(deletedCount -> Mono.just(DeleteResult.acknowledged(deletedCount)));
     }
 
 

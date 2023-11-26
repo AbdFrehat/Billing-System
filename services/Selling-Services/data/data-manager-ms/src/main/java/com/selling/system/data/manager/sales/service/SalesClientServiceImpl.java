@@ -51,7 +51,7 @@ public class SalesClientServiceImpl implements SalesClientService {
             case GET_SALES, GET_FREE_SALES, GET_OPT_SALES -> servicesContextPath.get("data-get-manager-ms");
             case SAVE_SALE, SAVE_SALES -> servicesContextPath.get("data-save-manager-ms");
             case  UPDATE_SALE, UPDATE_SALES -> servicesContextPath.get("data-update-manager-ms");
-            case DELETE_SALE, DELETE_SALES -> servicesContextPath.get("data-delete-manager-ms");
+            case DELETE_SALE, DELETE_SALES, DELETE_QUERY_SALES -> servicesContextPath.get("data-delete-manager-ms");
             default -> throw new IllegalArgumentException();
         };
     }

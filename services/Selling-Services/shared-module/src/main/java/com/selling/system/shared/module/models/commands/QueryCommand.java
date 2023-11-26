@@ -49,7 +49,7 @@ public class QueryCommand implements QueryCommandAbstract {
     @NotNull(message = "QueryCommand.queryMethod can not be null")
     @JsonProperty(value = "queryMethod")
     @ValidFieldTypeEnum(message = "QueryCommand.queryMethod is not supported", regexp =
-            "GET_SALES|GET_FREE_SALES|GET_OPT_SALES|SAVE_SALE|SAVE_SALES|UPDATE_SALE|UPDATE_SALES|DELETE_SALE|DELETE_SALES")
+            "GET_SALES|GET_FREE_SALES|GET_OPT_SALES|SAVE_SALE|SAVE_SALES|UPDATE_SALE|UPDATE_SALES|DELETE_SALE|DELETE_SALES|DELETE_QUERY_SALES")
     protected QueryMethod queryMethod;
 
     @JsonProperty(value = "sort")

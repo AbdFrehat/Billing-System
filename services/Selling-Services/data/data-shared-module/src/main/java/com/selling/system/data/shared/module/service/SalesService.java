@@ -47,7 +47,9 @@ public interface SalesService {
 
     Mono<DeleteResult> deleteSale(SaleDocument sale);
 
-    Mono<DeleteResult> deleteSales(QueryCommand queryCommand);
+    Mono<DeleteResult> deleteSalesByQuery(QueryCommand queryCommand);
+
+    Mono<DeleteResult> deleteSales(List<SaleDocument> saleDocuments);
 
     Mono<Long> count(QueryCommand queryCommand);
 }

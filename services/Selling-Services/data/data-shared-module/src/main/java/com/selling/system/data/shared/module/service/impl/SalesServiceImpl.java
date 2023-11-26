@@ -91,9 +91,14 @@ public class SalesServiceImpl implements SalesService {
 
 
     @Override
-    public Mono<DeleteResult> deleteSales(QueryCommand queryCommand) {
+    public Mono<DeleteResult> deleteSalesByQuery(QueryCommand queryCommand) {
         log.debug("A sales delete request is made with queryCommand: {}", queryCommand);
-        return this.salesRepository.deleteSales(queryBuilderService.buildQuery(queryCommand));
+        return this.salesRepository.deleteSalesByQuery(queryBuilderService.buildQuery(queryCommand));
+    }
+
+    @Override
+    public Mono<DeleteResult> deleteSales(List<SaleDocument> saleDocuments) {
+        return this.salesRepository.deleteSales(saleDocuments);
     }
 
     @Override

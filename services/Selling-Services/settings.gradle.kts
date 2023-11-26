@@ -60,8 +60,14 @@ findProject(":data:save:data-save-ms")?.name = "data-save-ms"
 findProject(":data:save:data-save-multi-ms")?.name = "data-save-multi-ms"
 
 //delete Sub-Category
+include("data:delete:data-delete-manager-ms")
 include("data:delete:data-delete-ms")
+include("data:delete:data-delete-multi-ms")
+include("data:delete:data-delete-query-ms")
+findProject(":data:delete:data-delete-manager-ms")?.name = "data-delete-manager-ms"
 findProject(":data:delete:data-delete-ms")?.name = "data-delete-ms"
+findProject(":data:delete:data-delete-multi-ms")?.name = "data-delete-multi-ms"
+findProject(":data:delete:data-delete-query-ms")?.name = "data-delete-query-ms"
 
 //update Sub-Category
 include("data:update:data-update-manager-ms")

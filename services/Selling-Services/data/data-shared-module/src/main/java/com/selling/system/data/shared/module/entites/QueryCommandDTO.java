@@ -19,10 +19,10 @@ public class QueryCommandDTO extends QueryCommand {
             case SAVE_SALE, UPDATE_SALE, DELETE_SALE -> {
                 return toSale(this.payload);
             }
-            case SAVE_SALES, UPDATE_SALES -> {
+            case SAVE_SALES, UPDATE_SALES, DELETE_SALES -> {
                 return toSales(this.payload);
             }
-            case DELETE_SALES -> {
+            case DELETE_QUERY_SALES -> {
                 return this.payload;
             }
         }
