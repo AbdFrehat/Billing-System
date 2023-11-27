@@ -7,11 +7,15 @@ server:
   port: 6017
 
 emit:
-  duration: 1000
+  duration: 100
   max:
     items: 10
     tags: 3
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8002/selling/persistence/eureka/
+      defaultZone: http://localhost:8002/selling/kafka/eureka/
+config:
+  services:
+    context-path:
+      kafka-sale-producer-ms: "http://KAFKA-SALE-PRODUCER-MS/selling/kafka/sale/v1/"

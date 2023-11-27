@@ -23,9 +23,10 @@ public class SalePushService {
 
     private final SaleGeneratorService saleGeneratorService;
 
-    public SalePushService(SaleGeneratorService saleGeneratorService, WebClient.Builder webClientBuilder) {
+    public SalePushService(SaleGeneratorService saleGeneratorService, WebClient.Builder webClientBuilder,
+                           @Value("${config.services.context-path.kafka-sale-producer-ms}") String kafkaSaleProducerMsContextPath) {
         this.saleGeneratorService = saleGeneratorService;
-        this.webClient = webClientBuilder.baseUrl("http://kafka-sale-producer-ms//selling/persistence/sale/v1/").build();
+        this.webClient = webClientBuilder.baseUrl(kafkaSaleProducerMsContextPath).build();
     }
 
     @PostConstruct

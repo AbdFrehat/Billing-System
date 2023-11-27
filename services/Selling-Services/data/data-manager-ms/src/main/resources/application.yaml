@@ -9,7 +9,7 @@ server:
     context-path: /selling/data/manager/sale/v1/
 eureka:
   client:
-    register-with-eureka: false
+    register-with-eureka: true
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:6018/selling/data/manager/sale/v1/eureka/

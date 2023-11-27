@@ -47,10 +47,11 @@ public class QueryObjectToObjectsConvertor {
     public static SaleDocument toSale(Object object) {
         if (object instanceof LinkedHashMap<?, ?> list) {
             try {
+                final Date date = toSaleDate(list);
                 return SaleDocument.builder()
                         .id((String) list.get("id"))
                         .couponUsed((boolean) list.get("couponUsed"))
-                        .saleDate(Date.from(OffsetDateTime.parse((String) list.get("saleDate"), DateTimeFormatter.ISO_OFFSET_DATE_TIME).toInstant()))
+                        .saleDate(date)
                         .purchaseMethod((String) list.get("purchaseMethod"))
                         .customer(toCustomer(list))
                         .storeLocation((String) list.get("storeLocation"))
@@ -62,6 +63,17 @@ public class QueryObjectToObjectsConvertor {
         } else {
             throw new PayloadBadFormatException("Unable to parse the sale part of the payload ");
         }
+    }
+
+    private static Date toSaleDate(LinkedHashMap<?, ?> list) {
+        Object saleDate = list.get("saleDate");
+        Date date;
+        if (saleDate instanceof String) {
+            date = Date.from(OffsetDateTime.parse((String) list.get("saleDate"), DateTimeFormatter.ISO_OFFSET_DATE_TIME).toInstant());
+        } else {
+            date = new Date((Long) saleDate);
+        }
+        return date;
     }
 
     public static List<SaleDocument> toSales(Object object) {

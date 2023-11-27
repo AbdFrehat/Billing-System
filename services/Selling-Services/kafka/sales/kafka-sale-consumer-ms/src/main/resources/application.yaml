@@ -1,3 +1,4 @@
+
 spring:
   application:
     name: kafka-sale-consumer-ms
@@ -14,10 +15,18 @@ spring:
           json:
             value:
               default:
-                type: 'com.sale.persistence.kafka.sale.consumer.entities.Sale'
+                type: 'com.selling.system.shared.module.models.entities.Sale'
       client-id: 1
-  data:
-    mongodb:
-      uri: mongodb://localhost:27017/sample_supplies
-
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:6018/selling/data/manager/sale/v1/eureka/
+config:
+  services:
+    context-path:
+      data-manager-ms: "http://DATA-MANAGER-MS/selling/data/manager/sale/v1/"
+server:
+  port: 7015
 
