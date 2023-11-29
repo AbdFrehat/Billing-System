@@ -1,4 +1,4 @@
-package com.selling.sales;
+package com.selling.system;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
