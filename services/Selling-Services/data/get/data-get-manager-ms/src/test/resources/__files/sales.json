@@ -1,0 +1,703 @@
+{
+  "data": [
+    {
+      "id": "6564e70d70aa55742da6be8d",
+      "saleDate": "2023-11-27T18:59:25.591+00:00",
+      "items": [
+        {
+          "name": "envelopes",
+          "tags": [
+            "general"
+          ],
+          "price": 5.83,
+          "quantity": 3
+        },
+        {
+          "name": "binder",
+          "tags": [
+            "general"
+          ],
+          "price": 5.42,
+          "quantity": 6
+        },
+        {
+          "name": "pens",
+          "tags": [
+            "general",
+            "stationary",
+            "writing"
+          ],
+          "price": 5.9,
+          "quantity": 8
+        },
+        {
+          "name": "backpack",
+          "tags": [
+            "writing"
+          ],
+          "price": 5.95,
+          "quantity": 3
+        },
+        {
+          "name": "laptop",
+          "tags": [
+            "school",
+            "general"
+          ],
+          "price": 5.36,
+          "quantity": 2
+        }
+      ],
+      "storeLocation": "London",
+      "customer": {
+        "gender": "F",
+        "age": 62,
+        "email": "abeper@jo.gt",
+        "satisfaction": 4
+      },
+      "couponUsed": false,
+      "purchaseMethod": "In store"
+    },
+    {
+      "id": "6564e70d70aa55742da6be8c",
+      "saleDate": "2023-11-27T18:59:25.489+00:00",
+      "items": [
+        {
+          "name": "envelopes",
+          "tags": [
+            "office",
+            "kids"
+          ],
+          "price": 5.66,
+          "quantity": 1
+        },
+        {
+          "name": "printer paper",
+          "tags": [
+            "office",
+            "stationary",
+            "school"
+          ],
+          "price": 5.6,
+          "quantity": 8
+        },
+        {
+          "name": "printer paper",
+          "tags": [
+            "organization",
+            "general"
+          ],
+          "price": 5.14,
+          "quantity": 2
+        },
+        {
+          "name": "pens",
+          "tags": [
+            "organization"
+          ],
+          "price": 5.59,
+          "quantity": 7
+        },
+        {
+          "name": "laptop",
+          "tags": [
+            "school",
+            "travel",
+            "kids"
+          ],
+          "price": 5.06,
+          "quantity": 5
+        },
+        {
+          "name": "pens",
+          "tags": [
+            "office"
+          ],
+          "price": 5.53,
+          "quantity": 6
+        }
+      ],
+      "storeLocation": "New York",
+      "customer": {
+        "gender": "F",
+        "age": 22,
+        "email": "ajsuj@ozewutal.bb",
+        "satisfaction": 1
+      },
+      "couponUsed": true,
+      "purchaseMethod": "In store"
+    },
+    {
+      "id": "6564e70d70aa55742da6be8b",
+      "saleDate": "2023-11-27T18:59:25.391+00:00",
+      "items": [
+        {
+          "name": "laptop",
+          "tags": [
+            "kids"
+          ],
+          "price": 5.31,
+          "quantity": 3
+        },
+        {
+          "name": "binder",
+          "tags": [
+            "kids",
+            "electronics",
+            "travel"
+          ],
+          "price": 5.64,
+          "quantity": 5
+        },
+        {
+          "name": "envelopes",
+          "tags": [
+            "kids",
+            "organization",
+            "kids"
+          ],
+          "price": 5.4,
+          "quantity": 5
+        },
+        {
+          "name": "printer paper",
+          "tags": [
+            "travel",
+            "travel",
+            "stationary"
+          ],
+          "price": 5.26,
+          "quantity": 5
+        },
+        {
+          "name": "printer paper",
+          "tags": [
+            "kids"
+          ],
+          "price": 5.58,
+          "quantity": 6
+        },
+        {
+          "name": "binder",
+          "tags": [
+            "organization",
+            "office"
+          ],
+          "price": 5.22,
+          "quantity": 3
+        },
+        {
+          "name": "binder",
+          "tags": [
+            "general",
+            "writing"
+          ],
+          "price": 5.2,
+          "quantity": 1
+        },
+        {
+          "name": "envelopes",
+          "tags": [
+            "travel"
+          ],
+          "price": 5.24,
+          "quantity": 4
+        }
+      ],
+      "storeLocation": "Austin",
+      "customer": {
+        "gender": "M",
+        "age": 24,
+        "email": "aguolaita@im.an",
+        "satisfaction": 2
+      },
+      "couponUsed": true,
+      "purchaseMethod": "Phone"
+    },
+    {
+      "id": "6564e70d70aa55742da6be8a",
+      "saleDate": "2023-11-27T18:59:25.291+00:00",
+      "items": [
+        {
+          "name": "laptop",
+          "tags": [
+            "general",
+            "general"
+          ],
+          "price": 5.62,
+          "quantity": 7
+        },
+        {
+          "name": "pens",
+          "tags": [
+            "office",
+            "stationary",
+            "writing"
+          ],
+          "price": 5.25,
+          "quantity": 3
+        },
+        {
+          "name": "binder",
+          "tags": [
+            "office"
+          ],
+          "price": 5.03,
+          "quantity": 8
+        },
+        {
+          "name": "envelopes",
+          "tags": [
+            "travel"
+          ],
+          "price": 5.59,
+          "quantity": 5
+        },
+        {
+          "name": "envelopes",
+          "tags": [
+            "organization",
+            "organization"
+          ],
+          "price": 5.4,
+          "quantity": 1
+        },
+        {
+          "name": "pens",
+          "tags": [
+            "travel",
+            "electronics",
+            "kids"
+          ],
+          "price": 5.21,
+          "quantity": 5
+        },
+        {
+          "name": "pens",
+          "tags": [
+            "writing",
+            "kids",
+            "electronics"
+          ],
+          "price": 5.71,
+          "quantity": 3
+        },
+        {
+          "name": "envelopes",
+          "tags": [
+            "writing",
+            "office",
+            "stationary"
+          ],
+          "price": 5.42,
+          "quantity": 5
+        }
+      ],
+      "storeLocation": "London",
+      "customer": {
+        "gender": "F",
+        "age": 69,
+        "email": "abe@sezic.im",
+        "satisfaction": 4
+      },
+      "couponUsed": true,
+      "purchaseMethod": "Phone"
+    },
+    {
+      "id": "6564e70d70aa55742da6be89",
+      "saleDate": "2023-11-27T18:59:25.193+00:00",
+      "items": [
+        {
+          "name": "backpack",
+          "tags": [
+            "organization",
+            "school",
+            "writing"
+          ],
+          "price": 5.21,
+          "quantity": 2
+        },
+        {
+          "name": "backpack",
+          "tags": [
+            "school",
+            "stationary"
+          ],
+          "price": 5.72,
+          "quantity": 5
+        },
+        {
+          "name": "binder",
+          "tags": [
+            "travel",
+            "school"
+          ],
+          "price": 5.67,
+          "quantity": 6
+        },
+        {
+          "name": "binder",
+          "tags": [
+            "office",
+            "travel"
+          ],
+          "price": 5.64,
+          "quantity": 4
+        },
+        {
+          "name": "notepad",
+          "tags": [
+            "general",
+            "school",
+            "electronics"
+          ],
+          "price": 5.11,
+          "quantity": 7
+        },
+        {
+          "name": "binder",
+          "tags": [
+            "travel",
+            "school"
+          ],
+          "price": 5.09,
+          "quantity": 4
+        }
+      ],
+      "storeLocation": "San Diego",
+      "customer": {
+        "gender": "M",
+        "age": 59,
+        "email": "adkesgor@cuticih.cd",
+        "satisfaction": 3
+      },
+      "couponUsed": false,
+      "purchaseMethod": "Online"
+    },
+    {
+      "id": "6564e70d70aa55742da6be88",
+      "saleDate": "2023-11-27T18:59:25.093+00:00",
+      "items": [
+        {
+          "name": "envelopes",
+          "tags": [
+            "electronics",
+            "school"
+          ],
+          "price": 5.34,
+          "quantity": 6
+        },
+        {
+          "name": "envelopes",
+          "tags": [
+            "kids",
+            "general"
+          ],
+          "price": 5.73,
+          "quantity": 1
+        },
+        {
+          "name": "envelopes",
+          "tags": [
+            "stationary",
+            "kids",
+            "travel"
+          ],
+          "price": 6.0,
+          "quantity": 7
+        },
+        {
+          "name": "envelopes",
+          "tags": [
+            "general",
+            "writing",
+            "school"
+          ],
+          "price": 5.96,
+          "quantity": 6
+        },
+        {
+          "name": "binder",
+          "tags": [
+            "organization",
+            "general",
+            "organization"
+          ],
+          "price": 5.26,
+          "quantity": 5
+        },
+        {
+          "name": "notepad",
+          "tags": [
+            "organization"
+          ],
+          "price": 5.4,
+          "quantity": 7
+        },
+        {
+          "name": "binder",
+          "tags": [
+            "office"
+          ],
+          "price": 5.79,
+          "quantity": 2
+        },
+        {
+          "name": "backpack",
+          "tags": [
+            "travel"
+          ],
+          "price": 5.78,
+          "quantity": 3
+        }
+      ],
+      "storeLocation": "Austin",
+      "customer": {
+        "gender": "M",
+        "age": 52,
+        "email": "af@bevour.gh",
+        "satisfaction": 3
+      },
+      "couponUsed": true,
+      "purchaseMethod": "Online"
+    },
+    {
+      "id": "6564e70d70aa55742da6be87",
+      "saleDate": "2023-11-27T18:59:24.992+00:00",
+      "items": [
+        {
+          "name": "printer paper",
+          "tags": [
+            "stationary"
+          ],
+          "price": 5.0,
+          "quantity": 3
+        }
+      ],
+      "storeLocation": "London",
+      "customer": {
+        "gender": "M",
+        "age": 70,
+        "email": "ajusen@gul.tw",
+        "satisfaction": 1
+      },
+      "couponUsed": false,
+      "purchaseMethod": "In store"
+    },
+    {
+      "id": "6564e70c70aa55742da6be86",
+      "saleDate": "2023-11-27T18:59:24.893+00:00",
+      "items": [
+        {
+          "name": "envelopes",
+          "tags": [
+            "stationary"
+          ],
+          "price": 5.29,
+          "quantity": 7
+        },
+        {
+          "name": "backpack",
+          "tags": [
+            "office"
+          ],
+          "price": 5.12,
+          "quantity": 6
+        },
+        {
+          "name": "backpack",
+          "tags": [
+            "school",
+            "electronics",
+            "general"
+          ],
+          "price": 5.49,
+          "quantity": 2
+        },
+        {
+          "name": "binder",
+          "tags": [
+            "travel"
+          ],
+          "price": 5.1,
+          "quantity": 2
+        },
+        {
+          "name": "envelopes",
+          "tags": [
+            "stationary",
+            "office"
+          ],
+          "price": 5.78,
+          "quantity": 5
+        },
+        {
+          "name": "printer paper",
+          "tags": [
+            "general",
+            "stationary",
+            "writing"
+          ],
+          "price": 5.2,
+          "quantity": 6
+        },
+        {
+          "name": "printer paper",
+          "tags": [
+            "general",
+            "writing",
+            "writing"
+          ],
+          "price": 5.26,
+          "quantity": 3
+        },
+        {
+          "name": "notepad",
+          "tags": [
+            "kids",
+            "organization",
+            "organization"
+          ],
+          "price": 5.41,
+          "quantity": 8
+        },
+        {
+          "name": "printer paper",
+          "tags": [
+            "electronics"
+          ],
+          "price": 5.49,
+          "quantity": 5
+        }
+      ],
+      "storeLocation": "New York",
+      "customer": {
+        "gender": "M",
+        "age": 51,
+        "email": "afuosu@vi.kn",
+        "satisfaction": 1
+      },
+      "couponUsed": true,
+      "purchaseMethod": "In store"
+    },
+    {
+      "id": "6564e70c70aa55742da6be85",
+      "saleDate": "2023-11-27T18:59:24.793+00:00",
+      "items": [
+        {
+          "name": "backpack",
+          "tags": [
+            "stationary",
+            "general",
+            "electronics"
+          ],
+          "price": 5.99,
+          "quantity": 8
+        },
+        {
+          "name": "printer paper",
+          "tags": [
+            "travel",
+            "writing"
+          ],
+          "price": 5.87,
+          "quantity": 6
+        },
+        {
+          "name": "binder",
+          "tags": [
+            "kids"
+          ],
+          "price": 5.62,
+          "quantity": 2
+        },
+        {
+          "name": "binder",
+          "tags": [
+            "general",
+            "stationary",
+            "organization"
+          ],
+          "price": 5.38,
+          "quantity": 6
+        },
+        {
+          "name": "envelopes",
+          "tags": [
+            "kids",
+            "office"
+          ],
+          "price": 5.62,
+          "quantity": 2
+        },
+        {
+          "name": "laptop",
+          "tags": [
+            "electronics",
+            "kids",
+            "writing"
+          ],
+          "price": 5.82,
+          "quantity": 7
+        },
+        {
+          "name": "pens",
+          "tags": [
+            "school"
+          ],
+          "price": 5.41,
+          "quantity": 7
+        }
+      ],
+      "storeLocation": "Austin",
+      "customer": {
+        "gender": "M",
+        "age": 62,
+        "email": "adkesgor@cuticih.cd",
+        "satisfaction": 4
+      },
+      "couponUsed": false,
+      "purchaseMethod": "In store"
+    },
+    {
+      "id": "6564e70c70aa55742da6be84",
+      "saleDate": "2023-11-27T18:59:24.693+00:00",
+      "items": [
+        {
+          "name": "laptop",
+          "tags": [
+            "school"
+          ],
+          "price": 5.87,
+          "quantity": 9
+        },
+        {
+          "name": "laptop",
+          "tags": [
+            "stationary"
+          ],
+          "price": 5.95,
+          "quantity": 1
+        },
+        {
+          "name": "notepad",
+          "tags": [
+            "organization",
+            "kids"
+          ],
+          "price": 5.82,
+          "quantity": 7
+        }
+      ],
+      "storeLocation": "Seattle",
+      "customer": {
+        "gender": "F",
+        "age": 23,
+        "email": "afnag@nem.pf",
+        "satisfaction": 4
+      },
+      "couponUsed": false,
+      "purchaseMethod": "In store"
+    }
+  ]
+}

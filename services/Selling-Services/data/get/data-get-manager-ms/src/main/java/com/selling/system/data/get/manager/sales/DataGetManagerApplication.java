@@ -10,8 +10,6 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
         "com.selling.system.data.get.manager.sales",
         "com.selling.system.shared.module"
 })
-@EnableDiscoveryClient
-@EnableEurekaServer
 public class DataGetManagerApplication {
 
     public static void main(String[] args) {

@@ -3,6 +3,9 @@ spring:
     base-path: /selling/data/get/manager/sale/v1/
   application:
     name: data-get-manager-ms
+  cloud:
+    discovery:
+      enabled: true
 server:
   port: 6019
   servlet:

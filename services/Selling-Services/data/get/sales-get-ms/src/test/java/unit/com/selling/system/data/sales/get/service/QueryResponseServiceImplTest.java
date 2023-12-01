@@ -8,7 +8,6 @@ import com.selling.system.shared.module.models.commands.QueryField;
 import com.selling.system.shared.module.models.commands.SortField;
 import com.selling.system.shared.module.models.enums.FieldType;
 import com.selling.system.shared.module.models.enums.QueryMethod;
-import com.selling.system.shared.module.models.responses.QueryResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,9 +69,6 @@ class QueryResponseServiceImplTest {
                         .saleDate(new Date())
                         .purchaseMethod("IN_STORE")
                         .build());
-        QueryResponse queryResponse = QueryResponse.builder()
-                .data(sales)
-                .build();
         when(salesService.getSales(queryCommand))
                 .thenReturn(Flux.fromIterable(sales));
         StepVerifier.create(queryResponseService.buildQueryResponse(queryCommand))

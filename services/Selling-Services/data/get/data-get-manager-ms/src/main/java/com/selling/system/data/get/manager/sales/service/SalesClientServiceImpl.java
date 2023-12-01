@@ -3,6 +3,7 @@ package com.selling.system.data.get.manager.sales.service;
 import com.selling.system.shared.module.models.commands.QueryCommand;
 import com.selling.system.shared.module.models.enums.QueryMethod;
 import com.selling.system.shared.module.models.responses.QueryResponse;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -46,7 +47,7 @@ public class SalesClientServiceImpl implements SalesClientService {
                 .bodyToMono(QueryResponse.class);
     }
 
-    private String getUri(QueryMethod queryMethod) {
+    private String getUri(QueryMethod queryMethod) throws IllegalArgumentException {
         return switch (queryMethod) {
             case GET_SALES -> servicesContextPath.get("data-get-ms");
             case GET_FREE_SALES -> servicesContextPath.get("data-get-free-ms");

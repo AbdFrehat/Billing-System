@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
-import static com.selling.system.data.shared.module.convertors.QueryObjectToObjectsConvertor.toSale;
+import static com.selling.system.data.shared.module.convertors.ObjectToSalesConvertor.toSale;
 
 @Service
 @Slf4j

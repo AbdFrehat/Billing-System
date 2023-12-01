@@ -14,7 +14,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 @Slf4j
-public class QueryObjectToObjectsConvertor {
+public class ObjectToSalesConvertor {
 
     public static SaleDocument toSale(Object object) {
         if (object instanceof LinkedHashMap<?, ?> list) {
@@ -43,7 +43,7 @@ public class QueryObjectToObjectsConvertor {
     public static List<SaleDocument> toSales(Object object) {
         if (object instanceof List<?> list) {
             try {
-                return list.stream().map(QueryObjectToObjectsConvertor::toSale).toList();
+                return list.stream().map(ObjectToSalesConvertor::toSale).toList();
             } catch (Exception e) {
                 throw new PayloadBadFormatException("Unable to parse the sales part of the payload ");
             }

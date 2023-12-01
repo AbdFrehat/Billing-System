@@ -1,23 +1,17 @@
-package com.selling.system.data.get.manager.sales.config;
+package com.selling.system.data.get.manager.sales.sales.config;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.client.WebClient;
 
-@Configuration
-@ConditionalOnProperty("spring.cloud.discovery.enabled")
+@TestConfiguration
 public class WebClientInit {
 
-    /**
-     * Creates a web client builder bean to be used by the service to call other ones.
-     *
-     * @return {@link WebClient.Builder}
-     */
     @Bean
-    @LoadBalanced
-    public WebClient.Builder webClientBuilder() {
+    WebClient.Builder webClientBuilder() {
         return WebClient.builder();
     }
 }

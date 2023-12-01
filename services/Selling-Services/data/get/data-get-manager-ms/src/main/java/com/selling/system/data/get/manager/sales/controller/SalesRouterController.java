@@ -34,7 +34,7 @@ public class SalesRouterController {
      * @return {@link Mono}<{@link ResponseEntity}<{@link QueryResponse}>>
      */
     @PostMapping
-    public Mono<ResponseEntity<QueryResponse>> routeQueryServe(@RequestBody @Valid QueryCommand queryCommand) {
+    public Mono<ResponseEntity<QueryResponse>> routeDataServices(@RequestBody @Valid QueryCommand queryCommand) {
         return salesClientService.sendRequest(queryCommand)
                 .map(queryResponse -> ResponseEntity.ok().body(queryResponse));
     }
