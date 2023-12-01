@@ -4,7 +4,9 @@
 
 ---
 
-The sales-get-ms microservice is used to receive a Query command object, build the Query request and send it to the MongoDB server to retrieve the data.
+The sales-get-ms microservice is used to parse the query command, parse it as a mongo query command, and send it to the server to retrieve the results and send it back to the client.
+
+the type of the query command that works with, is and operator between all the sent criteria in the query fields part of the request.
 
 #### Endpoints
 
@@ -12,7 +14,7 @@ The sales-get-ms microservice is used to receive a Query command object, build t
 
 ##### It exposes only one endpoint at the following URL:
 
-`POST  /selling/query/get/sale/[version]/`
+`POST  /selling/data/get/query/sale/[version]/`
 
 ##### The `QueryCommand` request body of the end point has the following structure:
 

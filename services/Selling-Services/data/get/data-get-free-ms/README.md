@@ -6,13 +6,15 @@
 
 The sales-free-get-ms microservice is used to perform a free text search on the string fields of the sales documents.
 
+the type of the query command that works with, is a free text search on the value field of the first element of the queryFields array.
+
 #### Endpoints
 
 ---
 
 ##### It exposes only one endpoint at the following URL:
 
-`POST  /selling/query/get/free/sale/[version]/`
+`POST  /selling/data/get/free/sale/[version]/`
 
 ##### The `QueryCommand` request body of the end point has the following structure:
 

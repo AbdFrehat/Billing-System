@@ -6,6 +6,8 @@
 
 The sales-opt-get-ms microservice is used to receive a Query command object, build the Query request based on a logical expression and send it to the MongoDB server to retrieve the data.
 
+the type of the query command that works with, depends on the logical expression in the expression field.
+
 #### Endpoints
 
 ---
