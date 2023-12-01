@@ -27,6 +27,5 @@ public class QueryResponseServiceImpl implements QueryResponseService {
         }
         log.info("GET_SALES Command is called");
         return QueryResponseMapperUtil.mapFluxToResponse(salesService.getSales(queryCommand));
-
     }
 }

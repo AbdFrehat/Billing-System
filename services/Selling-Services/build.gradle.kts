@@ -56,7 +56,8 @@ allprojects {
             java.srcDirs("src/main/java")
         }
         test {
-            java.srcDirs("src/test/java")
+            java.srcDirs("src/test/java/unit")
+            java.srcDirs("src/test/java/integration")
         }
     }
 
