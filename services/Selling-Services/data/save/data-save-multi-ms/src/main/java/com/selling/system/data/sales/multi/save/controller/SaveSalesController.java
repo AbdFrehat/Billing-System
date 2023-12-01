@@ -1,7 +1,7 @@
 package com.selling.system.data.sales.multi.save.controller;
 
-import com.selling.system.data.shared.module.entites.QueryCommandDTO;
 import com.selling.system.data.shared.module.service.QueryResponseService;
+import com.selling.system.shared.module.models.commands.QueryCommand;
 import com.selling.system.shared.module.models.responses.QueryResponse;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +22,7 @@ public class SaveSalesController {
     }
 
     @PostMapping
-    Mono<ResponseEntity<QueryResponse>> saveSales(@RequestBody @Valid QueryCommandDTO queryCommand) {
+    Mono<ResponseEntity<QueryResponse>> saveSales(@RequestBody @Valid QueryCommand queryCommand) {
         log.info("saveSale endpoint is called with {} command.", queryCommand);
         return queryResponseService.buildQueryResponse(queryCommand);
     }

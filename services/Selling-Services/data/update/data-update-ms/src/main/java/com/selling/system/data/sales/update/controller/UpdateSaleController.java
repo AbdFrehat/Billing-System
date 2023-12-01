@@ -1,7 +1,7 @@
 package com.selling.system.data.sales.update.controller;
 
-import com.selling.system.data.shared.module.entites.QueryCommandDTO;
 import com.selling.system.data.shared.module.service.QueryResponseService;
+import com.selling.system.shared.module.models.commands.QueryCommand;
 import com.selling.system.shared.module.models.responses.QueryResponse;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +22,7 @@ public class UpdateSaleController {
     }
 
     @PostMapping
-    Mono<ResponseEntity<QueryResponse>> updateSale(@RequestBody @Valid QueryCommandDTO queryCommand) {
+    Mono<ResponseEntity<QueryResponse>> updateSale(@RequestBody @Valid QueryCommand queryCommand) {
         log.info("updateSale endpoint is called with {} command.", queryCommand);
         return queryResponseService.buildQueryResponse(queryCommand);
     }
