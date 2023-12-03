@@ -1,0 +1,91 @@
+version: '3'
+
+services:
+  data-manager-ms:
+    build:
+      context: ./data-manager-ms
+    ports:
+      - "6018:6018"
+    networks:
+      - selling-system-network
+    environment:
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE=http://data-manager-ms:6018/selling/data/manager/sale/v1/eureka/
+      - SPRING_PROFILE=prod
+
+  data-delete-manager-ms:
+    build:
+      context: ./delete/data-delete-manager-ms
+    ports:
+      - "6026:6026"
+    networks:
+      - selling-system-network
+    depends_on:
+      - data-manager-ms
+    environment:
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE=http://data-manager-ms:6018/selling/data/manager/sale/v1/eureka/
+      - SPRING_PROFILE=prod
+
+  sale-delete-ms:
+      build:
+        context: ./delete/sale-delete-ms
+      ports:
+        - "6027:6027"
+      networks:
+        - selling-system-network
+      depends_on:
+        - selling-system-database
+        - data-delete-manager-ms
+      environment:
+        - EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE=http://data-manager-ms:6018/selling/data/manager/sale/v1/eureka/
+        - SPRING_DATA_MONGO_URI=mongodb://admin:123@selling-system-database:27017/
+        - SPRING_PROFILE=prod
+
+  sales-delete-ms:
+      build:
+        context: ./delete/sales-delete-ms
+      ports:
+        - "6028:6028"
+      networks:
+        - selling-system-network
+      depends_on:
+        - selling-system-database
+        - data-delete-manager-ms
+      environment:
+        - EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE=http://data-manager-ms:6018/selling/data/manager/sale/v1/eureka/
+        - SPRING_DATA_MONGO_URI=mongodb://admin:123@selling-system-database:27017/
+        - SPRING_PROFILE=prod
+
+  sale-delete-query-ms:
+    build:
+      context: ./delete/sale-delete-query-ms
+    ports:
+      - "6029:6029"
+    networks:
+      - selling-system-network
+    depends_on:
+      - selling-system-database
+      - data-delete-manager-ms
+    environment:
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE=http://data-manager-ms:6018/selling/data/manager/sale/v1/eureka/
+      - SPRING_DATA_MONGO_URI=mongodb://admin:123@selling-system-database:27017/
+      - SPRING_PROFILE=prod
+
+  selling-system-database:
+    image: mongo
+    container_name: selling-system-database
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: 123
+    networks:
+      - selling-system-network
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+    mongodb_data:
+
+networks:
+  selling-system-network:
+

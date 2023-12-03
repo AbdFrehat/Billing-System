@@ -2,10 +2,11 @@ spring:
   webflux:
     base-path: /selling/data/delete/sales/query/v1/
   application:
-    name: data-delete-query-ms
+    name: sale-delete-query-ms
   data:
     mongodb:
       uri: mongodb://localhost:27017/sample_supplies
+      database: sample_supplies
 server:
   port: 6029
 eureka:

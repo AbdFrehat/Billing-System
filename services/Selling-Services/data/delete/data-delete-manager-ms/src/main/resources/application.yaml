@@ -23,6 +23,6 @@ springdoc:
 config:
   services:
     context-path:
-      data-delete-ms: "http://DATA-DELETE-MS/selling/data/delete/sale/v1/"
-      data-delete-multi-ms: "http://DATA-DELETE-MULTI-MS/selling/data/delete/sales/v1/"
-      data-delete-query-ms: "http://DATA-DELETE-QUERY-MS/selling/data/delete/sales/query/v1/"
+      data-delete-ms: "http://SALE-DELETE-MS/selling/data/delete/sale/v1/"
+      data-delete-multi-ms: "http://SALES-DELETE-MS/selling/data/delete/sales/v1/"
+      data-delete-query-ms: "http://SALES-DELETE-QUERY-MS/selling/data/delete/sales/query/v1/"

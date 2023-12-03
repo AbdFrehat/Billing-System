@@ -36,12 +36,7 @@ public class SalesRepositoryImpl implements SalesRepository {
     }
 
     /**
-     * This method is used to retrieve one or more sales documents based on the provided query.
-     *
-     * @param query {@link Query} contains the needed documents to be retrieved from the database.
-     * @return {@link Flux}<{@link SaleDocument}> which represents the retrieved sales based on the provided query.
-     * @author Abd Frehat
-     * @since 1.0
+     * {@inheritDoc}
      */
     @Override
     public Flux<SaleDocument> getSales(Query query) {
@@ -49,12 +44,7 @@ public class SalesRepositoryImpl implements SalesRepository {
     }
 
     /**
-     * This method is used to save  sales object in the database.
-     *
-     * @param sale: {@link SaleDocument}
-     * @return {@link Mono}<{@link SaleDocument}> which contains the saved document with the assigned identity.
-     * @author Abd Frehat
-     * @since 1.0
+     * {@inheritDoc}
      */
     @Override
     @Transactional
@@ -63,12 +53,7 @@ public class SalesRepositoryImpl implements SalesRepository {
     }
 
     /**
-     * This method is used to save list of sales objects in single batch.
-     *
-     * @param sales: {@link List}<{@link SaleDocument}>
-     * @return {@link Flux}<{@link SaleDocument}> which contains the saved documents with the assigned identities.
-     * @author Abd Frehat
-     * @since 1.0
+     * {@inheritDoc}
      */
     @Override
     public Flux<SaleDocument> saveSales(List<SaleDocument> sales) {
@@ -76,12 +61,7 @@ public class SalesRepositoryImpl implements SalesRepository {
     }
 
     /**
-     * This method is used to update the provided sale.
-     *
-     * @param sale {@link SaleDocument} contains sale object which will be updated with the new object values
-     * @return {@link Mono}<{@link DeleteResult}> which represents the updated sale object from the database.
-     * @author Abd Frehat
-     * @since 1.0
+     * {@inheritDoc}
      */
     @Override
     public Mono<SaleDocument> updateSale(SaleDocument sale) {
@@ -89,12 +69,7 @@ public class SalesRepositoryImpl implements SalesRepository {
     }
 
     /**
-     * This method is used to update the provided sale.
-     *
-     * @param sales: {@link List}<{@link SaleDocument}> contains list of sale objects which will be updated with the new objects values
-     * @return {@link Flux}<{@link SaleDocument}> which represents the updated sales objects from the database.
-     * @author Abd Frehat
-     * @since 1.0
+     * {@inheritDoc}
      */
     @Override
     public Flux<SaleDocument> updateSales(List<SaleDocument> sales) {
@@ -102,12 +77,7 @@ public class SalesRepositoryImpl implements SalesRepository {
     }
 
     /**
-     * This method is used to delete the provided sale object from the database.
-     *
-     * @param sale {@link SaleDocument} contains the needed sale to be deleted from the database.
-     * @return {@link Mono}<{@link DeleteResult}> which represents status of deleted documents.
-     * @author Abd Frehat
-     * @since 1.0
+     * {@inheritDoc}
      */
     @Override
     public Mono<DeleteResult> deleteSale(SaleDocument sale) {
@@ -116,12 +86,7 @@ public class SalesRepositoryImpl implements SalesRepository {
 
 
     /**
-     * This method is used to delete one or more sales documents based on the provided query.
-     *
-     * @param query {@link Query} contains the needed documents to be deleted from the database.
-     * @return {@link Mono}<{@link DeleteResult}> which represents status of deleted documents.
-     * @author Abd Frehat
-     * @since 1.0
+     * {@inheritDoc}
      */
     @Override
     public Mono<DeleteResult> deleteSalesByQuery(Query query) {
