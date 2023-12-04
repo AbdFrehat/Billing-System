@@ -4,6 +4,7 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost:27017/sample_supplies
+      database: sample_supplies
   application:
     name: data-get-ms
   autoconfigure:

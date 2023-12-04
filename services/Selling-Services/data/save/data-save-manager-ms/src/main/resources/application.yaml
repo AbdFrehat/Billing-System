@@ -23,5 +23,5 @@ springdoc:
 config:
   services:
     context-path:
-      data-save-ms: "http://DATA-SAVE-MS/selling/data/save/sale/v1/"
-      data-save-multi-ms: "http://DATA-SAVE-MULTI-MS/selling/data/save/sales/v1/"
+      data-save-ms: "http://SALE-SAVE-MS/selling/data/save/sale/v1/"
+      data-save-multi-ms: "http://SALES-SAVE-MS/selling/data/save/sales/v1/"

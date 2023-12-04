@@ -1,0 +1,11 @@
+server:
+  port: 6023
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE}
+config:
+  services:
+    context-path:
+      data-save-ms: "http://SALE-SAVE-MS/selling/data/save/sale/v1/"
+      data-save-multi-ms: "http://SALES-SAVE-MS/selling/data/save/sales/v1/"

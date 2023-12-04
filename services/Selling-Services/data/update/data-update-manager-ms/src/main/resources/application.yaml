@@ -23,5 +23,5 @@ springdoc:
 config:
   services:
     context-path:
-      data-update-ms: "http://DATA-UPDATE-MS/selling/data/update/sale/v1/"
-      data-update-multi-ms: "http://DATA-UPDATE-MULTI-MS/selling/data/update/sales/v1/"
+      data-update-ms: "http://SALE-UPDATE-MS/selling/data/update/sale/v1/"
+      data-update-multi-ms: "http://SALES-MULTI-MS/selling/data/update/sales/v1/"

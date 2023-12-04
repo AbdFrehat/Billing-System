@@ -1,0 +1,10 @@
+spring:
+  data:
+    mongodb:
+      uri: ${SPRING_DATA_MONGO_URI}
+server:
+  port: 6031
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE}

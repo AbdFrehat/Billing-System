@@ -2,10 +2,11 @@ spring:
   webflux:
     base-path: /selling/data/update/sale/v1/
   application:
-    name: data-update-ms
+    name: sale-update-ms
   data:
     mongodb:
       uri: mongodb://localhost:27017/sample_supplies
+      database: sample_supplies
 server:
   port: 6031
 eureka:

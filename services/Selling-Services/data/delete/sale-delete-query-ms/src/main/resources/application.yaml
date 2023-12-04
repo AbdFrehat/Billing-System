@@ -2,7 +2,7 @@ spring:
   webflux:
     base-path: /selling/data/delete/sales/query/v1/
   application:
-    name: sale-delete-query-ms
+    name: sales-delete-query-ms
   data:
     mongodb:
       uri: mongodb://localhost:27017/sample_supplies
