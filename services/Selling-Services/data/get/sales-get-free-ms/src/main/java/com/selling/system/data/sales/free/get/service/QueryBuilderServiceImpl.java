@@ -50,7 +50,9 @@ public class QueryBuilderServiceImpl implements QueryBuilderService {
             addPageable(queryCommand, query);
             addSorting(queryCommand, query);
         }
-        query.fields().exclude(queryCommand.getExcludedFields());
+        if (queryCommand.getExcludedFields() != null && queryCommand.getExcludedFields().length > 0) {
+            query.fields().exclude(queryCommand.getExcludedFields());
+        }
         return query;
     }
 

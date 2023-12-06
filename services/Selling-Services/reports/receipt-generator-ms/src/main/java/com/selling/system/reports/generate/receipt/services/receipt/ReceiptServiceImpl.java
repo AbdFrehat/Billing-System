@@ -1,9 +1,7 @@
 package com.selling.system.reports.generate.receipt.services.receipt;
 
 import com.selling.system.reports.generate.receipt.client.CalcPriceClient;
-import com.selling.system.reports.generate.receipt.models.entities.RecieptSale;
-import com.selling.system.shared.module.models.entities.Sale;
-import com.selling.system.reports.generate.receipt.models.responses.CalcPriceResponse;
+import com.selling.system.reports.generate.receipt.client.DataManagerClient;
 import com.selling.system.reports.generate.receipt.services.jasper.ReportService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.Resource;
@@ -24,29 +22,29 @@ public class ReceiptServiceImpl implements ReceiptService {
 
     private final CalcPriceClient calcPriceClient;
 
-    public ReceiptServiceImpl(ResourceLoader resourceLoader, ReportService reportService, CalcPriceClient calcPriceClient) {
+    private final DataManagerClient dataManagerClient;
+
+    public ReceiptServiceImpl(ResourceLoader resourceLoader, ReportService reportService,
+                              CalcPriceClient calcPriceClient, DataManagerClient dataManagerClient) {
         this.resourceLoader = resourceLoader;
         this.reportService = reportService;
         this.calcPriceClient = calcPriceClient;
+        this.dataManagerClient = dataManagerClient;
     }
 
     @Override
-    public Mono<byte[]> generateReport(RecieptSale sale) {
+    public Mono<byte[]> generateReport(String saleIdle) {
         Resource resource = resourceLoader.getResource("classpath:jasper/saleReceipt.jrxml");
-        return retrieveCalcPriceResponse(sale).flatMap(calcPriceResponse -> {
-            try {
-                return Mono.just(reportService.createReport(sale, resource));
-            } catch (IOException e) {
-                log.error("Jasper Report is not found in order to generate the Receipt");
-            }
-            return Mono.empty();
-        });
-    }
-
-    private Mono<CalcPriceResponse> retrieveCalcPriceResponse(RecieptSale sale) {
-        return calcPriceClient.retrieveCalcPrice(sale.getItems()).doOnSuccess(calcPriceResponse -> {
-            sale.setTotalQuantity(calcPriceResponse.getTotalQuantity());
-            sale.setTotalPrice(calcPriceResponse.getTotalPrice());
-        });
+        return dataManagerClient.retrieveSale(saleIdle)
+                .flatMap(sale -> calcPriceClient.retrieveCalcPrice(sale.getItems())
+                        .flatMap(calcPriceResponse -> {
+                            try {
+                                return Mono.just(reportService.createReport(sale, calcPriceResponse, resource));
+                            } catch (IOException e) {
+                                log.error("Jasper Report is not found in order to generate the Receipt");
+                            }
+                            return Mono.empty();
+                        })
+                );
     }
 }

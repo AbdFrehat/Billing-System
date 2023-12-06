@@ -2,12 +2,12 @@ spring:
   application:
     name: sales-source-ms
   webflux:
-    base-path: /selling/source/poll/sale/v1/
+    base-path: /selling/source/pull/sale/v1/
 server:
   port: 6016
 
 emit:
-  duration: 1000
+  duration: 100
   max:
     items: 10
     tags: 3

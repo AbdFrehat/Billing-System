@@ -1,0 +1,39 @@
+version: '3'
+
+
+services:
+  sales-pull-ms:
+    build:
+      context: ./sales-pull-ms
+    ports:
+      - "6016:6016"
+    environment:
+      - SPRING_PROFILE=prod
+      - NUMBER_ITEMS=10
+      - EMIT_DURATION=1000
+      - NUMBER_TAGS=3
+    networks:
+      - network
+
+  sales-push-ms:
+    build:
+      context: ./sales-push-ms
+    ports:
+      - "6017:6017"
+    environment:
+      - SPRING_PROFILE=prod
+      - NUMBER_ITEMS=10
+      - NUMBER_TAGS=3
+      - EMIT_DURATION=100
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE=http://kafka-eureka-server:8002/selling/kafka/eureka/
+    networks:
+      - network
+      - sales_network
+      - kafka_network
+
+networks:
+  network:
+  sales_network :
+    external: true
+  kafka_network:
+    external: true

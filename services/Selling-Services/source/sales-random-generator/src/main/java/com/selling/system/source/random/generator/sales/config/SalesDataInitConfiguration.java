@@ -31,7 +31,7 @@ public class SalesDataInitConfiguration {
     @Bean
     public SalesData salesData() {
         try {
-            return objectMapper.readValue(resource.getFile(), SalesData.class);
+            return objectMapper.readValue(resource.getInputStream(), SalesData.class);
         } catch (IOException e) {
             log.error("Unable to read sales.data.json: {}", e.getMessage());
             SpringApplication.exit(context, () -> 0);

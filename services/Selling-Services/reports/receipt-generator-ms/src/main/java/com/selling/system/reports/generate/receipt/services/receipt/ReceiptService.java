@@ -6,6 +6,6 @@ import reactor.core.publisher.Mono;
 
 public interface ReceiptService {
 
-    Mono<byte[]> generateReport(RecieptSale sale);
+    Mono<byte[]> generateReport(String saleId);
 
 }

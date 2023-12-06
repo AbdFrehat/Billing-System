@@ -1,0 +1,7 @@
+server:
+  port: 6016
+emit:
+  duration: ${EMIT_DURATION}
+  max:
+    items: ${NUMBER_ITEMS}
+    tags: ${NUMBER_TAGS}

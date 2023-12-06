@@ -57,8 +57,7 @@ public class QueryCommand implements QueryCommandAbstract {
     protected SortField sortField;
 
     @JsonProperty(value = "exclude")
-    @Builder.Default
-    private String[] excludedFields = new String[1];
+    private String[] excludedFields;
 
     /**
      * The payload to do the operation on like DELETE, SAVE and UPDATE object(s)

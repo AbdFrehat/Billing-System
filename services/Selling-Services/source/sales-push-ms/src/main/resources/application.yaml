@@ -1,6 +1,6 @@
 spring:
   application:
-    name: sales-source-ms
+    name: sales-push-ms
   webflux:
     base-path:  /selling/source/push/sale/v1/
 server:

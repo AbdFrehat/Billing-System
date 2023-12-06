@@ -7,7 +7,7 @@ services:
     ports:
       - "6018:6018"
     networks:
-      - data-category-network
+      - network
     environment:
       - EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE=http://data-manager-ms:6018/selling/data/manager/sale/v1/eureka/
       - SPRING_PROFILE=prod
@@ -16,7 +16,7 @@ services:
     build:
       context: ./get/data-get-manager-ms
     networks:
-      - data-category-network
+      - network
     depends_on:
       - data-manager-ms
     environment:
@@ -27,7 +27,7 @@ services:
     build:
       context: ./get/sales-get-free-ms
     networks:
-      - data-category-network
+      - network
     depends_on:
       - data-get-manager-ms
     environment:
@@ -39,7 +39,7 @@ services:
     build:
       context: ./get/sales-get-ms
     networks:
-      - data-category-network
+      - network
     depends_on:
       - data-get-manager-ms
     environment:
@@ -51,7 +51,7 @@ services:
     build:
       context: ./get/sales-get-opt-ms
     networks:
-      - data-category-network
+      - network
     depends_on:
       - data-get-manager-ms
     environment:
@@ -63,7 +63,7 @@ services:
     build:
       context: ./save/data-save-manager-ms
     networks:
-      - data-category-network
+      - network
     depends_on:
       - data-manager-ms
     environment:
@@ -74,7 +74,7 @@ services:
     build:
       context: ./save/sale-save-ms
     networks:
-      - data-category-network
+      - network
     depends_on:
       - data-save-manager-ms
     environment:
@@ -86,7 +86,7 @@ services:
     build:
       context: ./save/sales-save-ms
     networks:
-      - data-category-network
+      - network
     depends_on:
       - data-save-manager-ms
     environment:
@@ -98,7 +98,7 @@ services:
     build:
       context: ./update/data-update-manager-ms
     networks:
-      - data-category-network
+      - network
     depends_on:
       - data-manager-ms
     environment:
@@ -109,7 +109,7 @@ services:
     build:
       context: ./update/sale-update-ms
     networks:
-      - data-category-network
+      - network
     depends_on:
       - selling-system-database
       - data-update-manager-ms
@@ -122,7 +122,7 @@ services:
     build:
       context: ./update/sales-update-ms
     networks:
-      - data-category-network
+      - network
     depends_on:
       - selling-system-database
       - data-update-manager-ms
@@ -135,7 +135,7 @@ services:
     build:
       context: ./delete/data-delete-manager-ms
     networks:
-      - data-category-network
+      - network
     depends_on:
       - data-manager-ms
     environment:
@@ -146,7 +146,7 @@ services:
       build:
         context: ./delete/sale-delete-ms
       networks:
-        - data-category-network
+        - network
       depends_on:
         - selling-system-database
         - data-delete-manager-ms
@@ -159,7 +159,7 @@ services:
       build:
         context: ./delete/sales-delete-ms
       networks:
-        - data-category-network
+        - network
       depends_on:
         - selling-system-database
         - data-delete-manager-ms
@@ -172,7 +172,7 @@ services:
     build:
       context: ./delete/sale-delete-query-ms
     networks:
-      - data-category-network
+      - network
     depends_on:
       - selling-system-database
       - data-delete-manager-ms
@@ -190,7 +190,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: 123
     networks:
-      - data-category-network
+      - network
     volumes:
       - mongodb_data:/data/db
 
@@ -198,5 +198,6 @@ volumes:
     mongodb_data:
 
 networks:
-  data-category-network:
+  network:
 
+x-docker-pr

@@ -46,12 +46,13 @@ public class QueryBuilderServiceImpl implements QueryBuilderService {
         queryCommand.getQueryFields().forEach((s, queryField) -> {
             query.addCriteria(CriteriaBuilderUtil.buildCriteria(queryField));
         });
-        log.info("ExpressionBuilder: {}", expressionBuilder);
-        if(!queryCommand.isCount()) {
+        if (!queryCommand.isCount()) {
             addPageable(queryCommand, query);
             addSorting(queryCommand, query);
         }
-        query.fields().exclude(queryCommand.getExcludedFields());
+        if (queryCommand.getExcludedFields() != null && queryCommand.getExcludedFields().length > 0) {
+            query.fields().exclude(queryCommand.getExcludedFields());
+        }
         return query;
     }
 
