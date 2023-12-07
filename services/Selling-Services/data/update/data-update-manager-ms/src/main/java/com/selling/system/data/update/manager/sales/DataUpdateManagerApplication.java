@@ -3,7 +3,6 @@ package com.selling.system.data.update.manager.sales;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 
 @SpringBootApplication(scanBasePackages = {
@@ -11,7 +10,6 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
         "com.selling.system.shared.module"
 })
 @EnableDiscoveryClient
-@EnableEurekaServer
 public class DataUpdateManagerApplication {
 
     public static void main(String[] args) {

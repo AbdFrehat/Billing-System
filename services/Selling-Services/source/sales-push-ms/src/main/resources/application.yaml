@@ -14,7 +14,7 @@ emit:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8002/selling/kafka/eureka/
+      defaultZone: http://localhost:8000/selling/eureka/
 config:
   services:
     context-path:

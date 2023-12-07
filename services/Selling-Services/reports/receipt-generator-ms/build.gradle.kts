@@ -14,7 +14,7 @@ dependencies {
 	implementation("jakarta.validation:jakarta.validation-api:${project.findProperty("jakartaValidationApiVersion")}")
 	implementation("net.sf.jasperreports:jasperreports:${project.findProperty("jasperReportsVersion")}")
 	implementation("com.github.librepdf:openpdf:${project.findProperty("openPdfVersion")}")
-	implementation(project(":shared-module"))
+	implementation(project(":shared:shared-module"))
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
 }

@@ -1,0 +1,29 @@
+services:
+  eureka-server:
+    ports:
+      - "8000:8000"
+    build:
+      context: ./eureka-server
+    environment:
+      SPRING_PROFILE: prod
+    networks:
+      - network
+
+  selling-system-database:
+    image: mongo
+    container_name: selling-system-database
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: 123
+    networks:
+      - network
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:
+
+networks:
+  network:

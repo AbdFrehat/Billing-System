@@ -73,17 +73,6 @@ services:
     networks:
       - network
 
-  kafka-eureka-server:
-    build:
-      context: ./kafka-eureka-server
-    environment:
-      - EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE=http://kafka-eureka-server:8002/selling/kafka/eureka/
-      - SPRING_PROFILE=prod
-    networks:
-      - network
-    ports:
-      - "8002:8002"
-
 volumes:
   conduktor_data: { }
 

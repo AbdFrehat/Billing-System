@@ -4,27 +4,21 @@ rootProject.name = "Selling-Services"
 include("fetch:fetch-items-ms")
 include("fetch:fetch-stores-ms")
 include("fetch:fetch-customer-ms")
-include("fetch:fetch-eureka-server")
 findProject(":fetch:fetch-items-ms")?.name = "fetch-items-ms"
 findProject(":fetch:fetch-stores-ms")?.name = "fetch-stores-ms"
 findProject(":fetch:fetch-customer-ms")?.name = "fetch-customer-ms"
-findProject(":fetch:fetch-eureka-server")?.name = "fetch-eureka-server"
 
 //Reports Category
 include("reports:receipt-generator-ms")
 include("reports:calc-price-ms")
-include("reports:report-eureka-server")
 findProject(":reports:receipt-generator-ms")?.name = "receipt-generator-ms"
 findProject(":reports:calc-price-ms")?.name = "calc-price-ms"
-findProject(":reports:report-eureka-server")?.name = "report-eureka-server"
 
 //Kafka Category
 include("kafka:sales:kafka-sale-producer-ms")
 include("kafka:sales:kafka-sale-consumer-ms")
-include("kafka:kafka-eureka-server")
 findProject(":kafka:sales:kafka-sale-producer-ms")?.name = "kafka-sale-producer-ms"
 findProject(":kafka:sales:kafka-sale-consumer-ms")?.name = "kafka-sale-consumer-ms"
-findProject(":kafka:persistence-eureka-server")?.name = "kafka-eureka-server"
 
 
 //Source Category
@@ -77,10 +71,11 @@ findProject(":data:update:data-update-manager-ms")?.name = "data-update-manager-
 findProject(":data:update:sale-update-ms")?.name = "sale-update-ms"
 findProject(":data:update:sales-update-ms")?.name = "sales-update-ms"
 
-//Commons
-include("shared-module")
-include("skeleton")
-
+//Shared
+include(":shared:shared-module")
+include("shared:eureka-server")
+findProject(":shared:shared-module")?.name = "shared-module"
+findProject(":eureka-server")?.name = "eureka-server"
 
 pluginManagement {
     plugins {

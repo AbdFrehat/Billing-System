@@ -15,7 +15,7 @@ dependencies {
     implementation("jakarta.validation:jakarta.validation-api:${project.findProperty("jakartaValidationApiVersion")}")
     implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:${project.findProperty("springDocOpenAPIVersion")}")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    implementation(project(":shared-module"))
+    implementation(project(":shared:shared-module"))
     testImplementation("io.projectreactor:reactor-test")
 }
 
@@ -24,3 +24,4 @@ dependencyManagement {
         mavenBom("org.springframework.cloud:spring-cloud-dependencies:${project.findProperty("springCloudVersion")}")
     }
 }
+

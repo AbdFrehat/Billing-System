@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
 
@@ -25,7 +24,6 @@ class EurekaConfigTest {
         assert eurekaConfig != null;
         Class<?> eurekaConfigClass = EurekaConfig.class;
         assert eurekaConfigClass.isAnnotationPresent(EnableDiscoveryClient.class);
-        assert eurekaConfigClass.isAnnotationPresent(EnableEurekaServer.class);
         assert eurekaConfigClass.isAnnotationPresent(Configuration.class);
         assert eurekaConfigClass.isAnnotationPresent(ConditionalOnProperty.class);
         ConditionalOnProperty conditionalOnProperty = eurekaConfigClass.getAnnotation(ConditionalOnProperty.class);

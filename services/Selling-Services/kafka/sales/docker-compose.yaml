@@ -5,27 +5,28 @@ services:
       context: ./kafka-sale-consumer-ms
     environment:
       KAFKA_BOOTSTRAP_SERVER: kafka1:19092
-      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://data-manager-ms:6018/selling/data/manager/sale/v1/eureka/
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:8000/selling/eureka/
       SPRING_PROFILE: prod
     networks:
       - network
       - kafka_network
-      - data_network
+      - shared_network
 
   kafka-sale-producer-ms:
     build:
       context: ./kafka-sale-producer-ms
     environment:
       KAFKA_BOOTSTRAP_SERVER: kafka1:19092
-      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://kafka-eureka-server:8002/selling/kafka/eureka/
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:8000/selling/eureka/
       SPRING_PROFILE: prod
     networks:
       - network
       - kafka_network
+      - shared_network
 
 networks:
   network:
-  data_network:
+  shared_network:
     external: true
   kafka_network:
     external: true
