@@ -1,0 +1,6 @@
+2023-12-04 08:47:45,396 [Test worker] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-12-04 08:47:45,436 [Test worker] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+2023-12-04 08:47:45,731 [Test worker] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 50229 (http) with context path '/selling/data/get/manager/sale/v1'
+2023-12-04 08:47:45,764 [Test worker] INFO  c.s.s.d.g.m.s.s.s.SalesClientServiceImplTest - Started SalesClientServiceImplTest in 9.544 seconds (process running for 27.087)
+2023-12-04 08:47:47,070 [Test worker] WARN  o.s.c.c.w.WireMockTestExecutionListener - You've used fixed ports for WireMock setup - will mark context as dirty. Please use random ports, as much as possible. Your tests will be faster and more reliable and this warning will go away
+2023-12-04 08:47:47,090 [Test worker] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]

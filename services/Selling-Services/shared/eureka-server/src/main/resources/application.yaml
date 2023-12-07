@@ -1,0 +1,11 @@
+server:
+  port: 8000
+  servlet:
+    context-path: /selling/
+spring:
+  application:
+    name: eureka-server
+eureka:
+  client:
+    registerWithEureka: false
+    fetch-registry: false
