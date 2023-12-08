@@ -1,7 +1,7 @@
 package com.selling.system.shared.module.convertors;
 
 import com.selling.system.shared.module.models.enums.PurchaseMethod;
-import com.selling.system.shared.module.models.exceptions.PurchaseMethodNotFoundException;
+import com.selling.system.shared.module.exceptions.business.PurchaseMethodNotFoundException;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.NonNull;
 

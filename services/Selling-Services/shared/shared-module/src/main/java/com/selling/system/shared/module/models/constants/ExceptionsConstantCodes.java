@@ -9,5 +9,6 @@ public class ExceptionsConstantCodes {
     public static final int PAYLOAD_BAD_FORMAT_EXCEPTION = 1004;
     public static final int QUERY_METHOD_NOT_FOUND_EXCEPTION = 1005;
     public static final int MISMATCHED_INPUT_EXCEPTION = 1006;
+    public static final int CLIENT_EXCEPTION = 1007;
 
 }

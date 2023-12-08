@@ -3,18 +3,11 @@ package com.selling.system.shared.module.convertors;
 import com.selling.system.shared.module.models.commands.QueryField;
 import com.selling.system.shared.module.models.commons.Range;
 import com.selling.system.shared.module.models.entities.Customer;
-import com.selling.system.shared.module.models.entities.Item;
-import com.selling.system.shared.module.models.entities.Sale;
 import com.selling.system.shared.module.models.enums.FieldType;
-import com.selling.system.shared.module.models.exceptions.BadConvertorException;
-import com.selling.system.shared.module.models.exceptions.PayloadBadFormatException;
+import com.selling.system.shared.module.exceptions.BadConvertorException;
+import com.selling.system.shared.module.exceptions.PayloadBadFormatException;
 
-import java.math.BigDecimal;
-import java.time.OffsetDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.LinkedHashMap;
-import java.util.List;
 
 public class ObjectToObjectsConvertor {
 

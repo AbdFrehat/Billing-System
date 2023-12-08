@@ -1,8 +1,10 @@
 package com.selling.system.data.manager.sales.service;
 
+import com.selling.system.shared.module.handlers.ClientExceptionHandler;
 import com.selling.system.shared.module.models.commands.QueryCommand;
 import com.selling.system.shared.module.models.enums.QueryMethod;
 import com.selling.system.shared.module.models.responses.QueryResponse;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -43,6 +45,7 @@ public class SalesClientServiceImpl implements SalesClientService {
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(queryCommand)
                 .retrieve()
+                .onStatus(HttpStatusCode::isError, new ClientExceptionHandler(queryCommand.getQueryMethod().name()))
                 .bodyToMono(QueryResponse.class);
     }
 
@@ -50,7 +53,7 @@ public class SalesClientServiceImpl implements SalesClientService {
         return switch (queryMethod) {
             case GET_SALES, GET_FREE_SALES, GET_OPT_SALES -> servicesContextPath.get("data-get-manager-ms");
             case SAVE_SALE, SAVE_SALES -> servicesContextPath.get("data-save-manager-ms");
-            case  UPDATE_SALE, UPDATE_SALES -> servicesContextPath.get("data-update-manager-ms");
+            case UPDATE_SALE, UPDATE_SALES -> servicesContextPath.get("data-update-manager-ms");
             case DELETE_SALE, DELETE_SALES, DELETE_QUERY_SALES -> servicesContextPath.get("data-delete-manager-ms");
             default -> throw new IllegalArgumentException();
         };

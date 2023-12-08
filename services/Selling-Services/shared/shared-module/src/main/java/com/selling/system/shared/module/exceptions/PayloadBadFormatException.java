@@ -1,4 +1,4 @@
-package com.selling.system.shared.module.models.exceptions;
+package com.selling.system.shared.module.exceptions;
 
 public class PayloadBadFormatException extends RuntimeException {
 

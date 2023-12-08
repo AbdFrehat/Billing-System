@@ -1,4 +1,4 @@
-package com.selling.system.shared.module.models.exceptions;
+package com.selling.system.shared.module.exceptions;
 
 /**
  * This exception class is thrown when an eny exception is thrown while converting an object to another type.

@@ -1,8 +1,13 @@
 package com.selling.system.shared.module.handlers;
 
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
+import com.selling.system.shared.module.exceptions.BadConvertorException;
+import com.selling.system.shared.module.exceptions.PayloadBadFormatException;
+import com.selling.system.shared.module.exceptions.business.FieldTypeNotFoundException;
+import com.selling.system.shared.module.exceptions.business.PurchaseMethodNotFoundException;
+import com.selling.system.shared.module.exceptions.business.QueryMethodNotFoundException;
+import com.selling.system.shared.module.exceptions.general.ClientException;
 import com.selling.system.shared.module.models.constants.ExceptionsConstantCodes;
-import com.selling.system.shared.module.models.exceptions.*;
 import com.selling.system.shared.module.models.responses.ErrorResponse;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
@@ -18,6 +23,18 @@ import java.util.Objects;
 @ControllerAdvice
 public class GlobalExceptionHandlers {
 
+
+    @ExceptionHandler(ClientException.class)
+    public ResponseEntity<ErrorResponse> handleServiceNotAvailableException(ClientException ex) {
+        return ResponseEntity
+                .status(ex.getStatusCode())
+                .body(ErrorResponse.builder()
+                        .exceptionName(ClientException.class.getSimpleName())
+                        .errorCode(ExceptionsConstantCodes.CLIENT_EXCEPTION)
+                        .message(ex.getMessage())
+                        .build());
+    }
+
     @ExceptionHandler(BadConvertorException.class)
     public ResponseEntity<ErrorResponse> handleBadConvertorException(BadConvertorException ex) {
         return ResponseEntity
@@ -28,7 +45,6 @@ public class GlobalExceptionHandlers {
                         .message(ex.getMessage())
                         .build());
     }
-
 
     @ExceptionHandler(FieldTypeNotFoundException.class)
     private ResponseEntity<ErrorResponse> handleFieldNotFoundException(FieldTypeNotFoundException ex) {

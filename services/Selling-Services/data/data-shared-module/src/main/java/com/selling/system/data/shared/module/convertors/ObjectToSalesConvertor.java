@@ -3,7 +3,7 @@ package com.selling.system.data.shared.module.convertors;
 import com.selling.system.data.shared.module.entites.CustomerDocument;
 import com.selling.system.data.shared.module.entites.ItemDocument;
 import com.selling.system.data.shared.module.entites.SaleDocument;
-import com.selling.system.shared.module.models.exceptions.PayloadBadFormatException;
+import com.selling.system.shared.module.exceptions.PayloadBadFormatException;
 import lombok.extern.slf4j.Slf4j;
 
 import java.math.BigDecimal;

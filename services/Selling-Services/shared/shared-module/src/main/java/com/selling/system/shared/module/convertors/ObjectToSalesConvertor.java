@@ -3,7 +3,7 @@ package com.selling.system.shared.module.convertors;
 import com.selling.system.shared.module.models.entities.Customer;
 import com.selling.system.shared.module.models.entities.Item;
 import com.selling.system.shared.module.models.entities.Sale;
-import com.selling.system.shared.module.models.exceptions.PayloadBadFormatException;
+import com.selling.system.shared.module.exceptions.PayloadBadFormatException;
 import lombok.extern.slf4j.Slf4j;
 
 import java.math.BigDecimal;

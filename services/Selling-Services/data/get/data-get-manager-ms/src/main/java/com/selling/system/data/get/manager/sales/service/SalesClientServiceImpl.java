@@ -1,5 +1,6 @@
 package com.selling.system.data.get.manager.sales.service;
 
+import com.selling.system.shared.module.handlers.ClientExceptionHandler;
 import com.selling.system.shared.module.models.commands.QueryCommand;
 import com.selling.system.shared.module.models.enums.QueryMethod;
 import com.selling.system.shared.module.models.responses.QueryResponse;
@@ -44,6 +45,7 @@ public class SalesClientServiceImpl implements SalesClientService {
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(queryCommand)
                 .retrieve()
+                .onStatus(HttpStatusCode::isError, new ClientExceptionHandler(queryCommand.getQueryMethod().name()))
                 .bodyToMono(QueryResponse.class);
     }
 
