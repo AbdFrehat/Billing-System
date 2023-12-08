@@ -55,7 +55,7 @@ graph TD;
        ],
        "page": 0,
        "size": 10,
-       "queryMethod": "GET_SALES",
+       "commandType": "GET_SALES",
        "sort": {
            "direction": "ASC",
            "field": "customer.satisfaction"
@@ -80,7 +80,7 @@ graph TD;
     },
     "page": 0,
     "size": 10,
-    "queryMethod": "DELETE_QUERY_SALES",
+    "commandType": "DELETE_QUERY_SALES",
     "exclude": [],
     "count": false,
     "payload": null
@@ -94,7 +94,7 @@ graph TD;
     "queryFields": null,
     "page": 0,
     "size": 10,
-    "queryMethod": "SAVE_SALES",
+    "commandType": "SAVE_SALES",
     "payload": [
         {
         "id": null,
@@ -276,7 +276,7 @@ graph TD;
     "queryFields": null,
     "page": 0,
     "size": 10,
-    "queryMethod": "UPDATE_SALE",
+    "commandType": "UPDATE_SALE",
     "payload":
         {
         "id": "6555b9108bcd0c2f3635eaa6",

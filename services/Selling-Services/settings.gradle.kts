@@ -69,6 +69,19 @@ include("shared:eureka-server")
 findProject(":shared:shared-module")?.name = "shared-module"
 findProject(":eureka-server")?.name = "eureka-server"
 
+
+//Modify
+include(":modify:modify-router-sales-manager")
+findProject(":modify:modify-router-sales-manager")?.name = "modify-router-sales-manager"
+include(":modify:modify-save-sales-ms")
+findProject(":modify:modify-save-sales-ms")?.name = "modify-save-sales-ms"
+include(":modify:modify-delete-sales-ms")
+findProject(":modify:modify-delete-sales-ms")?.name = "modify-delete-sales-ms"
+include(":modify:modify-update-sales-ms")
+findProject(":modify:modify-update-sales-ms")?.name = "modify-update-sales-ms"
+include(":modify:modify-shared-sales-ms")
+findProject(":modify:modify-shared-sales-ms")?.name = "modify-shared-sales-ms"
+
 pluginManagement {
     plugins {
         val springFrameworkBootVersion: String by settings

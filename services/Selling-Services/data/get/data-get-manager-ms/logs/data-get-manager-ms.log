@@ -4,3 +4,9 @@
 2023-12-07 09:36:26,872 [Test worker] INFO  o.s.b.w.e.netty.NettyWebServer - Netty started on port 58074
 2023-12-07 09:36:26,903 [Test worker] INFO  c.s.s.d.g.m.s.s.s.SalesClientServiceImplTest - Started SalesClientServiceImplTest in 8.412 seconds (process running for 23.797)
 2023-12-07 09:36:27,816 [Test worker] WARN  o.s.c.c.w.WireMockTestExecutionListener - You've used fixed ports for WireMock setup - will mark context as dirty. Please use random ports, as much as possible. Your tests will be faster and more reliable and this warning will go away
+2023-12-08 23:28:10,998 [Test worker] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+2023-12-08 23:28:11,401 [Test worker] INFO  o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses RestTemplate.
+2023-12-08 23:28:11,472 [Test worker] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-12-08 23:28:11,908 [Test worker] INFO  o.s.b.w.e.netty.NettyWebServer - Netty started on port 55508
+2023-12-08 23:28:11,943 [Test worker] INFO  c.s.s.d.g.m.s.s.s.SalesClientServiceImplTest - Started SalesClientServiceImplTest in 8.979 seconds (process running for 25.005)
+2023-12-08 23:28:12,893 [Test worker] WARN  o.s.c.c.w.WireMockTestExecutionListener - You've used fixed ports for WireMock setup - will mark context as dirty. Please use random ports, as much as possible. Your tests will be faster and more reliable and this warning will go away

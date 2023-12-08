@@ -3,7 +3,7 @@ package com.selling.system.shared.module.models.enums;
 import lombok.Getter;
 
 @Getter
-public enum QueryMethod {
+public enum CommandType {
 
     GET_SALES,
     GET_FREE_SALES,

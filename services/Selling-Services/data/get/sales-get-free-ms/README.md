@@ -23,7 +23,7 @@ the type of the query command that works with, is a free text search on the valu
 | queryFields | `List<QueryField>` |                list of the desired fields to search based on them                |      has only one element      |
 |    page     |       `int`        |                       the paginated page to retrieve from                        | `0 < page < Integer.MAX_VALUE` |
 |    size     |       `int`        |                   the size of paginated page to retrieve from                    | `0 < size < Integer.MAX_VALUE` |
-| queryMethod |   `QueryMethod`    |                     they type of operation against the data                      |         GET_FREE_SALES         |
+| commandType |   `QueryMethod`    |                     they type of operation against the data                      |         GET_FREE_SALES         |
 |  sortField  |    `SortField`     |     it describes the field to sort based on and the ordering of the sorting      |               X                |
 |   exclude   |     `String[]`     |          list of the excluded fields, that will not part of the result           |               X                |
 |   payload   |      `object`      |                                     Not Used                                     |               X                |
@@ -96,7 +96,7 @@ the type of the query command that works with, is a free text search on the valu
     },
     "page": 0,
     "size": 10,
-    "queryMethod": "GET_FREE_SALES",
+    "commandType": "GET_FREE_SALES",
     "sort": {
         "direction": "DESC",
         "field": "saleDate"
@@ -121,7 +121,7 @@ the type of the query command that works with, is a free text search on the valu
     },
     "page": 0,
     "size": 10,
-    "queryMethod": "GET_FREE_SALES",
+    "commandType": "GET_FREE_SALES",
     "sort": {
         "direction": "DESC",
         "field": "saleDate"

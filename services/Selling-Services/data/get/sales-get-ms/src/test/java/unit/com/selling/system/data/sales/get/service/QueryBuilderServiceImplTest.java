@@ -5,8 +5,8 @@ import com.selling.system.data.shared.module.service.interpreter.impl.Expression
 import com.selling.system.shared.module.models.commands.QueryCommand;
 import com.selling.system.shared.module.models.commands.QueryField;
 import com.selling.system.shared.module.models.commands.SortField;
+import com.selling.system.shared.module.models.enums.CommandType;
 import com.selling.system.shared.module.models.enums.FieldType;
-import com.selling.system.shared.module.models.enums.QueryMethod;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +34,7 @@ class QueryBuilderServiceImplTest {
     @Test
     void testBuildQuery_ValidInput_WithoutCount_ReturnQuery() {
         QueryCommand queryCommand = QueryCommand.builder()
-                .queryMethod(QueryMethod.GET_SALES)
+                .commandType(CommandType.GET_SALES)
                 .queryFields(Map.of("F1", QueryField.builder()
                         .fieldType(FieldType.OTHER)
                         .value("1")
@@ -65,7 +65,7 @@ class QueryBuilderServiceImplTest {
     @Test
     void testBuildQuery_ValidInput_WithoutCount_DifferentFields_ReturnQuery() {
         QueryCommand queryCommand = QueryCommand.builder()
-                .queryMethod(QueryMethod.GET_SALES)
+                .commandType(CommandType.GET_SALES)
                 .queryFields(Map.of("F1", QueryField.builder()
                                 .fieldType(FieldType.OTHER)
                                 .value("1")
@@ -102,7 +102,7 @@ class QueryBuilderServiceImplTest {
     @Test
     void testBuildQuery_ValidInput_WithCount_ReturnQuery() {
         QueryCommand queryCommand = QueryCommand.builder()
-                .queryMethod(QueryMethod.GET_SALES)
+                .commandType(CommandType.GET_SALES)
                 .queryFields(Map.of("F1", QueryField.builder()
                         .fieldType(FieldType.OTHER)
                         .value("1")

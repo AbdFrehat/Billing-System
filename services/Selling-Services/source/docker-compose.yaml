@@ -5,13 +5,11 @@ services:
   sales-pull-ms:
     build:
       context: ./sales-pull-ms
-    ports:
-      - "6016:6016"
     environment:
-      - SPRING_PROFILE=prod
-      - NUMBER_ITEMS=10
-      - EMIT_DURATION=1000
-      - NUMBER_TAGS=3
+      SPRING_PROFILE: prod
+      NUMBER_ITEMS: 10
+      EMIT_DURATION: 1000
+      NUMBER_TAGS: 3
     networks:
       - network
       - shared_network
@@ -19,14 +17,12 @@ services:
   sales-push-ms:
     build:
       context: ./sales-push-ms
-    ports:
-      - "6017:6017"
     environment:
-      - SPRING_PROFILE=prod
-      - NUMBER_ITEMS=10
-      - NUMBER_TAGS=3
-      - EMIT_DURATION=100
-      - EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE=http://eureka-server:8000/selling/eureka/
+      SPRING_PROFILE: prod
+      NUMBER_ITEMS: 10
+      NUMBER_TAGS: 3
+      EMIT_DURATION: 00
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:8000/selling/eureka/
     networks:
       - network
       - shared_network

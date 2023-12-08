@@ -43,7 +43,7 @@ graph TD;
        ],
        "page": 0,
        "size": 10,
-       "queryMethod": "GET_SALES",
+       "commandType": "GET_SALES",
        "sort": {
            "direction": "ASC",
            "field": "customer.satisfaction"
@@ -68,7 +68,7 @@ graph TD;
        },
        "page": 0,
        "size": 10,
-       "queryMethod": "GET_FREE_SALES",
+       "commandType": "GET_FREE_SALES",
        "sort": {
            "direction": "DESC",
            "field": "saleDate"
@@ -99,7 +99,7 @@ graph TD;
        },
        "page": 0,
        "size": 10,
-       "queryMethod": "GET_OPT_SALES",
+       "commandType": "GET_OPT_SALES",
        "sort": {
            "direction": "DESC",
            "field": "saleDate"

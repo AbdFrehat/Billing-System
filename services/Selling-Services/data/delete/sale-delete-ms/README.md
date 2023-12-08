@@ -16,14 +16,14 @@ The sales-delete-ms microservice is used to delete a single or multiple sales do
 
 ##### The `QueryCommand` request body of the end point has the following structure:
 
-1. if queryMethod is DELETE_SALE
+1. if commandType is DELETE_SALE
 
    |    Name     |           Type            |               Description                | Constraint  |
    | :---------: | :-----------------------: | :--------------------------------------: | :---------: |
    | queryFields | `Map<String, QueryField>` |                 Not Used                 |      X      |
    |    page     |           `int`           |                 Not Used                 |      X      |
    |    size     |           `int`           |                 Not Used                 |      X      |
-   | queryMethod |       `QueryMethod`       | they type of operation against the data  | DELETE_SALE |
+   | commandType |       `QueryMethod`       | they type of operation against the data  | DELETE_SALE |
    |  sortField  |        `SortField`        |                 Not Used                 |      X      |
    |   exclude   |        `String[]`         |                 Not Used                 |      X      |
    |   payload   |         `object`          | contains the sale document to be deleted |  Not Null   |
@@ -36,14 +36,14 @@ The sales-delete-ms microservice is used to delete a single or multiple sales do
    | :-----: | :----: | :-----------------------------: | :--------: |
    | payload | `Sale` | the sale document to be deleted |  Not Null  |
 
-1. if queryMethod is DELETE_SALES
+1. if commandType is DELETE_SALES
 
    |    Name     |           Type            |                                     Description                                     |           Constraint           |
    | :---------: | :-----------------------: | :---------------------------------------------------------------------------------: | :----------------------------: |
    | queryFields | `Map<String, QueryField>` |                 list of the desired fields to search based on them                  |               X                |
    |    page     |           `int`           |                         the paginated page to retrieve from                         | `0 < page < Integer.MAX_VALUE` |
    |    size     |           `int`           |                     the size of paginated page to retrieve from                     | `0 < size < Integer.MAX_VALUE` |
-   | queryMethod |       `QueryMethod`       |                       they type of operation against the data                       |          DELETE_SALES          |
+   | commandType |       `QueryMethod`       |                       they type of operation against the data                       |          DELETE_SALES          |
    |  sortField  |        `SortField`        |       it describes the field to sort based on and the ordering of the sorting       |               X                |
    |   exclude   |        `String[]`         |            list of the excluded fields, that will not part of the result            |               X                |
    |   payload   |         `object`          |                                      Not Used                                       |               X                |

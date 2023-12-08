@@ -21,7 +21,7 @@ The sales-update-ms microservice is used to update a single or multiple sales do
 | queryFields | `Map<String, QueryField>` |                  Not Used                   |               X                |
 |    page     |           `int`           |                  Not Used                   |               X                |
 |    size     |           `int`           |                  Not Used                   |               X                |
-| queryMethod |       `QueryMethod`       |   they type of operation against the data   |  UPDATE_SALE \| UPDATE_SALES   |
+| commandType |       `QueryMethod`       |   they type of operation against the data   |  UPDATE_SALE \| UPDATE_SALES   |
 |  sortField  |        `SortField`        |                  Not Used                   |               X                |
 |   exclude   |        `String[]`         |                  Not Used                   |               X                |
 |    size     |           `int`           | the size of paginated page to retrieve from | `0 < size < Integer.MAX_VALUE` |
@@ -31,13 +31,13 @@ The sales-update-ms microservice is used to update a single or multiple sales do
 
 ##### The `payload` filed must contain the following structure:
 
-if queryMethod is UPDATE_SALE then
+if commandType is UPDATE_SALE then
 
 |  Name   |  Type  |           Description           | Constraint |
 | :-----: | :----: | :-----------------------------: | :--------: |
 | payload | `Sale` | the sale document to be updated |  Not Null  |
 
-if queryMethod is UPDATE_SALES then
+if commandType is UPDATE_SALES then
 
 |  Name   |     Type     |               Description                | Constraint |
 | :-----: | :----------: | :--------------------------------------: | :--------: |
@@ -88,7 +88,7 @@ if queryMethod is UPDATE_SALES then
     "queryFields": null,
     "page": 0,
     "size": 0,
-    "queryMethod": "UPDATE_SALE",
+    "commandType": "UPDATE_SALE",
     "payload": {
         "id": "6555b9108bcd0c2f3635eaa6",
         "saleDate": "2017-11-12T20:30:15.045+00:00",
@@ -184,7 +184,7 @@ if queryMethod is UPDATE_SALES then
     "queryFields": null,
     "page": 0,
     "size": 0,
-    "queryMethod": "UPDATE_SALES",
+    "commandType": "UPDATE_SALES",
     "payload": [
         {
         "id": "6555b9108bcd0c2f3635eaa6",

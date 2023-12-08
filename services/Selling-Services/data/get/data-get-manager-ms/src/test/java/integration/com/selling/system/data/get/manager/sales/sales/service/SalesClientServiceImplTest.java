@@ -6,8 +6,8 @@ import com.selling.system.data.get.manager.sales.service.SalesClientService;
 import com.selling.system.shared.module.models.commands.QueryCommand;
 import com.selling.system.shared.module.models.commands.QueryField;
 import com.selling.system.shared.module.models.commands.SortField;
+import com.selling.system.shared.module.models.enums.CommandType;
 import com.selling.system.shared.module.models.enums.FieldType;
-import com.selling.system.shared.module.models.enums.QueryMethod;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +45,7 @@ class SalesClientServiceImplTest {
     @Test
     void testSendRequest_ValidInput_ReturnQueryResponse_RoutingToGetSales() throws JsonProcessingException {
         QueryCommand queryCommand = QueryCommand.builder()
-                .queryMethod(QueryMethod.GET_SALES)
+                .commandType(CommandType.GET_SALES)
                 .queryFields(Map.of("F1", QueryField.builder()
                         .fieldType(FieldType.OTHER)
                         .value("1")
@@ -80,7 +80,7 @@ class SalesClientServiceImplTest {
     @DisplayName("test if the request is sent successfully to sales-get-free-ms service")
     void testSendRequest_ValidInput_ReturnQueryResponse_RoutingToGetOptSales() throws JsonProcessingException {
         QueryCommand queryCommand = QueryCommand.builder()
-                .queryMethod(QueryMethod.GET_OPT_SALES)
+                .commandType(CommandType.GET_OPT_SALES)
                 .queryFields(Map.of("F1", QueryField.builder()
                         .fieldType(FieldType.OTHER)
                         .value("1")
@@ -115,7 +115,7 @@ class SalesClientServiceImplTest {
     @DisplayName("test if the request is sent successfully to sales-get-opt-ms service")
     void testSendRequest_ValidInput_ReturnQueryResponse_RoutingToGetFreeSales() throws JsonProcessingException {
         QueryCommand queryCommand = QueryCommand.builder()
-                .queryMethod(QueryMethod.GET_FREE_SALES)
+                .commandType(CommandType.GET_FREE_SALES)
                 .queryFields(Map.of("F1", QueryField.builder()
                         .fieldType(FieldType.OTHER)
                         .value("1")
@@ -150,7 +150,7 @@ class SalesClientServiceImplTest {
     @DisplayName("test if an exception is thrown if the query method is wrong or unsupported")
     void testSendRequest_ValidInput_ReturnQueryResponse_RoutingInvalidMethod() throws JsonProcessingException {
         QueryCommand queryCommand = QueryCommand.builder()
-                .queryMethod(QueryMethod.SAVE_SALES)
+                .commandType(CommandType.SAVE_SALES)
                 .queryFields(Map.of("F1", QueryField.builder()
                         .fieldType(FieldType.OTHER)
                         .value("1")

@@ -3,7 +3,7 @@ package com.selling.sales.kafka.sales.consumer.kafka;
 import com.selling.sales.kafka.sales.consumer.client.DataManagerClient;
 import com.selling.system.shared.module.models.commands.QueryCommand;
 import com.selling.system.shared.module.models.entities.Sale;
-import com.selling.system.shared.module.models.enums.QueryMethod;
+import com.selling.system.shared.module.models.enums.CommandType;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
@@ -26,7 +26,7 @@ public class SaleKafkaConsumer {
         dataManagerClient
                 .saveSales(QueryCommand.builder()
                         .payload(sales)
-                        .queryMethod(QueryMethod.SAVE_SALES)
+                        .commandType(CommandType.SAVE_SALES)
                         .build())
                 .subscribe();
     }

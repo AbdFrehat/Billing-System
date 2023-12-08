@@ -2,7 +2,7 @@ package com.selling.system.shared.module.models.commands;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.selling.system.shared.module.models.annotations.ValidFieldTypeEnum;
-import com.selling.system.shared.module.models.enums.QueryMethod;
+import com.selling.system.shared.module.models.enums.CommandType;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -47,10 +47,10 @@ public class QueryCommand implements QueryCommandAbstract {
      * The QueryMethod specifies which operation will be executed.
      */
     @NotNull(message = "QueryCommand.queryMethod can not be null")
-    @JsonProperty(value = "queryMethod")
-    @ValidFieldTypeEnum(message = "QueryCommand.queryMethod is not supported", regexp =
+    @JsonProperty(value = "commandType")
+    @ValidFieldTypeEnum(message = "QueryCommand.commandType is not supported", regexp =
             "GET_SALES|GET_FREE_SALES|GET_OPT_SALES|SAVE_SALE|SAVE_SALES|UPDATE_SALE|UPDATE_SALES|DELETE_SALE|DELETE_SALES|DELETE_QUERY_SALES")
-    protected QueryMethod queryMethod;
+    protected CommandType commandType;
 
     @JsonProperty(value = "sort")
     @Valid

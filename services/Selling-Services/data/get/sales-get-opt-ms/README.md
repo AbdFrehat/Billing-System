@@ -23,7 +23,7 @@ the type of the query command that works with, depends on the logical expression
 | queryFields | `Map<String, QueryField>` |                map of the desired fields to search based on them                 |               X                |
 |    page     |           `int`           |                       the paginated page to retrieve from                        | `0 < page < Integer.MAX_VALUE` |
 |    size     |           `int`           |                   the size of paginated page to retrieve from                    | `0 < size < Integer.MAX_VALUE` |
-| queryMethod |       `QueryMethod`       |                     they type of operation against the data                      |         GET_OPT_SALES          |
+| commandType |       `QueryMethod`       |                     they type of operation against the data                      |         GET_OPT_SALES          |
 |  sortField  |        `SortField`        |     it describes the field to sort based on and the ordering of the sorting      |               X                |
 |   exclude   |        `String[]`         |          list of the excluded fields, that will not part of the result           |               X                |
 |   payload   |         `object`          |                                     Not Used                                     |               X                |
@@ -121,7 +121,7 @@ the type of the query command that works with, depends on the logical expression
     },
     "page": 0,
     "size": 10,
-    "queryMethod": "GET_OPT_SALES",
+    "commandType": "GET_OPT_SALES",
     "sort": {
         "direction": "DESC",
         "field": "saleDate"
@@ -153,7 +153,7 @@ the type of the query command that works with, depends on the logical expression
     },
     "page": 0,
     "size": 0,
-    "queryMethod": "GET_OPT_SALES",
+    "commandType": "GET_OPT_SALES",
     "sort": null,
     "exclude": [],
     "payload": null,

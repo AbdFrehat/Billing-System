@@ -1,0 +1,49 @@
+version: '3.0'
+
+services:
+  modify-router-sales-manager:
+    build:
+      context: ./modify-router-sales-manager
+    networks:
+      - network
+      - shared_network
+    environment:
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:8000/selling/eureka/
+      SPRING_PROFILE: prod
+
+
+  modify-delete-sales-ms:
+    build:
+      context: ./modify-delete-sales-ms
+    networks:
+      - network
+      - shared_network
+    environment:
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:8000/selling/eureka/
+      SPRING_PROFILE: prod
+
+  modify-update-sales-ms:
+    build:
+      context: ./modify-update-sales-ms
+    networks:
+      - network
+      - shared_network
+    environment:
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:8000/selling/eureka/
+      SPRING_PROFILE: prod
+
+  modify-save-sales-ms:
+    build:
+      context: ./modify-save-sales-ms
+    networks:
+      - network
+      - shared_network
+    environment:
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:8000/selling/eureka/
+      SPRING_PROFILE: prod
+
+
+networks:
+  network:
+  shared_network:
+    external: true

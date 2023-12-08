@@ -2,7 +2,7 @@ package com.selling.system.data.delete.manager.sales.service;
 
 import com.selling.system.shared.module.handlers.ClientExceptionHandler;
 import com.selling.system.shared.module.models.commands.QueryCommand;
-import com.selling.system.shared.module.models.enums.QueryMethod;
+import com.selling.system.shared.module.models.enums.CommandType;
 import com.selling.system.shared.module.models.responses.QueryResponse;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
@@ -41,16 +41,16 @@ public class SalesClientServiceImpl implements SalesClientService {
     public Mono<QueryResponse> sendRequest(QueryCommand queryCommand) {
         return webClient
                 .post()
-                .uri(getUri(queryCommand.getQueryMethod()))
+                .uri(getUri(queryCommand.getCommandType()))
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(queryCommand)
                 .retrieve()
-                .onStatus(HttpStatusCode::isError, new ClientExceptionHandler(queryCommand.getQueryMethod().name()))
+                .onStatus(HttpStatusCode::isError, new ClientExceptionHandler(queryCommand.getCommandType().name()))
                 .bodyToMono(QueryResponse.class);
     }
 
-    private String getUri(QueryMethod queryMethod) {
-        return switch (queryMethod) {
+    private String getUri(CommandType commandType) {
+        return switch (commandType) {
             case DELETE_SALE -> servicesContextPath.get("data-delete-ms");
             case DELETE_SALES -> servicesContextPath.get("data-delete-multi-ms");
             case DELETE_QUERY_SALES -> servicesContextPath.get("data-delete-query-ms");

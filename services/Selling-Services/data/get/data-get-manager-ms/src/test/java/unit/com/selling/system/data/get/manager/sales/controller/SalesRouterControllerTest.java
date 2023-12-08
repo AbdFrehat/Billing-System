@@ -6,7 +6,7 @@ import com.selling.system.shared.module.models.commands.QueryField;
 import com.selling.system.shared.module.models.commands.SortField;
 import com.selling.system.shared.module.models.entities.Sale;
 import com.selling.system.shared.module.models.enums.FieldType;
-import com.selling.system.shared.module.models.enums.QueryMethod;
+import com.selling.system.shared.module.models.enums.CommandType;
 import com.selling.system.shared.module.models.responses.QueryResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +38,7 @@ class SalesRouterControllerTest {
     @Test
     void testGetSales_ValidInput_ReturnQueryResponse() {
         QueryCommand queryCommand = QueryCommand.builder()
-                .queryMethod(QueryMethod.GET_SALES)
+                .commandType(CommandType.GET_SALES)
                 .queryFields(Map.of("F1", QueryField.builder()
                         .fieldType(FieldType.OTHER)
                         .value("1")

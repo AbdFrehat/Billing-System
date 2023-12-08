@@ -1,5 +1,6 @@
 package com.selling.system.shared.module.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,18 +15,25 @@ import java.util.List;
 @Builder
 public class Sale implements AbstractSale {
 
+    @JsonProperty(value = "id")
     private String id;
 
+    @JsonProperty(value = "saleDate")
     private Date saleDate;
 
+    @JsonProperty(value = "items")
     private List<Item> items;
 
+    @JsonProperty(value = "storeLocation")
     private String storeLocation;
 
+    @JsonProperty(value = "customer")
     private Customer customer;
 
+    @JsonProperty(value = "couponUsed")
     private boolean couponUsed;
 
+    @JsonProperty(value = "purchaseMethod")
     private String purchaseMethod;
 
 }

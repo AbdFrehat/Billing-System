@@ -6,7 +6,7 @@ spring:
   kafka:
     bootstrap-servers: 127.0.0.1:9092
     template:
-      default-topic: persistence.sale.json
+      default-topic: modify.command.json
       partitions: 3
       replicas: 1
     producer:

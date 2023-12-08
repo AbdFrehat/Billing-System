@@ -3,8 +3,8 @@ package com.selling.system.reports.generate.receipt.client;
 import com.selling.system.shared.module.models.commands.QueryCommand;
 import com.selling.system.shared.module.models.commands.QueryField;
 import com.selling.system.shared.module.models.entities.Sale;
+import com.selling.system.shared.module.models.enums.CommandType;
 import com.selling.system.shared.module.models.enums.FieldType;
-import com.selling.system.shared.module.models.enums.QueryMethod;
 import com.selling.system.shared.module.models.responses.QueryResponse;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -45,7 +45,7 @@ public class DataManagerClientImpl implements DataManagerClient {
                         .value(saleId)
                         .fieldType(FieldType.OTHER)
                         .build()))
-                .queryMethod(QueryMethod.GET_SALES)
+                .commandType(CommandType.GET_SALES)
                 .build();
     }
 }

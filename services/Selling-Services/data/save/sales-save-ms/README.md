@@ -21,7 +21,7 @@ The sales-save-ms microservice is used to save a single or multiple sales docume
 | queryFields | `Map<String, QueryField>` |                 Not Used                 |            X            |
 |    page     |           `int`           |                 Not Used                 |            X            |
 |    size     |           `int`           |                 Not Used                 |            X            |
-| queryMethod |       `QueryMethod`       | they type of operation against the data  | SAVE_SALE \| SAVE_SALES |
+| commandType |       `QueryMethod`       | they type of operation against the data  | SAVE_SALE \| SAVE_SALES |
 |  sortField  |        `SortField`        |                 Not Used                 |            X            |
 |   exclude   |        `String[]`         |                 Not Used                 |            X            |
 |   payload   |         `object`          | contains the sales documents to be saved |        Not Null         |
@@ -30,13 +30,13 @@ The sales-save-ms microservice is used to save a single or multiple sales docume
 
 ##### The `payload` filed must contain the following structure:
 
-if queryMethod is SAVE_SALE then
+if commandType is SAVE_SALE then
 
 |  Name   |  Type  |          Description          | Constraint |
 | :-----: | :----: | :---------------------------: | :--------: |
 | payload | `Sale` | the sale document to be saved |  Not Null  |
 
-if queryMethod is SAVE_SALES then
+if commandType is SAVE_SALES then
 
 |  Name   |     Type     |              Description               | Constraint |
 | :-----: | :----------: | :------------------------------------: | :--------: |
@@ -87,7 +87,7 @@ if queryMethod is SAVE_SALES then
     "queryFields": null,
     "page": 0,
     "size": 0,
-    "queryMethod": "SAVE_SALE",
+    "commandType": "SAVE_SALE",
     "payload": {
         "id": null,
         "saleDate": "2017-11-12T20:30:15.045+00:00",
@@ -183,7 +183,7 @@ if queryMethod is SAVE_SALES then
     "queryFields": null,
     "page": 0,
     "size": 10,
-    "queryMethod": "SAVE_SALES",
+    "commandType": "SAVE_SALES",
     "payload": [
         {
         "id": null,

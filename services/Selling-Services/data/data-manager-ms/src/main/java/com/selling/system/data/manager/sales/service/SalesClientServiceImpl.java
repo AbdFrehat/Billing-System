@@ -2,7 +2,7 @@ package com.selling.system.data.manager.sales.service;
 
 import com.selling.system.shared.module.handlers.ClientExceptionHandler;
 import com.selling.system.shared.module.models.commands.QueryCommand;
-import com.selling.system.shared.module.models.enums.QueryMethod;
+import com.selling.system.shared.module.models.enums.CommandType;
 import com.selling.system.shared.module.models.responses.QueryResponse;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
@@ -41,16 +41,16 @@ public class SalesClientServiceImpl implements SalesClientService {
     public Mono<QueryResponse> sendRequest(QueryCommand queryCommand) {
         return webClient
                 .post()
-                .uri(getUri(queryCommand.getQueryMethod()))
+                .uri(getUri(queryCommand.getCommandType()))
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(queryCommand)
                 .retrieve()
-                .onStatus(HttpStatusCode::isError, new ClientExceptionHandler(queryCommand.getQueryMethod().name()))
+                .onStatus(HttpStatusCode::isError, new ClientExceptionHandler(queryCommand.getCommandType().name()))
                 .bodyToMono(QueryResponse.class);
     }
 
-    private String getUri(QueryMethod queryMethod) {
-        return switch (queryMethod) {
+    private String getUri(CommandType commandType) {
+        return switch (commandType) {
             case GET_SALES, GET_FREE_SALES, GET_OPT_SALES -> servicesContextPath.get("data-get-manager-ms");
             case SAVE_SALE, SAVE_SALES -> servicesContextPath.get("data-save-manager-ms");
             case UPDATE_SALE, UPDATE_SALES -> servicesContextPath.get("data-update-manager-ms");
