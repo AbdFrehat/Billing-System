@@ -1,0 +1,22 @@
+spring:
+  webflux:
+    base-path: /selling/modify/sales/delete/v1/
+  application:
+    name: modify-delete-sales-ms
+server:
+  port: 7022
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/selling/eureka/
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
+  api-docs:
+    groups:
+      enabled: true
+    path: /api/docs
+config:
+  services:
+    context-path:
+      kafka-sale-producer-ms: "http://KAFKA-SALE-PRODUCER-MS/selling/kafka/sale/v1/"
