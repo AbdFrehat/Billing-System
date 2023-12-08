@@ -1,13 +1,5 @@
 rootProject.name = "Selling-Services"
 
-//Fetch Category
-include("fetch:fetch-items-ms")
-include("fetch:fetch-stores-ms")
-include("fetch:fetch-customer-ms")
-findProject(":fetch:fetch-items-ms")?.name = "fetch-items-ms"
-findProject(":fetch:fetch-stores-ms")?.name = "fetch-stores-ms"
-findProject(":fetch:fetch-customer-ms")?.name = "fetch-customer-ms"
-
 //Reports Category
 include("reports:receipt-generator-ms")
 include("reports:calc-price-ms")
