@@ -4,7 +4,7 @@ spring:
   application:
     name: data-manager-ms
 server:
-  port: 6018
+  port: 6080
   servlet:
     context-path: /selling/data/manager/sale/v1/
 eureka:

@@ -1,5 +1,5 @@
 server:
-  port: 7015
+  port: 6041
 spring:
   kafka:
     bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVER}

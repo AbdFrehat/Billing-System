@@ -3,7 +3,7 @@ spring:
     mongodb:
       uri: ${SPRING_DATA_MONGO_URI}
 server:
-  port: 6028
+  port: 6090
 eureka:
   client:
     service-url:

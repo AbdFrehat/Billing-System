@@ -4,7 +4,7 @@ spring:
   webflux:
     base-path:  /selling/source/push/sale/v1/
 server:
-  port: 6017
+  port: 6061
 
 emit:
   duration: 100
@@ -14,7 +14,7 @@ emit:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8000/selling/eureka/
+      defaultZone: http://localhost:6000/selling/eureka/
 config:
   services:
     context-path:

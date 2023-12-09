@@ -8,11 +8,11 @@ spring:
       uri: mongodb://localhost:27017/sample_supplies
       database: sample_supplies
 server:
-  port: 6028
+  port: 6090
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8000/selling/eureka/
+      defaultZone: http://localhost:6000/selling/eureka/
 springdoc:
   swagger-ui:
     path: /swagger-ui

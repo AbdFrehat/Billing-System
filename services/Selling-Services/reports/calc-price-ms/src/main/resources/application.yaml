@@ -4,8 +4,8 @@ spring:
   webflux:
     base-path: /selling/reports/calc/price/v1/
 server:
-  port: 6014
+  port: 6021
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8000/selling/eureka/
+      defaultZone: http://localhost:6000/selling/eureka/

@@ -7,7 +7,7 @@ spring:
     discovery:
       enabled: true
 server:
-  port: 6019
+  port: 6081
   servlet:
     context-path: /selling/data/get/manager/sale/v1/
 eureka:
@@ -15,7 +15,7 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://localhost:8000/selling/eureka/
+      defaultZone: http://localhost:6000/selling/eureka/
 springdoc:
   swagger-ui:
     path: /swagger-ui

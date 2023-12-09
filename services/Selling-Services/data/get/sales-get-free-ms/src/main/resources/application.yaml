@@ -8,11 +8,11 @@ spring:
   application:
     name: data-get-free-ms
 server:
-  port: 6021
+  port: 6083
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8000/selling/eureka/
+      defaultZone: http://localhost:6000/selling/eureka/
 springdoc:
   swagger-ui:
     path: /swagger-ui

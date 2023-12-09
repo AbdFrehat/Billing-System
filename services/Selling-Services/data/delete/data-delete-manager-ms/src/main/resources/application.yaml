@@ -4,7 +4,7 @@ spring:
   application:
     name: data-delete-manager-ms
 server:
-  port: 6026
+  port: 6088
   servlet:
     context-path: /selling/data/delete/manager/sale/v1/
 eureka:
@@ -12,7 +12,7 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://localhost:8000/selling/eureka/
+      defaultZone: http://localhost:6000/selling/eureka/
 springdoc:
   swagger-ui:
     path: /swagger-ui

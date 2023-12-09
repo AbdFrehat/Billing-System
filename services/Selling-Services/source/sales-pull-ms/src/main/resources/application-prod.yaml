@@ -1,5 +1,5 @@
 server:
-  port: 6016
+  port: 6060
 emit:
   duration: ${EMIT_DURATION}
   max:

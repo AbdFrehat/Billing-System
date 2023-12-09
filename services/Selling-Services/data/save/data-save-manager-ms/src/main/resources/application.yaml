@@ -4,7 +4,7 @@ spring:
   application:
     name: data-save-manager-ms
 server:
-  port: 6023
+  port: 6085
   servlet:
     context-path: /selling/data/save/manager/sale/v1/
 eureka:
@@ -12,7 +12,7 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://localhost:8000/selling/eureka/
+      defaultZone: http://localhost:6000/selling/eureka/
 springdoc:
   swagger-ui:
     path: /swagger-ui

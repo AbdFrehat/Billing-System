@@ -22,11 +22,11 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://localhost:8000/selling/eureka/
+      defaultZone: http://localhost:6000/selling/eureka/
 config:
   services:
     context-path:
       data-manager-ms: "http://DATA-MANAGER-MS/selling/data/manager/sale/v1/"
 server:
-  port: 7015
+  port: 6041
 

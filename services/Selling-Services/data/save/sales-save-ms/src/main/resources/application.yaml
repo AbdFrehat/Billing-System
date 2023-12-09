@@ -8,11 +8,11 @@ spring:
   application:
     name: sales-save-ms
 server:
-  port: 6025
+  port: 6087
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8000/selling/eureka/
+      defaultZone: http://localhost:6000/selling/eureka/
 springdoc:
   swagger-ui:
     path: /swagger-ui

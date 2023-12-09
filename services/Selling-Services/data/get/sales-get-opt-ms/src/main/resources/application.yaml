@@ -10,11 +10,11 @@ spring:
   autoconfigure:
     exclude:
 server:
-  port: 6022
+  port: 6084
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8000/selling/eureka/
+      defaultZone: http://localhost:6000/selling/eureka/
 springdoc:
   swagger-ui:
     path: /swagger-ui
