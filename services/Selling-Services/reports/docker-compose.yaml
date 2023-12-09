@@ -1,0 +1,31 @@
+version: '3.0'
+
+
+services:
+  receipt-generator-ms:
+    build:
+      context: ./receipt-generator-ms
+    ports:
+      - "6020:6020"
+    networks:
+      - network
+      - shared_network
+    environment:
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      SPRING_PROFILE: prod
+
+  calc-price-ms:
+    build:
+      context: ./calc-price-ms
+    networks:
+      - network
+      - shared_network
+    environment:
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      SPRING_PROFILE: prod
+    depends_on:
+      - receipt-generator-ms
+networks:
+  network:
+  shared_network:
+    external: true

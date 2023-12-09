@@ -1,0 +1,7 @@
+server:
+  port: 6020
+eureka:
+  client:
+    service-url:
+      SPRING_PROFILE: prod
+      defaultZone: ${EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE}

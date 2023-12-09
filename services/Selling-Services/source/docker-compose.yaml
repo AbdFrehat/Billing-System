@@ -5,6 +5,8 @@ services:
   sales-pull-ms:
     build:
       context: ./sales-pull-ms
+    ports:
+      - "6060:6060"
     environment:
       SPRING_PROFILE: prod
       NUMBER_ITEMS: 10
@@ -21,8 +23,8 @@ services:
       SPRING_PROFILE: prod
       NUMBER_ITEMS: 10
       NUMBER_TAGS: 3
-      EMIT_DURATION: 00
-      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:8000/selling/eureka/
+      EMIT_DURATION: 1000
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
     networks:
       - network
       - shared_network

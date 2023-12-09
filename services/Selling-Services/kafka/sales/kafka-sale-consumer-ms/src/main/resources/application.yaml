@@ -22,7 +22,7 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://localhost:6000/selling/eureka/
+      defaultZone: http://localhost:6010/selling/eureka/
 config:
   services:
     context-path:

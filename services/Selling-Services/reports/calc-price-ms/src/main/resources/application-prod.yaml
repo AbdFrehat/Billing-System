@@ -1,0 +1,6 @@
+server:
+  port: 6021
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE}

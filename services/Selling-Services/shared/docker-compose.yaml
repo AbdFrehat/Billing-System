@@ -1,7 +1,7 @@
 services:
   eureka-server:
     ports:
-      - "8000:8000"
+      - "6010:6010"
     build:
       context: ./eureka-server
     environment:

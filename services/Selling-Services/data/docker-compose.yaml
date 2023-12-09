@@ -4,14 +4,12 @@ services:
   data-manager-ms:
     build:
       context: ./data-manager-ms
-    ports:
-      - "6018:6018"
     networks:
       - network
       - shared_network
     environment:
-      - EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE=http://eureka-server:8000/selling/eureka/
-      - SPRING_PROFILE=prod
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      SPRING_PROFILE: prod
 
   data-get-manager-ms:
     build:
@@ -22,8 +20,8 @@ services:
     depends_on:
       - data-manager-ms
     environment:
-      - EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE=http://eureka-server:8000/selling/eureka/
-      - SPRING_PROFILE=prod
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      SPRING_PROFILE: prod
 
   sales-get-free-ms:
     build:
@@ -34,9 +32,9 @@ services:
     depends_on:
       - data-get-manager-ms
     environment:
-      - EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE=http://eureka-server:8000/selling/eureka/
-      - SPRING_DATA_MONGO_URI=mongodb://admin:123@selling-system-database:27017/
-      - SPRING_PROFILE=prod
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
+      SPRING_PROFILE: prod
 
   sales-get-ms:
     build:
@@ -47,9 +45,9 @@ services:
     depends_on:
       - data-get-manager-ms
     environment:
-      - EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE=http://eureka-server:8000/selling/eureka/
-      - SPRING_DATA_MONGO_URI=mongodb://admin:123@selling-system-database:27017/
-      - SPRING_PROFILE=prod
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
+      SPRING_PROFILE: prod
 
   sales-get-opt-ms:
     build:
@@ -60,9 +58,9 @@ services:
     depends_on:
       - data-get-manager-ms
     environment:
-      - EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE=http://eureka-server:8000/selling/eureka/
-      - SPRING_DATA_MONGO_URI=mongodb://admin:123@selling-system-database:27017/
-      - SPRING_PROFILE=prod
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
+      SPRING_PROFILE: prod
 
   data-save-manager-ms:
     build:
@@ -73,8 +71,8 @@ services:
     depends_on:
       - data-manager-ms
     environment:
-      - EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE=http://eureka-server:8000/selling/eureka/
-      - SPRING_PROFILE=prod
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      SPRING_PROFILE: prod
 
   sale-save-ms:
     build:
@@ -85,9 +83,9 @@ services:
     depends_on:
       - data-save-manager-ms
     environment:
-      - EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE=http://eureka-server:8000/selling/eureka/
-      - SPRING_DATA_MONGO_URI=mongodb://admin:123@selling-system-database:27017/
-      - SPRING_PROFILE=prod
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
+      SPRING_PROFILE: prod
 
   sales-save-ms:
     build:
@@ -98,9 +96,9 @@ services:
     depends_on:
       - data-save-manager-ms
     environment:
-      - EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE=http://eureka-server:8000/selling/eureka/
-      - SPRING_DATA_MONGO_URI=mongodb://admin:123@selling-system-database:27017/
-      - SPRING_PROFILE=prod
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
+      SPRING_PROFILE: prod
 
   data-update-manager-ms:
     build:
@@ -111,8 +109,8 @@ services:
     depends_on:
       - data-manager-ms
     environment:
-      - EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE=http://eureka-server:8000/selling/eureka/
-      - SPRING_PROFILE=prod
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      SPRING_PROFILE: prod
 
   sale-update-ms:
     build:
@@ -121,12 +119,11 @@ services:
       - network
       - shared_network
     depends_on:
-      - selling-system-database
       - data-update-manager-ms
     environment:
-      - EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE=http://eureka-server:8000/selling/eureka/
-      - SPRING_DATA_MONGO_URI=mongodb://admin:123@selling-system-database:27017/
-      - SPRING_PROFILE=prod
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
+      SPRING_PROFILE: prod
 
   sales-update-ms:
     build:
@@ -135,12 +132,11 @@ services:
       - network
       - shared_network
     depends_on:
-      - selling-system-database
       - data-update-manager-ms
     environment:
-      - EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE=http://eureka-server:8000/selling/eureka/
-      - SPRING_DATA_MONGO_URI=mongodb://admin:123@selling-system-database:27017/
-      - SPRING_PROFILE=prod
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
+      SPRING_PROFILE: prod
 
   data-delete-manager-ms:
     build:
@@ -151,8 +147,8 @@ services:
     depends_on:
       - data-manager-ms
     environment:
-      - EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE=http://eureka-server:8000/selling/eureka/
-      - SPRING_PROFILE=prod
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      SPRING_PROFILE: prod
 
   sale-delete-ms:
       build:
@@ -161,12 +157,11 @@ services:
         - network
         - shared_network
       depends_on:
-        - selling-system-database
         - data-delete-manager-ms
       environment:
-        - EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE=http://eureka-server:8000/selling/eureka/
-        - SPRING_DATA_MONGO_URI=mongodb://admin:123@selling-system-database:27017/
-        - SPRING_PROFILE=prod
+        EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+        SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
+        SPRING_PROFILE: prod
 
   sales-delete-ms:
       build:
@@ -175,12 +170,11 @@ services:
         - network
         - shared_network
       depends_on:
-        - selling-system-database
         - data-delete-manager-ms
       environment:
-        - EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE=http://eureka-server:8000/selling/eureka/
-        - SPRING_DATA_MONGO_URI=mongodb://admin:123@selling-system-database:27017/
-        - SPRING_PROFILE=prod
+        EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+        SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
+        SPRING_PROFILE: prod
 
   sale-delete-query-ms:
     build:
@@ -189,12 +183,11 @@ services:
       - network
       - shared_network
     depends_on:
-      - selling-system-database
       - data-delete-manager-ms
     environment:
-      - EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE=http://eureka-server:8000/selling/eureka/
-      - SPRING_DATA_MONGO_URI=mongodb://admin:123@selling-system-database:27017/
-      - SPRING_PROFILE=prod
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
+      SPRING_PROFILE: prod
 
 networks:
   network:
