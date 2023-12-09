@@ -1,13 +1,13 @@
 package com.selling.system.source.push.sales.service;
 
+import com.selling.system.shared.module.models.commands.ModifyCommand;
+import com.selling.system.shared.module.models.enums.CommandType;
 import com.selling.system.source.random.generator.sales.service.SaleGeneratorService;
-import com.selling.system.shared.module.models.entities.Sale;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Mono;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -40,7 +40,12 @@ public class SalePushService {
         webClient
                 .post()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(Mono.just(saleGeneratorService.generateRandomSale()), Sale.class)
+                .bodyValue(
+                        ModifyCommand.builder()
+                                .commandType(CommandType.SAVE_SALE)
+                                .data(saleGeneratorService.generateRandomSale())
+                                .build()
+                )
                 .retrieve()
                 .bodyToMono(Void.class)
                 .subscribe();

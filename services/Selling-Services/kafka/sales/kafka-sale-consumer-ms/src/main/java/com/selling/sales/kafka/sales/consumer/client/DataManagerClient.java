@@ -1,12 +1,14 @@
 package com.selling.sales.kafka.sales.consumer.client;
 
-import com.selling.system.shared.module.models.commands.QueryCommand;
+import com.selling.system.shared.module.models.commands.DataCommand;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
+
+import java.util.List;
 
 @Component
 public class DataManagerClient {
@@ -20,12 +22,12 @@ public class DataManagerClient {
         this.webClient = webClientBuilder.build();
     }
 
-    public Mono<ResponseEntity<Void>> saveSales(QueryCommand queryCommand) {
+    public Mono<ResponseEntity<Void>> sendCommands(List<DataCommand> dataCommands) {
         return webClient
                 .post()
-                .uri(dataManagerMsContextPath)
+                .uri(dataManagerMsContextPath + "multi")
                 .contentType(MediaType.APPLICATION_JSON)
-                .bodyValue(queryCommand)
+                .bodyValue(dataCommands)
                 .retrieve()
                 .toBodilessEntity();
     }

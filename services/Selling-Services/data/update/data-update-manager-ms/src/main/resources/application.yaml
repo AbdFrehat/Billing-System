@@ -24,4 +24,4 @@ config:
   services:
     context-path:
       data-update-ms: "http://SALE-UPDATE-MS/selling/data/update/sale/v1/"
-      data-update-multi-ms: "http://SALES-MULTI-MS/selling/data/update/sales/v1/"
+      data-update-multi-ms: "http://SALES-UPDATE-MS/selling/data/update/sales/v1/"

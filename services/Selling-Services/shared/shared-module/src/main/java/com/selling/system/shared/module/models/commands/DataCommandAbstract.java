@@ -4,7 +4,7 @@ import com.selling.system.shared.module.models.enums.CommandType;
 
 import java.util.Map;
 
-public interface QueryCommandAbstract {
+public interface DataCommandAbstract {
 
     Map<String, ? extends QueryFieldAbstract> getQueryFields();
 

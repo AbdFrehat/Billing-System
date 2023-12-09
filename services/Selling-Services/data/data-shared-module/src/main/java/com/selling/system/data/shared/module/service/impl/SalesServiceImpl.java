@@ -5,7 +5,7 @@ import com.selling.system.data.shared.module.service.SalesService;
 import com.selling.system.data.shared.module.entites.SaleDocument;
 import com.selling.system.data.shared.module.repository.SalesRepository;
 import com.selling.system.data.shared.module.service.QueryBuilderService;
-import com.selling.system.shared.module.models.commands.QueryCommand;
+import com.selling.system.shared.module.models.commands.DataCommand;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -48,15 +48,15 @@ public class SalesServiceImpl implements SalesService {
      *     <lu>2. calls the getSales method from salesRepository.</lu>
      * </ul>
      *
-     * @param queryCommand: {@link QueryCommand} contains the list of fields that the query searches on.
+     * @param dataCommand: {@link DataCommand} contains the list of fields that the query searches on.
      * @return {@link Flux}<{@link SaleDocument}> to be sent back in the response.
      * @author Abd Frehat
      * @since 1.0
      */
     @Override
-    public Flux<SaleDocument> getSales(QueryCommand queryCommand) {
-        log.debug("A sale get request is made with queryCommand: {}", queryCommand);
-        return this.salesRepository.getSales(queryBuilderService.buildQuery(queryCommand));
+    public Flux<SaleDocument> getSales(DataCommand dataCommand) {
+        log.debug("A sale get request is made with queryCommand: {}", dataCommand);
+        return this.salesRepository.getSales(queryBuilderService.buildQuery(dataCommand));
     }
 
     @Override
@@ -91,9 +91,9 @@ public class SalesServiceImpl implements SalesService {
 
 
     @Override
-    public Mono<DeleteResult> deleteSalesByQuery(QueryCommand queryCommand) {
-        log.debug("A sales delete request is made with queryCommand: {}", queryCommand);
-        return this.salesRepository.deleteSalesByQuery(queryBuilderService.buildQuery(queryCommand));
+    public Mono<DeleteResult> deleteSalesByQuery(DataCommand dataCommand) {
+        log.debug("A sales delete request is made with queryCommand: {}", dataCommand);
+        return this.salesRepository.deleteSalesByQuery(queryBuilderService.buildQuery(dataCommand));
     }
 
     @Override
@@ -102,7 +102,7 @@ public class SalesServiceImpl implements SalesService {
     }
 
     @Override
-    public Mono<Long> count(QueryCommand queryCommand) {
-        return salesRepository.count(queryBuilderService.buildQuery(queryCommand));
+    public Mono<Long> count(DataCommand dataCommand) {
+        return salesRepository.count(queryBuilderService.buildQuery(dataCommand));
     }
 }

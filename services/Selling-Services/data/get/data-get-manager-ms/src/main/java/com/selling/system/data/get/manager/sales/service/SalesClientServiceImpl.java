@@ -1,7 +1,7 @@
 package com.selling.system.data.get.manager.sales.service;
 
 import com.selling.system.shared.module.handlers.ClientExceptionHandler;
-import com.selling.system.shared.module.models.commands.QueryCommand;
+import com.selling.system.shared.module.models.commands.DataCommand;
 import com.selling.system.shared.module.models.enums.CommandType;
 import com.selling.system.shared.module.models.responses.QueryResponse;
 import org.springframework.http.HttpStatusCode;
@@ -32,20 +32,20 @@ public class SalesClientServiceImpl implements SalesClientService {
     }
 
     /**
-     * This method takes the request object, build the web client and select the uri based on the queryMethod inside {@link QueryCommand}
+     * This method takes the request object, build the web client and select the uri based on the queryMethod inside {@link DataCommand}
      *
-     * @param queryCommand represents the request object to be sent to the data microservices
+     * @param dataCommand represents the request object to be sent to the data microservices
      * @return {@link Mono}<{@link QueryResponse}> which represents the retrieved data from the query services.
      */
     @Override
-    public Mono<QueryResponse> sendRequest(QueryCommand queryCommand) {
+    public Mono<QueryResponse> sendRequest(DataCommand dataCommand) {
         return webClient
                 .post()
-                .uri(getUri(queryCommand.getCommandType()))
+                .uri(getUri(dataCommand.getCommandType()))
                 .contentType(MediaType.APPLICATION_JSON)
-                .bodyValue(queryCommand)
+                .bodyValue(dataCommand)
                 .retrieve()
-                .onStatus(HttpStatusCode::isError, new ClientExceptionHandler(queryCommand.getCommandType().name()))
+                .onStatus(HttpStatusCode::isError, new ClientExceptionHandler(dataCommand.getCommandType().name()))
                 .bodyToMono(QueryResponse.class);
     }
 

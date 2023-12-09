@@ -2,7 +2,7 @@ package com.selling.system.data.sales.get.controller;
 
 import com.selling.system.data.shared.module.entites.SaleDocument;
 import com.selling.system.data.shared.module.service.QueryResponseService;
-import com.selling.system.shared.module.models.commands.QueryCommand;
+import com.selling.system.shared.module.models.commands.DataCommand;
 import com.selling.system.shared.module.models.commands.QueryField;
 import com.selling.system.shared.module.models.commands.SortField;
 import com.selling.system.shared.module.models.enums.FieldType;
@@ -37,7 +37,7 @@ class GetSaleControllerTest {
 
     @Test
     void testGetSales_ValidInput_ReturnQueryResponse() {
-        QueryCommand queryCommand = QueryCommand.builder()
+        DataCommand dataCommand = DataCommand.builder()
                 .commandType(CommandType.GET_SALES)
                 .queryFields(Map.of("F1", QueryField.builder()
                         .fieldType(FieldType.OTHER)
@@ -63,13 +63,13 @@ class GetSaleControllerTest {
                                 .build()
                 ))
                 .build();
-        when(queryResponseService.buildQueryResponse(queryCommand)).thenReturn(
+        when(queryResponseService.buildQueryResponse(dataCommand)).thenReturn(
                 Mono.just(ResponseEntity.ok().body(queryResponse)));
 
         webTestClient
                 .post()
                 .contentType(MediaType.APPLICATION_JSON)
-                .bodyValue(queryCommand)
+                .bodyValue(dataCommand)
                 .exchange()
                 .expectStatus()
                 .isOk()

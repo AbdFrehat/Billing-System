@@ -2,7 +2,7 @@ package com.selling.system.data.sales.get.controller;
 
 
 import com.selling.system.data.shared.module.service.QueryResponseService;
-import com.selling.system.shared.module.models.commands.QueryCommand;
+import com.selling.system.shared.module.models.commands.DataCommand;
 import com.selling.system.shared.module.models.responses.QueryResponse;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -24,8 +24,8 @@ public class GetSaleController {
     }
 
     @PostMapping
-    Mono<ResponseEntity<QueryResponse>> getSales(@RequestBody @Valid QueryCommand queryCommand) {
-        log.info("getSales endpoint is called with {} command.", queryCommand);
-        return queryResponseService.buildQueryResponse(queryCommand);
+    Mono<ResponseEntity<QueryResponse>> getSales(@RequestBody @Valid DataCommand dataCommand) {
+        log.info("getSales endpoint is called with {} command.", dataCommand);
+        return queryResponseService.buildQueryResponse(dataCommand);
     }
 }

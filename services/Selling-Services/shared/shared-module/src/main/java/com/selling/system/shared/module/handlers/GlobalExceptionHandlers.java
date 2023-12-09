@@ -5,7 +5,7 @@ import com.selling.system.shared.module.exceptions.BadConvertorException;
 import com.selling.system.shared.module.exceptions.PayloadBadFormatException;
 import com.selling.system.shared.module.exceptions.business.FieldTypeNotFoundException;
 import com.selling.system.shared.module.exceptions.business.PurchaseMethodNotFoundException;
-import com.selling.system.shared.module.exceptions.business.QueryMethodNotFoundException;
+import com.selling.system.shared.module.exceptions.business.CommandTypeNotSupportedException;
 import com.selling.system.shared.module.exceptions.general.ClientException;
 import com.selling.system.shared.module.models.constants.ExceptionsConstantCodes;
 import com.selling.system.shared.module.models.responses.ErrorResponse;
@@ -79,12 +79,12 @@ public class GlobalExceptionHandlers {
                         .build());
     }
 
-    @ExceptionHandler(QueryMethodNotFoundException.class)
-    public ResponseEntity<ErrorResponse> handleQueryMethodNotFoundException(QueryMethodNotFoundException ex) {
+    @ExceptionHandler(CommandTypeNotSupportedException.class)
+    public ResponseEntity<ErrorResponse> handleQueryMethodNotFoundException(CommandTypeNotSupportedException ex) {
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .body(ErrorResponse.builder()
-                        .exceptionName(QueryMethodNotFoundException.class.getSimpleName())
+                        .exceptionName(CommandTypeNotSupportedException.class.getSimpleName())
                         .errorCode(ExceptionsConstantCodes.QUERY_METHOD_NOT_FOUND_EXCEPTION)
                         .message(ex.getMessage())
                         .build());

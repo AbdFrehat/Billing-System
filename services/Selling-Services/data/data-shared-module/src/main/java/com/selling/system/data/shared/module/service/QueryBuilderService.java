@@ -1,6 +1,6 @@
 package com.selling.system.data.shared.module.service;
 
-import com.selling.system.shared.module.models.commands.QueryCommand;
+import com.selling.system.shared.module.models.commands.DataCommand;
 import org.springframework.data.mongodb.core.query.Query;
 
 /**
@@ -15,12 +15,12 @@ import org.springframework.data.mongodb.core.query.Query;
 public interface QueryBuilderService {
 
     /**
-     * This method is used to build the {@link Query} object based on the passed {@link QueryCommand} object.
+     * This method is used to build the {@link Query} object based on the passed {@link DataCommand} object.
      *
-     * @param queryCommand: {@link QueryCommand} contains the list of filed that the query searches on.
+     * @param dataCommand: {@link DataCommand} contains the list of filed that the query searches on.
      * @return returns query: {@link Query} object to be used with mongoTemplate for searching and updating operations.
      * @author Abd Frehat
      * @since 1.0
      */
-    Query buildQuery(QueryCommand queryCommand);
+    Query buildQuery(DataCommand dataCommand);
 }

@@ -1,7 +1,7 @@
 package com.selling.system.data.get.manager.sales.controller;
 
 import com.selling.system.data.get.manager.sales.service.SalesClientService;
-import com.selling.system.shared.module.models.commands.QueryCommand;
+import com.selling.system.shared.module.models.commands.DataCommand;
 import com.selling.system.shared.module.models.commands.QueryField;
 import com.selling.system.shared.module.models.commands.SortField;
 import com.selling.system.shared.module.models.entities.Sale;
@@ -37,7 +37,7 @@ class SalesRouterControllerTest {
 
     @Test
     void testGetSales_ValidInput_ReturnQueryResponse() {
-        QueryCommand queryCommand = QueryCommand.builder()
+        DataCommand dataCommand = DataCommand.builder()
                 .commandType(CommandType.GET_SALES)
                 .queryFields(Map.of("F1", QueryField.builder()
                         .fieldType(FieldType.OTHER)
@@ -63,12 +63,12 @@ class SalesRouterControllerTest {
                                 .build()
                 ))
                 .build();
-        when(salesClientService.sendRequest(queryCommand))
+        when(salesClientService.sendRequest(dataCommand))
                 .thenReturn(Mono.just(queryResponse));
         webTestClient
                 .post()
                 .contentType(MediaType.APPLICATION_JSON)
-                .bodyValue(queryCommand)
+                .bodyValue(dataCommand)
                 .exchange()
                 .expectStatus()
                 .isOk()

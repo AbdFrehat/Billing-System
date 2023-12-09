@@ -21,7 +21,7 @@ import java.util.Map;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class QueryCommand implements QueryCommandAbstract {
+public class DataCommand implements DataCommandAbstract {
 
     /**
      * Map of QueryFields which represent the search criteria.

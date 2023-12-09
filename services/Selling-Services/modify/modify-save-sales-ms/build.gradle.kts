@@ -16,6 +16,7 @@ dependencies {
 	implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:${project.findProperty("springDocOpenAPIVersion")}")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	implementation(project(":shared:shared-module"))
+	implementation(project(":modify:modify-shared-sales-ms"))
 	testImplementation("io.projectreactor:reactor-test")
 }
 

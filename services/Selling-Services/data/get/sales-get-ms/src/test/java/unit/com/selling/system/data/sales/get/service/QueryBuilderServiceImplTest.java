@@ -2,7 +2,7 @@ package com.selling.system.data.sales.get.service;
 
 import com.selling.system.data.shared.module.service.QueryBuilderService;
 import com.selling.system.data.shared.module.service.interpreter.impl.ExpressionBuilderImpl;
-import com.selling.system.shared.module.models.commands.QueryCommand;
+import com.selling.system.shared.module.models.commands.DataCommand;
 import com.selling.system.shared.module.models.commands.QueryField;
 import com.selling.system.shared.module.models.commands.SortField;
 import com.selling.system.shared.module.models.enums.CommandType;
@@ -33,7 +33,7 @@ class QueryBuilderServiceImplTest {
     @DisplayName("test buildQuery method in QueryBuilderServiceImpl to check if the query object created successfully")
     @Test
     void testBuildQuery_ValidInput_WithoutCount_ReturnQuery() {
-        QueryCommand queryCommand = QueryCommand.builder()
+        DataCommand dataCommand = DataCommand.builder()
                 .commandType(CommandType.GET_SALES)
                 .queryFields(Map.of("F1", QueryField.builder()
                         .fieldType(FieldType.OTHER)
@@ -51,7 +51,7 @@ class QueryBuilderServiceImplTest {
                         .direction("ASC")
                         .build())
                 .build();
-        Query query = queryBuilderService.buildQuery(queryCommand);
+        Query query = queryBuilderService.buildQuery(dataCommand);
         System.out.println(query);
         assert query != null;
         assert query.getQueryObject().get("id").equals("1");
@@ -64,7 +64,7 @@ class QueryBuilderServiceImplTest {
     @DisplayName("test buildQuery method in QueryBuilderServiceImpl to check if the query object created successfully with more than one queryField")
     @Test
     void testBuildQuery_ValidInput_WithoutCount_DifferentFields_ReturnQuery() {
-        QueryCommand queryCommand = QueryCommand.builder()
+        DataCommand dataCommand = DataCommand.builder()
                 .commandType(CommandType.GET_SALES)
                 .queryFields(Map.of("F1", QueryField.builder()
                                 .fieldType(FieldType.OTHER)
@@ -87,7 +87,7 @@ class QueryBuilderServiceImplTest {
                         .direction("ASC")
                         .build())
                 .build();
-        Query query = queryBuilderService.buildQuery(queryCommand);
+        Query query = queryBuilderService.buildQuery(dataCommand);
         System.out.println(query);
         assert query != null;
         assert query.getQueryObject().get("id").equals("1");
@@ -101,7 +101,7 @@ class QueryBuilderServiceImplTest {
     @DisplayName("test buildQuery method in QueryBuilderServiceImpl to check if the query object created successfully with count request")
     @Test
     void testBuildQuery_ValidInput_WithCount_ReturnQuery() {
-        QueryCommand queryCommand = QueryCommand.builder()
+        DataCommand dataCommand = DataCommand.builder()
                 .commandType(CommandType.GET_SALES)
                 .queryFields(Map.of("F1", QueryField.builder()
                         .fieldType(FieldType.OTHER)
@@ -119,7 +119,7 @@ class QueryBuilderServiceImplTest {
                         .direction("ASC")
                         .build())
                 .build();
-        Query query = queryBuilderService.buildQuery(queryCommand);
+        Query query = queryBuilderService.buildQuery(dataCommand);
         assert query != null;
         assert query.getQueryObject().get("id").equals("1");
         assert query.getSortObject().get("saleDate") == null;

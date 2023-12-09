@@ -3,7 +3,7 @@ package com.selling.system.data.sales.get.service;
 import com.selling.system.data.shared.module.entites.SaleDocument;
 import com.selling.system.data.shared.module.service.QueryResponseService;
 import com.selling.system.data.shared.module.service.SalesService;
-import com.selling.system.shared.module.models.commands.QueryCommand;
+import com.selling.system.shared.module.models.commands.DataCommand;
 import com.selling.system.shared.module.models.commands.QueryField;
 import com.selling.system.shared.module.models.commands.SortField;
 import com.selling.system.shared.module.models.enums.CommandType;
@@ -39,7 +39,7 @@ class QueryResponseServiceImplTest {
     @DisplayName("test buildQueryResponse method in queryResponseService to check if it returns a valid query response if the count option is disabled")
     @Test
     void testBuildQueryResponse_ValidInput_WithOutCount_ReturnQuery() {
-        QueryCommand queryCommand = QueryCommand.builder()
+        DataCommand dataCommand = DataCommand.builder()
                 .commandType(CommandType.GET_SALES)
                 .queryFields(Map.of("F1", QueryField.builder()
                                 .fieldType(FieldType.OTHER)
@@ -69,9 +69,9 @@ class QueryResponseServiceImplTest {
                         .saleDate(new Date())
                         .purchaseMethod("IN_STORE")
                         .build());
-        when(salesService.getSales(queryCommand))
+        when(salesService.getSales(dataCommand))
                 .thenReturn(Flux.fromIterable(sales));
-        StepVerifier.create(queryResponseService.buildQueryResponse(queryCommand))
+        StepVerifier.create(queryResponseService.buildQueryResponse(dataCommand))
                 .assertNext(verifiedQueryResponse -> {
                     assert verifiedQueryResponse.getBody() != null;
                     assert verifiedQueryResponse.getBody().getData().equals(sales);
@@ -82,7 +82,7 @@ class QueryResponseServiceImplTest {
     @DisplayName("test buildQueryResponse method in queryResponseService to check if it returns a valid query response if the count option is enabled")
     @Test
     void testBuildQueryResponse_ValidInput_WithCount_ReturnQuery() {
-        QueryCommand queryCommand = QueryCommand.builder()
+        DataCommand dataCommand = DataCommand.builder()
                 .commandType(CommandType.GET_SALES)
                 .queryFields(Map.of("F1", QueryField.builder()
                                 .fieldType(FieldType.OTHER)
@@ -105,9 +105,9 @@ class QueryResponseServiceImplTest {
                         .direction("ASC")
                         .build())
                 .build();
-        when(salesService.count(queryCommand))
+        when(salesService.count(dataCommand))
                 .thenReturn(Mono.just(1L));
-        StepVerifier.create(queryResponseService.buildQueryResponse(queryCommand))
+        StepVerifier.create(queryResponseService.buildQueryResponse(dataCommand))
                 .assertNext(verifiedQueryResponse -> {
                     assert verifiedQueryResponse.getBody() != null;
                     assert verifiedQueryResponse.getBody().getData().equals(1L);

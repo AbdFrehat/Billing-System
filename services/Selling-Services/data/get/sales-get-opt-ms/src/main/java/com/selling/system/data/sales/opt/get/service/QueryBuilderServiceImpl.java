@@ -2,7 +2,7 @@ package com.selling.system.data.sales.opt.get.service;
 
 import com.selling.system.data.shared.module.service.QueryBuilderService;
 import com.selling.system.data.shared.module.service.interpreter.ExpressionBuilder;
-import com.selling.system.shared.module.models.commands.QueryCommand;
+import com.selling.system.shared.module.models.commands.DataCommand;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.mongodb.core.query.Query;
@@ -32,25 +32,25 @@ public class QueryBuilderServiceImpl implements QueryBuilderService {
     }
 
     /**
-     * This method is used to build the {@link Query} object based on the passed {@link QueryCommand} object.
+     * This method is used to build the {@link Query} object based on the passed {@link DataCommand} object.
      *
-     * @param queryCommand: {@link QueryCommand} contains the list of fields that the query searches on.
+     * @param dataCommand: {@link DataCommand} contains the list of fields that the query searches on.
      * @return returns query: {@link Query} object to be used with mongoTemplate for searching and updating operations.
      * @author Abd Frehat
      * @since 1.0
      */
     @Override
-    public Query buildQuery(QueryCommand queryCommand) {
+    public Query buildQuery(DataCommand dataCommand) {
         var query = new Query();
-        var criteriaExpression = expressionBuilder.build(queryCommand.getExpression());
-        query.addCriteria(criteriaExpression.interpret(queryCommand.getQueryFields()));
+        var criteriaExpression = expressionBuilder.build(dataCommand.getExpression());
+        query.addCriteria(criteriaExpression.interpret(dataCommand.getQueryFields()));
         log.info("ExpressionBuilder: {}", expressionBuilder);
-        if (!queryCommand.isCount()) {
-            addPageable(queryCommand, query);
-            addSorting(queryCommand, query);
+        if (!dataCommand.isCount()) {
+            addPageable(dataCommand, query);
+            addSorting(dataCommand, query);
         }
-        if (queryCommand.getExcludedFields() != null && queryCommand.getExcludedFields().length > 0) {
-            query.fields().exclude(queryCommand.getExcludedFields());
+        if (dataCommand.getExcludedFields() != null && dataCommand.getExcludedFields().length > 0) {
+            query.fields().exclude(dataCommand.getExcludedFields());
         }
         return query;
     }

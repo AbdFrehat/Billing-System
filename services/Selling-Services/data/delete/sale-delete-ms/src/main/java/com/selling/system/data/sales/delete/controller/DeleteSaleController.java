@@ -1,7 +1,7 @@
 package com.selling.system.data.sales.delete.controller;
 
 import com.selling.system.data.shared.module.service.QueryResponseService;
-import com.selling.system.shared.module.models.commands.QueryCommand;
+import com.selling.system.shared.module.models.commands.DataCommand;
 import com.selling.system.shared.module.models.responses.QueryResponse;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -22,8 +22,8 @@ public class DeleteSaleController {
     }
 
     @PostMapping
-    Mono<ResponseEntity<QueryResponse>> deleteSale(@RequestBody @Valid QueryCommand queryCommand) {
-        log.info("deleteSale endpoint is called with {} command.", queryCommand);
-        return queryResponseService.buildQueryResponse(queryCommand);
+    Mono<ResponseEntity<QueryResponse>> deleteSale(@RequestBody @Valid DataCommand dataCommand) {
+        log.info("deleteSale endpoint is called with {} command.", dataCommand);
+        return queryResponseService.buildQueryResponse(dataCommand);
     }
 }

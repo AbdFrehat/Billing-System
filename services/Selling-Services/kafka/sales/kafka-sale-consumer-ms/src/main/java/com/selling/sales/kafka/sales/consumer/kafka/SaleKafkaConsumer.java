@@ -1,9 +1,8 @@
 package com.selling.sales.kafka.sales.consumer.kafka;
 
 import com.selling.sales.kafka.sales.consumer.client.DataManagerClient;
-import com.selling.system.shared.module.models.commands.QueryCommand;
-import com.selling.system.shared.module.models.entities.Sale;
-import com.selling.system.shared.module.models.enums.CommandType;
+import com.selling.system.shared.module.models.commands.DataCommand;
+import com.selling.system.shared.module.models.commands.ModifyCommand;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
@@ -22,13 +21,13 @@ public class SaleKafkaConsumer {
 
     @KafkaListener(topics = "${spring.kafka.default-topic}", containerFactory = "batchFactory")
     @Transactional
-    public void consumerSaleMessage(@Payload List<Sale> sales) {
-        dataManagerClient
-                .saveSales(QueryCommand.builder()
-                        .payload(sales)
-                        .commandType(CommandType.SAVE_SALES)
-                        .build())
-                .subscribe();
+    public void consumerSaleMessage(@Payload List<ModifyCommand> modifyCommands) {
+        dataManagerClient.sendCommands(
+                modifyCommands.stream().map(modifyCommand -> DataCommand.builder()
+                        .commandType(modifyCommand.getCommandType())
+                        .payload(modifyCommand.getData())
+                        .build()).toList()
+        ).subscribe();
     }
 
 }

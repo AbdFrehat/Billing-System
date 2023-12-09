@@ -1,6 +1,6 @@
 package com.selling.system.reports.generate.receipt.client;
 
-import com.selling.system.shared.module.models.commands.QueryCommand;
+import com.selling.system.shared.module.models.commands.DataCommand;
 import com.selling.system.shared.module.models.commands.QueryField;
 import com.selling.system.shared.module.models.entities.Sale;
 import com.selling.system.shared.module.models.enums.CommandType;
@@ -36,8 +36,8 @@ public class DataManagerClientImpl implements DataManagerClient {
                 .map(queryResponse -> toSales(queryResponse.getData()).get(0));
     }
 
-    private QueryCommand buildQueryCommand(String saleId) {
-        return QueryCommand
+    private DataCommand buildQueryCommand(String saleId) {
+        return DataCommand
                 .builder()
                 .queryFields(Map.of("F1", QueryField
                         .builder()

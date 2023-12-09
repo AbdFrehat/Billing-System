@@ -14,9 +14,10 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("jakarta.validation:jakarta.validation-api:${project.findProperty("jakartaValidationApiVersion")}")
 	implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:${project.findProperty("springDocOpenAPIVersion")}")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	implementation(project(":shared:shared-module"))
+	implementation(project(":modify:modify-shared-sales-ms"))
 	testImplementation("io.projectreactor:reactor-test")
+	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
 dependencyManagement {

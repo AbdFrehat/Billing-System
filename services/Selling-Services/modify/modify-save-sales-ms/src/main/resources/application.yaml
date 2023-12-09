@@ -16,3 +16,7 @@ springdoc:
     groups:
       enabled: true
     path: /api/docs
+config:
+  services:
+    context-path:
+      kafka-sale-producer-ms: http://KAFKA-SALE-PRODUCER-MS/selling/kafka/sale/v1/

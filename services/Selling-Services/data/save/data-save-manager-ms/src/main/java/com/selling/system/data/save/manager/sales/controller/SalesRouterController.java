@@ -1,7 +1,7 @@
 package com.selling.system.data.save.manager.sales.controller;
 
 import com.selling.system.data.save.manager.sales.service.SalesClientService;
-import com.selling.system.shared.module.models.commands.QueryCommand;
+import com.selling.system.shared.module.models.commands.DataCommand;
 import com.selling.system.shared.module.models.responses.QueryResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -30,12 +30,12 @@ public class SalesRouterController {
      * This endpoint is responsible for receiving a query command from any service needs to operations on the database.
      * takes the request and handles it to the salesClientService which will call the suitable service for doing the desired operation.
      *
-     * @param queryCommand {@link QueryCommand}
+     * @param dataCommand {@link DataCommand}
      * @return {@link Mono}<{@link ResponseEntity}<{@link QueryResponse}>>
      */
     @PostMapping
-    public Mono<ResponseEntity<QueryResponse>> routeQueryServe(@RequestBody @Valid QueryCommand queryCommand) {
-        return salesClientService.sendRequest(queryCommand)
+    public Mono<ResponseEntity<QueryResponse>> routeQueryServe(@RequestBody @Valid DataCommand dataCommand) {
+        return salesClientService.sendRequest(dataCommand)
                 .map(queryResponse -> ResponseEntity.ok().body(queryResponse));
     }
 

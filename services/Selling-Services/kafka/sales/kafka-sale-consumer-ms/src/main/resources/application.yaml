@@ -4,18 +4,18 @@ spring:
     name: kafka-sale-consumer-ms
   kafka:
     bootstrap-servers: 127.0.0.1:9092
-    default-topic: persistence.sale.json
+    default-topic: modify.command.json
     consumer:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       auto-offset-reset: latest
-      group-id: persistence.sale.consumers
+      group-id: modify.command.consumers
       properties:
         spring:
           json:
             value:
               default:
-                type: 'com.selling.system.shared.module.models.entities.Sale'
+                type: 'com.selling.system.shared.module.models.commands.ModifyCommand'
       client-id: 1
 eureka:
   client:

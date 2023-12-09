@@ -3,7 +3,7 @@ package com.selling.system.data.sales.multi.delete.service;
 import com.selling.system.data.shared.module.service.QueryResponseService;
 import com.selling.system.data.shared.module.service.SalesService;
 import com.selling.system.data.shared.module.util.QueryResponseMapperUtil;
-import com.selling.system.shared.module.models.commands.QueryCommand;
+import com.selling.system.shared.module.models.commands.DataCommand;
 import com.selling.system.shared.module.models.responses.QueryResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -23,8 +23,8 @@ public class QueryResponseServiceImpl implements QueryResponseService {
     }
 
     @Override
-    public Mono<ResponseEntity<QueryResponse>> buildQueryResponse(QueryCommand queryCommand) {
+    public Mono<ResponseEntity<QueryResponse>> buildQueryResponse(DataCommand dataCommand) {
         log.info("DELETE_SALES Command is called");
-        return QueryResponseMapperUtil.mapMonoToResponse(salesService.deleteSales(toSales(queryCommand.getPayload())));
+        return QueryResponseMapperUtil.mapMonoToResponse(salesService.deleteSales(toSales(dataCommand.getPayload())));
     }
 }

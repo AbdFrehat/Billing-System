@@ -3,7 +3,7 @@ package com.selling.system.data.get.manager.sales.sales.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.selling.system.data.get.manager.sales.service.SalesClientService;
-import com.selling.system.shared.module.models.commands.QueryCommand;
+import com.selling.system.shared.module.models.commands.DataCommand;
 import com.selling.system.shared.module.models.commands.QueryField;
 import com.selling.system.shared.module.models.commands.SortField;
 import com.selling.system.shared.module.models.enums.CommandType;
@@ -44,7 +44,7 @@ class SalesClientServiceImplTest {
     @DisplayName("test if the request is sent successfully to sales-get-ms service")
     @Test
     void testSendRequest_ValidInput_ReturnQueryResponse_RoutingToGetSales() throws JsonProcessingException {
-        QueryCommand queryCommand = QueryCommand.builder()
+        DataCommand dataCommand = DataCommand.builder()
                 .commandType(CommandType.GET_SALES)
                 .queryFields(Map.of("F1", QueryField.builder()
                         .fieldType(FieldType.OTHER)
@@ -63,13 +63,13 @@ class SalesClientServiceImplTest {
                         .build())
                 .build();
         stubFor(post(urlEqualTo("/selling/data/get/query/sale/v1/"))
-                .withRequestBody(equalToJson(objectMapper.writeValueAsString(queryCommand)))
+                .withRequestBody(equalToJson(objectMapper.writeValueAsString(dataCommand)))
                 .willReturn(
                         aResponse()
                                 .withHeader("Content-Type", "application/json")
                                 .withBodyFile("sales.json")
                 ));
-        StepVerifier.create(salesClientService.sendRequest(queryCommand))
+        StepVerifier.create(salesClientService.sendRequest(dataCommand))
                 .assertNext(verifiedQuerResponse -> {
                     assert verifiedQuerResponse.getData() != null;
                 })
@@ -79,7 +79,7 @@ class SalesClientServiceImplTest {
     @Test
     @DisplayName("test if the request is sent successfully to sales-get-free-ms service")
     void testSendRequest_ValidInput_ReturnQueryResponse_RoutingToGetOptSales() throws JsonProcessingException {
-        QueryCommand queryCommand = QueryCommand.builder()
+        DataCommand dataCommand = DataCommand.builder()
                 .commandType(CommandType.GET_OPT_SALES)
                 .queryFields(Map.of("F1", QueryField.builder()
                         .fieldType(FieldType.OTHER)
@@ -98,13 +98,13 @@ class SalesClientServiceImplTest {
                         .build())
                 .build();
         stubFor(post(urlEqualTo("/selling/data/get/opt/sale/v1/"))
-                .withRequestBody(equalToJson(objectMapper.writeValueAsString(queryCommand)))
+                .withRequestBody(equalToJson(objectMapper.writeValueAsString(dataCommand)))
                 .willReturn(
                         aResponse()
                                 .withHeader("Content-Type", "application/json")
                                 .withBodyFile("sales.json")
                 ));
-        StepVerifier.create(salesClientService.sendRequest(queryCommand))
+        StepVerifier.create(salesClientService.sendRequest(dataCommand))
                 .assertNext(verifiedQuerResponse -> {
                     assert verifiedQuerResponse.getData() != null;
                 })
@@ -114,7 +114,7 @@ class SalesClientServiceImplTest {
     @Test
     @DisplayName("test if the request is sent successfully to sales-get-opt-ms service")
     void testSendRequest_ValidInput_ReturnQueryResponse_RoutingToGetFreeSales() throws JsonProcessingException {
-        QueryCommand queryCommand = QueryCommand.builder()
+        DataCommand dataCommand = DataCommand.builder()
                 .commandType(CommandType.GET_FREE_SALES)
                 .queryFields(Map.of("F1", QueryField.builder()
                         .fieldType(FieldType.OTHER)
@@ -133,13 +133,13 @@ class SalesClientServiceImplTest {
                         .build())
                 .build();
         stubFor(post(urlEqualTo("/selling/data/get/free/sale/v1/"))
-                .withRequestBody(equalToJson(objectMapper.writeValueAsString(queryCommand)))
+                .withRequestBody(equalToJson(objectMapper.writeValueAsString(dataCommand)))
                 .willReturn(
                         aResponse()
                                 .withHeader("Content-Type", "application/json")
                                 .withBodyFile("sales.json")
                 ));
-        StepVerifier.create(salesClientService.sendRequest(queryCommand))
+        StepVerifier.create(salesClientService.sendRequest(dataCommand))
                 .assertNext(verifiedQuerResponse -> {
                     assert verifiedQuerResponse.getData() != null;
                 })
@@ -149,7 +149,7 @@ class SalesClientServiceImplTest {
     @Test
     @DisplayName("test if an exception is thrown if the query method is wrong or unsupported")
     void testSendRequest_ValidInput_ReturnQueryResponse_RoutingInvalidMethod() throws JsonProcessingException {
-        QueryCommand queryCommand = QueryCommand.builder()
+        DataCommand dataCommand = DataCommand.builder()
                 .commandType(CommandType.SAVE_SALES)
                 .queryFields(Map.of("F1", QueryField.builder()
                         .fieldType(FieldType.OTHER)
@@ -168,7 +168,7 @@ class SalesClientServiceImplTest {
                         .build())
                 .build();
 
-        assertThrows(IllegalArgumentException.class, () -> salesClientService.sendRequest(queryCommand).subscribe());
+        assertThrows(IllegalArgumentException.class, () -> salesClientService.sendRequest(dataCommand).subscribe());
     }
 
 

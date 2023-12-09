@@ -1,7 +1,7 @@
 package com.selling.system.data.shared.module.service.impl;
 
 import com.selling.system.data.shared.module.service.QueryBuilderService;
-import com.selling.system.shared.module.models.commands.QueryCommand;
+import com.selling.system.shared.module.models.commands.DataCommand;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ import org.springframework.stereotype.Service;
 public class DummyQueryBuilderServiceImpl implements QueryBuilderService {
 
     @Override
-    public Query buildQuery(QueryCommand queryCommand) {
+    public Query buildQuery(DataCommand dataCommand) {
         return null;
     }
 
