@@ -1,9 +1,7 @@
 package com.selling.system.shared.module.models.responses;
 
-import lombok.Data;
 
-
-public interface AbstractQueryResponse {
+public interface AbstractDataResponse {
 
     Object getData();
 

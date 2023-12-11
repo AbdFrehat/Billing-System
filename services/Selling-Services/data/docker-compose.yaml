@@ -4,6 +4,8 @@ services:
   data-manager-ms:
     build:
       context: ./data-manager-ms
+    ports:
+      - "6080:6080"
     networks:
       - network
       - shared_network

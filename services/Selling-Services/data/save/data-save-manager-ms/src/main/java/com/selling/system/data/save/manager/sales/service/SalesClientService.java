@@ -1,7 +1,7 @@
 package com.selling.system.data.save.manager.sales.service;
 
 import com.selling.system.shared.module.models.commands.DataCommand;
-import com.selling.system.shared.module.models.responses.QueryResponse;
+import com.selling.system.shared.module.models.responses.DataResponse;
 import reactor.core.publisher.Mono;
 
 /**
@@ -13,6 +13,6 @@ import reactor.core.publisher.Mono;
  */
 public interface SalesClientService {
 
-    Mono<QueryResponse> sendRequest(DataCommand dataCommand);
+    Mono<DataResponse> sendRequest(DataCommand dataCommand);
 
 }

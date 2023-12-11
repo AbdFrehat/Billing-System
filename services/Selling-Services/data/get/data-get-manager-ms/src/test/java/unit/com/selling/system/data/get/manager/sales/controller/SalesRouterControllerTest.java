@@ -7,7 +7,7 @@ import com.selling.system.shared.module.models.commands.SortField;
 import com.selling.system.shared.module.models.entities.Sale;
 import com.selling.system.shared.module.models.enums.FieldType;
 import com.selling.system.shared.module.models.enums.CommandType;
-import com.selling.system.shared.module.models.responses.QueryResponse;
+import com.selling.system.shared.module.models.responses.DataResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
@@ -55,7 +55,7 @@ class SalesRouterControllerTest {
                         .direction("ASC")
                         .build())
                 .build();
-        QueryResponse queryResponse = QueryResponse.builder()
+        DataResponse dataResponse = DataResponse.builder()
                 .data(List.of(
                         Sale.builder()
                                 .id("1")
@@ -64,7 +64,7 @@ class SalesRouterControllerTest {
                 ))
                 .build();
         when(salesClientService.sendRequest(dataCommand))
-                .thenReturn(Mono.just(queryResponse));
+                .thenReturn(Mono.just(dataResponse));
         webTestClient
                 .post()
                 .contentType(MediaType.APPLICATION_JSON)
@@ -72,7 +72,7 @@ class SalesRouterControllerTest {
                 .exchange()
                 .expectStatus()
                 .isOk()
-                .expectBody(QueryResponse.class)
+                .expectBody(DataResponse.class)
                 .consumeWith(queryResponseEntityExchangeResult -> {
                     assert queryResponseEntityExchangeResult.getResponseBody() != null;
                     assert queryResponseEntityExchangeResult.getResponseBody().getData() != null;

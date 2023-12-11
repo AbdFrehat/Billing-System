@@ -2,7 +2,7 @@ package com.selling.system.data.save.manager.sales.controller;
 
 import com.selling.system.data.save.manager.sales.service.SalesClientService;
 import com.selling.system.shared.module.models.commands.DataCommand;
-import com.selling.system.shared.module.models.responses.QueryResponse;
+import com.selling.system.shared.module.models.responses.DataResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,10 +31,10 @@ public class SalesRouterController {
      * takes the request and handles it to the salesClientService which will call the suitable service for doing the desired operation.
      *
      * @param dataCommand {@link DataCommand}
-     * @return {@link Mono}<{@link ResponseEntity}<{@link QueryResponse}>>
+     * @return {@link Mono}<{@link ResponseEntity}<{@link DataResponse}>>
      */
     @PostMapping
-    public Mono<ResponseEntity<QueryResponse>> routeQueryServe(@RequestBody @Valid DataCommand dataCommand) {
+    public Mono<ResponseEntity<DataResponse>> routeQueryServe(@RequestBody @Valid DataCommand dataCommand) {
         return salesClientService.sendRequest(dataCommand)
                 .map(queryResponse -> ResponseEntity.ok().body(queryResponse));
     }

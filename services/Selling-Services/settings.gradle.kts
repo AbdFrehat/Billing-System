@@ -82,6 +82,14 @@ findProject(":modify:modify-update-sales-ms")?.name = "modify-update-sales-ms"
 include(":modify:modify-shared-sales-ms")
 findProject(":modify:modify-shared-sales-ms")?.name = "modify-shared-sales-ms"
 
+
+//Export
+include(":export:export-data-json")
+include(":export:export-data-shared-module")
+findProject(":export:export-data-json")?.name = "export-data-json"
+findProject(":export:export-data-shared-module")?.name = "export-data-shared-module"
+
+
 pluginManagement {
     plugins {
         val springFrameworkBootVersion: String by settings

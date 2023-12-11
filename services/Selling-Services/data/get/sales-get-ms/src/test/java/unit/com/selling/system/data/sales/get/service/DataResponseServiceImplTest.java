@@ -28,7 +28,7 @@ import static org.mockito.Mockito.when;
 @ContextConfiguration(classes = {
         QueryResponseServiceImpl.class
 })
-class QueryResponseServiceImplTest {
+class DataResponseServiceImplTest {
 
     @MockBean
     private SalesService salesService;

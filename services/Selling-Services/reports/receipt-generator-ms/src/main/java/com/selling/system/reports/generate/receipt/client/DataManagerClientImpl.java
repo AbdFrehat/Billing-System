@@ -5,7 +5,7 @@ import com.selling.system.shared.module.models.commands.QueryField;
 import com.selling.system.shared.module.models.entities.Sale;
 import com.selling.system.shared.module.models.enums.CommandType;
 import com.selling.system.shared.module.models.enums.FieldType;
-import com.selling.system.shared.module.models.responses.QueryResponse;
+import com.selling.system.shared.module.models.responses.DataResponse;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -32,7 +32,7 @@ public class DataManagerClientImpl implements DataManagerClient {
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(buildQueryCommand(saleId))
                 .retrieve()
-                .bodyToMono(QueryResponse.class)
+                .bodyToMono(DataResponse.class)
                 .map(queryResponse -> toSales(queryResponse.getData()).get(0));
     }
 

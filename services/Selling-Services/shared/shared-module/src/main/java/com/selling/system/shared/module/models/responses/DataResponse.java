@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class QueryResponse implements AbstractQueryResponse {
+public class DataResponse implements AbstractDataResponse {
 
     private Object data;
 

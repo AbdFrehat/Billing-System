@@ -2,7 +2,7 @@ package com.selling.system.data.sales.delete.controller;
 
 import com.selling.system.data.shared.module.service.QueryResponseService;
 import com.selling.system.shared.module.models.commands.DataCommand;
-import com.selling.system.shared.module.models.responses.QueryResponse;
+import com.selling.system.shared.module.models.responses.DataResponse;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +22,7 @@ public class DeleteSaleController {
     }
 
     @PostMapping
-    Mono<ResponseEntity<QueryResponse>> deleteSale(@RequestBody @Valid DataCommand dataCommand) {
+    Mono<ResponseEntity<DataResponse>> deleteSale(@RequestBody @Valid DataCommand dataCommand) {
         log.info("deleteSale endpoint is called with {} command.", dataCommand);
         return queryResponseService.buildQueryResponse(dataCommand);
     }

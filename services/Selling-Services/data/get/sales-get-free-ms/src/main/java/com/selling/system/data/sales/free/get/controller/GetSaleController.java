@@ -3,7 +3,7 @@ package com.selling.system.data.sales.free.get.controller;
 
 import com.selling.system.data.shared.module.service.QueryResponseService;
 import com.selling.system.shared.module.models.commands.DataCommand;
-import com.selling.system.shared.module.models.responses.QueryResponse;
+import com.selling.system.shared.module.models.responses.DataResponse;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +24,7 @@ public class GetSaleController {
     }
 
     @PostMapping
-    Mono<ResponseEntity<QueryResponse>> getSales(@RequestBody @Valid DataCommand dataCommand) {
+    Mono<ResponseEntity<DataResponse>> getSales(@RequestBody @Valid DataCommand dataCommand) {
         log.info("getSales endpoint is called with {} command.", dataCommand);
         return queryResponseService.buildQueryResponse(dataCommand);
     }

@@ -3,7 +3,7 @@ package com.selling.system.data.manager.sales.client;
 import com.selling.system.shared.module.handlers.ClientExceptionHandler;
 import com.selling.system.shared.module.models.commands.DataCommand;
 import com.selling.system.shared.module.models.enums.CommandType;
-import com.selling.system.shared.module.models.responses.QueryResponse;
+import com.selling.system.shared.module.models.responses.DataResponse;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
@@ -35,10 +35,10 @@ public class SalesClientServiceImpl implements SalesClientService {
      * This method takes the request object, build the web client and select the uri based on the queryMethod inside {@link DataCommand}
      *
      * @param dataCommand represents the request object to be sent to the data microservices
-     * @return {@link Mono}<{@link QueryResponse}> which represents the retrieved data from the query services.
+     * @return {@link Mono}<{@link DataResponse}> which represents the retrieved data from the query services.
      */
     @Override
-    public Mono<QueryResponse> sendRequest(DataCommand dataCommand) {
+    public Mono<DataResponse> sendRequest(DataCommand dataCommand) {
         return webClient
                 .post()
                 .uri(getUri(dataCommand.getCommandType()))
@@ -46,7 +46,7 @@ public class SalesClientServiceImpl implements SalesClientService {
                 .bodyValue(dataCommand)
                 .retrieve()
                 .onStatus(HttpStatusCode::isError, new ClientExceptionHandler(dataCommand.getCommandType().name()))
-                .bodyToMono(QueryResponse.class);
+                .bodyToMono(DataResponse.class);
     }
 
     private String getUri(CommandType commandType) {

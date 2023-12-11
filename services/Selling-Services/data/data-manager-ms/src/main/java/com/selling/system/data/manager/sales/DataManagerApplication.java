@@ -2,14 +2,14 @@ package com.selling.system.data.manager.sales;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 
 @SpringBootApplication(scanBasePackages = {
         "com.selling.system.data.manager.sales",
         "com.selling.system.shared.module"
 })
-@EnableEurekaServer
+@EnableDiscoveryClient
 public class DataManagerApplication {
 
     public static void main(String[] args) {
