@@ -1,6 +1,6 @@
-package com.selling.system.export.data.json.convertor;
+package com.selling.system.export.data.xml.convertor;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.selling.system.export.shared.convertor.DataConvertor;
 import com.selling.system.shared.module.models.entities.Sale;
 import com.selling.system.shared.module.models.wrappers.Sales;
@@ -10,18 +10,18 @@ import reactor.core.publisher.Mono;
 
 
 @Component
-public class JsonConvertor implements DataConvertor {
+public class XmlConvertor implements DataConvertor {
 
-    private final ObjectMapper objectMapper;
+    private final XmlMapper xmlMapper;
 
-    public JsonConvertor(ObjectMapper objectMapper) {
-        this.objectMapper = objectMapper;
+    public XmlConvertor(XmlMapper xmlMapper) {
+        this.xmlMapper = xmlMapper;
     }
 
     @Override
     public Mono<byte[]> convert(Flux<Sale> salesFlux) {
         return salesFlux.collectList()
-                .flatMap(sales -> Mono.fromCallable(() -> objectMapper.writeValueAsString(new Sales(sales))))
+                .flatMap(sales -> Mono.fromCallable(() -> xmlMapper.writeValueAsString(new Sales(sales))))
                 .map(String::getBytes)
                 .onErrorMap(e -> new RuntimeException("Error processing JSON", e));
     }

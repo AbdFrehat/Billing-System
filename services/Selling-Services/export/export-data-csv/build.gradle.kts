@@ -4,7 +4,7 @@ plugins {
 	id("io.spring.dependency-management")
 }
 
-group = "com.selling.system.export.data.json"
+group = "com.selling.system.export.data.xml"
 version = "1.0.0-SNAPSHOT"
 
 dependencies {
@@ -13,6 +13,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("jakarta.validation:jakarta.validation-api:${project.findProperty("jakartaValidationApiVersion")}")
 	implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:${project.findProperty("springDocOpenAPIVersion")}")
+	implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-csv:${project.findProperty("fasterxmlJacksonVersion")}")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	implementation(project(":shared:shared-module"))
 	implementation(project(":export:export-data-shared-module"))
