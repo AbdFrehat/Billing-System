@@ -20,9 +20,7 @@ public class JsonConvertor implements DataConvertor {
     @Override
     public Mono<byte[]> convert(Flux<Sale> salesFlux) {
         return salesFlux.collectList()
-                .flatMap(sales -> {
-                    return Mono.fromCallable(() -> objectMapper.writeValueAsString(sales));
-                })
+                .flatMap(sales -> Mono.fromCallable(() -> objectMapper.writeValueAsString(sales)))
                 .map(String::getBytes)
                 .onErrorMap(e -> new RuntimeException("Error processing JSON", e));
     }
