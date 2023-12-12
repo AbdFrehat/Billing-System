@@ -24,7 +24,6 @@ public class JsonConvertor implements DataConvertor {
                     return Mono.fromCallable(() -> objectMapper.writeValueAsString(sales));
                 })
                 .map(String::getBytes)
-                .onErrorMap(e -> new RuntimeException("Error processing JSON", e))
-                ;
+                .onErrorMap(e -> new RuntimeException("Error processing JSON", e));
     }
 }
