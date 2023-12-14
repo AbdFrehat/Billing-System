@@ -112,9 +112,9 @@
 		</band>
 	</title>
 	<detail>
-		<band height="100" splitType="Stretch">
+		<band height="100" splitType="Immediate">
 			<componentElement>
-				<reportElement stretchType="ContainerHeight" x="0" y="10" width="1460" height="90" isPrintWhenDetailOverflows="true" uuid="e2934b28-c033-4db0-8d69-83a4ecf41b70">
+				<reportElement stretchType="ElementGroupHeight" x="0" y="10" width="1460" height="90" isPrintWhenDetailOverflows="true" uuid="e2934b28-c033-4db0-8d69-83a4ecf41b70">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
@@ -297,7 +297,7 @@
 							</subreport>
 						</jr:detailCell>
 					</jr:column>
-					<jr:detail splitType="Stretch"/>
+					<jr:detail splitType="Immediate"/>
 				</jr:table>
 			</componentElement>
 		</band>

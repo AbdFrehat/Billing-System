@@ -92,6 +92,8 @@ include(":export:export-data-csv")
 findProject(":export:export-data-csv")?.name = "export-data-csv"
 include(":export:export-data-pdf")
 findProject(":export:export-data-pdf")?.name = "export-data-pdf"
+include(":export:export-data-xlsx")
+findProject(":export:export-data-xlsx")?.name = "export-data-xlsx"
 include(":export:export-data-shared-module")
 findProject(":export:export-data-shared-module")?.name = "export-data-shared-module"
 

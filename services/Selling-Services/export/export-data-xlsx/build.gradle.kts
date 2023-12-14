@@ -4,7 +4,7 @@ plugins {
 	id("io.spring.dependency-management")
 }
 
-group = "com.selling.system.export.data.pdf"
+group = "com.selling.system.export.data.xlsx"
 version = "1.0.0-SNAPSHOT"
 
 dependencies {
