@@ -1,3 +1,6 @@
 eclipse.preferences.version=1
+encoding//export/sales-export-report.jrxml=UTF-8
+encoding//export/sub/customer-report.jrxml=UTF-8
+encoding//export/sub/items-report.jrxml=UTF-8
 encoding/<project>=UTF-8
-encoding/saleReceipt.jrxml=UTF-8
+encoding/sale-receipt.jrxml=UTF-8

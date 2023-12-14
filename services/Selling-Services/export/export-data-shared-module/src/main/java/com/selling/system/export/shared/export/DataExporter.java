@@ -30,8 +30,8 @@ public class DataExporter {
         HttpHeaders headers = new HttpHeaders();
         headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + filename);
         headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_OCTET_STREAM_VALUE);
-        return dataConvertor.convert(dataManagerClient.retrieveExportedSales(dataCommandBuilder.build(command)))
-                .flatMap(data -> Mono.fromCallable(() -> compress(data)))
+        return dataConvertor.convert(dataManagerClient.retrieveExportedSales(dataCommandBuilder.build(command)), command)
+//                .flatMap(data -> Mono.fromCallable(() -> compress(data)))
                 .map(data -> Base64.getEncoder().encode(data))
                 .flatMap(data -> Mono.just(ResponseEntity.ok()
                         .headers(h -> h.addAll(headers))

@@ -9,3 +9,5 @@ eureka:
   client:
     registerWithEureka: false
     fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:6010/selling/eureka/

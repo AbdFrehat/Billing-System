@@ -13,10 +13,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 @Slf4j
@@ -50,7 +47,7 @@ public class JasperReportServiceImpl implements ReportService {
     }
 
     private JRBeanCollectionDataSource createCustomerDataSource(Customer customer) {
-        return new JRBeanCollectionDataSource(Arrays.asList(customer));
+        return new JRBeanCollectionDataSource(Collections.singletonList(customer));
     }
 
     private Map<String, Object> createReportProperties(Sale sale, CalcPriceResponse calcPriceResponse) {
@@ -61,7 +58,7 @@ public class JasperReportServiceImpl implements ReportService {
         properties.put("itemsDS", itemsDataSource);
         properties.put("saleDate", sale.getSaleDate());
         properties.put("storeLocation", sale.getStoreLocation());
-        properties.put("purchaseMethod", sale.getPurchaseMethod().toString());
+        properties.put("purchaseMethod", sale.getPurchaseMethod());
         properties.put("couponUsed", sale.isCouponUsed() ? "Yes" : "No");
         properties.put("totalPrice", calcPriceResponse.getTotalPrice());
         properties.put("totalQuantity", calcPriceResponse.getTotalQuantity());

@@ -1,4 +1,4 @@
-package com.selling.system.export.data.json.controller;
+package com.selling.system.export.data.pdf.controller;
 
 import com.selling.system.export.shared.convertor.DataConvertor;
 import com.selling.system.export.shared.export.DataExporter;
@@ -10,23 +10,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
-
 @RestController
-public class ExportJsonController {
-
-
+public class ExportPdfController {
 
     private final DataConvertor dataConvertor;
 
     private final DataExporter dataExporter;
 
-    public ExportJsonController(DataConvertor dataConvertor, DataExporter dataExporter) {
+    public ExportPdfController(DataConvertor dataConvertor, DataExporter dataExporter) {
         this.dataConvertor = dataConvertor;
         this.dataExporter = dataExporter;
     }
 
     @GetMapping
-    public Mono<ResponseEntity<byte[]>> exportToJson(@RequestBody ExportDataCommand command, @RequestParam("filename") String filename) {
+    public Mono<ResponseEntity<byte[]>> exportToPdf(@RequestBody ExportDataCommand command, @RequestParam("filename") String filename) {
         return dataExporter.export(dataConvertor, filename, command);
     }
 
