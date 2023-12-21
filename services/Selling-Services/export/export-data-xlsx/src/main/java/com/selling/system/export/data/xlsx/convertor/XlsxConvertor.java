@@ -3,7 +3,7 @@ package com.selling.system.export.data.xlsx.convertor;
 
 import com.selling.system.export.data.xlsx.mapper.JasperMapper;
 import com.selling.system.export.shared.convertor.DataConvertor;
-import com.selling.system.shared.module.models.commands.ExportDataCommand;
+import com.selling.system.shared.module.models.commands.ExportDataFilter;
 import com.selling.system.shared.module.models.entities.Sale;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.export.ooxml.JRXlsxExporter;
@@ -30,7 +30,7 @@ public class XlsxConvertor implements DataConvertor {
     }
 
     @Override
-    public Mono<byte[]> convert(Flux<Sale> salesFlux, ExportDataCommand exportDataCommand) {
+    public Mono<byte[]> convert(Flux<Sale> salesFlux, ExportDataFilter exportDataCommand) {
         return salesFlux.collectList().map(sales -> jasperMapper.map(sales, exportDataCommand)).<JasperPrint>handle((sheetParameters, sink) -> {
                     try {
                         sink.next(JasperFillManager.fillReport(jasperReportMap.get("sales"), sheetParameters, new JREmptyDataSource()));

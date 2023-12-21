@@ -2,7 +2,7 @@ package com.selling.system.export.data.xml.convertor;
 
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.selling.system.export.shared.convertor.DataConvertor;
-import com.selling.system.shared.module.models.commands.ExportDataCommand;
+import com.selling.system.shared.module.models.commands.ExportDataFilter;
 import com.selling.system.shared.module.models.entities.Sale;
 import com.selling.system.shared.module.models.wrappers.Sales;
 import org.springframework.stereotype.Component;
@@ -20,7 +20,7 @@ public class XmlConvertor implements DataConvertor {
     }
 
     @Override
-    public Mono<byte[]> convert(Flux<Sale> salesFlux, ExportDataCommand exportDataCommand) {
+    public Mono<byte[]> convert(Flux<Sale> salesFlux, ExportDataFilter exportDataFilter) {
         return salesFlux.collectList()
                 .flatMap(sales -> Mono.fromCallable(() -> xmlMapper.writeValueAsString(new Sales(sales))))
                 .map(String::getBytes)

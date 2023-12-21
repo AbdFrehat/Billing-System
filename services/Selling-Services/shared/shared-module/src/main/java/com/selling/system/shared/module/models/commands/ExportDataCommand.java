@@ -1,24 +1,24 @@
 package com.selling.system.shared.module.models.commands;
 
-import lombok.*;
+import com.selling.system.shared.module.models.annotations.ValidFieldTypeEnum;
+import com.selling.system.shared.module.models.enums.ExportType;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Getter
-@Setter
-@Builder
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
 public class ExportDataCommand implements ExportDataCommandAbstract {
 
-    private String fromDate;
+    @Valid
+    private ExportDataFilter exportDataFilter;
 
-    private String toDate;
+    @NotBlank
+    private String fileName;
 
-    private String storeLocation;
-
-    private String purchaseMethod;
-
-    private int satisfaction;
-
-    private Boolean couponUsed;
-
+    @NotNull(message = "export type must not be null")
+    @ValidFieldTypeEnum(message = "ExportDataCommand.exportTypes is not supported", regexp = "XML|XLSX|PDF|CSV|JSON")
+    private ExportType exportType;
 }

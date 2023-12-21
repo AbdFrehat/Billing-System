@@ -5,7 +5,7 @@ import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import com.selling.system.export.data.csv.flatter.SalesFlatter;
 import com.selling.system.export.data.csv.model.FlattedSale;
 import com.selling.system.export.shared.convertor.DataConvertor;
-import com.selling.system.shared.module.models.commands.ExportDataCommand;
+import com.selling.system.shared.module.models.commands.ExportDataFilter;
 import com.selling.system.shared.module.models.entities.Sale;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
@@ -24,7 +24,7 @@ public class CsvConvertor implements DataConvertor {
     }
 
     @Override
-    public Mono<byte[]> convert(Flux<Sale> salesFlux, ExportDataCommand exportDataCommand) {
+    public Mono<byte[]> convert(Flux<Sale> salesFlux, ExportDataFilter exportDataCommand) {
         CsvMapper csvMapper = new CsvMapper();
         final CsvSchema schema = buildSchema();
         StringWriter writer = new StringWriter();

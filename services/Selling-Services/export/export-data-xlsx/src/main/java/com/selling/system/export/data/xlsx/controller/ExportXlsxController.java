@@ -2,12 +2,9 @@ package com.selling.system.export.data.xlsx.controller;
 
 import com.selling.system.export.shared.convertor.DataConvertor;
 import com.selling.system.export.shared.export.DataExporter;
-import com.selling.system.shared.module.models.commands.ExportDataCommand;
+import com.selling.system.shared.module.models.commands.ExportDataFilter;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -22,8 +19,8 @@ public class ExportXlsxController {
         this.dataExporter = dataExporter;
     }
 
-    @GetMapping
-    public Mono<ResponseEntity<byte[]>> exportToXlsx(@RequestBody ExportDataCommand command, @RequestParam("filename") String filename) {
+    @PostMapping
+    public Mono<ResponseEntity<byte[]>> exportToXlsx(@RequestBody ExportDataFilter command, @RequestParam("filename") String filename) {
         return dataExporter.export(dataConvertor, filename, command);
     }
 

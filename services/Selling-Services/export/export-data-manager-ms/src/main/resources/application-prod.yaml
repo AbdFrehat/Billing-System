@@ -1,0 +1,16 @@
+server:
+  port: 7035
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE}
+config:
+  services:
+    context-path:
+      export-data-csv: "http://EXPORT-DATA-CSV/selling/export/sales/csv/v1/"
+      export-data-xlsx: "http://EXPORT-DATA-XLSX/selling/export/sales/xlsx/v1/"
+      export-data-json: "http://EXPORT-DATA-JSON/selling/export/sales/json/v1/"
+      export-data-xml: "http://EXPORT-DATA-XML/selling/export/sales/xml/v1/"
+      export-data-pdf: "http://EXPORT-DATA-PDF/selling/export/sales/pdf/v1/"
+  web-client:
+    buffer: ${WEB_CLIENT_BUFFER_SIZE}

@@ -27,7 +27,7 @@ include("data:data-manager-ms")
 findProject(":data:data-shared-module")?.name = "data-shared-module"
 findProject(":data:data-manager-ms")?.name = "data-manager-ms"
 
-//get Sub-Category
+//Get Sub-Category
 include("data:get:data-get-manager-ms")
 include("data:get:sales-get-ms")
 include("data:get:sales-get-free-ms")
@@ -37,7 +37,7 @@ findProject(":data:get:sales-get-ms")?.name = "sales-get-ms"
 findProject(":data:get:sales-get-free-ms")?.name = "sales-get-free-ms"
 findProject(":data:get:sales-get-opt-ms")?.name = "sales-get-opt-ms"
 
-//save Sub-Category
+//Save Sub-Category
 include("data:save:data-save-manager-ms")
 include("data:save:sale-save-ms")
 include("data:save:sales-save-ms")
@@ -45,7 +45,7 @@ findProject(":data:save:data-save-manager-ms")?.name = "data-save-manager-ms"
 findProject(":data:save:sale-save-ms")?.name = "sale-save-ms"
 findProject(":data:save:sales-save-ms")?.name = "sales-save-ms"
 
-//delete Sub-Category
+//Delete Sub-Category
 include("data:delete:data-delete-manager-ms")
 include("data:delete:sale-delete-ms")
 include("data:delete:sales-delete-ms")
@@ -55,7 +55,7 @@ findProject(":data:delete:sale-delete-ms")?.name = "sale-delete-ms"
 findProject(":data:delete:sales-delete-ms")?.name = "sales-delete-ms"
 findProject(":data:delete:sale-delete-query-ms")?.name = "sale-delete-query-ms"
 
-//update Sub-Category
+//Update Sub-Category
 include("data:update:data-update-manager-ms")
 include("data:update:sale-update-ms")
 include("data:update:sales-update-ms")
@@ -84,6 +84,8 @@ findProject(":modify:modify-shared-sales-ms")?.name = "modify-shared-sales-ms"
 
 
 //Export
+include(":export:export-data-manager-ms")
+findProject(":export:export-data-manager-ms")?.name = "export-data-manager-ms"
 include(":export:export-data-json")
 findProject(":export:export-data-json")?.name = "export-data-json"
 include(":export:export-data-xml")

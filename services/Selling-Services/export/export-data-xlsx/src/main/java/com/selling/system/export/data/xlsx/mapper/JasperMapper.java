@@ -3,7 +3,7 @@ package com.selling.system.export.data.xlsx.mapper;
 import com.selling.system.export.data.xlsx.dto.ItemDTO;
 import com.selling.system.export.data.xlsx.dto.SaleDTO;
 import com.selling.system.export.data.xlsx.dto.TagDTO;
-import com.selling.system.shared.module.models.commands.ExportDataCommand;
+import com.selling.system.shared.module.models.commands.ExportDataFilter;
 import com.selling.system.shared.module.models.entities.Customer;
 import com.selling.system.shared.module.models.entities.Item;
 import com.selling.system.shared.module.models.entities.Sale;
@@ -27,7 +27,7 @@ public class JasperMapper {
         this.jasperReportMap = jasperReportMap;
     }
 
-    public Map<String, Object> map(List<Sale> sales, ExportDataCommand command) {
+    public Map<String, Object> map(List<Sale> sales, ExportDataFilter command) {
         Map<String, Object> reportParameters = new HashMap<>();
         addHeaderParameters(command, reportParameters, sales.size());
         reportParameters.put("salesDS", createSalesDS(sales));
@@ -79,7 +79,7 @@ public class JasperMapper {
         ));
     }
 
-    private static void addHeaderParameters(ExportDataCommand command, Map<String, Object> reportParameters, long total) {
+    private static void addHeaderParameters(ExportDataFilter command, Map<String, Object> reportParameters, long total) {
         reportParameters.put("fromDate", command.getFromDate());
         reportParameters.put("toDate", command.getToDate());
         reportParameters.put("storeLocation", command.getStoreLocation());

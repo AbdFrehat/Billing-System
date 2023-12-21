@@ -1,0 +1,31 @@
+spring:
+  webflux:
+    base-path: /selling/export/sales/manager/v1/
+  application:
+    name: export-data-manager
+server:
+  port: 7035
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:6010/selling/eureka/
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
+  api-docs:
+    groups:
+      enabled: true
+    path: /api/docs
+config:
+  services:
+    context-path:
+      export-data-csv: "http://EXPORT-DATA-CSV/selling/export/sales/csv/v1/"
+      export-data-xlsx: "http://EXPORT-DATA-XLSX/selling/export/sales/xlsx/v1/"
+      export-data-json: "http://EXPORT-DATA-JSON/selling/export/sales/json/v1/"
+      export-data-xml: "http://EXPORT-DATA-XML/selling/export/sales/xml/v1/"
+      export-data-pdf: "http://EXPORT-DATA-PDF/selling/export/sales/pdf/v1/"
+  web-client:
+    buffer: 16MB
+

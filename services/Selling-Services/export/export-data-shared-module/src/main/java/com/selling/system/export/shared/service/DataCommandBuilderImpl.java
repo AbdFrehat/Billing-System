@@ -1,7 +1,7 @@
 package com.selling.system.export.shared.service;
 
 import com.selling.system.shared.module.models.commands.DataCommand;
-import com.selling.system.shared.module.models.commands.ExportDataCommand;
+import com.selling.system.shared.module.models.commands.ExportDataFilter;
 import com.selling.system.shared.module.models.commands.QueryField;
 import com.selling.system.shared.module.models.commons.Range;
 import com.selling.system.shared.module.models.enums.CommandType;
@@ -16,7 +16,7 @@ import static com.selling.system.shared.module.utils.StringUtil.isNotEmpty;
 @Service
 public class DataCommandBuilderImpl implements DataCommandBuilder {
     @Override
-    public DataCommand build(ExportDataCommand exportDataCommand) {
+    public DataCommand build(ExportDataFilter exportDataCommand) {
         DataCommand dataCommand = DataCommand.builder()
                 .commandType(CommandType.GET_SALES)
                 .page(0)

@@ -1,0 +1,80 @@
+version: '3.5'
+
+services:
+  export-data-get-manager-ms:
+    build:
+      context: ./export-data-manager-ms
+    ports:
+      - "7035:7035"
+    networks:
+      - network
+      - shared_network
+    environment:
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      SPRING_PROFILE: prod
+      WEB_CLIENT_BUFFER_SIZE: 16MB
+    depends_on:
+      - export-data-xml
+      - export-data-pdf
+      - export-data-json
+      - export-data-xlsx
+      - export-data-csv
+
+  export-data-csv:
+    build:
+      context: ./export-data-csv
+    networks:
+      - network
+      - shared_network
+    environment:
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      SPRING_PROFILE: prod
+
+  export-data-xlsx:
+    build:
+      context: ./export-data-xlsx
+    networks:
+      - network
+      - shared_network
+    environment:
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      SPRING_PROFILE: prod
+
+  export-data-json:
+    build:
+      context: ./export-data-json
+    networks:
+      - network
+      - shared_network
+    environment:
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      SPRING_PROFILE: prod
+
+  export-data-pdf:
+    build:
+      context: ./export-data-pdf
+    ports:
+      - "7030:7030"
+    networks:
+      - network
+      - shared_network
+    environment:
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      SPRING_PROFILE: prod
+
+  export-data-xml:
+    build:
+      context: ./export-data-xml
+    networks:
+      - network
+      - shared_network
+    environment:
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      SPRING_PROFILE: prod
+
+
+networks:
+  network:
+    name: export-data-network
+  shared_network:
+    external: true

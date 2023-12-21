@@ -3,16 +3,13 @@ package com.selling.system.export.shared.export;
 import com.selling.system.export.shared.client.DataManagerClient;
 import com.selling.system.export.shared.convertor.DataConvertor;
 import com.selling.system.export.shared.service.DataCommandBuilder;
-import com.selling.system.shared.module.models.commands.ExportDataCommand;
+import com.selling.system.shared.module.models.commands.ExportDataFilter;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
-
 import java.util.Base64;
-
-import static com.selling.system.shared.module.utils.CompressionUtil.compress;
 
 @Component
 public class DataExporter {
@@ -26,12 +23,11 @@ public class DataExporter {
         this.dataCommandBuilder = dataCommandBuilder;
     }
 
-    public Mono<ResponseEntity<byte[]>> export(DataConvertor dataConvertor, String filename, ExportDataCommand command) {
+    public Mono<ResponseEntity<byte[]>> export(DataConvertor dataConvertor, String filename, ExportDataFilter command) {
         HttpHeaders headers = new HttpHeaders();
         headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + filename);
         headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_OCTET_STREAM_VALUE);
         return dataConvertor.convert(dataManagerClient.retrieveExportedSales(dataCommandBuilder.build(command)), command)
-//                .flatMap(data -> Mono.fromCallable(() -> compress(data)))
                 .map(data -> Base64.getEncoder().encode(data))
                 .flatMap(data -> Mono.just(ResponseEntity.ok()
                         .headers(h -> h.addAll(headers))
