@@ -1,4 +1,4 @@
-package com.selling.system.data.sales.delete.service;
+package com.selling.system.data.sale.save.service;
 
 import com.selling.system.data.shared.module.service.QueryResponseService;
 import com.selling.system.data.shared.module.service.SalesService;
@@ -24,7 +24,7 @@ public class QueryResponseServiceImpl implements QueryResponseService {
 
     @Override
     public Mono<ResponseEntity<DataResponse>> buildQueryResponse(DataCommand dataCommand) {
-        log.info("DELETE_SALE Command is called");
-        return QueryResponseMapperUtil.mapMonoToResponse(salesService.deleteSale(toSale(dataCommand.getPayload())));
+        log.info("SAVE_SALE Command is called");
+        return QueryResponseMapperUtil.mapMonoToResponse(salesService.saveSale(toSale(dataCommand.getPayload())));
     }
 }

@@ -1,4 +1,4 @@
-package com.selling.system.data.sales.multi.delete;
+package com.selling.system.data.sale.save;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,13 +9,13 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
         scanBasePackages = {
                 "com.selling.system.data.shared.module",
                 "com.selling.system.shared.module",
-                "com.selling.system.data.sales.multi.delete"
+                "com.selling.system.data.sale.save"
         })
 @EnableDiscoveryClient
-public class DataSalesDeleteApplication {
+public class DataSaleSaveApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DataSalesDeleteApplication.class, args);
+        SpringApplication.run(DataSaleSaveApplication.class, args);
     }
 
 }

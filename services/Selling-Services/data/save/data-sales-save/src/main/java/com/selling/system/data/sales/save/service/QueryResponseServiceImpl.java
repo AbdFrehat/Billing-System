@@ -9,8 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
-
-import static com.selling.system.data.shared.module.convertors.ObjectToSalesConvertor.toSale;
+import static com.selling.system.data.shared.module.convertors.ObjectToSalesConvertor.toSales;
 
 @Service
 @Slf4j
@@ -24,7 +23,7 @@ public class QueryResponseServiceImpl implements QueryResponseService {
 
     @Override
     public Mono<ResponseEntity<DataResponse>> buildQueryResponse(DataCommand dataCommand) {
-        log.info("SAVE_SALE Command is called");
-        return QueryResponseMapperUtil.mapMonoToResponse(salesService.saveSale(toSale(dataCommand.getPayload())));
+        log.info("SAVE_SALES Command is called");
+        return QueryResponseMapperUtil.mapFluxToResponse(salesService.saveSales(toSales(dataCommand.getPayload())));
     }
 }

@@ -1,4 +1,4 @@
-package com.selling.system.data.sales.multi.save.service;
+package com.selling.system.data.sale.delete.service;
 
 import com.selling.system.data.shared.module.service.QueryResponseService;
 import com.selling.system.data.shared.module.service.SalesService;
@@ -9,7 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
-import static com.selling.system.data.shared.module.convertors.ObjectToSalesConvertor.toSales;
+
+import static com.selling.system.data.shared.module.convertors.ObjectToSalesConvertor.toSale;
 
 @Service
 @Slf4j
@@ -23,7 +24,7 @@ public class QueryResponseServiceImpl implements QueryResponseService {
 
     @Override
     public Mono<ResponseEntity<DataResponse>> buildQueryResponse(DataCommand dataCommand) {
-        log.info("SAVE_SALES Command is called");
-        return QueryResponseMapperUtil.mapFluxToResponse(salesService.saveSales(toSales(dataCommand.getPayload())));
+        log.info("DELETE_SALE Command is called");
+        return QueryResponseMapperUtil.mapMonoToResponse(salesService.deleteSale(toSale(dataCommand.getPayload())));
     }
 }

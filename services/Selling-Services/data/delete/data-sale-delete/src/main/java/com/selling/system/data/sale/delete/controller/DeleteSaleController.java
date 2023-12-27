@@ -1,4 +1,4 @@
-package com.selling.system.data.sales.save.controller;
+package com.selling.system.data.sale.delete.controller;
 
 import com.selling.system.data.shared.module.service.QueryResponseService;
 import com.selling.system.shared.module.models.commands.DataCommand;
@@ -13,17 +13,17 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @Slf4j
-public class SaveSaleController {
+public class DeleteSaleController {
 
     private final QueryResponseService queryResponseService;
 
-    public SaveSaleController(QueryResponseService queryResponseService) {
+    public DeleteSaleController(QueryResponseService queryResponseService) {
         this.queryResponseService = queryResponseService;
     }
 
     @PostMapping
-    Mono<ResponseEntity<DataResponse>> saveSale(@RequestBody @Valid DataCommand dataCommand) {
-        log.info("saveSale endpoint is called with {} command.", dataCommand);
+    Mono<ResponseEntity<DataResponse>> deleteSale(@RequestBody @Valid DataCommand dataCommand) {
+        log.info("deleteSale endpoint is called with {} command.", dataCommand);
         return queryResponseService.buildQueryResponse(dataCommand);
     }
 }

@@ -1,4 +1,4 @@
-package com.selling.system.data.sales.multi.save.controller;
+package com.selling.system.data.sales.save.controller;
 
 import com.selling.system.data.shared.module.service.QueryResponseService;
 import com.selling.system.shared.module.models.commands.DataCommand;

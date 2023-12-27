@@ -12,10 +12,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
                 "com.selling.system.data.sales.save"
         })
 @EnableDiscoveryClient
-public class DataSaleSaveApplication {
+public class DataSalesSaveApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DataSaleSaveApplication.class, args);
+        SpringApplication.run(DataSalesSaveApplication.class, args);
     }
 
 }

@@ -1,4 +1,4 @@
-package com.selling.system.data.sales.multi.delete.service;
+package com.selling.system.data.sales.delete.service;
 
 import com.selling.system.data.shared.module.service.QueryResponseService;
 import com.selling.system.data.shared.module.service.SalesService;

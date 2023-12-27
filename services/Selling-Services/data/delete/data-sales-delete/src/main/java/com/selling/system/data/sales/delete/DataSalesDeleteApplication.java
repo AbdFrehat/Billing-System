@@ -12,10 +12,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
                 "com.selling.system.data.sales.delete"
         })
 @EnableDiscoveryClient
-public class DataSaleDeleteApplication {
+public class DataSalesDeleteApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DataSaleDeleteApplication.class, args);
+        SpringApplication.run(DataSalesDeleteApplication.class, args);
     }
 
 }
