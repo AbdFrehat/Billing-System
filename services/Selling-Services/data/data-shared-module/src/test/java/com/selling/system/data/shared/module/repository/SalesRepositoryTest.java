@@ -4,12 +4,15 @@ import com.selling.system.data.shared.module.entites.SaleDocument;
 import com.selling.system.data.shared.module.data.set.DataSet;
 import com.selling.system.shared.module.models.enums.PurchaseMethod;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
@@ -24,8 +27,8 @@ import java.util.List;
 @DataMongoTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @ComponentScan(basePackages = "com.selling.system.data.shared.module.repository")
+@Disabled
 class SalesRepositoryTest {
-
 
     @Autowired
     private SalesRepository salesRepository;

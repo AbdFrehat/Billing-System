@@ -1,0 +1,25 @@
+spring:
+  webflux:
+    base-path: /selling/data/save/sales/v1/
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/sample_supplies
+      database: sample_supplies
+  application:
+    name: data-sales-save
+server:
+  port: 6087
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:6010/selling/eureka/
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
+  api-docs:
+    groups:
+      enabled: true
+    path: /api/docs
+config:
+  query:
+    builder: query-builder

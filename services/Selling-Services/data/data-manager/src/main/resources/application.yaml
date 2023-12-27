@@ -1,0 +1,29 @@
+spring:
+  webflux:
+    base-path: /selling/data/manager/sale/v1/
+  application:
+    name: data-manager
+server:
+  port: 6080
+  servlet:
+    context-path: /selling/data/manager/sale/v1/
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:6010/selling/eureka/
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
+  api-docs:
+    groups:
+      enabled: true
+    path: /api/docs
+config:
+  services:
+    context-path:
+      data-get-manager-ms: "http://DATA-GET-MANAGER/selling/data/get/manager/sale/v1/"
+      data-save-manager-ms: "http://DATA-SAVE-MANAGER/selling/data/save/manager/sale/v1/"
+      data-update-manager-ms: "http://DATA-UPDATE-MANAGER/selling/data/update/manager/sale/v1/"
+      data-delete-manager-ms: "http://DATA-DELETE-MANAGER/selling/data/delete/manager/sale/v1/"

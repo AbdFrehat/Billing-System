@@ -1,0 +1,13 @@
+server:
+  port: 6080
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE}
+config:
+  services:
+    context-path:
+      data-get-manager-ms: "http://DATA-GET-MANAGER/selling/data/get/manager/sale/v1/"
+      data-save-manager-ms: "http://DATA-SAVE-MANAGER/selling/data/save/manager/sale/v1/"
+      data-update-manager-ms: "http://DATA-UPDATE-MANAGER/selling/data/update/manager/sale/v1/"
+      data-delete-manager-ms: "http://DATA-DELETE-MANAGER/selling/data/delete/manager/sale/v1/"

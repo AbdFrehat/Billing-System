@@ -1,0 +1,12 @@
+server:
+  port: 6088
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE}
+config:
+  services:
+    context-path:
+      data-delete-ms: "http://DATA-SALE-DELETE/selling/data/delete/sale/v1/"
+      data-delete-multi-ms: "http://DATA-SALES-DELETE/selling/data/delete/sales/v1/"
+      data-delete-query-ms: "http://DATA-SALES-DELETE-QUERY/selling/data/delete/sales/query/v1/"

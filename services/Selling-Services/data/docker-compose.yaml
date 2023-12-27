@@ -1,9 +1,10 @@
-version: '3'
+version: '3.9'
 
 services:
-  data-manager-ms:
+  data-manager:
     build:
-      context: ./data-manager-ms
+      context: ./data-manager
+    image: data/data-manager
     ports:
       - "6080:6080"
     networks:
@@ -11,188 +12,213 @@ services:
       - shared_network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
-      SPRING_PROFILE: prod
+    command: java -jar data-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
-  data-get-manager-ms:
+  data-get-manager:
     build:
-      context: ./get/data-get-manager-ms
+      context: ./get/data-get-manager
+    image: data/get/data-get-manager
     networks:
       - network
       - shared_network
     depends_on:
-      - data-manager-ms
+      - data-manager
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
-      SPRING_PROFILE: prod
+    command: java -jar data-get-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
-  sales-get-free-ms:
+  data-sales-get-free:
     build:
-      context: ./get/sales-get-free-ms
+      context: ./get/data-sales-get-free
+    image: data/get/data-sales-get-free
     networks:
       - network
       - shared_network
     depends_on:
-      - data-get-manager-ms
-    environment:
-      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
-      SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
-      SPRING_PROFILE: prod
-
-  sales-get-ms:
-    build:
-      context: ./get/sales-get-ms
-    networks:
-      - network
-      - shared_network
-    depends_on:
-      - data-get-manager-ms
+      - data-get-manager
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
       SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
-      SPRING_PROFILE: prod
+    command: java -jar data-sales-get-free-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
-  sales-get-opt-ms:
+  data-sales-get:
     build:
-      context: ./get/sales-get-opt-ms
+      context: ./get/data-sales-get
+    image: data/get/data-sales-get
     networks:
       - network
       - shared_network
     depends_on:
-      - data-get-manager-ms
+      - data-get-manager
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
       SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
-      SPRING_PROFILE: prod
+    command: java -jar data-sales-get-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
-  data-save-manager-ms:
+  data-sales-get-opt:
     build:
-      context: ./save/data-save-manager-ms
+      context: ./get/data-sales-get-opt
+    image: data/get/data-sales-get-opt
     networks:
       - network
       - shared_network
     depends_on:
-      - data-manager-ms
-    environment:
-      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
-      SPRING_PROFILE: prod
-
-  sale-save-ms:
-    build:
-      context: ./save/sale-save-ms
-    networks:
-      - network
-      - shared_network
-    depends_on:
-      - data-save-manager-ms
+      - data-get-manager
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
       SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
-      SPRING_PROFILE: prod
+    command: java -jar data-sales-get-opt-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
-  sales-save-ms:
+  data-save-manager:
     build:
-      context: ./save/sales-save-ms
+      context: ./save/data-save-manager
+    image: data/save/data-save-manager
     networks:
       - network
       - shared_network
     depends_on:
-      - data-save-manager-ms
+      - data-manager
+    environment:
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+    command: java -jar data-save-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
+
+
+  data-sale-save:
+    build:
+      context: ./save/data-sale-save
+    image: data/save/data-sale-save
+    networks:
+      - network
+      - shared_network
+    depends_on:
+      - data-save-manager
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
       SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
-      SPRING_PROFILE: prod
+    command: java -jar data-sale-save-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
-  data-update-manager-ms:
+
+  data-sales-save:
     build:
-      context: ./update/data-update-manager-ms
+      context: ./save/data-sales-save
+    image: data/save/data-sales-save
     networks:
       - network
       - shared_network
     depends_on:
-      - data-manager-ms
-    environment:
-      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
-      SPRING_PROFILE: prod
-
-  sale-update-ms:
-    build:
-      context: ./update/sale-update-ms
-    networks:
-      - network
-      - shared_network
-    depends_on:
-      - data-update-manager-ms
+      - data-save-manager
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
       SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
-      SPRING_PROFILE: prod
+    command: java -jar data-sales-save-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
-  sales-update-ms:
+
+  data-update-manager:
     build:
-      context: ./update/sales-update-ms
+      context: ./update/data-update-manager
+    image: data/update/data-update-manager
     networks:
       - network
       - shared_network
     depends_on:
-      - data-update-manager-ms
+      - data-manager
+    environment:
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+    command: java -jar data-update-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
+
+
+  data-sale-update:
+    build:
+      context: ./update/data-sale-update
+    image: data/update/data-sale-update
+    networks:
+      - network
+      - shared_network
+    depends_on:
+      - data-update-manager
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
       SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
-      SPRING_PROFILE: prod
+    command: java -jar data-sale-update-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
-  data-delete-manager-ms:
+
+  data-sales-update:
     build:
-      context: ./delete/data-delete-manager-ms
+      context: ./update/data-sales-update
+    image: data/update/data-sales-update
     networks:
       - network
       - shared_network
     depends_on:
-      - data-manager-ms
+      - data-update-manager
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
-      SPRING_PROFILE: prod
+      SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
+    command: java -jar data-sales-update-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
-  sale-delete-ms:
+
+  data-delete-manager:
+    build:
+      context: ./delete/data-delete-manager
+    image: data/delete/data-delete-manager
+    networks:
+      - network
+      - shared_network
+    depends_on:
+      - data-manager
+    environment:
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+    command: java -jar data-delete-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
+
+
+  data-sale-delete:
       build:
-        context: ./delete/sale-delete-ms
+        context: ./delete/data-sale-delete
+      image: data/delete/data-sale-delete
       networks:
         - network
         - shared_network
       depends_on:
-        - data-delete-manager-ms
+        - data-delete-manager
       environment:
         EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
         SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
-        SPRING_PROFILE: prod
+      command: java -jar data-sale-delete-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
-  sales-delete-ms:
+
+  data-sales-delete:
       build:
-        context: ./delete/sales-delete-ms
+        context: ./delete/data-sales-delete
+      image: data/delete/data-sales-delete
       networks:
         - network
         - shared_network
       depends_on:
-        - data-delete-manager-ms
+        - data-delete-manager
       environment:
         EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
         SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
-        SPRING_PROFILE: prod
+      command: java -jar data-sales-delete-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
-  sale-delete-query-ms:
+
+  data-sale-delete-query:
     build:
-      context: ./delete/sale-delete-query-ms
+      context: ./delete/data-sale-delete-query
+    image: data/delete/data-sale-delete-query
     networks:
       - network
       - shared_network
     depends_on:
-      - data-delete-manager-ms
+      - data-delete-manager
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
       SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
-      SPRING_PROFILE: prod
+    command: java -jar data-sale-delete-query-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
+
 
 networks:
   network:
+    name: selling-data-network
   shared_network:
     external: true
 

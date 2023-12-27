@@ -1,0 +1,27 @@
+spring:
+  webflux:
+    base-path: /selling/data/save/manager/sale/v1/
+  application:
+    name: data-save-manager
+server:
+  port: 6085
+  servlet:
+    context-path: /selling/data/save/manager/sale/v1/
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:6010/selling/eureka/
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
+  api-docs:
+    groups:
+      enabled: true
+    path: /api/docs
+config:
+  services:
+    context-path:
+      data-save-ms: "http://DATA-SALE-SAVE/selling/data/save/sale/v1/"
+      data-save-multi-ms: "http://DATA-SALES-SAVE/selling/data/save/sales/v1/"

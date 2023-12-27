@@ -21,47 +21,47 @@ findProject(":source:sales-pull-ms")?.name = "sales-pull-ms"
 findProject(":source:sales-push-ms")?.name = "sales-push-ms"
 findProject(":source:sales-random-generator")?.name = "sales-random-generator"
 
-//Query Category
+//Data Category
 include("data:data-shared-module")
-include("data:data-manager-ms")
+include("data:data-manager")
 findProject(":data:data-shared-module")?.name = "data-shared-module"
-findProject(":data:data-manager-ms")?.name = "data-manager-ms"
+findProject(":data:data-manager")?.name = "data-manager"
 
 //Get Sub-Category
-include("data:get:data-get-manager-ms")
-include("data:get:sales-get-ms")
-include("data:get:sales-get-free-ms")
-include("data:get:sales-get-opt-ms")
-findProject(":data:get:data-get-manager-ms")?.name = "data-get-manager-ms"
-findProject(":data:get:sales-get-ms")?.name = "sales-get-ms"
-findProject(":data:get:sales-get-free-ms")?.name = "sales-get-free-ms"
-findProject(":data:get:sales-get-opt-ms")?.name = "sales-get-opt-ms"
+include("data:get:data-get-manager")
+include("data:get:data-sales-get")
+include("data:get:data-sales-get-free")
+include("data:get:data-sales-get-opt")
+findProject(":data:get:data-get-manager")?.name = "data-get-manager"
+findProject(":data:get:data-sales-get")?.name = "data-sales-get"
+findProject(":data:get:data-sales-get-free")?.name = "data-sales-get-free"
+findProject(":data:get:data-sales-get-opt")?.name = "data-sales-get-opt"
 
 //Save Sub-Category
-include("data:save:data-save-manager-ms")
-include("data:save:sale-save-ms")
-include("data:save:sales-save-ms")
-findProject(":data:save:data-save-manager-ms")?.name = "data-save-manager-ms"
-findProject(":data:save:sale-save-ms")?.name = "sale-save-ms"
-findProject(":data:save:sales-save-ms")?.name = "sales-save-ms"
+include("data:save:data-save-manager")
+include("data:save:data-sale-save")
+include("data:save:data-sales-save")
+findProject(":data:save:data-save-manager")?.name = "data-save-manager"
+findProject(":data:save:data-sale-save")?.name = "data-sale-save"
+findProject(":data:save:data-sales-save")?.name = "data-sales-save"
 
 //Delete Sub-Category
-include("data:delete:data-delete-manager-ms")
-include("data:delete:sale-delete-ms")
-include("data:delete:sales-delete-ms")
-include("data:delete:sale-delete-query-ms")
-findProject(":data:delete:data-delete-manager-ms")?.name = "data-delete-manager-ms"
-findProject(":data:delete:sale-delete-ms")?.name = "sale-delete-ms"
-findProject(":data:delete:sales-delete-ms")?.name = "sales-delete-ms"
-findProject(":data:delete:sale-delete-query-ms")?.name = "sale-delete-query-ms"
+include("data:delete:data-delete-manager")
+include("data:delete:data-sale-delete")
+include("data:delete:data-sales-delete")
+include("data:delete:data-sale-delete-query")
+findProject(":data:delete:data-delete-manager")?.name = "data-delete-manager"
+findProject(":data:delete:data-sale-delete")?.name = "data-sale-delete"
+findProject(":data:delete:data-sales-delete")?.name = "data-sales-delete"
+findProject(":data:delete:data-sale-delete-query")?.name = "data-sale-delete-query"
 
 //Update Sub-Category
-include("data:update:data-update-manager-ms")
-include("data:update:sale-update-ms")
-include("data:update:sales-update-ms")
-findProject(":data:update:data-update-manager-ms")?.name = "data-update-manager-ms"
-findProject(":data:update:sale-update-ms")?.name = "sale-update-ms"
-findProject(":data:update:sales-update-ms")?.name = "sales-update-ms"
+include("data:update:data-update-manager")
+include("data:update:data-sale-update")
+include("data:update:data-sales-update")
+findProject(":data:update:data-update-manager")?.name = "data-update-manager"
+findProject(":data:update:data-sale-update")?.name = "data-sale-update"
+findProject(":data:update:data-sales-update")?.name = "data-sales-update"
 
 //Shared
 include(":shared:shared-module")
