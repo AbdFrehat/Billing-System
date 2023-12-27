@@ -7,5 +7,5 @@ eureka:
 config:
   services:
     context-path:
-      data-manager-ms: "http://DATA-MANAGER-MS/selling/data/manager/sale/v1/"
+      data-manager-ms: "http://DATA-MANAGER/selling/data/manager/sale/v1/"
 

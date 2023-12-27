@@ -1,15 +1,18 @@
 version: '3.9'
-
+name: selling-data-category
 services:
   data-manager:
     build:
       context: ./data-manager
     image: data/data-manager
-    ports:
-      - "6080:6080"
     networks:
       - network
-      - shared_network
+      - selling-shared-network
+    depends_on:
+      - data-delete-manager
+      - data-update-manager
+      - data-save-manager
+      - data-get-manager
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
     command: java -jar data-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
@@ -20,9 +23,11 @@ services:
     image: data/get/data-get-manager
     networks:
       - network
-      - shared_network
+      - selling-shared-network
     depends_on:
-      - data-manager
+      - data-sales-get
+      - data-sales-get-free
+      - data-sales-get-opt
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
     command: java -jar data-get-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
@@ -33,9 +38,7 @@ services:
     image: data/get/data-sales-get-free
     networks:
       - network
-      - shared_network
-    depends_on:
-      - data-get-manager
+      - selling-shared-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
       SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
@@ -47,9 +50,7 @@ services:
     image: data/get/data-sales-get
     networks:
       - network
-      - shared_network
-    depends_on:
-      - data-get-manager
+      - selling-shared-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
       SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
@@ -61,9 +62,7 @@ services:
     image: data/get/data-sales-get-opt
     networks:
       - network
-      - shared_network
-    depends_on:
-      - data-get-manager
+      - selling-shared-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
       SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
@@ -75,9 +74,10 @@ services:
     image: data/save/data-save-manager
     networks:
       - network
-      - shared_network
+      - selling-shared-network
     depends_on:
-      - data-manager
+      - data-sale-save
+      - data-sales-save
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
     command: java -jar data-save-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
@@ -89,9 +89,7 @@ services:
     image: data/save/data-sale-save
     networks:
       - network
-      - shared_network
-    depends_on:
-      - data-save-manager
+      - selling-shared-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
       SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
@@ -104,9 +102,7 @@ services:
     image: data/save/data-sales-save
     networks:
       - network
-      - shared_network
-    depends_on:
-      - data-save-manager
+      - selling-shared-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
       SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
@@ -119,9 +115,10 @@ services:
     image: data/update/data-update-manager
     networks:
       - network
-      - shared_network
+      - selling-shared-network
     depends_on:
-      - data-manager
+      - data-sale-update
+      - data-sales-update
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
     command: java -jar data-update-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
@@ -133,9 +130,7 @@ services:
     image: data/update/data-sale-update
     networks:
       - network
-      - shared_network
-    depends_on:
-      - data-update-manager
+      - selling-shared-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
       SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
@@ -148,9 +143,7 @@ services:
     image: data/update/data-sales-update
     networks:
       - network
-      - shared_network
-    depends_on:
-      - data-update-manager
+      - selling-shared-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
       SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
@@ -163,9 +156,11 @@ services:
     image: data/delete/data-delete-manager
     networks:
       - network
-      - shared_network
+      - selling-shared-network
     depends_on:
-      - data-manager
+      - data-sale-delete
+      - data-sales-delete
+      - data-sale-delete-query
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
     command: java -jar data-delete-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
@@ -177,9 +172,7 @@ services:
       image: data/delete/data-sale-delete
       networks:
         - network
-        - shared_network
-      depends_on:
-        - data-delete-manager
+        - selling-shared-network
       environment:
         EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
         SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
@@ -192,9 +185,7 @@ services:
       image: data/delete/data-sales-delete
       networks:
         - network
-        - shared_network
-      depends_on:
-        - data-delete-manager
+        - selling-shared-network
       environment:
         EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
         SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
@@ -207,9 +198,7 @@ services:
     image: data/delete/data-sale-delete-query
     networks:
       - network
-      - shared_network
-    depends_on:
-      - data-delete-manager
+      - selling-shared-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
       SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
@@ -219,6 +208,6 @@ services:
 networks:
   network:
     name: selling-data-network
-  shared_network:
+  selling-shared-network:
     external: true
 

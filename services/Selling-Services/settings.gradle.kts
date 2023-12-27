@@ -84,8 +84,8 @@ findProject(":modify:modify-shared-sales-ms")?.name = "modify-shared-sales-ms"
 
 
 //Export
-include(":export:export-data-manager-ms")
-findProject(":export:export-data-manager-ms")?.name = "export-data-manager-ms"
+include(":export:export-data-manager")
+findProject(":export:export-data-manager")?.name = "export-data-manager"
 include(":export:export-data-json")
 findProject(":export:export-data-json")?.name = "export-data-json"
 include(":export:export-data-xml")

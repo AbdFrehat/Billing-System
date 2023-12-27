@@ -1,3 +1,5 @@
+version: '3.9'
+name: 'selling-shared'
 services:
   eureka-server:
     ports:
@@ -27,3 +29,4 @@ volumes:
 
 networks:
   network:
+    name: selling-shared-network
