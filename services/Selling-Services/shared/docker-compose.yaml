@@ -1,5 +1,5 @@
 version: '3.9'
-name: 'selling-shared'
+name: 'selling-shared-category'
 services:
   eureka-server:
     ports:

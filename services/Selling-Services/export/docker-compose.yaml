@@ -62,8 +62,6 @@ services:
     build:
       context: ./export-data-pdf
     image: export/export-data-pdf
-    ports:
-      - "7030:7030"
     networks:
       - network
       - selling-shared-network

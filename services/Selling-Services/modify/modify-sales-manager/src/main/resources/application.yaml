@@ -19,6 +19,6 @@ springdoc:
 config:
   services:
     context-path:
-      modify-delete-sales-ms: "http://MODIFY-DELETE-SALES-MS/selling/modify/sales/delete/v1/"
-      modify-save-sales-ms: "http://MODIFY-SAVE-SALES-MS/selling/modify/sales/save/v1/"
-      modify-update-sales-ms: "http://MODIFY-UPDATE-SALES-MS/selling/modify/sales/update/v1/"
+      modify-delete-sales-ms: "http://MODIFY-DELETE-SALES/selling/modify/sales/delete/v1/"
+      modify-save-sales-ms: "http://MODIFY-SAVE-SALES/selling/modify/sales/save/v1/"
+      modify-update-sales-ms: "http://MODIFY-UPDATE-SALES/selling/modify/sales/update/v1/"

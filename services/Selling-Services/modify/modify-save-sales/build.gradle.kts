@@ -4,7 +4,7 @@ plugins {
 	id("io.spring.dependency-management")
 }
 
-group = "com.selling.system.modify.delete.sales"
+group = "com.selling.system.modify.save.sales"
 version = "1.0.0-SNAPSHOT"
 
 
@@ -16,7 +16,7 @@ dependencies {
 	implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:${project.findProperty("springDocOpenAPIVersion")}")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	implementation(project(":shared:shared-module"))
-	implementation(project(":modify:modify-shared-sales-ms"))
+	implementation(project(":modify:modify-shared-sales"))
 	testImplementation("io.projectreactor:reactor-test")
 }
 

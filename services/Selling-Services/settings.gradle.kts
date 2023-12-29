@@ -71,16 +71,16 @@ findProject(":eureka-server")?.name = "eureka-server"
 
 
 //Modify
-include(":modify:modify-router-sales-manager")
-findProject(":modify:modify-router-sales-manager")?.name = "modify-router-sales-manager"
-include(":modify:modify-save-sales-ms")
-findProject(":modify:modify-save-sales-ms")?.name = "modify-save-sales-ms"
-include(":modify:modify-delete-sales-ms")
-findProject(":modify:modify-delete-sales-ms")?.name = "modify-delete-sales-ms"
-include(":modify:modify-update-sales-ms")
-findProject(":modify:modify-update-sales-ms")?.name = "modify-update-sales-ms"
-include(":modify:modify-shared-sales-ms")
-findProject(":modify:modify-shared-sales-ms")?.name = "modify-shared-sales-ms"
+include(":modify:modify-sales-manager")
+findProject(":modify:modify-sales-manager")?.name = "modify-sales-manager"
+include(":modify:modify-save-sales")
+findProject(":modify:modify-save-sales")?.name = "modify-save-sales"
+include(":modify:modify-delete-sales")
+findProject(":modify:modify-delete-sales")?.name = "modify-delete-sales"
+include(":modify:modify-update-sales")
+findProject(":modify:modify-update-sales")?.name = "modify-update-sales"
+include(":modify:modify-shared-sales")
+findProject(":modify:modify-shared-sales")?.name = "modify-shared-sales"
 
 
 //Export

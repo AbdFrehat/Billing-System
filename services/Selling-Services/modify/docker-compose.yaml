@@ -1,56 +1,59 @@
-version: '3.0'
-
+version: '3.9'
+name: selling-modify-category
 services:
   modify-router-sales-manager:
     build:
-      context: ./modify-router-sales-manager
+      context: ./modify-sales-manager
+    image: modify/modify-router-sales-manager
     ports:
       - "7020:7020"
     networks:
       - network
-      - shared_network
+      - selling-shared-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
-      SPRING_PROFILE: prod
+    depends_on:
+      - modify-delete-sales
+      - modify-save-sales
+      - modify-update-sales
+    command: java -jar modify-sales-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
-
-  modify-delete-sales-ms:
+  modify-delete-sales:
     build:
-      context: ./modify-delete-sales-ms
+      context: ./modify-delete-sales
+    image: modify/modify-delete-sales
     networks:
       - network
-      - shared_network
+      - selling-shared-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
-      SPRING_PROFILE: prod
-    depends_on:
-      - modify-router-sales-manager
+    command: java -jar modify-delete-sales-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
-  modify-update-sales-ms:
+
+  modify-update-sales:
     build:
-      context: ./modify-update-sales-ms
+      context: ./modify-update-sales
+    image: modify/modify-update-sales
     networks:
       - network
-      - shared_network
+      - selling-shared-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
-      SPRING_PROFILE: prod
-    depends_on:
-      - modify-router-sales-manager
+    command: java -jar modify-update-sales-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
-  modify-save-sales-ms:
+  modify-save-sales:
     build:
-      context: ./modify-save-sales-ms
+      context: ./modify-save-sales
+    image: modify/modify-save-sales
     networks:
       - network
-      - shared_network
+      - selling-shared-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
-      SPRING_PROFILE: prod
-    depends_on:
-      - modify-router-sales-manager
+    command: java -jar modify-save-sales-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
 networks:
   network:
-  shared_network:
+    name: selling-modify-network
+  selling-shared-network:
     external: true

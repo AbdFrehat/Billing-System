@@ -1,0 +1,10 @@
+server:
+  port: 7022
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE}
+config:
+  services:
+    context-path:
+      kafka-sale-producer-ms: http://KAFKA-SALE-PRODUCER/selling/kafka/sale/v1/

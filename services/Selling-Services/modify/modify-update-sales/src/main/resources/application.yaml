@@ -1,10 +1,10 @@
 spring:
   webflux:
-    base-path: /selling/modify/sales/delete/v1/
+    base-path: /selling/modify/sales/update/v1/
   application:
-    name: modify-delete-sales-ms
+    name: modify-update-sales-ms
 server:
-  port: 7022
+  port: 7023
 eureka:
   client:
     service-url:
@@ -19,4 +19,4 @@ springdoc:
 config:
   services:
     context-path:
-      kafka-sale-producer-ms: http://KAFKA-SALE-PRODUCER-MS/selling/kafka/sale/v1/
+      kafka-sale-producer-ms: http://KAFKA-SALE-PRODUCER/selling/kafka/sale/v1/

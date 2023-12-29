@@ -19,4 +19,4 @@ springdoc:
 config:
   services:
     context-path:
-      kafka-sale-producer-ms: http://KAFKA-SALE-PRODUCER-MS/selling/kafka/sale/v1/
+      kafka-sale-producer-ms: http://KAFKA-SALE-PRODUCER/selling/kafka/sale/v1/
