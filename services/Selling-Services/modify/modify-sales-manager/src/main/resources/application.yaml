@@ -2,7 +2,7 @@ spring:
   webflux:
     base-path: /selling/modify/router/manager/sales/v1/
   application:
-    name: modify-router-sales-manager
+    name: modify-sales-manager
 server:
   port: 7020
 eureka:

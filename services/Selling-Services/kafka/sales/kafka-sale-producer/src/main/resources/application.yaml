@@ -1,0 +1,26 @@
+server:
+  port: 6040
+spring:
+  application:
+    name: kafka-sale-producer
+  kafka:
+    bootstrap-servers: 127.0.0.1:9092
+    template:
+      default-topic: modify.command.json
+      partitions: 3
+      replicas: 1
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring:
+          json:
+            add:
+              type:
+                headers: false
+  webflux:
+    base-path: /selling/kafka/sale/v1/
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:6010/selling/eureka/

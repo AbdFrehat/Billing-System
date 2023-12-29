@@ -1,31 +1,35 @@
-version: '3.0'
-
-
+version: '3.9'
+name: selling-reports-category
 services:
-  receipt-generator-ms:
+  reports-receipt-generator:
     build:
-      context: ./receipt-generator-ms
+      context: ./reports-receipt-generator
+    image: reports/reports-receipt-generator
     ports:
       - "6020:6020"
     networks:
       - network
-      - shared_network
+      - selling-shared-network
+      - selling-data-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
-      SPRING_PROFILE: prod
-
-  calc-price-ms:
+    depends_on:
+      - reports-calc-price
+    command: java -jar reports-receipt-generator-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
+  reports-calc-price:
     build:
-      context: ./calc-price-ms
+      context: ./reports-calc-price
+    image: reports/reports-calc-price
     networks:
       - network
-      - shared_network
+      - selling-shared-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
-      SPRING_PROFILE: prod
-    depends_on:
-      - receipt-generator-ms
+    command: java -jar reports-calc-price-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 networks:
   network:
-  shared_network:
+    name: selling-reports-network
+  selling-shared-network:
+    external: true
+  selling-data-network:
     external: true

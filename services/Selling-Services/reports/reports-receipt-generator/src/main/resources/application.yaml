@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: reports-receipt-generator
+  webflux:
+    base-path: /selling/reports/generate/sale/v1/
+server:
+  port: 6020
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:6010/selling/eureka/

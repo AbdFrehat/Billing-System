@@ -2,7 +2,7 @@ spring:
   webflux:
     base-path: /selling/modify/sales/update/v1/
   application:
-    name: modify-update-sales-ms
+    name: modify-update-sales
 server:
   port: 7023
 eureka:

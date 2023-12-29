@@ -17,7 +17,6 @@ services:
       - modify-save-sales
       - modify-update-sales
     command: java -jar modify-sales-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
-
   modify-delete-sales:
     build:
       context: ./modify-delete-sales
@@ -25,11 +24,10 @@ services:
     networks:
       - network
       - selling-shared-network
+      - selling-kafka-sales-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
     command: java -jar modify-delete-sales-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
-
-
   modify-update-sales:
     build:
       context: ./modify-update-sales
@@ -37,10 +35,10 @@ services:
     networks:
       - network
       - selling-shared-network
+      - selling-kafka-sales-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
     command: java -jar modify-update-sales-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
-
   modify-save-sales:
     build:
       context: ./modify-save-sales
@@ -48,12 +46,14 @@ services:
     networks:
       - network
       - selling-shared-network
+      - selling-kafka-sales-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
     command: java -jar modify-save-sales-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
-
 networks:
   network:
     name: selling-modify-network
   selling-shared-network:
+    external: true
+  selling-kafka-sales-network:
     external: true

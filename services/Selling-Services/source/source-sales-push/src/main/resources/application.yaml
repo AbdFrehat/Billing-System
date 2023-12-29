@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: source-sales-push
+  webflux:
+    base-path:  /selling/source/push/sale/v1/
+server:
+  port: 6061
+
+emit:
+  duration: 100
+  max:
+    items: 10
+    tags: 3
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:6010/selling/eureka/
+config:
+  services:
+    context-path:
+      kafka-sale-producer-ms: "http://KAFKA-SALE-PRODUCER/selling/kafka/sale/v1/"

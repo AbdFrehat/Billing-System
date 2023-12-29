@@ -1,5 +1,5 @@
 version: '3.9'
-
+name: selling-kafka-category
 services:
   zoo1:
     image: confluentinc/cp-zookeeper:7.3.0
@@ -13,8 +13,6 @@ services:
       - "2181:2181"
     networks:
       - network
-
-
   kafka1:
     image: confluentinc/cp-kafka:7.3.0
     hostname: kafka1
@@ -41,7 +39,6 @@ services:
       - zoo1
     networks:
       - network
-
   kafka-schema-registry:
     image: confluentinc/cp-schema-registry:7.3.0
     hostname: kafka-schema-registry
@@ -57,7 +54,6 @@ services:
       - kafka1
     networks:
       - network
-
   conduktor-platform:
     image: conduktor/conduktor-platform:1.17.3
     ports:
@@ -80,10 +76,8 @@ services:
       CDK_ADMIN_PASSWORD: "admin"
     networks:
       - network
-
 volumes:
   conduktor_data: { }
-
 networks:
   network:
-
+    name: selling-kafka-network

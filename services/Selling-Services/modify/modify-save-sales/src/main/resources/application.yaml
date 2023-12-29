@@ -2,7 +2,7 @@ spring:
   webflux:
     base-path: /selling/modify/sales/save/v1/
   application:
-    name: modify-save-sales-ms
+    name: modify-save-sales
 server:
   port: 7021
 eureka:

@@ -1,25 +1,25 @@
 rootProject.name = "Selling-Services"
 
 //Reports Category
-include("reports:receipt-generator-ms")
-include("reports:calc-price-ms")
-findProject(":reports:receipt-generator-ms")?.name = "receipt-generator-ms"
-findProject(":reports:calc-price-ms")?.name = "calc-price-ms"
+include("reports:reports-receipt-generator")
+include("reports:reports-calc-price")
+findProject(":reports:reports-receipt-generator")?.name = "reports-receipt-generator"
+findProject(":reports:reports-calc-price")?.name = "reports-calc-price"
 
-//Kafka Category
-include("kafka:sales:kafka-sale-producer-ms")
-include("kafka:sales:kafka-sale-consumer-ms")
-findProject(":kafka:sales:kafka-sale-producer-ms")?.name = "kafka-sale-producer-ms"
-findProject(":kafka:sales:kafka-sale-consumer-ms")?.name = "kafka-sale-consumer-ms"
+//Kafka Persistence Category
+include("kafka:sales:kafka-sale-producer")
+include("kafka:sales:kafka-sale-consumer")
+findProject(":kafka:sales:kafka-sale-producer")?.name = "kafka-sale-producer"
+findProject(":kafka:sales:kafka-sale-consumer")?.name = "kafka-sale-consumer"
 
 
 //Source Category
-include("source:sales-pull-ms")
-include("source:sales-push-ms")
-include("source:sales-random-generator")
-findProject(":source:sales-pull-ms")?.name = "sales-pull-ms"
-findProject(":source:sales-push-ms")?.name = "sales-push-ms"
-findProject(":source:sales-random-generator")?.name = "sales-random-generator"
+include("source:source-sales-pull")
+include("source:source-sales-push")
+include("source:source-sales-random-generator")
+findProject(":source:source-sales-pull")?.name = "source-sales-pull"
+findProject(":source:source-sales-push")?.name = "source-sales-push"
+findProject(":source:source-sales-random-generator")?.name = "source-sales-random-generator"
 
 //Data Category
 include("data:data-shared-module")

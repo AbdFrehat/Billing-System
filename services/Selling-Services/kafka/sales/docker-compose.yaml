@@ -1,32 +1,34 @@
-version: '3'
+version: '3.9'
+name: selling-kafka-sales-category
 services:
-  kafka-sale-consumer-ms:
+  kafka-sale-consumer:
     build:
-      context: ./kafka-sale-consumer-ms
+      context: ./kafka-sale-consumer
     environment:
       KAFKA_BOOTSTRAP_SERVER: kafka1:19092
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
-      SPRING_PROFILE: prod
     networks:
       - network
-      - kafka_network
-      - shared_network
+      - selling-shared-network
+      - selling-kafka-network
+    command: java -jar kafka-sale-consumer-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
-  kafka-sale-producer-ms:
+  kafka-sale-producer:
     build:
-      context: ./kafka-sale-producer-ms
+      context: ./kafka-sale-producer
     environment:
       KAFKA_BOOTSTRAP_SERVER: kafka1:19092
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
-      SPRING_PROFILE: prod
     networks:
       - network
-      - kafka_network
-      - shared_network
+      - selling-kafka-network
+      - selling-shared-network
+    command: java -jar kafka-sale-producer-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
 networks:
   network:
-  shared_network:
+    name: selling-kafka-sales-network
+  selling-shared-network:
     external: true
-  kafka_network:
+  selling-kafka-network:
     external: true

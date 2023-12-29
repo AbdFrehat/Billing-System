@@ -1,35 +1,39 @@
-version: '3'
-
-
+version: '3.9'
+name: selling-source-category
 services:
-  sales-pull-ms:
+  source-sales-pull:
     build:
-      context: ./sales-pull-ms
+      context: ./source-sales-pull
+    image: source/source-sales-pull
     ports:
       - "6060:6060"
     environment:
-      SPRING_PROFILE: prod
       NUMBER_ITEMS: 10
       EMIT_DURATION: 1000
       NUMBER_TAGS: 3
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
     networks:
       - network
-      - shared_network
-
-  sales-push-ms:
+      - selling-shared-network
+    command: java -jar source-sales-pull-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
+  source-sales-push:
     build:
-      context: ./sales-push-ms
+      context: ./source-sales-push
+    image: source/source-sales-push
     environment:
-      SPRING_PROFILE: prod
       NUMBER_ITEMS: 10
       NUMBER_TAGS: 3
       EMIT_DURATION: 10
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+    command: java -jar source-sales-push-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
     networks:
       - network
-      - shared_network
+      - selling-shared-network
+      - selling-kafka-network
 
 networks:
   network:
-  shared_network:
+  selling-shared-network:
+    external: true
+  selling-kafka-network:
     external: true
