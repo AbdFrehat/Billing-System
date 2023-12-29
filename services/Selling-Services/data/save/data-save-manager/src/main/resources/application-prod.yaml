@@ -7,5 +7,5 @@ eureka:
 config:
   services:
     context-path:
-      data-save-ms: "http://SALE-SAVE-MS/selling/data/save/sale/v1/"
-      data-save-multi-ms: "http://SALES-SAVE-MS/selling/data/save/sales/v1/"
+      data-save-ms: "http://DATA-SALE-SAVE/selling/data/save/sale/v1/"
+      data-save-multi-ms: "http://DATA-SALES-SAVE/selling/data/save/sales/v1/"

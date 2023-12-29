@@ -4,6 +4,8 @@ services:
   data-manager:
     build:
       context: ./data-manager
+    ports:
+      - "6080:6080"
     image: data/data-manager
     networks:
       - network
