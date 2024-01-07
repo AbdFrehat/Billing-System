@@ -52,21 +52,4 @@ public class ObjectToObjectsConvertor {
         }
     }
 
-    public static Customer toCustomer(Object object) {
-        if (object instanceof LinkedHashMap<?, ?> list) {
-            try {
-                return Customer.builder()
-                        .age((int) ((LinkedHashMap<?, ?>) list.get("customer")).get("age"))
-                        .satisfaction((Integer) ((LinkedHashMap<?, ?>) list.get("customer")).get("satisfaction"))
-                        .gender((String) ((LinkedHashMap<?, ?>) list.get("customer")).get("gender"))
-                        .email((String) ((LinkedHashMap<?, ?>) list.get("customer")).get("email"))
-                        .build();
-            } catch (Exception e) {
-                throw new PayloadBadFormatException("Unable to parse the customer part of the payload ");
-            }
-        } else {
-            throw new PayloadBadFormatException("Unable to parse the customer part of the payload ");
-        }
-    }
-
 }

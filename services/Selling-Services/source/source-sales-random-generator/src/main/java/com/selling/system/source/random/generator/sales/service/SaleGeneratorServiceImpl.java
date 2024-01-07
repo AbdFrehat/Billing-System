@@ -12,9 +12,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
@@ -45,7 +42,7 @@ public class SaleGeneratorServiceImpl implements SaleGeneratorService {
     public Sale generateRandomSale() {
         ThreadLocalRandom threadLocalRandom = ThreadLocalRandom.current();
         return Sale.builder()
-                .saleDate(new Date())
+                .saleDate(new Date(System.currentTimeMillis()))
                 .couponUsed(salesData.getCouponUsedValues().get(threadLocalRandom.nextInt(salesData.getCouponUsedValues().size())))
                 .purchaseMethod(getRandomPurchaseMethod(threadLocalRandom).getValue())
                 .storeLocation(salesData.getStoreLocationValues().get(threadLocalRandom.nextInt(salesData.getStoreLocationValues().size())))

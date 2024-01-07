@@ -13,6 +13,8 @@ import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import static com.selling.system.shared.module.convertors.ObjectToSalesConvertor.toSaleDate;
+
 @Slf4j
 public class ObjectToSalesConvertor {
 
@@ -81,22 +83,6 @@ public class ObjectToSalesConvertor {
                     .build()).toList();
         } catch (Exception e) {
             log.warn("Unable to parse the items for payload: {} ", saleId);
-            return null;
-        }
-    }
-
-    private static Date toSaleDate(LinkedHashMap<?, ?> list, String saleId) {
-        try {
-            Object saleDate = list.get("saleDate");
-            Date date;
-            if (saleDate instanceof String) {
-                date = Date.from(OffsetDateTime.parse((String) list.get("saleDate"), DateTimeFormatter.ISO_OFFSET_DATE_TIME).toInstant());
-            } else {
-                date = new Date((Long) saleDate);
-            }
-            return date;
-        } catch (Exception ex) {
-            log.warn("Unable to parse the saleDate of payload: {} ", saleId);
             return null;
         }
     }

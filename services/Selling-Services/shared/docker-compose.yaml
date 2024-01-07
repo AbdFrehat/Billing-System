@@ -10,7 +10,8 @@ services:
       SPRING_PROFILE: prod
     networks:
       - network
-
+    volumes:
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/shared/eureka-server:/app/logs
   selling-system-database:
     image: mongo
     container_name: selling-system-database
@@ -23,10 +24,8 @@ services:
       - network
     volumes:
       - mongodb_data:/data/db
-
 volumes:
   mongodb_data:
-
 networks:
   network:
     name: selling-shared-network

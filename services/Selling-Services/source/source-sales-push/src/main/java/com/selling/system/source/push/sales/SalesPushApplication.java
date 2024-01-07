@@ -7,7 +7,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication(scanBasePackages = {
         "com.selling.system.source.push.sales",
-        "com.selling.system.source.random.generator.sales"
+        "com.selling.system.source.random.generator.sales",
+        "com.selling.system.shared.module"
 })
 @EnableScheduling
 @EnableDiscoveryClient

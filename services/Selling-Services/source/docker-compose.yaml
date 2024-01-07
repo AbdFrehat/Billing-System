@@ -7,29 +7,33 @@ services:
     image: source/source-sales-pull
     ports:
       - "6060:6060"
+    networks:
+      - network
+      - selling-shared-network
     environment:
       NUMBER_ITEMS: 10
       EMIT_DURATION: 1000
       NUMBER_TAGS: 3
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
-    networks:
-      - network
-      - selling-shared-network
+    volumes:
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/source/source-sales-pull:/app/logs
     command: java -jar source-sales-pull-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
   source-sales-push:
     build:
       context: ./source-sales-push
     image: source/source-sales-push
+    networks:
+      - network
+      - selling-shared-network
+      - selling-kafka-network
     environment:
       NUMBER_ITEMS: 10
       NUMBER_TAGS: 3
       EMIT_DURATION: 10
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+    volumes:
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/source/source-sales-push:/app/logs
     command: java -jar source-sales-push-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
-    networks:
-      - network
-      - selling-shared-network
-      - selling-kafka-network
 
 networks:
   network:

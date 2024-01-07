@@ -4,27 +4,31 @@ services:
   kafka-sale-consumer:
     build:
       context: ./kafka-sale-consumer
-    environment:
-      KAFKA_BOOTSTRAP_SERVER: kafka1:19092
-      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
     image: kafka/sales/kafka-sale-consumer
     networks:
       - network
       - selling-shared-network
       - selling-kafka-network
+    environment:
+      KAFKA_BOOTSTRAP_SERVER: kafka1:19092
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+    volumes:
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/kafka/sales/kafka-sale-consumer:/app/logs
     command: java -jar kafka-sale-consumer-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
   kafka-sale-producer:
     build:
       context: ./kafka-sale-producer
     image: kafka/sales/kafka-sale-producer
-    environment:
-      KAFKA_BOOTSTRAP_SERVER: kafka1:19092
-      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
     networks:
       - network
       - selling-kafka-network
       - selling-shared-network
+    environment:
+      KAFKA_BOOTSTRAP_SERVER: kafka1:19092
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+    volumes:
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/kafka/sales/kafka-sale-producer:/app/logs
     command: java -jar kafka-sale-producer-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
 networks:

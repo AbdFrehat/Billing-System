@@ -1,22 +1,25 @@
 version: '3.9'
 name: selling-modify-category
 services:
-  modify-router-sales-manager:
+  modify-sales-manager:
     build:
       context: ./modify-sales-manager
-    image: modify/modify-router-sales-manager
+    image: modify/modify-sales-manager
     ports:
       - "7020:7020"
     networks:
       - network
       - selling-shared-network
-    environment:
-      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
     depends_on:
       - modify-delete-sales
       - modify-save-sales
       - modify-update-sales
+    environment:
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+    volumes:
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/modify/modify-sales-manager:/app/logs
     command: java -jar modify-sales-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
+
   modify-delete-sales:
     build:
       context: ./modify-delete-sales
@@ -27,7 +30,10 @@ services:
       - selling-kafka-sales-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+    volumes:
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/modify/modify-delete-sales:/app/logs
     command: java -jar modify-delete-sales-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
+
   modify-update-sales:
     build:
       context: ./modify-update-sales
@@ -38,7 +44,10 @@ services:
       - selling-kafka-sales-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+    volumes:
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/modify/modify-update-sales:/app/logs
     command: java -jar modify-update-sales-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
+
   modify-save-sales:
     build:
       context: ./modify-save-sales
@@ -49,7 +58,10 @@ services:
       - selling-kafka-sales-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+    volumes:
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/modify/modify-save-sales:/app/logs
     command: java -jar modify-save-sales-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
+
 networks:
   network:
     name: selling-modify-network

@@ -1,4 +1,4 @@
-package com.selling.system.modify.router.sales.manager.client;
+package com.selling.system.modify.sales.manager.client;
 
 import com.selling.system.shared.module.exceptions.business.CommandTypeNotSupportedException;
 import com.selling.system.shared.module.models.entities.Sale;

@@ -28,7 +28,7 @@ public class DataManagerClientImpl implements DataManagerClient {
     public Mono<Sale> retrieveSale(String saleId) {
         return webClient
                 .post()
-                .uri("http://DATA-MANAGER-MS/selling/data/manager/sale/v1/")
+                .uri("http://DATA-MANAGER/selling/data/manager/sale/v1/")
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(buildQueryCommand(saleId))
                 .retrieve()

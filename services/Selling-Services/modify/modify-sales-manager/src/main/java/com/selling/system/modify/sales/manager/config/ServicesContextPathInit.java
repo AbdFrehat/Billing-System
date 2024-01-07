@@ -1,4 +1,4 @@
-package com.selling.system.modify.router.sales.manager.config;
+package com.selling.system.modify.sales.manager.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

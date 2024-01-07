@@ -1,9 +1,9 @@
-package com.selling.system.modify.router.sales.manager.controller;
+package com.selling.system.modify.sales.manager.controller;
 
-import com.selling.system.modify.router.sales.manager.client.ModifyClient;
+import com.selling.system.modify.sales.manager.client.ModifyClient;
 import com.selling.system.shared.module.models.entities.Sale;
 import com.selling.system.shared.module.models.enums.CommandType;
-import jakarta.ws.rs.QueryParam;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +14,7 @@ import reactor.core.publisher.Mono;
 import java.util.List;
 
 @RestController
+@Slf4j
 public class ModifyRouterController {
 
     private final ModifyClient modifyClient;
@@ -24,6 +25,7 @@ public class ModifyRouterController {
 
     @PostMapping
     public Mono<ResponseEntity<Void>> sendModifyCommand(@RequestBody Sale sale, @RequestParam("command-type") CommandType commandType) {
+        log.info("Log1999");
         return modifyClient.sendModifyCommand(sale, commandType);
     }
 

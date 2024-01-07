@@ -4,8 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication(scanBasePackages = {
+		"com.selling.system.modify.update.sales",
 		"com.selling.system.modify.shared.sales",
-		"com.selling.system.modify.update.sales"
+		"com.selling.system.shared.module"
 })
 public class ModifyUpdateSalesApplication {
 

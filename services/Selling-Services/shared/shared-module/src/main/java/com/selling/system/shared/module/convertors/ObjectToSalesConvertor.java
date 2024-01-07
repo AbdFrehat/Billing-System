@@ -85,7 +85,7 @@ public class ObjectToSalesConvertor {
         }
     }
 
-    private static Date toSaleDate(LinkedHashMap<?, ?> list, String saleId) {
+    public static Date toSaleDate(LinkedHashMap<?, ?> list, String saleId) {
         try {
             Object saleDate = list.get("saleDate");
             Date date;
@@ -100,6 +100,7 @@ public class ObjectToSalesConvertor {
             return null;
         }
     }
+
 
 
 }

@@ -20,25 +20,25 @@ import static org.slf4j.Logger.ROOT_LOGGER_NAME;
 @Configuration
 public class DefaultLoggingConfiguration {
 
-    @Value("${configuration.logging.name:${spring.application.name}.log}")
+    @Value("${config.logging.name:${spring.application.name}.log}")
     private String fileName;
 
-    @Value("${configuration.logging.path:./logs/}")
+    @Value("${config.logging.path:./logs/}")
     private String logFilePath;
 
-    @Value("${configuration.logging.pattern:%d [%thread] %-5level %logger{35} - %msg%n}")
+    @Value("${config.logging.pattern:%d [%thread] %-5level %logger{35} - %msg%n}")
     private String logPattern;
 
-    @Value("${configuration.logging.archive.pattern:.%d{yyyy-MM-dd}.%i.log}")
+    @Value("${config.logging.archive.pattern:.%d{yyyy-MM-dd}.%i.log}")
     private String archivePattern;
 
-    @Value("${configuration.logging.archive.totalSize:10MB}")
+    @Value("${config.logging.archive.totalSize:10MB}")
     private String totalSize;
 
-    @Value("${configuration.logging.archive.maxSize:1MB}")
+    @Value("${config.logging.archive.maxSize:1MB}")
     private String maxSize;
 
-    @Value("${configuration.logging.archive.numberOfFiles:10}")
+    @Value("${config.logging.archive.numberOfFiles:10}")
     private int maxHistory;
 
     private LoggerContext loggerContext;
