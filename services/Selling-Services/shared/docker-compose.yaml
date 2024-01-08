@@ -6,12 +6,15 @@ services:
       - "6010:6010"
     build:
       context: ./eureka-server
+    image: shared/eureka-server:1.0.0
     environment:
-      SPRING_PROFILE: prod
+      ENABLE_LOGGING_FILES: false
     networks:
       - network
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/shared/eureka-server:/app/logs
+    command: java -jar eureka-server-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
+
   selling-system-database:
     image: mongo
     container_name: selling-system-database

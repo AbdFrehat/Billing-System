@@ -6,7 +6,7 @@ services:
       context: ./data-manager
     ports:
       - "6080:6080"
-    image: data/data-manager
+    image: data/data-manager:1.0.0
     networks:
       - network
       - selling-shared-network
@@ -17,6 +17,7 @@ services:
       - data-get-manager
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/data-manager:/app/logs
     command: java -jar data-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
@@ -24,7 +25,7 @@ services:
   data-get-manager:
     build:
       context: ./get/data-get-manager
-    image: data/get/data-get-manager
+    image: data/get/data-get-manager:1.0.0
     networks:
       - network
       - selling-shared-network
@@ -34,6 +35,7 @@ services:
       - data-sales-get-opt
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/get/data-get-manager:/app/logs
     command: java -jar data-get-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
@@ -41,13 +43,14 @@ services:
   data-sales-get-free:
     build:
       context: ./get/data-sales-get-free
-    image: data/get/data-sales-get-free
+    image: data/get/data-sales-get-free:1.0.0
     networks:
       - network
       - selling-shared-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
       SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
+      ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/get/data-sales-get-free:/app/logs
     command: java -jar data-sales-get-free-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
@@ -55,13 +58,14 @@ services:
   data-sales-get:
     build:
       context: ./get/data-sales-get
-    image: data/get/data-sales-get
+    image: data/get/data-sales-get:1.0.0
     networks:
       - network
       - selling-shared-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
       SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
+      ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/get/data-sales-get:/app/logs
     command: java -jar data-sales-get-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
@@ -69,13 +73,14 @@ services:
   data-sales-get-opt:
     build:
       context: ./get/data-sales-get-opt
-    image: data/get/data-sales-get-opt
+    image: data/get/data-sales-get-opt:1.0.0
     networks:
       - network
       - selling-shared-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
       SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
+      ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/get/data-sales-get-opt:/app/logs
     command: java -jar data-sales-get-opt-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
@@ -83,7 +88,7 @@ services:
   data-save-manager:
     build:
       context: ./save/data-save-manager
-    image: data/save/data-save-manager
+    image: data/save/data-save-manager:1.0.0
     networks:
       - network
       - selling-shared-network
@@ -92,6 +97,7 @@ services:
       - data-sales-save
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/save/data-save-manager:/app/logs
     command: java -jar data-save-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
@@ -100,13 +106,14 @@ services:
   data-sale-save:
     build:
       context: ./save/data-sale-save
-    image: data/save/data-sale-save
+    image: data/save/data-sale-save:1.0.0
     networks:
       - network
       - selling-shared-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
       SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
+      ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/save/data-sale-save:/app/logs
     command: java -jar data-sale-save-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
@@ -115,13 +122,14 @@ services:
   data-sales-save:
     build:
       context: ./save/data-sales-save
-    image: data/save/data-sales-save
+    image: data/save/data-sales-save:1.0.0
     networks:
       - network
       - selling-shared-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
       SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
+      ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/save/data-sales-save:/app/logs
     command: java -jar data-sales-save-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
@@ -130,7 +138,7 @@ services:
   data-update-manager:
     build:
       context: ./update/data-update-manager
-    image: data/update/data-update-manager
+    image: data/update/data-update-manager:1.0.0
     networks:
       - network
       - selling-shared-network
@@ -139,6 +147,7 @@ services:
       - data-sales-update
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/update/data-update-manager:/app/logs
     command: java -jar data-update-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
@@ -147,13 +156,14 @@ services:
   data-sale-update:
     build:
       context: ./update/data-sale-update
-    image: data/update/data-sale-update
+    image: data/update/data-sale-update:1.0.0
     networks:
       - network
       - selling-shared-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
       SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
+      ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/update/data-sale-update:/app/logs
     command: java -jar data-sale-update-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
@@ -162,13 +172,14 @@ services:
   data-sales-update:
     build:
       context: ./update/data-sales-update
-    image: data/update/data-sales-update
+    image: data/update/data-sales-update:1.0.0
     networks:
       - network
       - selling-shared-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
       SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
+      ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/update/data-sales-update:/app/logs
     command: java -jar data-sales-update-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
@@ -177,7 +188,7 @@ services:
   data-delete-manager:
     build:
       context: ./delete/data-delete-manager
-    image: data/delete/data-delete-manager
+    image: data/delete/data-delete-manager:1.0.0
     networks:
       - network
       - selling-shared-network
@@ -187,6 +198,7 @@ services:
       - data-sale-delete-query
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/delete/data-delete-manager:/app/logs
     command: java -jar data-delete-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
@@ -195,13 +207,14 @@ services:
   data-sale-delete:
       build:
         context: ./delete/data-sale-delete
-      image: data/delete/data-sale-delete
+      image: data/delete/data-sale-delete:1.0.0
       networks:
         - network
         - selling-shared-network
       environment:
         EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
         SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
+        ENABLE_LOGGING_FILES: false
       volumes:
         - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/delete/data-sale-delete:/app/logs
       command: java -jar data-sale-delete-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
@@ -210,13 +223,14 @@ services:
   data-sales-delete:
       build:
         context: ./delete/data-sales-delete
-      image: data/delete/data-sales-delete
+      image: data/delete/data-sales-delete:1.0.0
       networks:
         - network
         - selling-shared-network
       environment:
         EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
         SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
+        ENABLE_LOGGING_FILES: false
       volumes:
         - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/delete/data-sales-delete:/app/logs
       command: java -jar data-sales-delete-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
@@ -225,13 +239,14 @@ services:
   data-sale-delete-query:
     build:
       context: ./delete/data-sale-delete-query
-    image: data/delete/data-sale-delete-query
+    image: data/delete/data-sale-delete-query:1.0.0
     networks:
       - network
       - selling-shared-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
       SPRING_DATA_MONGO_URI: mongodb://admin:123@selling-system-database:27017/
+      ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/delete/data-sale-delete-query:/app/logs
     command: java -jar data-sale-delete-query-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml

@@ -11,3 +11,5 @@ config:
       data-save-manager-ms: "http://DATA-SAVE-MANAGER/selling/data/save/manager/sale/v1/"
       data-update-manager-ms: "http://DATA-UPDATE-MANAGER/selling/data/update/manager/sale/v1/"
       data-delete-manager-ms: "http://DATA-DELETE-MANAGER/selling/data/delete/manager/sale/v1/"
+  logging:
+    enable: ${ENABLE_LOGGING_FILES}

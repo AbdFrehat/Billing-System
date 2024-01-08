@@ -9,3 +9,5 @@ config:
     context-path:
       data-update-ms: "http://DATA-SALE-UPDATE/selling/data/update/sale/v1/"
       data-update-multi-ms: "http://DATA-SALES-UPDATE/selling/data/update/sales/v1/"
+  logging:
+    enable: ${ENABLE_LOGGING_FILES}

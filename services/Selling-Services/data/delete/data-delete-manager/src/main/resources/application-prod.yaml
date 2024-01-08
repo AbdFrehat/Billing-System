@@ -10,3 +10,5 @@ config:
       data-delete-ms: "http://DATA-SALE-DELETE/selling/data/delete/sale/v1/"
       data-delete-multi-ms: "http://DATA-SALES-DELETE/selling/data/delete/sales/v1/"
       data-delete-query-ms: "http://DATA-SALES-DELETE-QUERY/selling/data/delete/sales/query/v1/"
+  logging:
+    enable: ${ENABLE_LOGGING_FILES}

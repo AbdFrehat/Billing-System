@@ -1,6 +1,5 @@
 package com.selling.system.shared.module.config;
 
-import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.classic.encoder.PatternLayoutEncoder;
 import ch.qos.logback.core.Appender;
@@ -11,14 +10,19 @@ import ch.qos.logback.core.util.FileSize;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.Map;
+
 
 import static org.slf4j.Logger.ROOT_LOGGER_NAME;
 
 @Configuration
+@ConditionalOnProperty(name = "config.logging.enable", havingValue = "true")
 public class DefaultLoggingConfiguration {
+
+    @Value("${config.logging.enable}")
+    private boolean enable;
 
     @Value("${config.logging.name:${spring.application.name}.log}")
     private String fileName;
@@ -29,7 +33,7 @@ public class DefaultLoggingConfiguration {
     @Value("${config.logging.pattern:%d [%thread] %-5level %logger{35} - %msg%n}")
     private String logPattern;
 
-    @Value("${config.logging.archive.pattern:.%d{yyyy-MM-dd}.%i.log}")
+    @Value("${config.logging.archive.pattern:.%d{yyyy-MM-dd}.%i.gz}")
     private String archivePattern;
 
     @Value("${config.logging.archive.totalSize:10MB}")

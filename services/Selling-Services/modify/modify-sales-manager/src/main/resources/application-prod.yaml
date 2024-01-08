@@ -10,3 +10,5 @@ config:
       modify-delete-sales-ms: "http://MODIFY-DELETE-SALES/selling/modify/sales/delete/v1/"
       modify-save-sales-ms: "http://MODIFY-SAVE-SALES/selling/modify/sales/save/v1/"
       modify-update-sales-ms: "http://MODIFY-UPDATE-SALES/selling/modify/sales/update/v1/"
+  logging:
+    enable: ${ENABLE_LOGGING_FILES}

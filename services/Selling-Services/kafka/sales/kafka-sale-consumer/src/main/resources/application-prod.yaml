@@ -11,5 +11,6 @@ config:
   services:
     context-path:
       data-manager-ms: "http://DATA-MANAGER/selling/data/manager/sale/v1/"
-
+  logging:
+    enable: ${ENABLE_LOGGING_FILES}
 

@@ -4,7 +4,7 @@ services:
   kafka-sale-consumer:
     build:
       context: ./kafka-sale-consumer
-    image: kafka/sales/kafka-sale-consumer
+    image: kafka/sales/kafka-sale-consumer:1.0.0
     networks:
       - network
       - selling-shared-network
@@ -12,6 +12,7 @@ services:
     environment:
       KAFKA_BOOTSTRAP_SERVER: kafka1:19092
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/kafka/sales/kafka-sale-consumer:/app/logs
     command: java -jar kafka-sale-consumer-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
@@ -19,7 +20,7 @@ services:
   kafka-sale-producer:
     build:
       context: ./kafka-sale-producer
-    image: kafka/sales/kafka-sale-producer
+    image: kafka/sales/kafka-sale-producer:1.0.0
     networks:
       - network
       - selling-kafka-network
@@ -27,6 +28,7 @@ services:
     environment:
       KAFKA_BOOTSTRAP_SERVER: kafka1:19092
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/kafka/sales/kafka-sale-producer:/app/logs
     command: java -jar kafka-sale-producer-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml

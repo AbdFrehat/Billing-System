@@ -4,7 +4,7 @@ services:
   export-data-manager:
     build:
       context: ./export-data-manager
-    image: export/export-data-manager
+    image: export/export-data-manager:1.0.0
     ports:
       - "7035:7035"
     networks:
@@ -19,6 +19,7 @@ services:
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
       WEB_CLIENT_BUFFER_SIZE: 16MB
+      ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/export/export-data-manager:/app/logs
     command: java -jar export-data-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
@@ -26,13 +27,14 @@ services:
   export-data-csv:
     build:
       context: ./export-data-csv
-    image: export/export-data-csv
+    image: export/export-data-csv:1.0.0
     networks:
       - network
       - selling-shared-network
       - selling-data-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/export/export-data-csv:/app/logs
     command: java -jar export-data-csv-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
@@ -41,13 +43,14 @@ services:
   export-data-xlsx:
     build:
       context: ./export-data-xlsx
-    image: export/export-data-xlsx
+    image: export/export-data-xlsx:1.0.0
     networks:
       - network
       - selling-shared-network
       - selling-data-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/export/export-data-xlsx:/app/logs
     command: java -jar export-data-xlsx-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
@@ -55,13 +58,14 @@ services:
   export-data-json:
     build:
       context: ./export-data-json
-    image: export/export-data-json
+    image: export/export-data-json:1.0.0
     networks:
       - network
       - selling-shared-network
       - selling-data-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/export/export-data-json:/app/logs
     command: java -jar export-data-json-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
@@ -69,13 +73,14 @@ services:
   export-data-pdf:
     build:
       context: ./export-data-pdf
-    image: export/export-data-pdf
+    image: export/export-data-pdf:1.0.0
     networks:
       - network
       - selling-shared-network
       - selling-data-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/export/export-data-pdf:/app/logs
     command: java -jar export-data-pdf-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
@@ -83,13 +88,14 @@ services:
   export-data-xml:
     build:
       context: ./export-data-xml
-    image: export/export-data-xml
+    image: export/export-data-xml:1.0.0
     networks:
       - network
       - selling-shared-network
       - selling-data-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/export/export-data-xml:/app/logs
     command: java -jar export-data-xml-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml

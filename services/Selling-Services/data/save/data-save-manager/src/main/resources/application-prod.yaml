@@ -9,3 +9,5 @@ config:
     context-path:
       data-save-ms: "http://DATA-SALE-SAVE/selling/data/save/sale/v1/"
       data-save-multi-ms: "http://DATA-SALES-SAVE/selling/data/save/sales/v1/"
+  logging:
+    enable: ${ENABLE_LOGGING_FILES}

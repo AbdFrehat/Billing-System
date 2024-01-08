@@ -14,3 +14,5 @@ config:
       export-data-pdf: "http://EXPORT-DATA-PDF/selling/export/sales/pdf/v1/"
   web-client:
     buffer: ${WEB_CLIENT_BUFFER_SIZE}
+  logging:
+    enable: ${ENABLE_LOGGING_FILES}

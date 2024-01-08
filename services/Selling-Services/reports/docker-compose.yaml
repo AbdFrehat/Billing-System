@@ -4,7 +4,7 @@ services:
   reports-receipt-generator:
     build:
       context: ./reports-receipt-generator
-    image: reports/reports-receipt-generator
+    image: reports/reports-receipt-generator:1.0.0
     ports:
       - "6020:6020"
     networks:
@@ -15,6 +15,7 @@ services:
       - reports-calc-price
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/report/reports-receipt-generator:/app/logs
     command: java -jar reports-receipt-generator-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
@@ -22,12 +23,13 @@ services:
   reports-calc-price:
     build:
       context: ./reports-calc-price
-    image: reports/reports-calc-price
+    image: reports/reports-calc-price:1.0.0
     networks:
       - network
       - selling-shared-network
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/report/reports-calc-price:/app/logs
     command: java -jar reports-calc-price-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
