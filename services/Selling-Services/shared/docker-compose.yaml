@@ -27,8 +27,21 @@ services:
       - network
     volumes:
       - mongodb_data:/data/db
+
+  users-system-database:
+    image: postgres:16-alpine
+    container_name: users-system-database
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgresdb_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_USER=admin
+      - POSTGRES_DB=users-db
 volumes:
   mongodb_data:
+  postgresdb_data:
 networks:
   network:
     name: selling-shared-network
