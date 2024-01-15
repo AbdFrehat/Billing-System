@@ -100,6 +100,14 @@ include(":export:export-data-shared-module")
 findProject(":export:export-data-shared-module")?.name = "export-data-shared-module"
 
 
+//Auth
+include(":auth:auth-manager")
+findProject(":auth:auth-manager")?.name = "auth-manager"
+include(":auth:auth-users-manager")
+findProject(":auth:auth-users-manager")?.name = "auth-users-manager"
+include(":auth:auth-profiles-manager")
+findProject(":auth:auth-profiles-manager")?.name = "auth-profiles-manager"
+
 pluginManagement {
     plugins {
         val springFrameworkBootVersion: String by settings

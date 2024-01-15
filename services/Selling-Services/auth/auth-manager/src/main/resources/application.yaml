@@ -1,0 +1,23 @@
+spring:
+  webflux:
+    base-path: /selling/auth/manager/v1/
+  application:
+    name: auth-manager
+server:
+  port: 7040
+  servlet:
+    context-path: /selling/auth/manager/v1/
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:6010/selling/eureka/
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
+  api-docs:
+    groups:
+      enabled: true
+    path: /api/docs
+

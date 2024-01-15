@@ -1,0 +1,57 @@
+version: '3.9'
+name: selling-auth-category
+
+services:
+  auth-manager:
+    build:
+      context: ./auth-manager
+    ports:
+      - "7040:7040"
+    image: auth/auth-manager:1.0
+    networks:
+      - network
+      - selling-shared-network
+    environment:
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      ENABLE_LOGGING_FILES: false
+    volumes:
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/auth/auth-manager:/app/logs
+    command: java -jar auth-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
+
+  auth-users-manager:
+    build:
+      context: ./auth-users-manager
+    ports:
+      - "7041:7041"
+    image: auth/auth-users-manager:1.0
+    networks:
+      - network
+      - selling-shared-network
+    environment:
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      ENABLE_LOGGING_FILES: false
+    volumes:
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/auth/auth-users-manager:/app/logs
+    command: java -jar auth-users-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
+
+  auth-profiles-manager:
+    build:
+      context: ./auth-profiles-manager
+    ports:
+      - "7042:7042"
+    image: auth/auth-profiles-manager:1.0
+    networks:
+      - network
+      - selling-shared-network
+    environment:
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      ENABLE_LOGGING_FILES: false
+    volumes:
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/auth/auth-profiles-manager:/app/logs
+    command: java -jar auth-profiles-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
+
+networks:
+  network:
+    name: selling-auth-network
+  selling-shared-network:
+    external: true
