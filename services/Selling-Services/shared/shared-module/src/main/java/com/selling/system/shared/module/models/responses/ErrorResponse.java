@@ -7,7 +7,7 @@ import lombok.Data;
 @Builder
 public class ErrorResponse implements AbstractErrorResponse {
 
-    private int errorCode;
+    private String errorCode;
 
     private String exceptionName;
 

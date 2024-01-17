@@ -1,21 +1,26 @@
 package com.selling.system.shared.module.handlers;
 
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
+import com.selling.system.shared.module.constants.ExceptionsConstantCodes;
 import com.selling.system.shared.module.exceptions.BadConvertorException;
 import com.selling.system.shared.module.exceptions.PayloadBadFormatException;
+import com.selling.system.shared.module.exceptions.business.CommandTypeNotSupportedException;
 import com.selling.system.shared.module.exceptions.business.FieldTypeNotFoundException;
 import com.selling.system.shared.module.exceptions.business.PurchaseMethodNotFoundException;
-import com.selling.system.shared.module.exceptions.business.CommandTypeNotSupportedException;
+import com.selling.system.shared.module.exceptions.general.BusinessException;
 import com.selling.system.shared.module.exceptions.general.ClientException;
-import com.selling.system.shared.module.models.constants.ExceptionsConstantCodes;
 import com.selling.system.shared.module.models.responses.ErrorResponse;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
+import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.support.WebExchangeBindException;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Objects;
 
@@ -23,6 +28,11 @@ import java.util.Objects;
 @ControllerAdvice
 public class GlobalExceptionHandlers {
 
+    private final MessageSourceAccessor messageSourceAccessor;
+
+    public GlobalExceptionHandlers(MessageSource messageSource) {
+        this.messageSourceAccessor = new MessageSourceAccessor(messageSource);
+    }
 
     @ExceptionHandler(ClientException.class)
     public ResponseEntity<ErrorResponse> handleServiceNotAvailableException(ClientException ex) {
@@ -32,6 +42,18 @@ public class GlobalExceptionHandlers {
                         .exceptionName(ClientException.class.getSimpleName())
                         .errorCode(ExceptionsConstantCodes.CLIENT_EXCEPTION)
                         .message(ex.getMessage())
+                        .build());
+    }
+
+    @ExceptionHandler(BusinessException.class)
+    public <T extends BusinessException> ResponseEntity<ErrorResponse> handleBusinessException(T ex) {
+        String exceptionName = ex.getClass().getSimpleName();
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(ErrorResponse.builder()
+                        .exceptionName(exceptionName)
+                        .message(new String(messageSourceAccessor.getMessage(exceptionName + "-MESSAGE", LocaleContextHolder.getLocale()).getBytes(), StandardCharsets.UTF_8))
+                        .errorCode(messageSourceAccessor.getMessage(exceptionName + "-CODE", LocaleContextHolder.getLocale()))
                         .build());
     }
 
