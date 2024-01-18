@@ -15,7 +15,6 @@ dependencies {
     implementation("jakarta.validation:jakarta.validation-api:${project.findProperty("jakartaValidationApiVersion")}")
     implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:${project.findProperty("springDocOpenAPIVersion")}")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    implementation(project(":auth:auth-shared-module"))
     implementation(project(":shared:shared-module"))
     testImplementation("io.projectreactor:reactor-test")
 }

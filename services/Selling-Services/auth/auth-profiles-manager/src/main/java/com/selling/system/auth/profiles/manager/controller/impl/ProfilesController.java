@@ -1,26 +1,34 @@
 package com.selling.system.auth.profiles.manager.controller.impl;
 
 import com.selling.system.auth.profiles.manager.controller.api.ProfilesApi;
-import com.selling.system.auth.shared.module.entities.Profile;
-import com.selling.system.auth.shared.module.repository.ProfilesRepository;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
+import com.selling.system.auth.profiles.manager.service.api.ProfilesService;
+import com.selling.system.auth.shared.module.models.dto.ProfileDto;
+import com.selling.system.auth.shared.module.models.dto.ProfilesDto;
+import com.selling.system.auth.shared.module.models.request.ProfileUpdateRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import reactor.core.publisher.Mono;
 
 
 @RestController
 public class ProfilesController implements ProfilesApi {
 
-    private final ProfilesRepository profilesRepository;
+    private final ProfilesService profilesService;
 
-    public ProfilesController(ProfilesRepository profilesRepository) {
-        this.profilesRepository = profilesRepository;
+    public ProfilesController(ProfilesService profilesService) {
+        this.profilesService = profilesService;
     }
 
     @Override
-    public List<Profile> getProfiles() {
-        return profilesRepository.findAll();
+    public Mono<ResponseEntity<ProfilesDto>> getProfiles() {
+        return profilesService.getProfiles()
+                .map(body -> ResponseEntity.status(HttpStatus.OK).body(body));
+    }
+
+    @Override
+    public Mono<ResponseEntity<ProfileDto>> updateProfile(ProfileUpdateRequest profileUpdateRequest) {
+        return profilesService.updateProfile(profileUpdateRequest)
+                .map(body -> ResponseEntity.status(HttpStatus.CREATED).body(body));
     }
 }

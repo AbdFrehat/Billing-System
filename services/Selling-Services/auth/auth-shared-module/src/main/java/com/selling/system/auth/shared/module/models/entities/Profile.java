@@ -1,4 +1,4 @@
-package com.selling.system.auth.shared.module.entities;
+package com.selling.system.auth.shared.module.models.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
