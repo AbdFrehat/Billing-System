@@ -32,7 +32,6 @@ public class ClientExceptionHandler implements Function<ClientResponse, Mono<? e
                     new InternalServerErrorException(serviceName + " is suffered from an internal exception: " + message, HttpStatus.NOT_FOUND.value());
             case 503 ->
                     new ServiceUnAvailableException(serviceName + " is not available: " + message, HttpStatus.NOT_FOUND.value());
-
             default -> new ClientException(message, clientResponse.statusCode().value());
         }));
     }

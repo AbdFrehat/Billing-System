@@ -2,10 +2,8 @@ package com.selling.system.shared.module.convertors;
 
 import com.selling.system.shared.module.models.commands.QueryField;
 import com.selling.system.shared.module.models.commons.Range;
-import com.selling.system.shared.module.models.entities.Customer;
 import com.selling.system.shared.module.models.enums.FieldType;
-import com.selling.system.shared.module.exceptions.BadConvertorException;
-import com.selling.system.shared.module.exceptions.PayloadBadFormatException;
+import com.selling.system.shared.module.exceptions.business.BadConvertorException;
 
 import java.util.LinkedHashMap;
 

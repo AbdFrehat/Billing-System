@@ -18,4 +18,13 @@ public class AppConfig {
         messageSource.setDefaultLocale(Locale.US);
         return messageSource;
     }
+
+    @Bean
+    public MessageSource commonMessageSource() {
+        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+        messageSource.setBasename("classpath:common.messages");
+        messageSource.setDefaultEncoding("UTF-8");
+        messageSource.setDefaultLocale(Locale.US);
+        return messageSource;
+    }
 }

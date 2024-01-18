@@ -2,9 +2,12 @@ package com.selling.system.shared.module.exceptions.business;
 
 import com.selling.system.shared.module.exceptions.general.BusinessException;
 
-public class FieldTypeNotFoundException extends BusinessException {
+public class ProfileNotFoundException extends BusinessException {
 
-    public FieldTypeNotFoundException(String message) {
+    public ProfileNotFoundException() {
+    }
+
+    public ProfileNotFoundException(String message) {
         super(message);
     }
 }

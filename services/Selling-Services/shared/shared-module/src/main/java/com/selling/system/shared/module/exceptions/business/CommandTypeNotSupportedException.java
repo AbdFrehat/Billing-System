@@ -1,6 +1,8 @@
 package com.selling.system.shared.module.exceptions.business;
 
-public class CommandTypeNotSupportedException extends RuntimeException {
+import com.selling.system.shared.module.exceptions.general.BusinessException;
+
+public class CommandTypeNotSupportedException extends BusinessException {
 
     public CommandTypeNotSupportedException(String message) {
         super(message);

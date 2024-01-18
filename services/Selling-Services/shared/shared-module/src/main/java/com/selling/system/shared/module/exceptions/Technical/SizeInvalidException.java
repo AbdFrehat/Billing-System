@@ -1,6 +1,8 @@
 package com.selling.system.shared.module.exceptions.Technical;
 
-public class SizeInvalidException extends Exception {
+import com.selling.system.shared.module.exceptions.general.TechnicalException;
+
+public class SizeInvalidException extends TechnicalException {
 
     public SizeInvalidException(String message) {
         super(message);

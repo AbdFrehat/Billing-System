@@ -3,20 +3,13 @@ package com.selling.system.shared.module.exceptions.general;
 import lombok.Getter;
 
 @Getter
-public class BusinessException extends RuntimeException {
+public class TechnicalException extends RuntimeException {
 
 
     private final String message;
 
-    public BusinessException() {
-        super();
-        this.message = "";
-    }
-
-
-    public BusinessException(String message) {
+    public TechnicalException(String message) {
         super(message);
         this.message = message;
     }
-
 }
