@@ -3,8 +3,8 @@ spring:
     base-path: /selling/auth/profiles/manager/v1/
   application:
     name: auth-profiles-manager
-  datasource:
-    url: jdbc:postgresql://localhost:5432/users-db
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/users-db
     username: admin
     password: 123
   jpa:

@@ -1,27 +1,44 @@
 package com.selling.system.auth.shared.module.models.entities;
 
-import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
+import reactor.core.publisher.Mono;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-@Entity
+
 @Table(name = "profiles")
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Profile {
 
-    @Column(name = "profile_id")
+    @Column("profile_id")
     @Id
     private int profileId;
 
-    @Column(name = "profile_name")
+    @Column("profile_name")
     private String profileName;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "profiles_authorities",
-            joinColumns = @JoinColumn(name = "profile_id"),
-            inverseJoinColumns = @JoinColumn(name = "authority_id")
-    )
+    @Transient
     private Set<Authority> authorities;
+
+
+    public static Mono<Profile> fromRows(List<Map<String, Object>> rows) {
+        return Mono.just(Profile.builder()
+                .profileId((int) rows.get(0).get("profile_id"))
+                .profileName((String) rows.get(0).get("profile_name"))
+                .authorities(rows.stream().map(Authority::fromRow).collect(Collectors.toSet()))
+                .build());
+    }
 }

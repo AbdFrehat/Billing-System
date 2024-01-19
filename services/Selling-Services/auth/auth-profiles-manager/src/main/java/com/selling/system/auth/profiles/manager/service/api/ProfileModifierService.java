@@ -5,5 +5,5 @@ import com.selling.system.auth.shared.module.models.request.ProfileUpdateRequest
 
 public interface ProfileModifierService {
 
-    Profile modifyProfile(ProfileUpdateRequest profileUpdateRequest, Profile profile);
+//    Profile modifyProfile(ProfileUpdateRequest profileUpdateRequest, Profile profile);
 }

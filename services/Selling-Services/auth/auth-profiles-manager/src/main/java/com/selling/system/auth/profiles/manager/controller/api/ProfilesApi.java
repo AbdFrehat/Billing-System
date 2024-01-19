@@ -16,7 +16,7 @@ public interface ProfilesApi {
     @GetMapping
     Mono<ResponseEntity<ProfilesDto>>  getProfiles();
 
-    @PutMapping("/update")
-    Mono<ResponseEntity<ProfileDto>> updateProfile(@RequestBody ProfileUpdateRequest profileUpdateRequest);
+//    @PutMapping("/update")
+//    Mono<ResponseEntity<ProfileDto>> updateProfile(@RequestBody ProfileUpdateRequest profileUpdateRequest);
 
 }

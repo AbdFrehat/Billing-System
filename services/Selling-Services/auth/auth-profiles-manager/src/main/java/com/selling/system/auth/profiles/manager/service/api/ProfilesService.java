@@ -11,11 +11,11 @@ import java.util.List;
 
 public interface ProfilesService {
 
-    Mono<ProfileDto> createProfile(Profile profile);
-
-    Mono<ProfileDto> updateProfile(ProfileUpdateRequest profileUpdateRequest);
-
-    void deleteProfile(int id);
+//    Mono<ProfileDto> createProfile(Profile profile);
+//
+//    Mono<ProfileDto> updateProfile(ProfileUpdateRequest profileUpdateRequest);
+//
+//    void deleteProfile(int id);
 
     Mono<ProfilesDto> getProfiles();
 

@@ -9,37 +9,33 @@ import com.selling.system.auth.shared.module.models.entities.Profile;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Component
 public class AuthMapper implements Mapper {
+
     @Override
     public ProfileDto profileToProfileDto(Profile profile) {
-        return ProfileDto.builder()
-                .profileName(profile.getProfileName())
-                .authorities(profile.getAuthorities().stream().map(this::authorityToAuthorityDto).collect(Collectors.toList()))
+        return ProfileDto.builder().profileName(profile.getProfileName())
+                .authorities(authoritiesToAuthoritiesDto(profile.getAuthorities()))
                 .build();
     }
 
     @Override
-    public ProfilesDto profilesToProfilesDto(List<Profile> profiles) {
-        return ProfilesDto.builder()
-                .profilesDto(profiles.stream()
-                        .map(this::profileToProfileDto)
-                        .collect(Collectors.toList())).build();
+    public ProfilesDto profilesToProfilesDto(List<ProfileDto> profiles) {
+        return ProfilesDto.builder().profilesDto(profiles).build();
     }
 
     @Override
     public AuthorityDto authorityToAuthorityDto(Authority authority) {
-        return AuthorityDto.builder()
-                .authorityName(authority.getAuthorityName())
-                .build();
+        return AuthorityDto.builder().authorityName(authority.getAuthorityName()).build();
     }
 
     @Override
-    public List<AuthorityDto> authoritiesToAuthoritiesDto(List<Authority> authorities) {
-        return authorities.stream()
-                .map(this::authorityToAuthorityDto)
-                .collect(Collectors.toList());
+    public Set<AuthorityDto> authoritiesToAuthoritiesDto(Set<Authority> authorities) {
+        return authorities.stream().map(this::authorityToAuthorityDto).collect(Collectors.toSet());
     }
+
+
 }

@@ -8,6 +8,7 @@ import com.selling.system.auth.shared.module.models.entities.Profile;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Set;
 
 
 @Component
@@ -16,10 +17,10 @@ public interface Mapper {
 
     ProfileDto profileToProfileDto(Profile profile);
 
-    ProfilesDto profilesToProfilesDto(List<Profile> profiles);
+    ProfilesDto profilesToProfilesDto(List<ProfileDto> profiles);
 
     AuthorityDto authorityToAuthorityDto(Authority authority);
 
-    List<AuthorityDto> authoritiesToAuthoritiesDto(List<Authority> authorities);
+    Set<AuthorityDto> authoritiesToAuthoritiesDto(Set<Authority> authorities);
 
 }

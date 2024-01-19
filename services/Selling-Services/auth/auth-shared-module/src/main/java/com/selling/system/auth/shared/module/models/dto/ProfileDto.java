@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 
 import java.util.List;
+import java.util.Set;
 
 @Builder
 public class ProfileDto {
@@ -13,5 +14,6 @@ public class ProfileDto {
     private String profileName;
 
     @JsonProperty("authorities")
-    private List<AuthorityDto> authorities;
+    private Set<AuthorityDto> authorities;
+
 }
