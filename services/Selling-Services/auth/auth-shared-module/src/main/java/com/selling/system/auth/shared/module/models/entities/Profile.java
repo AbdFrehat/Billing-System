@@ -1,5 +1,6 @@
 package com.selling.system.auth.shared.module.models.entities;
 
+import com.selling.system.auth.shared.module.mapper.api.ProfileMapper;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,12 +9,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
-import reactor.core.publisher.Mono;
 
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 
 @Table(name = "profiles")
@@ -34,11 +31,4 @@ public class Profile {
     private Set<Authority> authorities;
 
 
-    public static Mono<Profile> fromRows(List<Map<String, Object>> rows) {
-        return Mono.just(Profile.builder()
-                .profileId((int) rows.get(0).get("profile_id"))
-                .profileName((String) rows.get(0).get("profile_name"))
-                .authorities(rows.stream().map(Authority::fromRow).collect(Collectors.toSet()))
-                .build());
-    }
 }

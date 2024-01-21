@@ -2,7 +2,12 @@ package com.selling.system.auth.profiles.manager.controller.impl;
 
 import com.selling.system.auth.profiles.manager.controller.api.ProfilesApi;
 import com.selling.system.auth.profiles.manager.service.api.ProfilesService;
+import com.selling.system.auth.shared.module.models.dto.ProfileDto;
 import com.selling.system.auth.shared.module.models.dto.ProfilesDto;
+import com.selling.system.auth.shared.module.models.request.ProfileRequestInsert;
+import com.selling.system.auth.shared.module.models.request.ProfileUpdateRequest;
+import com.selling.system.auth.shared.module.models.response.ProfileNameExistenceResponse;
+import com.selling.system.auth.shared.module.models.response.UpdatedRowsResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,9 +29,33 @@ public class ProfilesController implements ProfilesApi {
                 .map(body -> ResponseEntity.status(HttpStatus.OK).body(body));
     }
 
-//    @Override
-//    public Mono<ResponseEntity<ProfileDto>> updateProfile(ProfileUpdateRequest profileUpdateRequest) {
-//        return profilesService.updateProfile(profileUpdateRequest)
-//                .map(body -> ResponseEntity.status(HttpStatus.CREATED).body(body));
-//    }
+    @Override
+    public Mono<ResponseEntity<ProfileDto>> getProfile(String profileName) {
+        return profilesService.getProfileByName(profileName)
+                .map(body -> ResponseEntity.status(HttpStatus.OK).body(body));
+    }
+
+    @Override
+    public Mono<ResponseEntity<UpdatedRowsResponse>> deleteProfile(String profileName) {
+        return profilesService.deleteProfileByName(profileName)
+                .map(body -> ResponseEntity.status(HttpStatus.ACCEPTED).body(body));
+    }
+
+    @Override
+    public Mono<ResponseEntity<ProfileNameExistenceResponse>> isProfileExist(String profileName) {
+        return profilesService.isProfileExist(profileName)
+                .map(body -> ResponseEntity.status(HttpStatus.OK).body(body));
+    }
+
+    @Override
+    public Mono<ResponseEntity<UpdatedRowsResponse>> saveProfile(ProfileRequestInsert profileRequestInsert) {
+        return profilesService.saveProfile(profileRequestInsert)
+                .map(body -> ResponseEntity.status(HttpStatus.CREATED).body(body));
+    }
+
+    @Override
+    public Mono<ResponseEntity<ProfileDto>> updateProfile(ProfileUpdateRequest profileUpdateRequest) {
+        return null;
+    }
+
 }

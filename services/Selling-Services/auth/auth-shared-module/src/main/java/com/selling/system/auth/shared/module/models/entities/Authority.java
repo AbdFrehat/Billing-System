@@ -25,18 +25,6 @@ public class Authority {
     @Column("authority_name")
     private String authorityName;
 
-    public static Authority fromRow(Map<String, Object> row) {
-        if(row.get("authority_id") != null) {
-            return Authority.builder()
-                    .authorityId((int) row.get("authority_id"))
-                    .authorityName((String) row.get("authority_name"))
-                    .build();
-        } else {
-            return null;
-        }
-    }
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

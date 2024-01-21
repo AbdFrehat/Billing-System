@@ -1,11 +1,15 @@
 package com.selling.system.auth.profiles.manager.service.impl;
 
-import com.selling.system.auth.profiles.manager.service.api.ProfileModifierService;
 import com.selling.system.auth.profiles.manager.service.api.ProfilesService;
 import com.selling.system.auth.shared.module.mapper.api.Mapper;
+import com.selling.system.auth.shared.module.models.dto.ProfileDto;
 import com.selling.system.auth.shared.module.models.dto.ProfilesDto;
+import com.selling.system.auth.shared.module.models.request.ProfileRequestInsert;
+import com.selling.system.auth.shared.module.models.response.ProfileNameExistenceResponse;
+import com.selling.system.auth.shared.module.models.response.UpdatedRowsResponse;
 import com.selling.system.auth.shared.module.repository.api.ProfilesRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -13,34 +17,27 @@ public class ProfilesServiceImpl implements ProfilesService {
 
     private final Mapper mapper;
     private final ProfilesRepository profilesRepository;
-    private final ProfileModifierService profileModifierService;
 
-    public ProfilesServiceImpl(Mapper mapper, ProfilesRepository profilesRepository, ProfileModifierService profileModifierService) {
+    public ProfilesServiceImpl(Mapper mapper, ProfilesRepository profilesRepository) {
         this.mapper = mapper;
         this.profilesRepository = profilesRepository;
-        this.profileModifierService = profileModifierService;
     }
-//
-//    @Override
-//    public Mono<ProfileDto> createProfile(Profile profile) {
-//        return Mono.just(mapper.profileToProfileDto(profilesRepository.save(profile)));
-//    }
-//
-//    @Override
-//    public Mono<ProfileDto> updateProfile(ProfileUpdateRequest profileUpdateRequest) {
-//        var optProfile = profilesRepository.findProfileByProfileName(profileUpdateRequest.getName());
-//        if (optProfile.isPresent()) {
-//            var profile = profileModifierService.modifyProfile(profileUpdateRequest, optProfile.get());
-//            return Mono.just(mapper.profileToProfileDto(profilesRepository.save(profile)));
-//        } else {
-//            throw new ProfileNotFoundException();
-//        }
-//    }
-//
-//    @Override
-//    public void deleteProfile(int id) {
-//        profilesRepository.deleteById(id);
-//    }
+
+    @Override
+    @Transactional
+    public Mono<UpdatedRowsResponse> deleteProfileByName(String profileName) {
+        return profilesRepository.deleteProfileAuthorities(profileName)
+                .flatMap((count) -> profilesRepository.deleteProfileByName(profileName, count))
+                .map(count -> UpdatedRowsResponse.builder().count(count).build());
+    }
+
+    @Override
+    @Transactional
+    public Mono<UpdatedRowsResponse> saveProfile(ProfileRequestInsert profileRequestInsert) {
+        return profilesRepository.saveProfile(profileRequestInsert.getProfileName())
+                .flatMap(count -> profilesRepository.saveProfileAuthorities(profileRequestInsert, count))
+                .map(count -> UpdatedRowsResponse.builder().count(count).build());
+    }
 
     @Override
     public Mono<ProfilesDto> getProfiles() {
@@ -48,6 +45,17 @@ public class ProfilesServiceImpl implements ProfilesService {
                 .map(mapper::profileToProfileDto)
                 .collectList()
                 .map(mapper::profilesToProfilesDto);
+    }
+
+    @Override
+    public Mono<ProfileDto> getProfileByName(String profileName) {
+        return profilesRepository.retrieveProfileByName(profileName)
+                .map(mapper::profileToProfileDto);
+    }
+
+    @Override
+    public Mono<ProfileNameExistenceResponse> isProfileExist(String profileName) {
+        return profilesRepository.isProfileExist(profileName);
     }
 
 }
