@@ -1,6 +1,5 @@
 package com.selling.system.auth.shared.module.builder.api;
 
-import com.selling.system.auth.shared.module.models.enums.Query;
 import reactor.core.publisher.Mono;
 
 import java.util.Set;

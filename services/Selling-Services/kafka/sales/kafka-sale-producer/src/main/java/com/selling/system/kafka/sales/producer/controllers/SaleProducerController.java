@@ -2,14 +2,11 @@ package com.selling.system.kafka.sales.producer.controllers;
 
 import com.selling.system.kafka.sales.producer.service.MessageProducerService;
 import com.selling.system.shared.module.models.commands.ModifyCommand;
-import com.selling.system.shared.module.models.entities.Sale;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 public class SaleProducerController {

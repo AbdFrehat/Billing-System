@@ -4,7 +4,6 @@ package com.selling.system.auth.shared.module.models.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 
-import java.util.List;
 import java.util.Set;
 
 @Builder

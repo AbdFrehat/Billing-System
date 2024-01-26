@@ -4,7 +4,7 @@ import com.selling.system.auth.profiles.manager.service.api.ProfilesService;
 import com.selling.system.auth.shared.module.mapper.api.Mapper;
 import com.selling.system.auth.shared.module.models.dto.ProfileDto;
 import com.selling.system.auth.shared.module.models.dto.ProfilesDto;
-import com.selling.system.auth.shared.module.models.request.ProfileRequestInsert;
+import com.selling.system.auth.shared.module.models.request.ProfileInsertRequest;
 import com.selling.system.auth.shared.module.models.response.ProfileNameExistenceResponse;
 import com.selling.system.auth.shared.module.models.response.UpdatedRowsResponse;
 import com.selling.system.auth.shared.module.repository.api.ProfilesRepository;
@@ -33,9 +33,9 @@ public class ProfilesServiceImpl implements ProfilesService {
 
     @Override
     @Transactional
-    public Mono<UpdatedRowsResponse> saveProfile(ProfileRequestInsert profileRequestInsert) {
-        return profilesRepository.saveProfile(profileRequestInsert.getProfileName())
-                .flatMap(count -> profilesRepository.saveProfileAuthorities(profileRequestInsert, count))
+    public Mono<UpdatedRowsResponse> saveProfile(ProfileInsertRequest profileInsertRequest) {
+        return profilesRepository.saveProfile(profileInsertRequest.getProfileName())
+                .flatMap(count -> profilesRepository.saveProfileAuthorities(profileInsertRequest, count))
                 .map(count -> UpdatedRowsResponse.builder().count(count).build());
     }
 

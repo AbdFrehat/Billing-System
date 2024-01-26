@@ -13,8 +13,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;
 
-
-
 import static org.slf4j.Logger.ROOT_LOGGER_NAME;
 
 @Configuration

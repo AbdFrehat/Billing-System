@@ -1,9 +1,9 @@
 package com.selling.system.data.shared.module.service.interpreter.impl;
 
-import com.selling.system.data.shared.module.service.interpreter.impl.operatprs.NotExpression;
 import com.selling.system.data.shared.module.service.interpreter.CriteriaExpression;
 import com.selling.system.data.shared.module.service.interpreter.ExpressionBuilder;
 import com.selling.system.data.shared.module.service.interpreter.impl.operatprs.AndExpression;
+import com.selling.system.data.shared.module.service.interpreter.impl.operatprs.NotExpression;
 import com.selling.system.data.shared.module.service.interpreter.impl.operatprs.OrExpression;
 import org.springframework.stereotype.Service;
 

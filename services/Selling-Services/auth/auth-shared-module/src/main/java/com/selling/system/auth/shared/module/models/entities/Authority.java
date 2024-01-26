@@ -8,8 +8,10 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
-import java.util.Map;
 import java.util.Objects;
+
+import static com.selling.system.auth.shared.module.constants.Columns.Authority.AUTHORITY_ID;
+import static com.selling.system.auth.shared.module.constants.Columns.Authority.AUTHORITY_NAME;
 
 @Table(name = "authorities")
 @Data
@@ -19,10 +21,10 @@ import java.util.Objects;
 public class Authority {
 
     @Id
-    @Column("authority_id")
+    @Column(AUTHORITY_ID)
     private int authorityId;
 
-    @Column("authority_name")
+    @Column(AUTHORITY_NAME)
     private String authorityName;
 
     @Override

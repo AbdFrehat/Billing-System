@@ -1,6 +1,5 @@
 package com.selling.system.auth.shared.module.models.entities;
 
-import com.selling.system.auth.shared.module.mapper.api.ProfileMapper;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,6 +11,9 @@ import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.Set;
 
+import static com.selling.system.auth.shared.module.constants.Columns.Profile.PROFILE_ID;
+import static com.selling.system.auth.shared.module.constants.Columns.Profile.PROFILE_NAME;
+
 
 @Table(name = "profiles")
 @Data
@@ -20,11 +22,11 @@ import java.util.Set;
 @AllArgsConstructor
 public class Profile {
 
-    @Column("profile_id")
+    @Column(PROFILE_ID)
     @Id
     private int profileId;
 
-    @Column("profile_name")
+    @Column(PROFILE_NAME)
     private String profileName;
 
     @Transient

@@ -9,6 +9,11 @@ import reactor.core.publisher.Mono;
 
 import java.util.Set;
 
+import static com.selling.system.auth.shared.module.constants.Columns.Authority.AUTHORITY_NAME;
+import static com.selling.system.auth.shared.module.constants.Columns.Profile.PROFILE_NAME;
+import static com.selling.system.auth.shared.module.constants.SQL.UNION_ALL;
+import static com.selling.system.auth.shared.module.util.QueryUtil.buildBindColumnName;
+
 @Component
 public class QueryBuilderImpl implements QueryBuilder {
 
@@ -27,11 +32,11 @@ public class QueryBuilderImpl implements QueryBuilder {
         int counter = 1;
         queryBuilder.append(query);
         String retrieveQueryKeys = provider.provider(Query.RETRIEVE_PROFILE_AUTHORITIES_KEYS);
-        String replacedQuery = String.format(retrieveQueryKeys, ":profile_name", ":authority_name_" + counter++);
+        String replacedQuery = String.format(retrieveQueryKeys, buildBindColumnName(PROFILE_NAME), buildBindColumnName(AUTHORITY_NAME) + counter++);
         queryBuilder.append(replacedQuery);
         while (counter <= authorities.size()) {
-            queryBuilder.append("UNION ALL").append(System.lineSeparator());
-            replacedQuery = String.format(retrieveQueryKeys, ":profile_name", ":authority_name_" + counter++);
+            queryBuilder.append(UNION_ALL).append(System.lineSeparator());
+            replacedQuery = String.format(retrieveQueryKeys, buildBindColumnName(PROFILE_NAME), buildBindColumnName(AUTHORITY_NAME) + counter++);
             queryBuilder.append(replacedQuery);
         }
         return Mono.just(queryBuilder.toString());

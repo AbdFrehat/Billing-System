@@ -4,7 +4,7 @@ import com.selling.system.auth.profiles.manager.controller.api.ProfilesApi;
 import com.selling.system.auth.profiles.manager.service.api.ProfilesService;
 import com.selling.system.auth.shared.module.models.dto.ProfileDto;
 import com.selling.system.auth.shared.module.models.dto.ProfilesDto;
-import com.selling.system.auth.shared.module.models.request.ProfileRequestInsert;
+import com.selling.system.auth.shared.module.models.request.ProfileInsertRequest;
 import com.selling.system.auth.shared.module.models.request.ProfileUpdateRequest;
 import com.selling.system.auth.shared.module.models.response.ProfileNameExistenceResponse;
 import com.selling.system.auth.shared.module.models.response.UpdatedRowsResponse;
@@ -48,8 +48,8 @@ public class ProfilesController implements ProfilesApi {
     }
 
     @Override
-    public Mono<ResponseEntity<UpdatedRowsResponse>> saveProfile(ProfileRequestInsert profileRequestInsert) {
-        return profilesService.saveProfile(profileRequestInsert)
+    public Mono<ResponseEntity<UpdatedRowsResponse>> saveProfile(ProfileInsertRequest profileInsertRequest) {
+        return profilesService.saveProfile(profileInsertRequest)
                 .map(body -> ResponseEntity.status(HttpStatus.CREATED).body(body));
     }
 

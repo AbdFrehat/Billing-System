@@ -2,7 +2,6 @@ package com.selling.system.auth.shared.module.models.request;
 
 import lombok.Data;
 
-import java.util.List;
 import java.util.Set;
 
 @Data

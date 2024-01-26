@@ -1,15 +1,16 @@
 package com.selling.system.source.random.generator.sales.service;
 
 
-import com.selling.system.shared.module.models.entities.Sale;
 import com.selling.system.shared.module.models.entities.Customer;
+import com.selling.system.shared.module.models.entities.Item;
+import com.selling.system.shared.module.models.entities.Sale;
+import com.selling.system.shared.module.models.enums.PurchaseMethod;
 import com.selling.system.source.random.generator.sales.model.data.CustomerData;
 import com.selling.system.source.random.generator.sales.model.data.ItemsData;
 import com.selling.system.source.random.generator.sales.model.data.SalesData;
-import com.selling.system.shared.module.models.enums.PurchaseMethod;
-import com.selling.system.shared.module.models.entities.Item;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
