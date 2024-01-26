@@ -54,8 +54,9 @@ public class ProfilesController implements ProfilesApi {
     }
 
     @Override
-    public Mono<ResponseEntity<ProfileDto>> updateProfile(ProfileUpdateRequest profileUpdateRequest) {
-        return null;
+    public Mono<ResponseEntity<UpdatedRowsResponse>> updateProfile(ProfileUpdateRequest profileUpdateRequest) {
+        return profilesService.updateProfile(profileUpdateRequest)
+                .map(body -> ResponseEntity.status(HttpStatus.ACCEPTED).body(body));
     }
 
 }

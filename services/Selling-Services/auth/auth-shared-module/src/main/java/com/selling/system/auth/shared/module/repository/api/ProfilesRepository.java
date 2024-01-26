@@ -1,10 +1,12 @@
 package com.selling.system.auth.shared.module.repository.api;
 
 import com.selling.system.auth.shared.module.models.entities.Profile;
-import com.selling.system.auth.shared.module.models.request.ProfileInsertRequest;
+import com.selling.system.auth.shared.module.models.enums.Query;
 import com.selling.system.auth.shared.module.models.response.ProfileNameExistenceResponse;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.util.Set;
 
 public interface ProfilesRepository {
 
@@ -20,5 +22,7 @@ public interface ProfilesRepository {
 
     Mono<Long> saveProfile(String profileName);
 
-    Mono<Long> saveProfileAuthorities(ProfileInsertRequest profileInsertRequest, Long count);
+    Mono<Long> modifyProfileAuthorities(String profileName, Set<String> authorities, Long count, Query query);
+
+    Mono<Long> updateProfileName(String profileName, String updatedProfileName);
 }

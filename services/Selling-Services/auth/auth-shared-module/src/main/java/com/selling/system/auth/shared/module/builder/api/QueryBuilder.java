@@ -7,4 +7,5 @@ import java.util.Set;
 public interface QueryBuilder {
 
     Mono<String> buildInsertProfileAuthoritiesQuery(String query, Set<String> authorities);
+    Mono<String> buildDeleteProfileAuthoritiesQuery(String query, Set<String> authorities);
 }

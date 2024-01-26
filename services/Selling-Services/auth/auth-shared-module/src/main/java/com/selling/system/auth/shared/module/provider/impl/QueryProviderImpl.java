@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class QueryProviderImpl implements QueryProvider {
 
     @Override
-    public String provider(Query query) {
+    public String provide(Query query) {
         return switch (query) {
             case RETRIEVE_ALL_PROFILES -> """
                     SELECT
@@ -18,11 +18,11 @@ public class QueryProviderImpl implements QueryProvider {
                         a.authority_id
                     FROM
                         profiles p
-                    INNER JOIN
+                    LEFT OUTER JOIN
                         profiles_authorities pa
                     ON
                         p.profile_id = pa.profile_id
-                    INNER JOIN
+                    LEFT OUTER JOIN
                         authorities a
                     ON
                         pa.authority_id = a.authority_id
@@ -35,11 +35,11 @@ public class QueryProviderImpl implements QueryProvider {
                         a.authority_id
                     FROM
                         profiles p
-                    INNER JOIN
+                    LEFT OUTER JOIN
                         profiles_authorities pa
                     ON
                         p.profile_id = pa.profile_id
-                    INNER JOIN
+                    LEFT OUTER JOIN
                         authorities a
                     ON
                         pa.authority_id = a.authority_id
@@ -90,23 +90,29 @@ public class QueryProviderImpl implements QueryProvider {
                             WHERE
                                 profile_name = :profile_name
                         )
-                        AND
-                         authority_id = (
-                            SELECT
-                                authorities.authority_id
-                            FROM
-                                authorities
-                            WHERE
-                                authority_name = :authority_name
-                         );
+                    AND
+                        authority_id
+                    IN
+                        ( %s )
                     """;
             case ADD_PROFILE_AUTHORITIES -> """
                     INSERT INTO profiles_authorities (profile_id, authority_id)
                     """;
             case RETRIEVE_PROFILE_AUTHORITIES_KEYS -> """
                     SELECT
-                        (SELECT profile_id FROM profiles WHERE profile_name = %s),
+                        (SELECT profile_id FROM profiles WHERE profile_name = :profile_name),
                         (SELECT authority_id FROM authorities WHERE authority_name = %s)
+                    """;
+            case RETRIEVE_AUTHORITIES_KEYS -> """
+                    (SELECT authority_id FROM authorities WHERE authority_name = %s)
+                    """;
+            case UPDATE_PROFILE_NAME -> """
+                    UPDATE
+                        profiles
+                    SET
+                        profile_name = :updated_profile_name
+                    WHERE
+                        profile_name = :profile_name
                     """;
         };
     }

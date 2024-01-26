@@ -4,5 +4,5 @@ import com.selling.system.auth.shared.module.models.enums.Query;
 
 public interface QueryProvider {
 
-    String provider(Query query);
+    String provide(Query query);
 }

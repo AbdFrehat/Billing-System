@@ -5,12 +5,16 @@ import com.selling.system.auth.shared.module.mapper.api.Mapper;
 import com.selling.system.auth.shared.module.models.dto.ProfileDto;
 import com.selling.system.auth.shared.module.models.dto.ProfilesDto;
 import com.selling.system.auth.shared.module.models.request.ProfileInsertRequest;
+import com.selling.system.auth.shared.module.models.request.ProfileUpdateRequest;
 import com.selling.system.auth.shared.module.models.response.ProfileNameExistenceResponse;
 import com.selling.system.auth.shared.module.models.response.UpdatedRowsResponse;
 import com.selling.system.auth.shared.module.repository.api.ProfilesRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Mono;
+
+import static com.selling.system.auth.shared.module.models.enums.Query.ADD_PROFILE_AUTHORITIES;
+import static com.selling.system.auth.shared.module.models.enums.Query.DELETE_PROFILE_AUTHORITIES;
 
 @Service
 public class ProfilesServiceImpl implements ProfilesService {
@@ -35,7 +39,18 @@ public class ProfilesServiceImpl implements ProfilesService {
     @Transactional
     public Mono<UpdatedRowsResponse> saveProfile(ProfileInsertRequest profileInsertRequest) {
         return profilesRepository.saveProfile(profileInsertRequest.getProfileName())
-                .flatMap(count -> profilesRepository.saveProfileAuthorities(profileInsertRequest, count))
+                .flatMap(count -> profilesRepository.modifyProfileAuthorities(profileInsertRequest.getProfileName(),
+                        profileInsertRequest.getAuthorities(), count, ADD_PROFILE_AUTHORITIES))
+                .map(count -> UpdatedRowsResponse.builder().count(count).build());
+    }
+
+    @Override
+    public Mono<UpdatedRowsResponse> updateProfile(ProfileUpdateRequest profileUpdateRequest) {
+        return profilesRepository.updateProfileName(profileUpdateRequest.getName(), profileUpdateRequest.getUpdatedName())
+                .flatMap(count -> profilesRepository.modifyProfileAuthorities(profileUpdateRequest.getName(), profileUpdateRequest.getAddedAuthorities(),
+                        count, ADD_PROFILE_AUTHORITIES))
+                .flatMap(count -> profilesRepository.modifyProfileAuthorities(profileUpdateRequest.getName(), profileUpdateRequest.getRemovedAuthorities(),
+                        count, DELETE_PROFILE_AUTHORITIES))
                 .map(count -> UpdatedRowsResponse.builder().count(count).build());
     }
 

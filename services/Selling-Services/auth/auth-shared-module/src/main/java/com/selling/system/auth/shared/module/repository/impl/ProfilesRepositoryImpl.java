@@ -3,7 +3,7 @@ package com.selling.system.auth.shared.module.repository.impl;
 import com.selling.system.auth.shared.module.builder.api.QueryBuilder;
 import com.selling.system.auth.shared.module.mapper.api.ProfileMapper;
 import com.selling.system.auth.shared.module.models.entities.Profile;
-import com.selling.system.auth.shared.module.models.request.ProfileInsertRequest;
+import com.selling.system.auth.shared.module.models.enums.Query;
 import com.selling.system.auth.shared.module.models.response.ProfileNameExistenceResponse;
 import com.selling.system.auth.shared.module.provider.api.QueryProvider;
 import com.selling.system.auth.shared.module.repository.api.ProfilesRepository;
@@ -15,11 +15,14 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.Iterator;
+import java.util.Set;
 
 import static com.selling.system.auth.shared.module.constants.Columns.Authority.AUTHORITY_NAME;
 import static com.selling.system.auth.shared.module.constants.Columns.Profile.PROFILE_ID;
 import static com.selling.system.auth.shared.module.constants.Columns.Profile.PROFILE_NAME;
 import static com.selling.system.auth.shared.module.models.enums.Query.*;
+import static com.selling.system.shared.module.utils.CollectionUtil.isEmpty;
+import static com.selling.system.shared.module.utils.StringUtil.isEmpty;
 
 @Repository
 public class ProfilesRepositoryImpl implements ProfilesRepository {
@@ -38,7 +41,7 @@ public class ProfilesRepositoryImpl implements ProfilesRepository {
 
     @Override
     public Flux<Profile> retrieveAllProfiles() {
-        return client.sql(provider.provider(RETRIEVE_ALL_PROFILES))
+        return client.sql(provider.provide(RETRIEVE_ALL_PROFILES))
                 .fetch()
                 .all()
                 .bufferUntilChanged(result -> result.get(PROFILE_ID))
@@ -47,7 +50,7 @@ public class ProfilesRepositoryImpl implements ProfilesRepository {
 
     @Override
     public Mono<Profile> retrieveProfileByName(String profileName) {
-        return client.sql(provider.provider(RETRIEVE_PROFILE))
+        return client.sql(provider.provide(RETRIEVE_PROFILE))
                 .bind(PROFILE_NAME, profileName)
                 .fetch()
                 .all()
@@ -59,7 +62,7 @@ public class ProfilesRepositoryImpl implements ProfilesRepository {
 
     @Override
     public Mono<ProfileNameExistenceResponse> isProfileExist(String profileName) {
-        return client.sql(provider.provider(IS_PROFILE_NAME_EXISTS))
+        return client.sql(provider.provide(IS_PROFILE_NAME_EXISTS))
                 .bind(PROFILE_NAME, profileName)
                 .fetch()
                 .first()
@@ -68,7 +71,7 @@ public class ProfilesRepositoryImpl implements ProfilesRepository {
 
     @Override
     public Mono<Long> deleteProfileByName(String profileName, Long count) {
-        return client.sql(provider.provider(DELETE_PROFILE))
+        return client.sql(provider.provide(DELETE_PROFILE))
                 .bind(PROFILE_NAME, profileName)
                 .fetch()
                 .rowsUpdated()
@@ -77,7 +80,7 @@ public class ProfilesRepositoryImpl implements ProfilesRepository {
 
     @Override
     public Mono<Long> deleteProfileAuthorities(String profileName) {
-        return client.sql(provider.provider(DELETE_ALL_PROFILE_AUTHORITIES))
+        return client.sql(provider.provide(DELETE_ALL_PROFILE_AUTHORITIES))
                 .bind(PROFILE_NAME, profileName)
                 .fetch()
                 .rowsUpdated();
@@ -85,19 +88,28 @@ public class ProfilesRepositoryImpl implements ProfilesRepository {
 
     @Override
     public Mono<Long> saveProfile(String profileName) {
-        return client.sql(provider.provider(ADD_PROFILE))
+        return client.sql(provider.provide(ADD_PROFILE))
                 .bind(PROFILE_NAME, profileName)
                 .fetch()
                 .rowsUpdated();
     }
 
     @Override
-    public Mono<Long> saveProfileAuthorities(ProfileInsertRequest profileInsertRequest, Long count) {
-        return builder.buildInsertProfileAuthoritiesQuery(provider.provider(ADD_PROFILE_AUTHORITIES), profileInsertRequest.getAuthorities())
-                .flatMap(query -> {
-                    DatabaseClient.GenericExecuteSpec genericExecuteSpec = client.sql(query)
-                            .bind(PROFILE_NAME, profileInsertRequest.getProfileName());
-                    Iterator<String> iterator = profileInsertRequest.getAuthorities().iterator();
+    public Mono<Long> modifyProfileAuthorities(String profileName, Set<String> authorities, Long count, Query query) {
+        if (isEmpty(authorities)) return Mono.just(count);
+        Mono<String> builtQuery;
+        if (query.equals(ADD_PROFILE_AUTHORITIES)) {
+            builtQuery = builder.buildInsertProfileAuthoritiesQuery(provider.provide(query), authorities);
+        } else if (query.equals(DELETE_PROFILE_AUTHORITIES)) {
+            builtQuery = builder.buildDeleteProfileAuthoritiesQuery(provider.provide(query), authorities);
+        } else {
+            return Mono.error(IllegalArgumentException::new);
+        }
+        return builtQuery
+                .flatMap($ -> {
+                    DatabaseClient.GenericExecuteSpec genericExecuteSpec = client.sql($)
+                            .bind(PROFILE_NAME, profileName);
+                    Iterator<String> iterator = authorities.iterator();
                     int counter = 1;
                     while (iterator.hasNext()) {
                         genericExecuteSpec = genericExecuteSpec.bind(AUTHORITY_NAME + counter++, iterator.next());
@@ -106,6 +118,16 @@ public class ProfilesRepositoryImpl implements ProfilesRepository {
                 })
                 .map(updatedRows -> updatedRows + count)
                 .onErrorReturn(AuthoritiesEmptyException.class, count);
+    }
+
+    @Override
+    public Mono<Long> updateProfileName(String profileName, String updatedProfileName) {
+        if (isEmpty(updatedProfileName)) return Mono.just(0L);
+        return client.sql(provider.provide(UPDATE_PROFILE_NAME))
+                .bind(PROFILE_NAME, profileName)
+                .bind("updated_profile_name", updatedProfileName)
+                .fetch()
+                .rowsUpdated();
     }
 
 }

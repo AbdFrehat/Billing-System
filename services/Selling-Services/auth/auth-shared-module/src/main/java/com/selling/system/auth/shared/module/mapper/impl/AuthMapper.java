@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static com.selling.system.shared.module.utils.CollectionUtil.isEmpty;
+
 @Component
 public class AuthMapper implements Mapper {
 
@@ -34,6 +36,7 @@ public class AuthMapper implements Mapper {
 
     @Override
     public Set<AuthorityDto> authoritiesToAuthoritiesDto(Set<Authority> authorities) {
+        if (isEmpty(authorities) || authorities.contains(null)) return Set.of();
         return authorities.stream().map(this::authorityToAuthorityDto).collect(Collectors.toSet());
     }
 

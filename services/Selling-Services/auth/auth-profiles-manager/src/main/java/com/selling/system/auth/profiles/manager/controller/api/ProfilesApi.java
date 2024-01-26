@@ -6,6 +6,7 @@ import com.selling.system.auth.shared.module.models.request.ProfileInsertRequest
 import com.selling.system.auth.shared.module.models.request.ProfileUpdateRequest;
 import com.selling.system.auth.shared.module.models.response.ProfileNameExistenceResponse;
 import com.selling.system.auth.shared.module.models.response.UpdatedRowsResponse;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
@@ -26,9 +27,9 @@ public interface ProfilesApi {
     Mono<ResponseEntity<ProfileNameExistenceResponse>> isProfileExist(@PathVariable("profileName") String profileName);
 
     @PostMapping
-    Mono<ResponseEntity<UpdatedRowsResponse>> saveProfile(@RequestBody ProfileInsertRequest profileInsertRequest);
+    Mono<ResponseEntity<UpdatedRowsResponse>> saveProfile(@RequestBody @Valid ProfileInsertRequest profileInsertRequest);
 
     @PutMapping("/update")
-    Mono<ResponseEntity<ProfileDto>> updateProfile(@RequestBody ProfileUpdateRequest profileUpdateRequest);
+    Mono<ResponseEntity<UpdatedRowsResponse>> updateProfile(@RequestBody ProfileUpdateRequest profileUpdateRequest);
 
 }
