@@ -1,6 +1,7 @@
 package com.selling.system.auth.shared.module.mapper.api;
 
 import com.selling.system.auth.shared.module.models.entities.Authority;
+import com.selling.system.auth.shared.module.models.entities.Group;
 import reactor.core.publisher.Mono;
 
 import java.util.Map;
@@ -18,8 +19,10 @@ public interface AuthorityMapper {
                     Authority.builder()
                             .authorityId((int) row.get(AUTHORITY_ID))
                             .authorityName((String) row.get(AUTHORITY_NAME))
-                            .groupId((int) row.get(GROUP_ID))
-                            .groupName((String) row.get(GROUP_NAME))
+                            .group(Group.builder()
+                                    .groupId((int) row.get(GROUP_ID))
+                                    .groupName((String) row.get(GROUP_NAME))
+                                    .build())
                             .build()
             );
         } else {

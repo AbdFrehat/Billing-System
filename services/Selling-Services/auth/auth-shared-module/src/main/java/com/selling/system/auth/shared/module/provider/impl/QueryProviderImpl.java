@@ -33,19 +33,6 @@ public class QueryProviderImpl implements QueryProvider {
                     ON
                         g.group_id = a.group_id
                                         """;
-            case RETRIEVE_ALL_AUTHORITIES -> """
-                    SELECT
-                        a.authority_id,
-                        a.authority_name,
-                        g.group_id,
-                        g.group_name
-                    FROM
-                        authorities a
-                    LEFT OUTER JOIN
-                        groups g
-                    ON
-                        g.group_id = a.group_id
-                    """;
             case RETRIEVE_PROFILE -> """
                     SELECT
                         p.profile_name,
@@ -72,10 +59,40 @@ public class QueryProviderImpl implements QueryProvider {
                         p.profile_name = :profile_name
                     ;
                     """;
+            case RETRIEVE_ALL_AUTHORITIES -> """
+                    SELECT
+                        a.authority_id,
+                        a.authority_name,
+                        g.group_id,
+                        g.group_name
+                    FROM
+                        authorities a
+                    LEFT OUTER JOIN
+                        groups g
+                    ON
+                        g.group_id = a.group_id
+                    """;
+            case RETRIEVE_ALL_GROUPS -> """
+                    SELECT
+                        group_id,
+                        group_name
+                    FROM
+                        groups;
+                    """;
             case ADD_PROFILE -> """
                     INSERT INTO profiles (profile_name)
                     VALUES
                         (:profile_name);
+                    """;
+            case ADD_AUTHORITY -> """
+                    INSERT INTO authorities
+                        (authority_name, group_id)
+                    VALUES %s
+                    """;
+            case ADD_GROUP -> """
+                    INSERT INTO groups
+                        (group_name)
+                    VALUES (:group_name)
                     """;
             case DELETE_PROFILE -> """
                     DELETE FROM
@@ -139,6 +156,25 @@ public class QueryProviderImpl implements QueryProvider {
                         profile_name = :updated_profile_name
                     WHERE
                         profile_name = :profile_name
+                    """;
+            case UPDATE_GROUP_NAME -> """
+                    UPDATE
+                        groups
+                    SET
+                        group_name = :update_group_name
+                    WHERE
+                        group_name = :group_name
+                    """;
+            case UPDATE_AUTHORITY_NAME -> """
+                    UPDATE
+                        authorities
+                    SET
+                        authority_name = :update_authority_name
+                    WHERE
+                        authority_name = :authority_name
+                    """;
+            case AUTHORITY_VALUES -> """
+                    (%s, (SELECT groups.group_id FROM groups WHERE group_name = %s))
                     """;
         };
     }

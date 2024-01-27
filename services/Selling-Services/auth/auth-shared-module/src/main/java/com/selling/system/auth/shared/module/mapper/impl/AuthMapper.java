@@ -1,10 +1,9 @@
 package com.selling.system.auth.shared.module.mapper.impl;
 
 import com.selling.system.auth.shared.module.mapper.api.Mapper;
-import com.selling.system.auth.shared.module.models.dto.AuthorityDto;
-import com.selling.system.auth.shared.module.models.dto.ProfileDto;
-import com.selling.system.auth.shared.module.models.dto.ProfilesDto;
+import com.selling.system.auth.shared.module.models.dto.*;
 import com.selling.system.auth.shared.module.models.entities.Authority;
+import com.selling.system.auth.shared.module.models.entities.Group;
 import com.selling.system.auth.shared.module.models.entities.Profile;
 import org.springframework.stereotype.Component;
 
@@ -34,7 +33,7 @@ public class AuthMapper implements Mapper {
     public AuthorityDto authorityToAuthorityDto(Authority authority) {
         return AuthorityDto.builder()
                 .authorityName(authority.getAuthorityName())
-                .groupName(authority.getGroupName())
+                .groupName(authority.getGroup().getGroupName())
                 .build();
     }
 
@@ -46,5 +45,14 @@ public class AuthMapper implements Mapper {
                 .collect(Collectors.groupingBy(AuthorityDto::getGroupName, Collectors.toSet()));
     }
 
+    @Override
+    public GroupDto groupToGroupDto(Group group) {
+        return GroupDto.builder().name(group.getGroupName()).build();
+    }
+
+    @Override
+    public GroupsDto groupsToGroupsDto(List<GroupDto> groupsDto) {
+        return GroupsDto.builder().groups(groupsDto).build();
+    }
 
 }

@@ -2,8 +2,8 @@ package com.selling.system.auth.profiles.manager.controller.api;
 
 import com.selling.system.auth.shared.module.models.dto.ProfileDto;
 import com.selling.system.auth.shared.module.models.dto.ProfilesDto;
-import com.selling.system.auth.shared.module.models.request.ProfileInsertRequest;
-import com.selling.system.auth.shared.module.models.request.ProfileUpdateRequest;
+import com.selling.system.auth.shared.module.models.request.profile.ProfileInsertRequest;
+import com.selling.system.auth.shared.module.models.request.profile.ProfileUpdateRequest;
 import com.selling.system.auth.shared.module.models.response.ProfileNameExistenceResponse;
 import com.selling.system.auth.shared.module.models.response.UpdatedRowsResponse;
 import jakarta.validation.Valid;

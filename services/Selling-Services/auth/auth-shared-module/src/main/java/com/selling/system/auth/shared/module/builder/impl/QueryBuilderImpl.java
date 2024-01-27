@@ -2,6 +2,7 @@ package com.selling.system.auth.shared.module.builder.impl;
 
 import com.selling.system.auth.shared.module.builder.api.QueryBuilder;
 import com.selling.system.auth.shared.module.models.enums.Query;
+import com.selling.system.auth.shared.module.models.request.authority.AuthorityData;
 import com.selling.system.auth.shared.module.provider.api.QueryProvider;
 import com.selling.system.shared.module.exceptions.Technical.AuthoritiesEmptyException;
 import org.springframework.stereotype.Component;
@@ -10,6 +11,7 @@ import reactor.core.publisher.Mono;
 import java.util.Set;
 
 import static com.selling.system.auth.shared.module.constants.Columns.Authority.AUTHORITY_NAME;
+import static com.selling.system.auth.shared.module.constants.Columns.Group.GROUP_NAME;
 import static com.selling.system.auth.shared.module.constants.SQL.UNION_ALL;
 import static com.selling.system.auth.shared.module.models.enums.Query.*;
 import static com.selling.system.auth.shared.module.util.QueryUtil.buildBindColumnName;
@@ -69,6 +71,20 @@ public class QueryBuilderImpl implements QueryBuilder {
             replacedQuery = String.format(retrieveAuthoritiesKeys, buildBindColumnName(AUTHORITY_NAME) + counter++);
             authoritiesPartBuilder.append(",").append(replacedQuery);
         }
-        return Mono.just(String.format(query, authoritiesPartBuilder.toString()));
+        return Mono.just(String.format(query, authoritiesPartBuilder));
+    }
+
+    @Override
+    public Mono<String> buildInsertAuthoritiesQuery(String query, Set<AuthorityData> authorities) {
+        StringBuilder valuesPartBuilder = new StringBuilder();
+        int counter = 1;
+        String valuesPartQuery = provider.provide(AUTHORITY_VALUES);
+        String replacedQuery = String.format(valuesPartQuery, buildBindColumnName(AUTHORITY_NAME) + counter, buildBindColumnName(GROUP_NAME) + counter++);
+        valuesPartBuilder.append(replacedQuery);
+        while (counter <= authorities.size()) {
+            replacedQuery = String.format(valuesPartQuery, buildBindColumnName(AUTHORITY_NAME) + counter, buildBindColumnName(GROUP_NAME) + counter++);
+            valuesPartBuilder.append(",").append(replacedQuery);
+        }
+        return Mono.just(String.format(query, valuesPartBuilder));
     }
 }

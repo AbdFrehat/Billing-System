@@ -1,4 +1,4 @@
-package com.selling.system.auth.shared.module.models.request;
+package com.selling.system.auth.shared.module.models.request.profile;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
@@ -8,15 +8,11 @@ import java.util.Set;
 import static com.selling.system.auth.shared.module.constants.Validator.PROFILE_NAME_VALIDATOR_MESSAGE;
 
 @Data
-public class ProfileUpdateRequest {
+public class ProfileInsertRequest {
 
     @NotBlank(message = PROFILE_NAME_VALIDATOR_MESSAGE)
-    private String name;
+    private String profileName;
 
-    private String updatedName;
-
-    private Set<String> addedAuthorities;
-
-    private Set<String> removedAuthorities;
+    private Set<String> authorities;
 
 }

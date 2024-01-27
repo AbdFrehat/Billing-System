@@ -18,9 +18,7 @@ public class Authority {
 
     private String authorityName;
 
-    private int groupId;
-
-    private String groupName;
+    private Group group;
 
     @Override
     public boolean equals(Object o) {

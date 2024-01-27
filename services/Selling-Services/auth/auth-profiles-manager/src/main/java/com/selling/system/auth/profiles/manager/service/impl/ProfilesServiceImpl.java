@@ -4,8 +4,8 @@ import com.selling.system.auth.profiles.manager.service.api.ProfilesService;
 import com.selling.system.auth.shared.module.mapper.api.Mapper;
 import com.selling.system.auth.shared.module.models.dto.ProfileDto;
 import com.selling.system.auth.shared.module.models.dto.ProfilesDto;
-import com.selling.system.auth.shared.module.models.request.ProfileInsertRequest;
-import com.selling.system.auth.shared.module.models.request.ProfileUpdateRequest;
+import com.selling.system.auth.shared.module.models.request.profile.ProfileInsertRequest;
+import com.selling.system.auth.shared.module.models.request.profile.ProfileUpdateRequest;
 import com.selling.system.auth.shared.module.models.response.ProfileNameExistenceResponse;
 import com.selling.system.auth.shared.module.models.response.UpdatedRowsResponse;
 import com.selling.system.auth.shared.module.repository.api.ProfilesRepository;
@@ -46,10 +46,10 @@ public class ProfilesServiceImpl implements ProfilesService {
 
     @Override
     public Mono<UpdatedRowsResponse> updateProfile(ProfileUpdateRequest profileUpdateRequest) {
-        return profilesRepository.updateProfileName(profileUpdateRequest.getName(), profileUpdateRequest.getUpdatedName())
-                .flatMap($ -> profilesRepository.modifyProfileAuthorities(profileUpdateRequest.getName(), profileUpdateRequest.getAddedAuthorities(),
+        return profilesRepository.updateProfileName(profileUpdateRequest.getProfileName(), profileUpdateRequest.getUpdatedProfileName())
+                .flatMap($ -> profilesRepository.modifyProfileAuthorities(profileUpdateRequest.getProfileName(), profileUpdateRequest.getAddedAuthorities(),
                         $, ADD_PROFILE_AUTHORITIES))
-                .flatMap($ -> profilesRepository.modifyProfileAuthorities(profileUpdateRequest.getName(), profileUpdateRequest.getRemovedAuthorities(),
+                .flatMap($ -> profilesRepository.modifyProfileAuthorities(profileUpdateRequest.getProfileName(), profileUpdateRequest.getRemovedAuthorities(),
                         $, DELETE_PROFILE_AUTHORITIES))
                 .map($ -> UpdatedRowsResponse.builder().count($).build());
     }
