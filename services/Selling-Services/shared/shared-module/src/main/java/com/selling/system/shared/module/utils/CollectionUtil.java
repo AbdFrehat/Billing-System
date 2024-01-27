@@ -1,7 +1,6 @@
 package com.selling.system.shared.module.utils;
 
 import java.util.Collection;
-import java.util.Set;
 
 public class CollectionUtil {
 

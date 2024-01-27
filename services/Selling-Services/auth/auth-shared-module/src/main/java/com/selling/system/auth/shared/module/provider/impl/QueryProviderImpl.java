@@ -15,7 +15,9 @@ public class QueryProviderImpl implements QueryProvider {
                         p.profile_name,
                         p.profile_id,
                         a.authority_name,
-                        a.authority_id
+                        a.authority_id,
+                        g.group_id,
+                        g.group_name
                     FROM
                         profiles p
                     LEFT OUTER JOIN
@@ -26,22 +28,32 @@ public class QueryProviderImpl implements QueryProvider {
                         authorities a
                     ON
                         pa.authority_id = a.authority_id
+                    LEFT OUTER JOIN
+                        groups g
+                    ON
+                        g.group_id = a.group_id
                                         """;
             case RETRIEVE_ALL_AUTHORITIES -> """
                     SELECT
-                        authority_id,
-                        authority_name
+                        a.authority_id,
+                        a.authority_name,
+                        g.group_id,
+                        g.group_name
                     FROM
-                        authorities
-                    ORDER BY
-                        authority_id;
+                        authorities a
+                    LEFT OUTER JOIN
+                        groups g
+                    ON
+                        g.group_id = a.group_id
                     """;
             case RETRIEVE_PROFILE -> """
                     SELECT
                         p.profile_name,
                         p.profile_id,
                         a.authority_name,
-                        a.authority_id
+                        a.authority_id,
+                        g.group_id,
+                        g.group_name
                     FROM
                         profiles p
                     LEFT OUTER JOIN
@@ -52,8 +64,13 @@ public class QueryProviderImpl implements QueryProvider {
                         authorities a
                     ON
                         pa.authority_id = a.authority_id
+                    LEFT OUTER JOIN
+                        groups g
+                    ON
+                        g.group_id = a.group_id
                     WHERE
-                        p.profile_name = :profile_name;
+                        p.profile_name = :profile_name
+                    ;
                     """;
             case ADD_PROFILE -> """
                     INSERT INTO profiles (profile_name)

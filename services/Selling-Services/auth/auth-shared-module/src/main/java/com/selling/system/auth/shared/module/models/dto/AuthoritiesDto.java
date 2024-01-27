@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.Map;
 import java.util.Set;
 
 @Data
@@ -13,6 +14,6 @@ import java.util.Set;
 public class AuthoritiesDto {
 
     @JsonProperty("authorities")
-    private Set<AuthorityDto> authorities;
+    private Map<String, Set<AuthorityDto>> authorities;
 
 }

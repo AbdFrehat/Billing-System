@@ -4,6 +4,7 @@ package com.selling.system.auth.shared.module.models.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 
+import java.util.Map;
 import java.util.Set;
 
 @Builder
@@ -13,6 +14,6 @@ public class ProfileDto {
     private String profileName;
 
     @JsonProperty("authorities")
-    private Set<AuthorityDto> authorities;
+    private Map<String, Set<AuthorityDto>> authorities;
 
 }

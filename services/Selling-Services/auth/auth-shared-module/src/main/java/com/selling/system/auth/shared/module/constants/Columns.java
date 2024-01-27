@@ -11,4 +11,9 @@ public class Columns {
         public static final String AUTHORITY_ID = "authority_id";
         public static final String AUTHORITY_NAME = "authority_name";
     }
+
+    public static class Group {
+        public static final String GROUP_ID = "group_id";
+        public static final String GROUP_NAME = "group_name";
+    }
 }

@@ -9,13 +9,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static com.selling.system.auth.shared.module.constants.Columns.Profile.PROFILE_ID;
+import static com.selling.system.auth.shared.module.constants.Columns.Profile.PROFILE_NAME;
+
 public interface ProfileMapper {
     static Mono<Profile> fromRows(List<Map<String, Object>> rows) {
         return Flux.fromIterable(rows).flatMap(AuthorityMapper::fromRow)
                 .collect(Collectors.toSet())
                 .map($ -> Profile.builder()
-                        .profileId((int) rows.get(0).get("profile_id"))
-                        .profileName((String) rows.get(0).get("profile_name"))
+                        .profileId((int) rows.get(0).get(PROFILE_ID))
+                        .profileName((String) rows.get(0).get(PROFILE_NAME))
                         .authorities($)
                         .build());
     }

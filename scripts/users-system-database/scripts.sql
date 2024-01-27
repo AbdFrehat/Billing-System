@@ -1,12 +1,21 @@
 CREATE SEQUENCE profiles_seq START 1;
 CREATE SEQUENCE authorities_seq START 1;
+CREATE SEQUENCE groups_seq START 1;
+
+CREATE TABLE groups (
+    group_id INTEGER DEFAULT NEXTVAL('groups_seq'),
+    group_name VARCHAR(32) NOT NULL,
+    PRIMARY KEY (group_id)
+);
 
 CREATE TABLE authorities 
 (
     authority_id INTEGER DEFAULT NEXTVAL('authorities_seq'),
+    group_id INTEGER,
     authority_name VARCHAR(32) NOT NULL,
-    PRIMARY KEY (authority_id)
-)
+    PRIMARY KEY (authority_id),
+    FOREIGN KEY (group_id) REFERENCES groups (group_id)
+);
 
 CREATE TABLE profiles
 (
@@ -14,7 +23,7 @@ CREATE TABLE profiles
     profile_name VARCHAR(255) NOT NULL,
     PRIMARY KEY (profile_id),
 	UNIQUE(profile_name)
-)
+);
 
 CREATE TABLE profiles_authorities
 (
@@ -23,7 +32,7 @@ CREATE TABLE profiles_authorities
     PRIMARY KEY (profile_id, authority_id),
     FOREIGN KEY (authority_id) REFERENCES authorities(authority_id),
     FOREIGN KEY (profile_id) REFERENCES profiles(profile_id)
-)
+);
 
 CREATE TABLE users
 (
@@ -44,7 +53,7 @@ CREATE TABLE users
     PRIMARY KEY (username),
     UNIQUE (email),
     FOREIGN KEY (profile_id) REFERENCES profiles(profile_id)
-)
+);
 
 
 

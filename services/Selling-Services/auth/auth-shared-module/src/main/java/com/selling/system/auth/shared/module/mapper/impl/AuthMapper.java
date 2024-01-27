@@ -9,6 +9,7 @@ import com.selling.system.auth.shared.module.models.entities.Profile;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -31,13 +32,18 @@ public class AuthMapper implements Mapper {
 
     @Override
     public AuthorityDto authorityToAuthorityDto(Authority authority) {
-        return AuthorityDto.builder().authorityName(authority.getAuthorityName()).build();
+        return AuthorityDto.builder()
+                .authorityName(authority.getAuthorityName())
+                .groupName(authority.getGroupName())
+                .build();
     }
 
     @Override
-    public Set<AuthorityDto> authoritiesToAuthoritiesDto(Set<Authority> authorities) {
-        if (isEmpty(authorities) || authorities.contains(null)) return Set.of();
-        return authorities.stream().map(this::authorityToAuthorityDto).collect(Collectors.toSet());
+    public Map<String, Set<AuthorityDto>> authoritiesToAuthoritiesDto(Set<Authority> authorities) {
+        if (isEmpty(authorities) || authorities.contains(null)) return Map.of();
+        return authorities.stream()
+                .map(this::authorityToAuthorityDto)
+                .collect(Collectors.groupingBy(AuthorityDto::getGroupName, Collectors.toSet()));
     }
 
 

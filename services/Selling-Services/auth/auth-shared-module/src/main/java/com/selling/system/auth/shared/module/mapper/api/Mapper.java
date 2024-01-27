@@ -8,6 +8,7 @@ import com.selling.system.auth.shared.module.models.entities.Profile;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 
@@ -21,6 +22,6 @@ public interface Mapper {
 
     AuthorityDto authorityToAuthorityDto(Authority authority);
 
-    Set<AuthorityDto> authoritiesToAuthoritiesDto(Set<Authority> authorities);
+    Map<String, Set<AuthorityDto>> authoritiesToAuthoritiesDto(Set<Authority> authorities);
 
 }
