@@ -97,14 +97,7 @@ public class ProfilesRepositoryImpl implements ProfilesRepository {
     @Override
     public Mono<Long> modifyProfileAuthorities(String profileName, Set<String> authorities, Long count, Query query) {
         if (isEmpty(authorities)) return Mono.just(count);
-        Mono<String> builtQuery;
-        if (query.equals(ADD_PROFILE_AUTHORITIES)) {
-            builtQuery = builder.buildInsertProfileAuthoritiesQuery(provider.provide(query), authorities);
-        } else if (query.equals(DELETE_PROFILE_AUTHORITIES)) {
-            builtQuery = builder.buildDeleteProfileAuthoritiesQuery(provider.provide(query), authorities);
-        } else {
-            return Mono.error(IllegalArgumentException::new);
-        }
+        Mono<String> builtQuery = builder.buildProfileAuthoritiesQuery(query, authorities);
         return builtQuery
                 .flatMap($ -> {
                     DatabaseClient.GenericExecuteSpec genericExecuteSpec = client.sql($)

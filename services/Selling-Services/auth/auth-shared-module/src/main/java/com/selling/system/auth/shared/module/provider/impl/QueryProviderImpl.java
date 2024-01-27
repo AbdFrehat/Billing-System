@@ -27,6 +27,15 @@ public class QueryProviderImpl implements QueryProvider {
                     ON
                         pa.authority_id = a.authority_id
                                         """;
+            case RETRIEVE_ALL_AUTHORITIES -> """
+                    SELECT
+                        authority_id,
+                        authority_name
+                    FROM
+                        authorities
+                    ORDER BY
+                        authority_id;
+                    """;
             case RETRIEVE_PROFILE -> """
                     SELECT
                         p.profile_name,

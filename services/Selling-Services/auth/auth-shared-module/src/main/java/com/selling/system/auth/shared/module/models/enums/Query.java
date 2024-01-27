@@ -2,6 +2,7 @@ package com.selling.system.auth.shared.module.models.enums;
 
 public enum Query {
     RETRIEVE_ALL_PROFILES,
+    RETRIEVE_ALL_AUTHORITIES,
     RETRIEVE_PROFILE,
     RETRIEVE_PROFILE_AUTHORITIES_KEYS,
     RETRIEVE_AUTHORITIES_KEYS,

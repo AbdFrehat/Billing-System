@@ -31,27 +31,27 @@ public class ProfilesServiceImpl implements ProfilesService {
     @Transactional
     public Mono<UpdatedRowsResponse> deleteProfileByName(String profileName) {
         return profilesRepository.deleteProfileAuthorities(profileName)
-                .flatMap((count) -> profilesRepository.deleteProfileByName(profileName, count))
-                .map(count -> UpdatedRowsResponse.builder().count(count).build());
+                .flatMap(($) -> profilesRepository.deleteProfileByName(profileName, $))
+                .map($ -> UpdatedRowsResponse.builder().count($).build());
     }
 
     @Override
     @Transactional
     public Mono<UpdatedRowsResponse> saveProfile(ProfileInsertRequest profileInsertRequest) {
         return profilesRepository.saveProfile(profileInsertRequest.getProfileName())
-                .flatMap(count -> profilesRepository.modifyProfileAuthorities(profileInsertRequest.getProfileName(),
-                        profileInsertRequest.getAuthorities(), count, ADD_PROFILE_AUTHORITIES))
-                .map(count -> UpdatedRowsResponse.builder().count(count).build());
+                .flatMap($ -> profilesRepository.modifyProfileAuthorities(profileInsertRequest.getProfileName(),
+                        profileInsertRequest.getAuthorities(), $, ADD_PROFILE_AUTHORITIES))
+                .map($ -> UpdatedRowsResponse.builder().count($).build());
     }
 
     @Override
     public Mono<UpdatedRowsResponse> updateProfile(ProfileUpdateRequest profileUpdateRequest) {
         return profilesRepository.updateProfileName(profileUpdateRequest.getName(), profileUpdateRequest.getUpdatedName())
-                .flatMap(count -> profilesRepository.modifyProfileAuthorities(profileUpdateRequest.getName(), profileUpdateRequest.getAddedAuthorities(),
-                        count, ADD_PROFILE_AUTHORITIES))
-                .flatMap(count -> profilesRepository.modifyProfileAuthorities(profileUpdateRequest.getName(), profileUpdateRequest.getRemovedAuthorities(),
-                        count, DELETE_PROFILE_AUTHORITIES))
-                .map(count -> UpdatedRowsResponse.builder().count(count).build());
+                .flatMap($ -> profilesRepository.modifyProfileAuthorities(profileUpdateRequest.getName(), profileUpdateRequest.getAddedAuthorities(),
+                        $, ADD_PROFILE_AUTHORITIES))
+                .flatMap($ -> profilesRepository.modifyProfileAuthorities(profileUpdateRequest.getName(), profileUpdateRequest.getRemovedAuthorities(),
+                        $, DELETE_PROFILE_AUTHORITIES))
+                .map($ -> UpdatedRowsResponse.builder().count($).build());
     }
 
     @Override

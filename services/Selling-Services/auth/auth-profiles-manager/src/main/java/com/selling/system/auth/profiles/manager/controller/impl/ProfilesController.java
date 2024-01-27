@@ -26,37 +26,37 @@ public class ProfilesController implements ProfilesApi {
     @Override
     public Mono<ResponseEntity<ProfilesDto>> getProfiles() {
         return profilesService.getProfiles()
-                .map(body -> ResponseEntity.status(HttpStatus.OK).body(body));
+                .map($ -> ResponseEntity.status(HttpStatus.OK).body($));
     }
 
     @Override
     public Mono<ResponseEntity<ProfileDto>> getProfile(String profileName) {
         return profilesService.getProfileByName(profileName)
-                .map(body -> ResponseEntity.status(HttpStatus.OK).body(body));
+                .map($ -> ResponseEntity.status(HttpStatus.OK).body($));
     }
 
     @Override
     public Mono<ResponseEntity<UpdatedRowsResponse>> deleteProfile(String profileName) {
         return profilesService.deleteProfileByName(profileName)
-                .map(body -> ResponseEntity.status(HttpStatus.ACCEPTED).body(body));
+                .map($ -> ResponseEntity.status(HttpStatus.ACCEPTED).body($));
     }
 
     @Override
     public Mono<ResponseEntity<ProfileNameExistenceResponse>> isProfileExist(String profileName) {
         return profilesService.isProfileExist(profileName)
-                .map(body -> ResponseEntity.status(HttpStatus.OK).body(body));
+                .map($ -> ResponseEntity.status(HttpStatus.OK).body($));
     }
 
     @Override
     public Mono<ResponseEntity<UpdatedRowsResponse>> saveProfile(ProfileInsertRequest profileInsertRequest) {
         return profilesService.saveProfile(profileInsertRequest)
-                .map(body -> ResponseEntity.status(HttpStatus.CREATED).body(body));
+                .map($ -> ResponseEntity.status(HttpStatus.CREATED).body($));
     }
 
     @Override
     public Mono<ResponseEntity<UpdatedRowsResponse>> updateProfile(ProfileUpdateRequest profileUpdateRequest) {
         return profilesService.updateProfile(profileUpdateRequest)
-                .map(body -> ResponseEntity.status(HttpStatus.ACCEPTED).body(body));
+                .map($ -> ResponseEntity.status(HttpStatus.ACCEPTED).body($));
     }
 
 }

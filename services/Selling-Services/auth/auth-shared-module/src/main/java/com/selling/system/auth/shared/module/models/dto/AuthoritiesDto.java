@@ -5,12 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.Set;
+
 @Data
 @Builder
 @EqualsAndHashCode
-public class AuthorityDto {
+public class AuthoritiesDto {
 
-    @JsonProperty("name")
-    private String authorityName;
+    @JsonProperty("authorities")
+    private Set<AuthorityDto> authorities;
 
 }

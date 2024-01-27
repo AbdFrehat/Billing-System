@@ -1,6 +1,7 @@
 package com.selling.system.auth.shared.module.builder.impl;
 
 import com.selling.system.auth.shared.module.builder.api.QueryBuilder;
+import com.selling.system.auth.shared.module.models.enums.Query;
 import com.selling.system.auth.shared.module.provider.api.QueryProvider;
 import com.selling.system.shared.module.exceptions.Technical.AuthoritiesEmptyException;
 import org.springframework.stereotype.Component;
@@ -9,10 +10,8 @@ import reactor.core.publisher.Mono;
 import java.util.Set;
 
 import static com.selling.system.auth.shared.module.constants.Columns.Authority.AUTHORITY_NAME;
-import static com.selling.system.auth.shared.module.constants.Columns.Profile.PROFILE_NAME;
 import static com.selling.system.auth.shared.module.constants.SQL.UNION_ALL;
-import static com.selling.system.auth.shared.module.models.enums.Query.RETRIEVE_AUTHORITIES_KEYS;
-import static com.selling.system.auth.shared.module.models.enums.Query.RETRIEVE_PROFILE_AUTHORITIES_KEYS;
+import static com.selling.system.auth.shared.module.models.enums.Query.*;
 import static com.selling.system.auth.shared.module.util.QueryUtil.buildBindColumnName;
 import static com.selling.system.shared.module.utils.CollectionUtil.isEmpty;
 
@@ -23,6 +22,18 @@ public class QueryBuilderImpl implements QueryBuilder {
 
     public QueryBuilderImpl(QueryProvider provider) {
         this.provider = provider;
+    }
+
+    public Mono<String> buildProfileAuthoritiesQuery(Query query, Set<String> authorities) {
+        Mono<String> builtQuery;
+        if (query.equals(ADD_PROFILE_AUTHORITIES)) {
+            builtQuery = this.buildInsertProfileAuthoritiesQuery(provider.provide(query), authorities);
+        } else if (query.equals(DELETE_PROFILE_AUTHORITIES)) {
+            builtQuery = this.buildDeleteProfileAuthoritiesQuery(provider.provide(query), authorities);
+        } else {
+            return Mono.error(IllegalArgumentException::new);
+        }
+        return builtQuery;
     }
 
     @Override
