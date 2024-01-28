@@ -1,6 +1,7 @@
 package com.selling.system.auth.profiles.manager.controller.api;
 
 import com.selling.system.auth.shared.module.models.dto.GroupsDto;
+import com.selling.system.auth.shared.module.models.request.group.GroupDeleteRequest;
 import com.selling.system.auth.shared.module.models.request.group.GroupInsertRequest;
 import com.selling.system.auth.shared.module.models.request.group.GroupUpdateNameRequest;
 import com.selling.system.auth.shared.module.models.response.UpdatedRowsResponse;
@@ -16,6 +17,10 @@ public interface GroupsApi {
 
     @PutMapping
     Mono<ResponseEntity<UpdatedRowsResponse>> updateGroupName(@RequestBody @Valid GroupUpdateNameRequest request);
+
     @PostMapping
     Mono<ResponseEntity<UpdatedRowsResponse>> insertGroup(@RequestBody @Valid GroupInsertRequest request);
+
+    @DeleteMapping
+    Mono<ResponseEntity<UpdatedRowsResponse>> deleteGroup(@RequestBody @Valid GroupDeleteRequest request);
 }

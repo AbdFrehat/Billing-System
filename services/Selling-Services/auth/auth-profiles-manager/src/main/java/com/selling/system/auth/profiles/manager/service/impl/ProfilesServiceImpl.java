@@ -4,6 +4,7 @@ import com.selling.system.auth.profiles.manager.service.api.ProfilesService;
 import com.selling.system.auth.shared.module.mapper.api.Mapper;
 import com.selling.system.auth.shared.module.models.dto.ProfileDto;
 import com.selling.system.auth.shared.module.models.dto.ProfilesDto;
+import com.selling.system.auth.shared.module.models.request.profile.ProfileDeleteRequest;
 import com.selling.system.auth.shared.module.models.request.profile.ProfileInsertRequest;
 import com.selling.system.auth.shared.module.models.request.profile.ProfileUpdateRequest;
 import com.selling.system.auth.shared.module.models.response.ProfileNameExistenceResponse;
@@ -29,9 +30,9 @@ public class ProfilesServiceImpl implements ProfilesService {
 
     @Override
     @Transactional
-    public Mono<UpdatedRowsResponse> deleteProfileByName(String profileName) {
-        return profilesRepository.deleteProfileAuthorities(profileName)
-                .flatMap(($) -> profilesRepository.deleteProfileByName(profileName, $))
+    public Mono<UpdatedRowsResponse> deleteProfileByName(ProfileDeleteRequest request) {
+        return profilesRepository.deleteProfileAuthorities(request.getProfileName())
+                .flatMap(($) -> profilesRepository.deleteProfileByName(request.getProfileName(), $))
                 .map($ -> UpdatedRowsResponse.builder().count($).build());
     }
 

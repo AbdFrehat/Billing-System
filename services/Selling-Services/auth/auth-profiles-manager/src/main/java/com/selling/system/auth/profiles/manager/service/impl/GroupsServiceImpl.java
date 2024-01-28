@@ -3,6 +3,7 @@ package com.selling.system.auth.profiles.manager.service.impl;
 import com.selling.system.auth.profiles.manager.service.api.GroupsService;
 import com.selling.system.auth.shared.module.mapper.api.Mapper;
 import com.selling.system.auth.shared.module.models.dto.GroupsDto;
+import com.selling.system.auth.shared.module.models.request.group.GroupDeleteRequest;
 import com.selling.system.auth.shared.module.models.request.group.GroupInsertRequest;
 import com.selling.system.auth.shared.module.models.request.group.GroupUpdateNameRequest;
 import com.selling.system.auth.shared.module.models.response.UpdatedRowsResponse;
@@ -40,6 +41,14 @@ public class GroupsServiceImpl implements GroupsService {
     @Override
     public Mono<UpdatedRowsResponse> insertGroup(GroupInsertRequest request) {
         return groupsRepository.saveGroup(request.getGroupName())
+                .map($ -> UpdatedRowsResponse.builder().count($).build());
+    }
+
+    @Override
+    public Mono<UpdatedRowsResponse> deleteGroup(GroupDeleteRequest request) {
+        return groupsRepository.deleteProfilesAuthoritiesGroup(request.getGroupName())
+                .flatMap($ -> groupsRepository.deleteAuthoritiesGroup(request.getGroupName(), $))
+                .flatMap($ -> groupsRepository.deleteGroup(request.getGroupName(), $))
                 .map($ -> UpdatedRowsResponse.builder().count($).build());
     }
 }

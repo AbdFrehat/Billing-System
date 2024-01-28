@@ -2,6 +2,7 @@ package com.selling.system.auth.profiles.manager.controller.api;
 
 import com.selling.system.auth.shared.module.models.dto.ProfileDto;
 import com.selling.system.auth.shared.module.models.dto.ProfilesDto;
+import com.selling.system.auth.shared.module.models.request.profile.ProfileDeleteRequest;
 import com.selling.system.auth.shared.module.models.request.profile.ProfileInsertRequest;
 import com.selling.system.auth.shared.module.models.request.profile.ProfileUpdateRequest;
 import com.selling.system.auth.shared.module.models.response.ProfileNameExistenceResponse;
@@ -21,7 +22,7 @@ public interface ProfilesApi {
     Mono<ResponseEntity<ProfileDto>> getProfile(@PathVariable("profileName") String profileName);
 
     @DeleteMapping("/{profileName}")
-    Mono<ResponseEntity<UpdatedRowsResponse>> deleteProfile(@PathVariable("profileName") String profileName);
+    Mono<ResponseEntity<UpdatedRowsResponse>> deleteProfile(@PathVariable("profileName") ProfileDeleteRequest request);
 
     @GetMapping("/exist/{profileName}")
     Mono<ResponseEntity<ProfileNameExistenceResponse>> isProfileExist(@PathVariable("profileName") String profileName);
@@ -30,6 +31,6 @@ public interface ProfilesApi {
     Mono<ResponseEntity<UpdatedRowsResponse>> saveProfile(@RequestBody @Valid ProfileInsertRequest profileInsertRequest);
 
     @PutMapping("/update")
-    Mono<ResponseEntity<UpdatedRowsResponse>> updateProfile(@RequestBody ProfileUpdateRequest profileUpdateRequest);
+    Mono<ResponseEntity<UpdatedRowsResponse>> updateProfile(@RequestBody @Valid ProfileUpdateRequest profileUpdateRequest);
 
 }

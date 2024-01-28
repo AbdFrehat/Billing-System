@@ -3,6 +3,7 @@ package com.selling.system.auth.profiles.manager.service.impl;
 import com.selling.system.auth.profiles.manager.service.api.AuthoritiesService;
 import com.selling.system.auth.shared.module.mapper.api.Mapper;
 import com.selling.system.auth.shared.module.models.dto.AuthoritiesDto;
+import com.selling.system.auth.shared.module.models.request.authority.AuthorityDeleteRequest;
 import com.selling.system.auth.shared.module.models.request.authority.AuthorityInsertRequest;
 import com.selling.system.auth.shared.module.models.request.authority.AuthorityUpdateNameRequest;
 import com.selling.system.auth.shared.module.models.response.UpdatedRowsResponse;
@@ -42,6 +43,13 @@ public class AuthoritiesServiceImpl implements AuthoritiesService {
     @Override
     public Mono<UpdatedRowsResponse> saveAuthorities(AuthorityInsertRequest request) {
         return authoritiesRepository.saveAuthorities(request.getAuthorities())
+                .map($ -> UpdatedRowsResponse.builder().count($).build());
+    }
+
+    @Override
+    public Mono<UpdatedRowsResponse> deleteAuthority(AuthorityDeleteRequest request) {
+        return authoritiesRepository.deleteProfilesAuthority(request.getAuthorityName())
+                .flatMap($ -> authoritiesRepository.deleteAuthority(request.getAuthorityName(), $))
                 .map($ -> UpdatedRowsResponse.builder().count($).build());
     }
 }

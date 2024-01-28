@@ -75,7 +75,7 @@ public class ProfilesRepositoryImpl implements ProfilesRepository {
                 .bind(PROFILE_NAME, profileName)
                 .fetch()
                 .rowsUpdated()
-                .map(updatedRows -> updatedRows + count);
+                .map($ -> $ + count);
     }
 
     @Override

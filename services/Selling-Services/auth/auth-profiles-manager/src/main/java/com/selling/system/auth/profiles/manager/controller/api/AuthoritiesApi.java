@@ -1,6 +1,7 @@
 package com.selling.system.auth.profiles.manager.controller.api;
 
 import com.selling.system.auth.shared.module.models.dto.AuthoritiesDto;
+import com.selling.system.auth.shared.module.models.request.authority.AuthorityDeleteRequest;
 import com.selling.system.auth.shared.module.models.request.authority.AuthorityInsertRequest;
 import com.selling.system.auth.shared.module.models.request.authority.AuthorityUpdateNameRequest;
 import com.selling.system.auth.shared.module.models.response.UpdatedRowsResponse;
@@ -20,4 +21,7 @@ public interface AuthoritiesApi {
 
     @PostMapping
     Mono<ResponseEntity<UpdatedRowsResponse>> saveAuthorities(@RequestBody @Valid AuthorityInsertRequest request);
+
+    @DeleteMapping
+    Mono<ResponseEntity<UpdatedRowsResponse>> deleteAuthority(@RequestBody @Valid AuthorityDeleteRequest request);
 }

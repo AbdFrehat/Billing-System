@@ -16,4 +16,8 @@ public interface AuthoritiesRepository {
     Mono<Long> updateAuthorityName(String authorityName, String updatedAuthorityName);
 
     Mono<Long> saveAuthorities(Set<AuthorityData> authorities);
+
+    Mono<Long> deleteProfilesAuthority(String authorityName);
+
+    Mono<Long> deleteAuthority(String authorityName, Long count);
 }

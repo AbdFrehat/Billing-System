@@ -12,4 +12,10 @@ public interface GroupsRepository {
 
     Mono<Long> saveGroup(String groupName);
 
+    Mono<Long> deleteProfilesAuthoritiesGroup(String groupName);
+
+    Mono<Long> deleteAuthoritiesGroup(String groupName, Long count);
+
+    Mono<Long> deleteGroup(String groupName, Long count);
+
 }

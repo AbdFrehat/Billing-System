@@ -14,7 +14,7 @@ CREATE TABLE authorities
     group_id INTEGER,
     authority_name VARCHAR(32) NOT NULL,
     PRIMARY KEY (authority_id),
-    UNIQUE (authority_name, group_id)
+    UNIQUE (authority_name, group_id),
     FOREIGN KEY (group_id) REFERENCES groups (group_id)
 );
 

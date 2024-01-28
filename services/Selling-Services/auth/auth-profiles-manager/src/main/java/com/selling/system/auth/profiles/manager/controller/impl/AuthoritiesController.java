@@ -3,6 +3,7 @@ package com.selling.system.auth.profiles.manager.controller.impl;
 import com.selling.system.auth.profiles.manager.controller.api.AuthoritiesApi;
 import com.selling.system.auth.profiles.manager.service.api.AuthoritiesService;
 import com.selling.system.auth.shared.module.models.dto.AuthoritiesDto;
+import com.selling.system.auth.shared.module.models.request.authority.AuthorityDeleteRequest;
 import com.selling.system.auth.shared.module.models.request.authority.AuthorityInsertRequest;
 import com.selling.system.auth.shared.module.models.request.authority.AuthorityUpdateNameRequest;
 import com.selling.system.auth.shared.module.models.response.UpdatedRowsResponse;
@@ -36,5 +37,11 @@ public class AuthoritiesController implements AuthoritiesApi {
     public Mono<ResponseEntity<UpdatedRowsResponse>> saveAuthorities(AuthorityInsertRequest request) {
         return authoritiesService.saveAuthorities(request)
                 .map($ -> ResponseEntity.status(HttpStatus.CREATED).body($));
+    }
+
+    @Override
+    public Mono<ResponseEntity<UpdatedRowsResponse>> deleteAuthority(AuthorityDeleteRequest request) {
+        return authoritiesService.deleteAuthority(request)
+                .map($ -> ResponseEntity.status(HttpStatus.ACCEPTED).body($));
     }
 }

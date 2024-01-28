@@ -66,4 +66,21 @@ public class AuthoritiesRepositoryImpl implements AuthoritiesRepository {
                     return genericExecuteSpec.fetch().rowsUpdated();
                 });
     }
+
+    @Override
+    public Mono<Long> deleteProfilesAuthority(String authorityName) {
+        return client.sql(provider.provide(DELETE_PROFILE_AUTHORITY))
+                .bind(AUTHORITY_NAME, authorityName)
+                .fetch()
+                .rowsUpdated();
+    }
+
+    @Override
+    public Mono<Long> deleteAuthority(String authorityName, Long count) {
+        return client.sql(provider.provide(DELETE_AUTHORITY))
+                .bind(AUTHORITY_NAME, authorityName)
+                .fetch()
+                .rowsUpdated()
+                .map($ -> $ + count);
+    }
 }

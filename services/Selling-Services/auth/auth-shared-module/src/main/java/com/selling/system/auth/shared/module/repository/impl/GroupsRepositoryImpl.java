@@ -48,4 +48,30 @@ public class GroupsRepositoryImpl implements GroupsRepository {
                 .fetch()
                 .rowsUpdated();
     }
+
+    @Override
+    public Mono<Long> deleteProfilesAuthoritiesGroup(String groupName) {
+        return client.sql(provider.provide(DELETE_PROFILE_AUTHORITIES_GROUP))
+                .bind(GROUP_NAME, groupName)
+                .fetch()
+                .rowsUpdated();
+    }
+
+    @Override
+    public Mono<Long> deleteAuthoritiesGroup(String groupName, Long count) {
+        return client.sql(provider.provide(DELETE_AUTHORITIES_GROUP))
+                .bind(GROUP_NAME, groupName)
+                .fetch()
+                .rowsUpdated()
+                .map($ -> $ + count);
+    }
+
+    @Override
+    public Mono<Long> deleteGroup(String groupName, Long count) {
+        return client.sql(provider.provide(DELETE_GROUP))
+                .bind(GROUP_NAME, groupName)
+                .fetch()
+                .rowsUpdated()
+                .map($ -> $ + count);
+    }
 }

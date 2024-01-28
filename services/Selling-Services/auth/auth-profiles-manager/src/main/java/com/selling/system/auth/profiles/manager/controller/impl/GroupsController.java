@@ -3,6 +3,7 @@ package com.selling.system.auth.profiles.manager.controller.impl;
 import com.selling.system.auth.profiles.manager.controller.api.GroupsApi;
 import com.selling.system.auth.profiles.manager.service.api.GroupsService;
 import com.selling.system.auth.shared.module.models.dto.GroupsDto;
+import com.selling.system.auth.shared.module.models.request.group.GroupDeleteRequest;
 import com.selling.system.auth.shared.module.models.request.group.GroupInsertRequest;
 import com.selling.system.auth.shared.module.models.request.group.GroupUpdateNameRequest;
 import com.selling.system.auth.shared.module.models.response.UpdatedRowsResponse;
@@ -37,5 +38,11 @@ public class GroupsController implements GroupsApi {
     public Mono<ResponseEntity<UpdatedRowsResponse>> insertGroup(GroupInsertRequest request) {
         return groupsService.insertGroup(request)
                 .map($ -> ResponseEntity.status(HttpStatus.CREATED).body($));
+    }
+
+    @Override
+    public Mono<ResponseEntity<UpdatedRowsResponse>> deleteGroup(GroupDeleteRequest request) {
+        return groupsService.deleteGroup(request)
+                .map($ -> ResponseEntity.status(HttpStatus.ACCEPTED).body($));
     }
 }
