@@ -7,6 +7,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication(scanBasePackages = {
         "com.selling.system.auth.users.manager",
+        "com.selling.system.auth.shared.module",
         "com.selling.system.shared.module"
 })
 @EnableDiscoveryClient

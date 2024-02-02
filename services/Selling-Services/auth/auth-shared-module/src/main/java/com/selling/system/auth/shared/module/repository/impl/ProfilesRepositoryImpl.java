@@ -44,7 +44,7 @@ public class ProfilesRepositoryImpl implements ProfilesRepository {
         return client.sql(provider.provide(RETRIEVE_ALL_PROFILES))
                 .fetch()
                 .all()
-                .bufferUntilChanged(result -> result.get(PROFILE_ID))
+                .bufferUntilChanged($ -> $.get(PROFILE_ID))
                 .flatMap(ProfileMapper::fromRows);
     }
 
@@ -54,7 +54,7 @@ public class ProfilesRepositoryImpl implements ProfilesRepository {
                 .bind(PROFILE_NAME, profileName)
                 .fetch()
                 .all()
-                .bufferUntilChanged(result -> result.get(PROFILE_ID))
+                .bufferUntilChanged($ -> $.get(PROFILE_ID))
                 .flatMap(ProfileMapper::fromRows)
                 .singleOrEmpty()
                 .switchIfEmpty(Mono.error(new ProfileNotFoundException()));

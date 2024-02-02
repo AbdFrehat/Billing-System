@@ -5,6 +5,7 @@ import com.selling.system.auth.shared.module.models.dto.*;
 import com.selling.system.auth.shared.module.models.entities.Authority;
 import com.selling.system.auth.shared.module.models.entities.Group;
 import com.selling.system.auth.shared.module.models.entities.Profile;
+import com.selling.system.auth.shared.module.models.entities.User;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -53,6 +54,33 @@ public class AuthMapper implements Mapper {
     @Override
     public GroupsDto groupsToGroupsDto(List<GroupDto> groupsDto) {
         return GroupsDto.builder().groups(groupsDto).build();
+    }
+
+    @Override
+    public UserDto userToUserDto(User user) {
+        return UserDto.builder()
+                .username(user.getUsername())
+                .email(user.getEmail())
+                .password(user.getPassword())
+                .phone(user.getPhone())
+                .profile(profileToProfileDto(user.getProfile()))
+                .createdAt(user.getCreatedAt())
+                .enabled(user.isEnabled())
+                .accountExpired(user.isAccountExpired())
+                .credentialExpired(user.isCredentialExpired())
+                .locked(user.isLocked())
+                .lastPasswordChanged(user.getLastPasswordChanged())
+                .country(user.getCountry())
+                .city(user.getCity())
+                .street(user.getStreet())
+                .build();
+    }
+
+    @Override
+    public UsersDto usersToUsersDto(List<UserDto> users) {
+        return UsersDto.builder()
+                .users(users)
+                .build();
     }
 
 }

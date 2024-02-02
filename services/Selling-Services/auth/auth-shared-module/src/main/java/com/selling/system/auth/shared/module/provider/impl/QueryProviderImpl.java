@@ -54,8 +54,7 @@ public class QueryProviderImpl implements QueryProvider {
                          groups g
                          ON
                              g.group_id = a.group_id
-                    WHERE p.profile_name = :profile_name
-                    ;
+                    WHERE p.profile_name = :profile_name;
                         """;
             case RETRIEVE_ALL_AUTHORITIES -> """
                     SELECT a.authority_id,
@@ -73,6 +72,64 @@ public class QueryProviderImpl implements QueryProvider {
                            group_name
                     FROM groups;
                         """;
+            case RETRIEVE_ALL_USERS -> """
+                    SELECT u.user_id,
+                           u.username,
+                           u.email,
+                           u.password,
+                           u.phone,
+                           u.profile_id,
+                           u.create_at,
+                           u.is_enabled,
+                           u.is_account_expired,
+                           u.is_credential_expired,
+                           u.is_account_locked,
+                           u.last_password_changed,
+                           u.country,
+                           u.city,
+                           u.street,
+                           p.profile_id,
+                           p.profile_name,
+                           a.authority_id,
+                           a.authority_name,
+                           g.group_id,
+                           g.group_name
+                    FROM users u
+                             LEFT OUTER JOIN profiles p on p.profile_id = u.profile_id
+                             LEFT OUTER JOIN profiles_authorities pa on p.profile_id = pa.profile_id
+                             INNER JOIN authorities a on pa.authority_id = a.authority_id
+                             LEFT OUTER JOIN groups g on a.group_id = g.group_id;
+                    """;
+            case RETRIEVE_USER -> """
+                    SELECT u.user_id,
+                           u.username,
+                           u.email,
+                           u.password,
+                           u.phone,
+                           u.profile_id,
+                           u.create_at,
+                           u.is_enabled,
+                           u.is_account_expired,
+                           u.is_account_locked,
+                           u.is_credential_expired,
+                           u.last_password_changed,
+                           u.country,
+                           u.city,
+                           u.street,
+                           p.profile_id,
+                           p.profile_name,
+                           a.authority_id,
+                           a.authority_name,
+                           g.group_id,
+                           g.group_name
+                    FROM users u
+                             LEFT OUTER JOIN profiles p on p.profile_id = u.profile_id
+                             LEFT OUTER JOIN profiles_authorities pa on p.profile_id = pa.profile_id
+                             INNER JOIN authorities a on pa.authority_id = a.authority_id
+                             LEFT OUTER JOIN groups g on a.group_id = g.group_id
+                    WHERE
+                        u.username = :username;
+                    """;
             case ADD_PROFILE -> """
                     INSERT INTO profiles (profile_name)
                     VALUES

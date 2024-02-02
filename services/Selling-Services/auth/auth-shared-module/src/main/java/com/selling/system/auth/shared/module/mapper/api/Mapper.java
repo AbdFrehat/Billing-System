@@ -4,6 +4,7 @@ import com.selling.system.auth.shared.module.models.dto.*;
 import com.selling.system.auth.shared.module.models.entities.Authority;
 import com.selling.system.auth.shared.module.models.entities.Group;
 import com.selling.system.auth.shared.module.models.entities.Profile;
+import com.selling.system.auth.shared.module.models.entities.User;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -26,5 +27,9 @@ public interface Mapper {
     GroupDto groupToGroupDto(Group group);
 
     GroupsDto groupsToGroupsDto(List<GroupDto> groupsDto);
+
+    UserDto userToUserDto(User user);
+
+    UsersDto usersToUsersDto(List<UserDto> users);
 
 }

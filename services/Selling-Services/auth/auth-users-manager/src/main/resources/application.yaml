@@ -3,6 +3,16 @@ spring:
     base-path: /selling/auth/users/manager/v1/
   application:
     name: auth-users-manager
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/users-db
+    username: admin
+    password: 123
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 server:
   port: 7041
   servlet:
