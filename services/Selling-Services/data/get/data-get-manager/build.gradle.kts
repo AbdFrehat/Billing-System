@@ -18,6 +18,7 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test")
     testImplementation("org.springframework.cloud:spring-cloud-starter-contract-stub-runner:${project.findProperty("springCloudContractStubRunnerVersion")}")
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
 }
 
 dependencyManagement {

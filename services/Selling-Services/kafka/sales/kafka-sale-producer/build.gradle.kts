@@ -15,6 +15,7 @@ dependencies {
     implementation(project(":shared:shared-module"))
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.kafka:spring-kafka-test")
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
 }
 
 dependencyManagement {
