@@ -9,9 +9,6 @@ public class QueryProviderImpl implements QueryProvider {
 
     @Override
     public String provide(Query query) {
-        {
-
-        }
         return switch (query) {
             case RETRIEVE_ALL_PROFILES -> """
                     SELECT p.profile_name,
@@ -146,6 +143,12 @@ public class QueryProviderImpl implements QueryProvider {
                         (group_name)
                     VALUES (:group_name)
                         """;
+            case ADD_USER -> """
+                    INSERT INTO users(username, email, password, phone, profile_id, country, city, street)
+                    VALUES (:username, :email, :password, :phone, (SELECT profile_id FROM profiles
+                    WHERE profile_name = :profile_name),
+                            :country, :city, :street);
+                    """;
             case IS_PROFILE_NAME_EXISTS -> """
                     SELECT count(*) as profile_count
                     FROM profiles
@@ -216,6 +219,11 @@ public class QueryProviderImpl implements QueryProvider {
                     DELETE
                     FROM authorities
                     WHERE authority_name = :authority_name;
+                    """;
+            case DELETE_USER -> """
+                    DELETE
+                    FROM users
+                    WHERE username = :username
                     """;
             case UPDATE_PROFILE_NAME -> """
                     UPDATE

@@ -2,6 +2,9 @@ package com.selling.system.auth.users.manager.controller.impl;
 
 import com.selling.system.auth.shared.module.models.dto.UserDto;
 import com.selling.system.auth.shared.module.models.dto.UsersDto;
+import com.selling.system.auth.shared.module.models.request.user.UserDeleteRequest;
+import com.selling.system.auth.shared.module.models.request.user.UserInsertRequest;
+import com.selling.system.auth.shared.module.models.response.UpdatedRowsResponse;
 import com.selling.system.auth.users.manager.controller.api.UsersApi;
 import com.selling.system.auth.users.manager.service.api.UsersService;
 import org.springframework.http.HttpStatus;
@@ -29,5 +32,17 @@ public class UsersController implements UsersApi {
     public Mono<ResponseEntity<UserDto>> getUser(String username) {
         return usersService.getUser(username)
                 .map($ -> ResponseEntity.status(HttpStatus.OK).body($));
+    }
+
+    @Override
+    public Mono<ResponseEntity<UpdatedRowsResponse>> deleteUser(UserDeleteRequest request) {
+        return usersService.deleteUser(request)
+                .map($ -> ResponseEntity.status(HttpStatus.ACCEPTED).body($));
+    }
+
+    @Override
+    public Mono<ResponseEntity<UpdatedRowsResponse>> saveUser(UserInsertRequest request) {
+        return usersService.saveUser(request)
+                .map($ -> ResponseEntity.status(HttpStatus.CREATED).body($));
     }
 }

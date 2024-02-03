@@ -54,10 +54,13 @@ CREATE TABLE users
     country               VARCHAR(64)  NOT NULL,
     city                  VARCHAR(64)  NOT NULL,
     street                VARCHAR(64),
-    PRIMARY KEY (profile_id),
+    PRIMARY KEY (user_id),
     UNIQUE (email),
-    UNIQUE (username)
+    UNIQUE (username),
     FOREIGN KEY (profile_id) REFERENCES profiles (profile_id)
 );
+
+
+
 
 
