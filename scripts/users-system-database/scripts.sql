@@ -39,12 +39,12 @@ CREATE TABLE profiles_authorities
 
 CREATE TABLE users
 (
-    user_id               INTEGER DEFAULT NEXTVAL('users_seq'),
+    user_id               INTEGER     DEFAULT NEXTVAL('users_seq'),
     username              VARCHAR(255) NOT NULL,
     email                 VARCHAR(255) NOT NULL,
     password              VARCHAR(255) NOT NULL,
     phone                 VARCHAR(20)  NOT NULL,
-    profile_id            INTEGER      NOT NULL,
+    profile_id            INTEGER,
     create_at             TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
     is_enabled            BOOLEAN     DEFAULT FALSE,
     is_account_expired    BOOLEAN     DEFAULT FALSE,
@@ -58,7 +58,10 @@ CREATE TABLE users
     UNIQUE (email),
     UNIQUE (username),
     FOREIGN KEY (profile_id) REFERENCES profiles (profile_id)
+        ON DELETE SET NULL
 );
+
+
 
 
 

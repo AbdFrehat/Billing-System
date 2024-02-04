@@ -2,7 +2,6 @@ package com.selling.system.auth.shared.module.repository.api;
 
 import com.selling.system.auth.shared.module.models.entities.Profile;
 import com.selling.system.auth.shared.module.models.enums.Query;
-import com.selling.system.auth.shared.module.models.response.ProfileNameExistenceResponse;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -14,7 +13,7 @@ public interface ProfilesRepository {
 
     Mono<Profile> retrieveProfileByName(String profileName);
 
-    Mono<ProfileNameExistenceResponse> isProfileExist(String profileName);
+    Mono<Boolean> isProfileExist(String profileName);
 
     Mono<Long> deleteProfileByName(String profileName, Long count);
 

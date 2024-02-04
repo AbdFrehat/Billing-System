@@ -7,7 +7,7 @@ import com.selling.system.auth.shared.module.models.dto.ProfilesDto;
 import com.selling.system.auth.shared.module.models.request.profile.ProfileDeleteRequest;
 import com.selling.system.auth.shared.module.models.request.profile.ProfileInsertRequest;
 import com.selling.system.auth.shared.module.models.request.profile.ProfileUpdateRequest;
-import com.selling.system.auth.shared.module.models.response.ProfileNameExistenceResponse;
+import com.selling.system.auth.shared.module.models.response.NameExistenceResponse;
 import com.selling.system.auth.shared.module.models.response.UpdatedRowsResponse;
 import com.selling.system.auth.shared.module.repository.api.ProfilesRepository;
 import org.springframework.stereotype.Service;
@@ -70,8 +70,9 @@ public class ProfilesServiceImpl implements ProfilesService {
     }
 
     @Override
-    public Mono<ProfileNameExistenceResponse> isProfileExist(String profileName) {
-        return profilesRepository.isProfileExist(profileName);
+    public Mono<NameExistenceResponse> isProfileExist(String profileName) {
+        return profilesRepository.isProfileExist(profileName)
+                .map($ -> NameExistenceResponse.builder().exists($).build());
     }
 
 }

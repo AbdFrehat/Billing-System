@@ -7,7 +7,7 @@ import com.selling.system.auth.shared.module.models.dto.ProfilesDto;
 import com.selling.system.auth.shared.module.models.request.profile.ProfileDeleteRequest;
 import com.selling.system.auth.shared.module.models.request.profile.ProfileInsertRequest;
 import com.selling.system.auth.shared.module.models.request.profile.ProfileUpdateRequest;
-import com.selling.system.auth.shared.module.models.response.ProfileNameExistenceResponse;
+import com.selling.system.auth.shared.module.models.response.NameExistenceResponse;
 import com.selling.system.auth.shared.module.models.response.UpdatedRowsResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,7 +43,7 @@ public class ProfilesController implements ProfilesApi {
     }
 
     @Override
-    public Mono<ResponseEntity<ProfileNameExistenceResponse>> isProfileExist(String profileName) {
+    public Mono<ResponseEntity<NameExistenceResponse>> isProfileExist(String profileName) {
         return profilesService.isProfileExist(profileName)
                 .map($ -> ResponseEntity.status(HttpStatus.OK).body($));
     }

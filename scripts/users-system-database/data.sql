@@ -60,6 +60,8 @@ ALTER SEQUENCE profiles_seq RESTART WITH 1;
 INSERT INTO profiles (profile_name)
 VALUES ('admin');
 
+ALTER SEQUENCE profiles_seq RESTART WITH 1;
+
 INSERT INTO profiles_authorities (profile_id, authority_id)
 VALUES (1, 1);
 INSERT INTO profiles_authorities (profile_id, authority_id)

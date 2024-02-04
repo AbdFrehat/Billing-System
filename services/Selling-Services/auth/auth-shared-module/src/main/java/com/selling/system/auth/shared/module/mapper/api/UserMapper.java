@@ -14,7 +14,7 @@ public interface UserMapper {
     static Mono<User> fromRows(List<Map<String, Object>> rows) {
         return ProfileMapper.fromRows(rows).map($ -> User.builder()
                 .userId((int) rows.get(0).get(USER_ID))
-                .username((String) rows.get(0).get(USER_NAME))
+                .username((String) rows.get(0).get(USERNAME))
                 .email((String) rows.get(0).get(EMAIL))
                 .password((String) rows.get(0).get(PASSWORD))
                 .phone((String) rows.get(0).get(PHONE))

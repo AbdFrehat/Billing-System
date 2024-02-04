@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ProfileNameExistenceResponse {
+public class NameExistenceResponse {
 
     private boolean exists;
 }

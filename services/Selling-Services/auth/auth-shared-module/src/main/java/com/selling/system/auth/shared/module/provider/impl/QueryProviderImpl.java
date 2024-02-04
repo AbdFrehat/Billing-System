@@ -94,7 +94,7 @@ public class QueryProviderImpl implements QueryProvider {
                     FROM users u
                              LEFT OUTER JOIN profiles p on p.profile_id = u.profile_id
                              LEFT OUTER JOIN profiles_authorities pa on p.profile_id = pa.profile_id
-                             INNER JOIN authorities a on pa.authority_id = a.authority_id
+                             LEFT OUTER JOIN authorities a on pa.authority_id = a.authority_id
                              LEFT OUTER JOIN groups g on a.group_id = g.group_id;
                     """;
             case RETRIEVE_USER -> """
@@ -122,7 +122,7 @@ public class QueryProviderImpl implements QueryProvider {
                     FROM users u
                              LEFT OUTER JOIN profiles p on p.profile_id = u.profile_id
                              LEFT OUTER JOIN profiles_authorities pa on p.profile_id = pa.profile_id
-                             INNER JOIN authorities a on pa.authority_id = a.authority_id
+                             LEFT OUTER JOIN authorities a on pa.authority_id = a.authority_id
                              LEFT OUTER JOIN groups g on a.group_id = g.group_id
                     WHERE
                         u.username = :username;
@@ -150,7 +150,7 @@ public class QueryProviderImpl implements QueryProvider {
                             :country, :city, :street);
                     """;
             case IS_PROFILE_NAME_EXISTS -> """
-                    SELECT count(*) as profile_count
+                    SELECT count(*) AS count
                     FROM profiles
                     WHERE profile_name = :profile_name;
                         """;
@@ -176,6 +176,16 @@ public class QueryProviderImpl implements QueryProvider {
                         IN
                           (%s);
                         """;
+            case IS_USERNAME_EXISTS -> """
+                    SELECT count(*) AS count
+                    FROM users
+                    where LOWER(username) = LOWER(:username);
+                    """;
+            case IS_EMAIL_EXISTS -> """
+                    SELECT count(*) AS count
+                    FROM users
+                    where LOWER(email) = LOWER(:email);
+                    """;
             case ADD_PROFILE_AUTHORITIES -> """
                     INSERT INTO profiles_authorities (profile_id, authority_id)
                     """;
@@ -242,6 +252,16 @@ public class QueryProviderImpl implements QueryProvider {
                         authorities
                     SET authority_name = :update_authority_name
                     WHERE authority_name = :authority_name;
+                    """;
+            case UPDATE_USER_INFO -> """
+                    UPDATE users
+                    SET username = :updated_username,
+                        email    = :email,
+                        phone    = :phone,
+                        country  = :country,
+                        city     = :city,
+                        street   = :street
+                    WHERE username = :username;
                     """;
             case AUTHORITY_VALUES -> """
                     (%s, (SELECT groups.group_id FROM groups WHERE group_name = %s))

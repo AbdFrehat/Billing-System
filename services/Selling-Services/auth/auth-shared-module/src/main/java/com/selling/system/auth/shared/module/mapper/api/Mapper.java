@@ -6,10 +6,13 @@ import com.selling.system.auth.shared.module.models.entities.Group;
 import com.selling.system.auth.shared.module.models.entities.Profile;
 import com.selling.system.auth.shared.module.models.entities.User;
 import org.springframework.stereotype.Component;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import static com.selling.system.auth.shared.module.constants.Columns.Fields.COUNT;
 
 
 @Component
@@ -31,5 +34,9 @@ public interface Mapper {
     UserDto userToUserDto(User user);
 
     UsersDto usersToUsersDto(List<UserDto> users);
+
+    static Mono<Boolean> fromCountQueryRow(Map<String, Object> row) {
+        return Mono.just(((long) row.get(COUNT)) > 0L);
+    }
 
 }

@@ -8,23 +8,19 @@ import lombok.Data;
 import static com.selling.system.auth.shared.module.constants.Validator.*;
 
 @Data
-public class UserInsertRequest {
+public class UserUpdateInfoRequest {
+
+    private String username;
+
     @NotBlank(message = USER_NAME_VALIDATOR_MESSAGE)
     @Size(message = USER_NAME_SIZE_VALIDATOR_MESSAGE, min = 8)
-    private String username;
+    private String updatedUsername;
 
     @Email(message = EMAIL_VALIDATOR_MESSAGE)
     private String email;
 
-    @NotBlank(message = PASSWORD_VALIDATOR_MESSAGE)
-    @Size(message = PASSWORD_SIZE_VALIDATOR_MESSAGE, min = 8)
-    private String password;
-
     @NotBlank(message = PHONE_NUMBER_VALIDATOR_MESSAGE)
     private String phone;
-
-    @NotBlank(message = PROFILE_NAME_VALIDATOR_MESSAGE)
-    private String profileName;
 
     @NotBlank(message = COUNTRY_VALIDATOR_MESSAGE)
     private String country;
@@ -36,5 +32,3 @@ public class UserInsertRequest {
     private String street;
 
 }
-
-

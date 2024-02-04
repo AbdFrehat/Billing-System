@@ -1,10 +1,10 @@
 package com.selling.system.auth.shared.module.repository.impl;
 
 import com.selling.system.auth.shared.module.builder.api.QueryBuilder;
+import com.selling.system.auth.shared.module.mapper.api.Mapper;
 import com.selling.system.auth.shared.module.mapper.api.ProfileMapper;
 import com.selling.system.auth.shared.module.models.entities.Profile;
 import com.selling.system.auth.shared.module.models.enums.Query;
-import com.selling.system.auth.shared.module.models.response.ProfileNameExistenceResponse;
 import com.selling.system.auth.shared.module.provider.api.QueryProvider;
 import com.selling.system.auth.shared.module.repository.api.ProfilesRepository;
 import com.selling.system.shared.module.exceptions.Technical.AuthoritiesEmptyException;
@@ -18,6 +18,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 import static com.selling.system.auth.shared.module.constants.Columns.Authority.AUTHORITY_NAME;
+import static com.selling.system.auth.shared.module.constants.Columns.Bind.UPDATED_PROFILE_NAME;
 import static com.selling.system.auth.shared.module.constants.Columns.Profile.PROFILE_ID;
 import static com.selling.system.auth.shared.module.constants.Columns.Profile.PROFILE_NAME;
 import static com.selling.system.auth.shared.module.models.enums.Query.*;
@@ -61,12 +62,12 @@ public class ProfilesRepositoryImpl implements ProfilesRepository {
     }
 
     @Override
-    public Mono<ProfileNameExistenceResponse> isProfileExist(String profileName) {
+    public Mono<Boolean> isProfileExist(String profileName) {
         return client.sql(provider.provide(IS_PROFILE_NAME_EXISTS))
                 .bind(PROFILE_NAME, profileName)
                 .fetch()
                 .first()
-                .flatMap(ProfileMapper::fromCountQueryRow);
+                .flatMap(Mapper::fromCountQueryRow);
     }
 
     @Override
@@ -118,7 +119,7 @@ public class ProfilesRepositoryImpl implements ProfilesRepository {
         if (isEmpty(updatedProfileName)) return Mono.just(0L);
         return client.sql(provider.provide(UPDATE_PROFILE_NAME))
                 .bind(PROFILE_NAME, profileName)
-                .bind("updated_profile_name", updatedProfileName)
+                .bind(UPDATED_PROFILE_NAME, updatedProfileName)
                 .fetch()
                 .rowsUpdated();
     }

@@ -1,8 +1,10 @@
 package com.selling.system.auth.shared.module.repository.impl;
 
+import com.selling.system.auth.shared.module.mapper.api.Mapper;
 import com.selling.system.auth.shared.module.mapper.api.UserMapper;
 import com.selling.system.auth.shared.module.models.entities.User;
 import com.selling.system.auth.shared.module.models.request.user.UserInsertRequest;
+import com.selling.system.auth.shared.module.models.request.user.UserUpdateInfoRequest;
 import com.selling.system.auth.shared.module.provider.api.QueryProvider;
 import com.selling.system.auth.shared.module.repository.api.UsersRepository;
 import com.selling.system.shared.module.exceptions.business.UserNotFoundException;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import static com.selling.system.auth.shared.module.constants.Columns.Bind.UPDATED_USERNAME;
 import static com.selling.system.auth.shared.module.constants.Columns.Profile.PROFILE_NAME;
 import static com.selling.system.auth.shared.module.constants.Columns.User.*;
 import static com.selling.system.auth.shared.module.models.enums.Query.*;
@@ -39,7 +42,7 @@ public class UsersRepositoryImpl implements UsersRepository {
     @Override
     public Mono<User> retrieveUserByName(String username) {
         return client.sql(provider.provide(RETRIEVE_USER))
-                .bind(USER_NAME, username)
+                .bind(USERNAME, username)
                 .fetch()
                 .all()
                 .bufferUntilChanged($ -> $.get(USER_ID))
@@ -51,7 +54,7 @@ public class UsersRepositoryImpl implements UsersRepository {
     @Override
     public Mono<Long> deleteUser(String username) {
         return client.sql(provider.provide(DELETE_USER))
-                .bind(USER_NAME, username)
+                .bind(USERNAME, username)
                 .fetch()
                 .rowsUpdated();
     }
@@ -59,7 +62,7 @@ public class UsersRepositoryImpl implements UsersRepository {
     @Override
     public Mono<Long> saveUser(UserInsertRequest request) {
         return client.sql(provider.provide(ADD_USER))
-                .bind(USER_NAME, request.getUsername())
+                .bind(USERNAME, request.getUsername())
                 .bind(EMAIL, request.getEmail())
                 .bind(PASSWORD, request.getPassword())
                 .bind(PHONE, request.getPhone())
@@ -69,5 +72,37 @@ public class UsersRepositoryImpl implements UsersRepository {
                 .bind(STREET, request.getStreet())
                 .fetch()
                 .rowsUpdated();
+    }
+
+    @Override
+    public Mono<Long> updateUserInfo(UserUpdateInfoRequest request) {
+        return client.sql(provider.provide(UPDATE_USER_INFO))
+                .bind(UPDATED_USERNAME, request.getUpdatedUsername())
+                .bind(EMAIL, request.getEmail())
+                .bind(PHONE, request.getPhone())
+                .bind(COUNTRY, request.getCountry())
+                .bind(CITY, request.getCity())
+                .bind(STREET, request.getStreet())
+                .bind(USERNAME, request.getUsername())
+                .fetch()
+                .rowsUpdated();
+    }
+
+    @Override
+    public Mono<Boolean> isEmailExists(String email) {
+        return client.sql(provider.provide(IS_EMAIL_EXISTS))
+                .bind(EMAIL, email)
+                .fetch()
+                .first()
+                .flatMap(Mapper::fromCountQueryRow);
+    }
+
+    @Override
+    public Mono<Boolean> isUsernameExists(String username) {
+        return client.sql(provider.provide(IS_USERNAME_EXISTS))
+                .bind(USERNAME, username)
+                .fetch()
+                .first()
+                .flatMap(Mapper::fromCountQueryRow);
     }
 }

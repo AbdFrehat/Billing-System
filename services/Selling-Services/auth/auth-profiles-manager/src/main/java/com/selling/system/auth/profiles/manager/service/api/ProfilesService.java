@@ -5,7 +5,7 @@ import com.selling.system.auth.shared.module.models.dto.ProfilesDto;
 import com.selling.system.auth.shared.module.models.request.profile.ProfileDeleteRequest;
 import com.selling.system.auth.shared.module.models.request.profile.ProfileInsertRequest;
 import com.selling.system.auth.shared.module.models.request.profile.ProfileUpdateRequest;
-import com.selling.system.auth.shared.module.models.response.ProfileNameExistenceResponse;
+import com.selling.system.auth.shared.module.models.response.NameExistenceResponse;
 import com.selling.system.auth.shared.module.models.response.UpdatedRowsResponse;
 import reactor.core.publisher.Mono;
 
@@ -15,7 +15,7 @@ public interface ProfilesService {
 
     Mono<ProfileDto> getProfileByName(String profileName);
 
-    Mono<ProfileNameExistenceResponse> isProfileExist(String profileName);
+    Mono<NameExistenceResponse> isProfileExist(String profileName);
 
     Mono<UpdatedRowsResponse> deleteProfileByName(ProfileDeleteRequest request);
 

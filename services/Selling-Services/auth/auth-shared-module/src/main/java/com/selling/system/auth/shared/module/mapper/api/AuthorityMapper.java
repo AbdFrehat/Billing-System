@@ -14,7 +14,7 @@ import static com.selling.system.auth.shared.module.constants.Columns.Group.GROU
 public interface AuthorityMapper {
 
     static Mono<Authority> fromRow(Map<String, Object> row) {
-        if (row.get(AUTHORITY_ID) != null) {
+        if (row.get(AUTHORITY_ID) != null)
             return Mono.just(
                     Authority.builder()
                             .authorityId((int) row.get(AUTHORITY_ID))
@@ -25,8 +25,6 @@ public interface AuthorityMapper {
                                     .build())
                             .build()
             );
-        } else {
-            return Mono.empty();
-        }
+        return Mono.empty();
     }
 }
