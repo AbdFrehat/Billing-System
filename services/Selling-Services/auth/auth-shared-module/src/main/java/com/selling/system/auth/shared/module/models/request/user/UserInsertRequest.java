@@ -23,9 +23,6 @@ public class UserInsertRequest {
     @NotBlank(message = PHONE_NUMBER_VALIDATOR_MESSAGE)
     private String phone;
 
-    @NotBlank(message = PROFILE_NAME_VALIDATOR_MESSAGE)
-    private String profileName;
-
     @NotBlank(message = COUNTRY_VALIDATOR_MESSAGE)
     private String country;
 

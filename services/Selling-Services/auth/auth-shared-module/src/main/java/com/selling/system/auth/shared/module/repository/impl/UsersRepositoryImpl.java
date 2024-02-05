@@ -66,7 +66,6 @@ public class UsersRepositoryImpl implements UsersRepository {
                 .bind(EMAIL, request.getEmail())
                 .bind(PASSWORD, request.getPassword())
                 .bind(PHONE, request.getPhone())
-                .bind(PROFILE_NAME, request.getProfileName())
                 .bind(COUNTRY, request.getCountry())
                 .bind(CITY, request.getCity())
                 .bind(STREET, request.getStreet())
@@ -84,6 +83,60 @@ public class UsersRepositoryImpl implements UsersRepository {
                 .bind(CITY, request.getCity())
                 .bind(STREET, request.getStreet())
                 .bind(USERNAME, request.getUsername())
+                .fetch()
+                .rowsUpdated();
+    }
+
+    @Override
+    public Mono<Long> updateUserPassword(String username, String password) {
+        return client.sql(provider.provide(UPDATE_USER_PASSWORD))
+                .bind(USERNAME, username)
+                .bind(PASSWORD, password)
+                .fetch()
+                .rowsUpdated();
+    }
+
+    @Override
+    public Mono<Long> updateUserProfile(String username, String profileName) {
+        return client.sql(provider.provide(ASSIGN_USER_PROFILE))
+                .bind(USERNAME, username)
+                .bind(PROFILE_NAME, profileName)
+                .fetch()
+                .rowsUpdated();
+    }
+
+    @Override
+    public Mono<Long> enableUser(String username, boolean flag) {
+        return client.sql(provider.provide(ENABLE_USER))
+                .bind(USERNAME, username)
+                .bind(IS_ENABLED, flag)
+                .fetch()
+                .rowsUpdated();
+    }
+
+    @Override
+    public Mono<Long> lockUser(String username, boolean flag) {
+        return client.sql(provider.provide(LOCK_USER))
+                .bind(USERNAME, username)
+                .bind(IS_ACCOUNT_LOCKED, flag)
+                .fetch()
+                .rowsUpdated();
+    }
+
+    @Override
+    public Mono<Long> expireCredentialUser(String username, boolean flag) {
+        return client.sql(provider.provide(EXPIRE_USER_CREDENTIAL))
+                .bind(USERNAME, username)
+                .bind(IS_CREDENTIAL_EXPIRED, flag)
+                .fetch()
+                .rowsUpdated();
+    }
+
+    @Override
+    public Mono<Long> expireAccountUser(String username, boolean flag) {
+        return client.sql(provider.provide(EXPIRE_USER_ACCOUNT))
+                .bind(USERNAME, username)
+                .bind(IS_ACCOUNT_EXPIRED, flag)
                 .fetch()
                 .rowsUpdated();
     }

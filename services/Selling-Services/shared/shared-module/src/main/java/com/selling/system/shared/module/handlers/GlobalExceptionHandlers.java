@@ -1,5 +1,6 @@
 package com.selling.system.shared.module.handlers;
 
+import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import com.selling.system.shared.module.exceptions.general.BusinessException;
 import com.selling.system.shared.module.exceptions.general.ClientException;
 import com.selling.system.shared.module.exceptions.general.TechnicalException;
@@ -35,11 +36,22 @@ public class GlobalExceptionHandlers {
     @ExceptionHandler(Exception.class)
     public <T extends Exception> ResponseEntity<ErrorResponse> handleGenericException(T t) {
         return ResponseEntity
-                .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .status(HttpStatus.BAD_REQUEST)
                 .body(ErrorResponse.builder()
                         .exceptionName(t.getClass().getSimpleName())
                         .message(getExceptionMessage(messageSource, t, StandardCharsets.UTF_8))
                         .errorCode(getExceptionCode(messageSource, t))
+                        .build());
+    }
+
+    @ExceptionHandler(MismatchedInputException.class)
+    public <T extends Exception> ResponseEntity<ErrorResponse> handleQueryMethodNotFoundException(T t) {
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(ErrorResponse.builder()
+                        .exceptionName(t.getClass().getSimpleName())
+                        .errorCode(getExceptionCode(messageSource, t))
+                        .message(getExceptionCode(messageSource, t))
                         .build());
     }
 

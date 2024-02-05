@@ -3,13 +3,12 @@ package com.selling.system.auth.users.manager.service.impl;
 import com.selling.system.auth.shared.module.mapper.api.Mapper;
 import com.selling.system.auth.shared.module.models.dto.UserDto;
 import com.selling.system.auth.shared.module.models.dto.UsersDto;
-import com.selling.system.auth.shared.module.models.request.user.UserDeleteRequest;
-import com.selling.system.auth.shared.module.models.request.user.UserInsertRequest;
-import com.selling.system.auth.shared.module.models.request.user.UserUpdateInfoRequest;
+import com.selling.system.auth.shared.module.models.request.user.*;
 import com.selling.system.auth.shared.module.models.response.NameExistenceResponse;
 import com.selling.system.auth.shared.module.models.response.UpdatedRowsResponse;
 import com.selling.system.auth.shared.module.repository.api.UsersRepository;
 import com.selling.system.auth.users.manager.service.api.UsersService;
+import com.selling.system.shared.module.exceptions.business.PasswordNotMatchedException;
 import com.selling.system.shared.module.exceptions.client.BadRequestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -65,6 +64,34 @@ public class UsersServiceImpl implements UsersService {
     public Mono<UpdatedRowsResponse> updateUserInfo(UserUpdateInfoRequest request) {
         return usersRepository.updateUserInfo(request)
                 .map($ -> UpdatedRowsResponse.builder().count($).build());
+    }
+
+    @Override
+    public Mono<UpdatedRowsResponse> updateUserPassword(UserUpdatePasswordRequest request) {
+        return usersRepository.retrieveUserByName(request.getUsername())
+                .flatMap(user -> {
+                    boolean matches = passwordEncoder.matches(request.getOldPassword(), user.getPassword());
+                    if (!matches)
+                        return Mono.error(() -> new PasswordNotMatchedException("Old password does not match the new one."));
+                    return usersRepository.updateUserPassword(request.getUsername(), request.getNewPassword());
+                })
+                .map($ -> UpdatedRowsResponse.builder().count($).build());
+    }
+
+    @Override
+    public Mono<UpdatedRowsResponse> updateUserProfile(UserAssignProfileRequest request) {
+        return usersRepository.updateUserProfile(request.getUsername(), request.getProfileName())
+                .map($ -> UpdatedRowsResponse.builder().count($).build());
+    }
+
+    @Override
+    public Mono<UpdatedRowsResponse> updateUserFlags(UserUpdateFlagsRequest request) {
+        return (switch (request.getFlagType()) {
+            case ENABLE -> usersRepository.enableUser(request.getUsername(), request.getFlag());
+            case LOCK -> usersRepository.lockUser(request.getUsername(), request.getFlag());
+            case EXPIRE_ACCOUNT -> usersRepository.expireAccountUser(request.getUsername(), request.getFlag());
+            case EXPIRE_CREDENTIAL -> usersRepository.expireCredentialUser(request.getUsername(), request.getFlag());
+        }).map($ -> UpdatedRowsResponse.builder().count($).build());
     }
 
     @Override

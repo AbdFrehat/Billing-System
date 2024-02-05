@@ -17,4 +17,6 @@ public class AuthUsersManagerApplication {
         SpringApplication.run(AuthUsersManagerApplication.class, args);
     }
 
+
+
 }

@@ -2,9 +2,7 @@ package com.selling.system.auth.users.manager.controller.api;
 
 import com.selling.system.auth.shared.module.models.dto.UserDto;
 import com.selling.system.auth.shared.module.models.dto.UsersDto;
-import com.selling.system.auth.shared.module.models.request.user.UserDeleteRequest;
-import com.selling.system.auth.shared.module.models.request.user.UserInsertRequest;
-import com.selling.system.auth.shared.module.models.request.user.UserUpdateInfoRequest;
+import com.selling.system.auth.shared.module.models.request.user.*;
 import com.selling.system.auth.shared.module.models.response.NameExistenceResponse;
 import com.selling.system.auth.shared.module.models.response.UpdatedRowsResponse;
 import jakarta.validation.Valid;
@@ -29,6 +27,15 @@ public interface UsersApi {
 
     @PutMapping("/info")
     Mono<ResponseEntity<UpdatedRowsResponse>> updateUserInfo(@RequestBody @Valid UserUpdateInfoRequest request);
+
+    @PatchMapping("/password")
+    Mono<ResponseEntity<UpdatedRowsResponse>> updateUserPassword(@RequestBody @Valid UserUpdatePasswordRequest request);
+
+    @PatchMapping("/profile")
+    Mono<ResponseEntity<UpdatedRowsResponse>> updateUserProfile(@RequestBody @Valid UserAssignProfileRequest request);
+
+    @PatchMapping("/flag")
+    Mono<ResponseEntity<UpdatedRowsResponse>> updateUserFlags(@RequestBody @Valid UserUpdateFlagsRequest request);
 
     @GetMapping("/exist")
     Mono<ResponseEntity<NameExistenceResponse>> isFieldExists(@QueryParam("fieldName") String fieldName, @QueryParam("value") String value);

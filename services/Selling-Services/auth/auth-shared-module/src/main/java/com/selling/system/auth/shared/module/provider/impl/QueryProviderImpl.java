@@ -144,10 +144,8 @@ public class QueryProviderImpl implements QueryProvider {
                     VALUES (:group_name)
                         """;
             case ADD_USER -> """
-                    INSERT INTO users(username, email, password, phone, profile_id, country, city, street)
-                    VALUES (:username, :email, :password, :phone, (SELECT profile_id FROM profiles
-                    WHERE profile_name = :profile_name),
-                            :country, :city, :street);
+                    INSERT INTO users(username, email, password, phone, country, city, street)
+                    VALUES (:username, :email, :password, :phone, :country, :city, :street);
                     """;
             case IS_PROFILE_NAME_EXISTS -> """
                     SELECT count(*) AS count
@@ -263,8 +261,38 @@ public class QueryProviderImpl implements QueryProvider {
                         street   = :street
                     WHERE username = :username;
                     """;
+            case UPDATE_USER_PASSWORD -> """
+                    UPDATE users
+                    SET password = :password
+                    WHERE username = :username;
+                    """;
+            case ASSIGN_USER_PROFILE -> """
+                    UPDATE users
+                    SET profile_id = (SELECT profile_id FROM profiles WHERE profile_name = :profile_name)
+                    WHERE username = :username;
+                    """;
             case AUTHORITY_VALUES -> """
                     (%s, (SELECT groups.group_id FROM groups WHERE group_name = %s))
+                    """;
+            case ENABLE_USER -> """
+                    UPDATE users
+                    SET is_enabled = :is_enabled
+                    WHERE username = :username;
+                    """;
+            case LOCK_USER -> """
+                    UPDATE users
+                    SET is_account_locked = :is_account_locked
+                    WHERE username = :username;
+                    """;
+            case EXPIRE_USER_ACCOUNT -> """
+                    UPDATE users
+                    SET is_credential_expired = :is_credential_expired
+                    WHERE username = :username;
+                    """;
+            case EXPIRE_USER_CREDENTIAL -> """
+                    UPDATE users
+                    SET is_account_expired = :is_account_expired
+                    WHERE username = :username;
                     """;
         };
     }

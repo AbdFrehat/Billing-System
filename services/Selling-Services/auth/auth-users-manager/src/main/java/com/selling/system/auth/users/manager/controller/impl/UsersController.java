@@ -2,21 +2,15 @@ package com.selling.system.auth.users.manager.controller.impl;
 
 import com.selling.system.auth.shared.module.models.dto.UserDto;
 import com.selling.system.auth.shared.module.models.dto.UsersDto;
-import com.selling.system.auth.shared.module.models.request.user.UserDeleteRequest;
-import com.selling.system.auth.shared.module.models.request.user.UserInsertRequest;
-import com.selling.system.auth.shared.module.models.request.user.UserUpdateInfoRequest;
+import com.selling.system.auth.shared.module.models.request.user.*;
 import com.selling.system.auth.shared.module.models.response.NameExistenceResponse;
 import com.selling.system.auth.shared.module.models.response.UpdatedRowsResponse;
 import com.selling.system.auth.users.manager.controller.api.UsersApi;
 import com.selling.system.auth.users.manager.service.api.UsersService;
-import com.selling.system.shared.module.exceptions.client.BadRequestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
-
-import static com.selling.system.auth.shared.module.constants.Columns.User.EMAIL;
-import static com.selling.system.auth.shared.module.constants.Columns.User.USERNAME;
 
 
 @RestController
@@ -55,6 +49,24 @@ public class UsersController implements UsersApi {
     @Override
     public Mono<ResponseEntity<UpdatedRowsResponse>> updateUserInfo(UserUpdateInfoRequest request) {
         return usersService.updateUserInfo(request)
+                .map($ -> ResponseEntity.status(HttpStatus.ACCEPTED).body($));
+    }
+
+    @Override
+    public Mono<ResponseEntity<UpdatedRowsResponse>> updateUserPassword(UserUpdatePasswordRequest request) {
+        return usersService.updateUserPassword(request)
+                .map($ -> ResponseEntity.status(HttpStatus.ACCEPTED).body($));
+    }
+
+    @Override
+    public Mono<ResponseEntity<UpdatedRowsResponse>> updateUserProfile(UserAssignProfileRequest request) {
+        return usersService.updateUserProfile(request)
+                .map($ -> ResponseEntity.status(HttpStatus.ACCEPTED).body($));
+    }
+
+    @Override
+    public Mono<ResponseEntity<UpdatedRowsResponse>>  updateUserFlags(UserUpdateFlagsRequest request) {
+        return usersService.updateUserFlags(request)
                 .map($ -> ResponseEntity.status(HttpStatus.ACCEPTED).body($));
     }
 
