@@ -1,6 +1,5 @@
 package com.selling.system.auth.shared.module.models.request.user;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.selling.system.auth.shared.module.models.enums.FlagType;
 import com.selling.system.shared.module.models.annotations.ValidFieldTypeEnum;
 import jakarta.validation.constraints.NotBlank;

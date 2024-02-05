@@ -33,25 +33,14 @@ public class GlobalExceptionHandlers {
         this.commonMessageSource = commonMessageSource;
     }
 
-    @ExceptionHandler(Exception.class)
-    public <T extends Exception> ResponseEntity<ErrorResponse> handleGenericException(T t) {
-        return ResponseEntity
-                .status(HttpStatus.BAD_REQUEST)
-                .body(ErrorResponse.builder()
-                        .exceptionName(t.getClass().getSimpleName())
-                        .message(getExceptionMessage(messageSource, t, StandardCharsets.UTF_8))
-                        .errorCode(getExceptionCode(messageSource, t))
-                        .build());
-    }
-
     @ExceptionHandler(MismatchedInputException.class)
-    public <T extends Exception> ResponseEntity<ErrorResponse> handleQueryMethodNotFoundException(T t) {
+    public <T extends MismatchedInputException> ResponseEntity<ErrorResponse> handleMismatchedInputException(T t) {
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .body(ErrorResponse.builder()
                         .exceptionName(t.getClass().getSimpleName())
                         .errorCode(getExceptionCode(messageSource, t))
-                        .message(getExceptionCode(messageSource, t))
+                        .message(getExceptionMessage(messageSource, t, StandardCharsets.UTF_8))
                         .build());
     }
 

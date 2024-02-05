@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static com.selling.system.auth.shared.module.constants.Columns.Fields.COUNT;
 import static com.selling.system.auth.shared.module.constants.Columns.Profile.PROFILE_ID;
 import static com.selling.system.auth.shared.module.constants.Columns.Profile.PROFILE_NAME;
 
