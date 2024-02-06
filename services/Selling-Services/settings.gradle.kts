@@ -107,6 +107,8 @@ include(":auth:auth-users-manager")
 findProject(":auth:auth-users-manager")?.name = "auth-users-manager"
 include(":auth:auth-profiles-manager")
 findProject(":auth:auth-profiles-manager")?.name = "auth-profiles-manager"
+include(":auth:auth-clients-manager")
+findProject(":auth:auth-clients-manager")?.name = "auth-clients-manager"
 include(":auth:auth-shared-module")
 findProject(":auth:auth-shared-module")?.name = "auth-shared-module"
 

@@ -2,11 +2,11 @@ spring:
   webflux:
     base-path: /selling/auth/manager/v1/
   application:
-    name: auth-manager
+    name: auth-clients-manager
 server:
-  port: 7040
+  port: 7043
   servlet:
-    context-path: /selling/auth/manager/v1/
+    context-path: /selling/auth/clients/manager/v1/
 eureka:
   client:
     register-with-eureka: true
