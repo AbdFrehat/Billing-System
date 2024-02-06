@@ -2,6 +2,9 @@ CREATE SEQUENCE profiles_seq START 1;
 CREATE SEQUENCE authorities_seq START 1;
 CREATE SEQUENCE groups_seq START 1;
 CREATE SEQUENCE users_seq START 1;
+CREATE SEQUENCE clients_seq START 1;
+CREATE SEQUENCE grants_seq START 1;
+
 
 CREATE TABLE groups
 (
@@ -61,6 +64,28 @@ CREATE TABLE users
         ON DELETE SET NULL
 );
 
+CREATE TABLE clients
+(
+    client_seq    INTEGER DEFAULT NEXTVAL('clients_seq'),
+    client_id     VARCHAR(64)  NOT NULL,
+    client_secret VARCHAR(255) NOT NULL,
+    profile_id    INTEGER,
+    grant_id      INTEGER      NOT NULL,
+    PRIMARY KEY (client_seq),
+    UNIQUE (client_id),
+    FOREIGN KEY (profile_id) REFERENCES profiles (profile_id)
+        ON DELETE SET NULL,
+    FOREIGN KEY (grant_id) REFERENCES grant_types (grant_id)
+        ON DELETE SET NULL
+);
+
+
+CREATE TABLE grant_types
+(
+    grant_id   INTEGER     DEFAULT NEXTVAL('grants_seq'),
+    grant_type VARCHAR(32) NOT NULL,
+    PRIMARY KEY (grant_id)
+);
 
 
 

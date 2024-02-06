@@ -107,3 +107,9 @@ ALTER SEQUENCE users_seq RESTART WITH 1;
 INSERT INTO users(username, email, password, phone, profile_id, country, city, street)
 VALUES ('abdFrehat', 'abood512543@gmail.com', '$2a$12$rqoOPFbeTdjOA3Pg87K80O3yG.aGT6oi.tDeIb.elGCmoBAwCqbV6
 ', '00926782450415', 1, 'Jordan', 'Amman', 'A12-34');
+
+ALTER SEQUENCE grants_seq RESTART WITH 1;
+
+INSERT INTO grant_types (grant_type) VALUES ('CLIENT');
+INSERT INTO grant_types (grant_type) VALUES ('PKCE');
+INSERT INTO grant_types (grant_type) VALUES ('AUTHORIZATION');
