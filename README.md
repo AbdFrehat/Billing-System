@@ -10,4 +10,4 @@ Dashboard shows the amount of traffic, statistical performance and grouped data.
 
 ---
 
-![Architecture](./docs/architecture/billing-system.drawio.svg)
+![Architecture](./docs/architecture/selling-system.drawio.svg)
