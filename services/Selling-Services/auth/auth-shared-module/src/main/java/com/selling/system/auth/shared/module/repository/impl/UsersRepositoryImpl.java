@@ -8,6 +8,7 @@ import com.selling.system.auth.shared.module.models.request.user.UserUpdateInfoR
 import com.selling.system.auth.shared.module.provider.api.QueryProvider;
 import com.selling.system.auth.shared.module.repository.api.UsersRepository;
 import com.selling.system.shared.module.exceptions.business.UserNotFoundException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.r2dbc.core.DatabaseClient;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
@@ -19,16 +20,12 @@ import static com.selling.system.auth.shared.module.constants.Columns.User.*;
 import static com.selling.system.auth.shared.module.models.enums.Query.*;
 
 @RestController
+@RequiredArgsConstructor
 public class UsersRepositoryImpl implements UsersRepository {
 
     private final DatabaseClient client;
 
     private final QueryProvider provider;
-
-    public UsersRepositoryImpl(DatabaseClient client, QueryProvider provider) {
-        this.client = client;
-        this.provider = provider;
-    }
 
     @Override
     public Flux<User> retrieveAllUsers() {

@@ -147,11 +147,53 @@ public class QueryProviderImpl implements QueryProvider {
                     INSERT INTO users(username, email, password, phone, country, city, street)
                     VALUES (:username, :email, :password, :phone, :country, :city, :street);
                     """;
+            case RETRIEVE_ALL_CLIENTS -> """
+                    SELECT c.client_seq,
+                           c.client_id,
+                           c.client_secret,
+                           gt.grant_id,
+                           gt.grant_type,
+                           p.profile_id,
+                           p.profile_name,
+                           a.authority_id,
+                           a.authority_name
+                    FROM clients c
+                             LEFT OUTER JOIN grant_types gt on gt.grant_id = c.grant_id
+                             LEFT OUTER JOIN profiles p on p.profile_id = c.profile_id
+                             LEFT OUTER JOIN profiles_authorities pa on p.profile_id = pa.profile_id
+                             LEFT OUTER JOIN authorities a on a.authority_id = pa.authority_id;
+                    """;
+            case RETRIEVE_CLIENT -> """
+                    SELECT c.client_seq,
+                           c.client_id,
+                           c.client_secret,
+                           gt.grant_id,
+                           gt.grant_type,
+                           p.profile_id,
+                           p.profile_name,
+                           a.authority_id,
+                           a.authority_name
+                    FROM clients c
+                             LEFT OUTER JOIN grant_types gt on gt.grant_id = c.grant_id
+                             LEFT OUTER JOIN profiles p on p.profile_id = c.profile_id
+                             LEFT OUTER JOIN profiles_authorities pa on p.profile_id = pa.profile_id
+                             LEFT OUTER JOIN authorities a on a.authority_id = pa.authority_id
+                    WHERE client_id = :client_id;
+                    """;
+            case RETRIEVE_GRANT_TYPES -> """
+                    SELECT grant_id,
+                           grant_type
+                    FROM grant_types;
+                    """;
             case IS_PROFILE_NAME_EXISTS -> """
                     SELECT count(*) AS count
                     FROM profiles
                     WHERE profile_name = :profile_name;
                         """;
+            case ADD_GRANT_TYPE -> """
+                    INSERT INTO grant_types (grant_type)
+                    VALUES (:grant_type);
+                    """;
             case DELETE_PROFILE -> """
                     DELETE
                     FROM profiles
@@ -232,6 +274,11 @@ public class QueryProviderImpl implements QueryProvider {
                     DELETE
                     FROM users
                     WHERE username = :username
+                    """;
+            case DELETE_GRANT_TYPE -> """
+                    DELETE
+                    FROM grant_types
+                    WHERE grant_type = :grant_type;
                     """;
             case UPDATE_PROFILE_NAME -> """
                     UPDATE

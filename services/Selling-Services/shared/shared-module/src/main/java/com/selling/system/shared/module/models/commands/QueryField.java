@@ -2,7 +2,6 @@ package com.selling.system.shared.module.models.commands;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.selling.system.shared.module.convertors.ObjectToObjectsConvertor;
-import com.selling.system.shared.module.models.annotations.ValidFieldTypeEnum;
 import com.selling.system.shared.module.models.commons.Range;
 import com.selling.system.shared.module.models.enums.FieldType;
 import jakarta.validation.constraints.NotBlank;
@@ -30,7 +29,7 @@ public class QueryField implements QueryFieldAbstract, Serializable {
 
     @NotNull(message = "QueryField.fieldType can not be null")
     @JsonProperty(value = "fieldType")
-    @ValidFieldTypeEnum(message = "QueryField.fieldType is not supported", regexp = "RANGE|STRING|OTHER|LIST|DATE|RANGE_DATE|FREE")
+//    @ValidFieldTypeEnum(message = "QueryField.fieldType is not supported", regexp = "RANGE|STRING|OTHER|LIST|DATE|RANGE_DATE|FREE")
     private FieldType fieldType;
 
     public Object getValue() {

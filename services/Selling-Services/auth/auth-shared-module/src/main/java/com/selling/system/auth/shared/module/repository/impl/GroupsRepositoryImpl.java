@@ -4,6 +4,7 @@ import com.selling.system.auth.shared.module.mapper.api.GroupMapper;
 import com.selling.system.auth.shared.module.models.entities.Group;
 import com.selling.system.auth.shared.module.provider.api.QueryProvider;
 import com.selling.system.auth.shared.module.repository.api.GroupsRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.r2dbc.core.DatabaseClient;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
@@ -13,16 +14,12 @@ import static com.selling.system.auth.shared.module.constants.Columns.Group.GROU
 import static com.selling.system.auth.shared.module.models.enums.Query.*;
 
 @Repository
+@RequiredArgsConstructor
 public class GroupsRepositoryImpl implements GroupsRepository {
 
     private final DatabaseClient client;
 
     private final QueryProvider provider;
-
-    public GroupsRepositoryImpl(DatabaseClient client, QueryProvider provider) {
-        this.client = client;
-        this.provider = provider;
-    }
 
     @Override
     public Flux<Group> retrieveAllGroups() {

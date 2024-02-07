@@ -14,9 +14,9 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = FieldTypeValidator.class)
 public @interface ValidFieldTypeEnum {
 
-    String regexp();
-    
     String message();
+
+    Class<? extends Enum<?>> enumClass();
 
     Class<?>[] groups() default {};
 

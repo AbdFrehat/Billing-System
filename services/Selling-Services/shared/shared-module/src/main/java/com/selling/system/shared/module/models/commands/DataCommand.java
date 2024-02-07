@@ -48,8 +48,6 @@ public class DataCommand implements DataCommandAbstract {
      */
     @NotNull(message = "QueryCommand.queryMethod can not be null")
     @JsonProperty(value = "commandType")
-    @ValidFieldTypeEnum(message = "QueryCommand.commandType is not supported", regexp =
-            "GET_SALES|GET_FREE_SALES|GET_OPT_SALES|SAVE_SALE|SAVE_SALES|UPDATE_SALE|UPDATE_SALES|DELETE_SALE|DELETE_SALES|DELETE_QUERY_SALES")
     protected CommandType commandType;
 
     @JsonProperty(value = "sort")

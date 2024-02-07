@@ -19,6 +19,5 @@ public class ExportDataCommand implements ExportDataCommandAbstract {
     private String fileName;
 
     @NotNull(message = "export type must not be null")
-    @ValidFieldTypeEnum(message = "ExportDataCommand.exportTypes is not supported", regexp = "XML|XLSX|PDF|CSV|JSON")
     private ExportType exportType;
 }

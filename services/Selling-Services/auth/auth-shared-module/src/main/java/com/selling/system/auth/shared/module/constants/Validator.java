@@ -9,6 +9,8 @@ public class Validator {
     public static final String USER_NAME_VALIDATOR_MESSAGE = "username can not be empty";
     public static final String FLAG_NAME_VALIDATOR_MESSAGE = "flag name can not be empty";
     public static final String FLAG_NAME_NOT_FOUND_MESSAGE = "flag name can not be found";
+    public static final String GRANT_TYPE_VALIDATOR_MESSAGE = "grant type can not be empty";
+    public static final String GRANT_TYPE_NOT_FOUND_MESSAGE = "grant type can not be found";
     public static final String USER_NAME_SIZE_VALIDATOR_MESSAGE = "username is too short, must be longer than 7 chars";
     public static final String PASSWORD_SIZE_VALIDATOR_MESSAGE = "password is too short, must be longer than 7 chars";
     public static final String PASSWORD_VALIDATOR_MESSAGE = "password  can not be empty";

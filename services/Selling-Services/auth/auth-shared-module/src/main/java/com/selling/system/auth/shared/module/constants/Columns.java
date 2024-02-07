@@ -1,18 +1,18 @@
 package com.selling.system.auth.shared.module.constants;
 
-public class Columns {
+public final class Columns {
 
-    public static class Profile {
+    public static final class Profile {
         public static final String PROFILE_ID = "profile_id";
         public static final String PROFILE_NAME = "profile_name";
     }
 
-    public static class Authority {
+    public static final class Authority {
         public static final String AUTHORITY_ID = "authority_id";
         public static final String AUTHORITY_NAME = "authority_name";
     }
 
-    public static class Group {
+    public static final class Group {
         public static final String GROUP_ID = "group_id";
         public static final String GROUP_NAME = "group_name";
     }
@@ -34,12 +34,17 @@ public class Columns {
         public static final String STREET = "street";
     }
 
-    public static class Bind {
+    public static class GrantType {
+        public static final String GRANT_ID = "grant_id";
+        public static final String GRANT_TYPE = "grant_type";
+    }
+
+    public static final class Bind {
         public static final String UPDATED_PROFILE_NAME = "updated_profile_name";
         public static final String UPDATED_USERNAME = "updated_username";
     }
 
-    public static class Fields {
+    public static final class Fields {
         public static final String COUNT = "count";
     }
 }

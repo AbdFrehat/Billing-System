@@ -6,6 +6,7 @@ import com.selling.system.auth.shared.module.models.entities.Authority;
 import com.selling.system.auth.shared.module.models.request.authority.AuthorityData;
 import com.selling.system.auth.shared.module.provider.api.QueryProvider;
 import com.selling.system.auth.shared.module.repository.api.AuthoritiesRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.r2dbc.core.DatabaseClient;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
@@ -19,18 +20,14 @@ import static com.selling.system.auth.shared.module.constants.Columns.Group.GROU
 import static com.selling.system.auth.shared.module.models.enums.Query.*;
 
 @Repository
+@RequiredArgsConstructor
 public class AuthoritiesRepositoryImpl implements AuthoritiesRepository {
+
     private final DatabaseClient client;
 
     private final QueryProvider provider;
 
     private final QueryBuilder builder;
-
-    public AuthoritiesRepositoryImpl(DatabaseClient client, QueryProvider provider, QueryBuilder builder) {
-        this.client = client;
-        this.provider = provider;
-        this.builder = builder;
-    }
 
     @Override
     public Flux<Authority> retrieveAllAuthorities() {

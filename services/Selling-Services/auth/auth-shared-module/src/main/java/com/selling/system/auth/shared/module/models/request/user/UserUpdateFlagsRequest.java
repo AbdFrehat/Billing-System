@@ -14,7 +14,6 @@ import static com.selling.system.auth.shared.module.constants.Validator.*;
 public class UserUpdateFlagsRequest implements Serializable {
 
     @NotNull(message = FLAG_NAME_VALIDATOR_MESSAGE)
-    @ValidFieldTypeEnum(message = FLAG_NAME_NOT_FOUND_MESSAGE, regexp = "ENABLE|LOCK|EXPIRE_ACCOUNT|EXPIRE_CREDENTIAL")
     private FlagType flagType;
 
     @NotBlank(message = USER_NAME_VALIDATOR_MESSAGE)

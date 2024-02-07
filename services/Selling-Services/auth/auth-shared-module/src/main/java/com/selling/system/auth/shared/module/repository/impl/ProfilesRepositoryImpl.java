@@ -9,6 +9,7 @@ import com.selling.system.auth.shared.module.provider.api.QueryProvider;
 import com.selling.system.auth.shared.module.repository.api.ProfilesRepository;
 import com.selling.system.shared.module.exceptions.Technical.AuthoritiesEmptyException;
 import com.selling.system.shared.module.exceptions.business.ProfileNotFoundException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.r2dbc.core.DatabaseClient;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
@@ -26,6 +27,7 @@ import static com.selling.system.shared.module.utils.CollectionUtil.isEmpty;
 import static com.selling.system.shared.module.utils.StringUtil.isEmpty;
 
 @Repository
+@RequiredArgsConstructor
 public class ProfilesRepositoryImpl implements ProfilesRepository {
 
     private final DatabaseClient client;
@@ -33,12 +35,6 @@ public class ProfilesRepositoryImpl implements ProfilesRepository {
     private final QueryProvider provider;
 
     private final QueryBuilder builder;
-
-    public ProfilesRepositoryImpl(DatabaseClient client, QueryProvider provider, QueryBuilder builder) {
-        this.client = client;
-        this.provider = provider;
-        this.builder = builder;
-    }
 
     @Override
     public Flux<Profile> retrieveAllProfiles() {

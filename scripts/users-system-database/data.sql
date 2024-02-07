@@ -113,3 +113,8 @@ ALTER SEQUENCE grants_seq RESTART WITH 1;
 INSERT INTO grant_types (grant_type) VALUES ('CLIENT');
 INSERT INTO grant_types (grant_type) VALUES ('PKCE');
 INSERT INTO grant_types (grant_type) VALUES ('AUTHORIZATION');
+
+ALTER SEQUENCE clients_seq RESTART WITH 1;
+
+INSERT INTO clients (client_id, client_secret, profile_id, grant_id)
+VALUES ('abc123def456', '$2a$12$F6VBl/XA2o.oc2g8z4IZueLkeMRuJehVw.lUe3VG1wRVDiZeKPzmK', 1, 1);
