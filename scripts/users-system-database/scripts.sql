@@ -84,7 +84,8 @@ CREATE TABLE grant_types
 (
     grant_id   INTEGER     DEFAULT NEXTVAL('grants_seq'),
     grant_type VARCHAR(32) NOT NULL,
-    PRIMARY KEY (grant_id)
+    PRIMARY KEY (grant_id),
+    UNIQUE (grant_type),
 );
 
 
