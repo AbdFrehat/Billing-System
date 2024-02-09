@@ -39,9 +39,24 @@ services:
       - POSTGRES_PASSWORD=123
       - POSTGRES_USER=admin
       - POSTGRES_DB=users-db
+
+  vault:
+    build:
+      context: .
+      dockerfile: ./vault/Dockerfile
+    image: shared/vault:1.0.0
+    container_name: vault
+    ports:
+      - "8200:8200"
+    cap_add:
+      - IPC_LOCK
+    volumes:
+      - vault_data:/vault/
+
 volumes:
   mongodb_data:
   postgresdb_data:
+  vault_data:
 networks:
   network:
     name: selling-shared-network

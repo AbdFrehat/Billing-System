@@ -30,9 +30,4 @@ public class AppConfig {
         return messageSource;
     }
 
-    @Bean
-    @Primary
-    LocalValidatorFactoryBean localValidatorFactoryBean() {
-        return new LocalValidatorFactoryBean();
-    }
 }

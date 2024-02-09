@@ -33,7 +33,7 @@ public class AuthMapper implements Mapper {
                 .clientId(client.getClientId())
                 .clientName(client.getClientName())
                 .clientSecret(client.getClientSecret())
-                .profileDto(profileToProfileDto(client.getProfile()))
+                .profile(profileToProfileDto(client.getProfile()))
                 .grantTypes(client.getGrantType().getGrantTypes())
                 .build();
     }

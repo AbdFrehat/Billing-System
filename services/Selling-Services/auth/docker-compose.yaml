@@ -17,6 +17,10 @@ services:
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/auth/auth-manager:/app/logs
     command: java -jar auth-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
+    depends_on:
+      - auth-clients-manager
+      - auth-profiles-manager
+      - auth-users-manager
 
   auth-users-manager:
     build:
@@ -49,6 +53,22 @@ services:
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/auth/auth-profiles-manager:/app/logs
     command: java -jar auth-profiles-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
+
+  auth-clients-manager:
+    build:
+      context: ./auth-clients-manager
+    ports:
+      - "7043:7043"
+    image: auth/auth-clients-manager:1.0
+    networks:
+      - network
+      - selling-shared-network
+    environment:
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      ENABLE_LOGGING_FILES: false
+    volumes:
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/auth/auth-clients-manager:/app/logs
+    command: java -jar auth-clients-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
 networks:
   network:

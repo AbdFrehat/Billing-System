@@ -13,6 +13,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
@@ -63,6 +64,7 @@ public interface ClientsApi {
     @GetMapping("/exists/{clientName}")
     @Operation(summary = "Check if a specific client name already exists")
     @ApiResponse(description = "Contains if the given client name exists")
-    Mono<ResponseEntity<NameExistenceResponse>> isClientExist(@Parameter(required = true, description = "Specifies the client name to check for existence")
+    Mono<ResponseEntity<NameExistenceResponse>> isClientExist(@Parameter(required = true,
+            description = "Specifies the client name to check for existence")
                                                               @PathVariable("clientName") String clientName);
 }

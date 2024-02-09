@@ -18,7 +18,7 @@ public class ClientDto {
 
     private String clientSecret;
 
-    private ProfileDto profileDto;
+    private ProfileDto profile;
 
     private GrantTypes grantTypes;
 }

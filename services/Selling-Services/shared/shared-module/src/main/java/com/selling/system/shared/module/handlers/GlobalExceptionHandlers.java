@@ -1,10 +1,11 @@
 package com.selling.system.shared.module.handlers;
 
-import com.fasterxml.jackson.databind.exc.MismatchedInputException;
+import com.selling.system.shared.module.config.CommonHeaders;
 import com.selling.system.shared.module.exceptions.general.BusinessException;
 import com.selling.system.shared.module.exceptions.general.ClientException;
 import com.selling.system.shared.module.exceptions.general.TechnicalException;
 import com.selling.system.shared.module.models.responses.ErrorResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
@@ -22,16 +23,14 @@ import static com.selling.system.shared.module.utils.ResourceBundlesUtil.getExce
 
 
 @ControllerAdvice
+@RequiredArgsConstructor
 public class GlobalExceptionHandlers {
 
     private final MessageSource messageSource;
 
     private final MessageSource commonMessageSource;
 
-    public GlobalExceptionHandlers(MessageSource messageSource, MessageSource commonMessageSource) {
-        this.messageSource = messageSource;
-        this.commonMessageSource = commonMessageSource;
-    }
+    private final CommonHeaders commonHeaders;
 
     @ExceptionHandler(Exception.class)
     public <T extends Exception> ResponseEntity<ErrorResponse> handleGenericException(T t) {
@@ -39,8 +38,8 @@ public class GlobalExceptionHandlers {
                 .status(HttpStatus.BAD_REQUEST)
                 .body(ErrorResponse.builder()
                         .exceptionName(t.getClass().getSimpleName())
-                        .message(getExceptionMessage(messageSource, t, StandardCharsets.UTF_8))
-                        .errorCode(getExceptionCode(messageSource, t))
+                        .message(getExceptionMessage(messageSource, t, StandardCharsets.UTF_8, commonHeaders.getLang()))
+                        .errorCode(getExceptionCode(messageSource, t, commonHeaders.getLang()))
                         .build());
     }
 
@@ -50,8 +49,9 @@ public class GlobalExceptionHandlers {
                 .status(t.getStatusCode())
                 .body(ErrorResponse.builder()
                         .exceptionName(ClientException.class.getSimpleName())
-                        .errorCode(getExceptionCode(commonMessageSource, t))
-                        .message(getExceptionMessage(commonMessageSource, t, StandardCharsets.UTF_8))
+                        .errorCode(getExceptionCode(commonMessageSource, t, commonHeaders.getLang()))
+                        .message(getExceptionMessage(commonMessageSource, t, StandardCharsets.UTF_8, commonHeaders.getLang()))
+                        .errorResponse(t.getErrorResponse())
                         .build());
     }
 
@@ -61,8 +61,8 @@ public class GlobalExceptionHandlers {
                 .status(HttpStatus.BAD_REQUEST)
                 .body(ErrorResponse.builder()
                         .exceptionName(t.getClass().getSimpleName())
-                        .message(getExceptionMessage(messageSource, t, StandardCharsets.UTF_8))
-                        .errorCode(getExceptionCode(messageSource, t))
+                        .message(getExceptionMessage(messageSource, t, StandardCharsets.UTF_8, commonHeaders.getLang()))
+                        .errorCode(getExceptionCode(messageSource, t, commonHeaders.getLang()))
                         .build());
     }
 
@@ -72,8 +72,8 @@ public class GlobalExceptionHandlers {
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(ErrorResponse.builder()
                         .exceptionName(t.getClass().getSimpleName())
-                        .message(getExceptionMessage(messageSource, t, StandardCharsets.UTF_8))
-                        .errorCode(getExceptionCode(messageSource, t))
+                        .message(getExceptionMessage(messageSource, t, StandardCharsets.UTF_8, commonHeaders.getLang()))
+                        .errorCode(getExceptionCode(messageSource, t, commonHeaders.getLang()))
                         .build());
     }
 
@@ -89,7 +89,7 @@ public class GlobalExceptionHandlers {
                 .status(HttpStatus.BAD_REQUEST)
                 .body(ErrorResponse.builder()
                         .exceptionName(WebExchangeBindException.class.getSimpleName())
-                        .errorCode(getExceptionCode(commonMessageSource, ex))
+                        .errorCode(getExceptionCode(commonMessageSource, ex, commonHeaders.getLang()))
                         .message(getExceptionMessage(commonMessageSource, ex, StandardCharsets.UTF_8, String.join("-", errorMessages)))
                         .build());
     }

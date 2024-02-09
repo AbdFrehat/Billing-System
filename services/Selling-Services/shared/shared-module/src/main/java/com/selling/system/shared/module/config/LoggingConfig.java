@@ -17,7 +17,7 @@ import static org.slf4j.Logger.ROOT_LOGGER_NAME;
 
 @Configuration
 @ConditionalOnProperty(name = "config.logging.enable", havingValue = "true")
-public class DefaultLoggingConfiguration {
+public class LoggingConfig {
 
     @Value("${config.logging.enable}")
     private boolean enable;

@@ -1,6 +1,8 @@
 package com.selling.system.shared.module.filters.web;
 
+import com.selling.system.shared.module.config.CommonHeaders;
 import io.micrometer.common.lang.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.i18n.LocaleContext;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Component;
@@ -15,18 +17,16 @@ import java.util.Locale;
 import static com.selling.system.shared.module.utils.StringUtil.isNotEmpty;
 
 @Component
+@RequiredArgsConstructor
 public class HeaderLocaleFilter implements WebFilter {
+
+    private final CommonHeaders commonHeaders;
+
     @Override
-    public @NonNull Mono<Void> filter(@NonNull ServerWebExchange exchange, WebFilterChain chain) {
+    public @NonNull Mono<Void> filter(@NonNull ServerWebExchange exchange, @NonNull WebFilterChain chain) {
         List<String> acceptLang = exchange.getRequest().getHeaders().get("Accept-Language");
-        String languageValue = acceptLang != null && !acceptLang.isEmpty() ? acceptLang.get(0) : "";
-        if (isNotEmpty(languageValue)) {
-            LocaleContextHolder.setLocaleContext(() ->
-                    Locale.forLanguageTag(languageValue));
-        } else {
-            LocaleContext localeContext = exchange.getLocaleContext();
-            LocaleContextHolder.setLocaleContext(localeContext);
-        }
+        String languageValue = acceptLang != null && !acceptLang.isEmpty() ? acceptLang.get(0) : "en";
+        commonHeaders.setLang(languageValue);
         return chain.filter(exchange);
     }
 }

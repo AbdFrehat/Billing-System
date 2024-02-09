@@ -6,6 +6,7 @@ import com.selling.system.auth.shared.module.models.entities.Client;
 import com.selling.system.auth.shared.module.models.enums.GrantTypes;
 import com.selling.system.auth.shared.module.provider.api.QueryProvider;
 import com.selling.system.auth.shared.module.repository.api.ClientsRepository;
+import com.selling.system.shared.module.exceptions.business.ClientNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.r2dbc.core.DatabaseClient;
 import org.springframework.stereotype.Repository;
@@ -42,7 +43,8 @@ public class ClientsRepositoryImpl implements ClientsRepository {
                 .all()
                 .bufferUntilChanged($ -> $.get(CLIENT_ID))
                 .flatMap(ClientMapper::fromRows)
-                .singleOrEmpty();
+                .singleOrEmpty()
+                .switchIfEmpty(Mono.error(new ClientNotFoundException()));
     }
 
     @Override
