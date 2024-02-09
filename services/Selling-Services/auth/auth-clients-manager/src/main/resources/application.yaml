@@ -1,6 +1,6 @@
 spring:
   webflux:
-    base-path: /selling/auth/manager/v1/
+    base-path: /selling/auth/clients/manager/v1/
   application:
     name: auth-clients-manager
   r2dbc:

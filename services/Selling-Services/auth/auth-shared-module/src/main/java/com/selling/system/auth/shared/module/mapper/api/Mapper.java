@@ -1,10 +1,7 @@
 package com.selling.system.auth.shared.module.mapper.api;
 
 import com.selling.system.auth.shared.module.models.dto.*;
-import com.selling.system.auth.shared.module.models.entities.Authority;
-import com.selling.system.auth.shared.module.models.entities.Group;
-import com.selling.system.auth.shared.module.models.entities.Profile;
-import com.selling.system.auth.shared.module.models.entities.User;
+import com.selling.system.auth.shared.module.models.entities.*;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
@@ -22,6 +19,10 @@ public interface Mapper {
     ProfileDto profileToProfileDto(Profile profile);
 
     ProfilesDto profilesToProfilesDto(List<ProfileDto> profiles);
+
+    ClientDto clientToClientDto(Client client);
+
+    ClientsDto clientsToClientsDto(List<ClientDto> clients);
 
     AuthorityDto authorityToAuthorityDto(Authority authority);
 

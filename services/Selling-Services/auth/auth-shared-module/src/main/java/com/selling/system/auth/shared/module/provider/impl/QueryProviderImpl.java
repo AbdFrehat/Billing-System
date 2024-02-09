@@ -127,6 +127,47 @@ public class QueryProviderImpl implements QueryProvider {
                     WHERE
                         u.username = :username;
                     """;
+            case RETRIEVE_ALL_CLIENTS -> """
+                    SELECT c.client_seq,
+                           c.client_name,
+                           c.client_id,
+                           c.client_secret,
+                           gt.grant_id,
+                           gt.grant_type,
+                           p.profile_id,
+                           p.profile_name,
+                           a.authority_id,
+                           a.authority_name,
+                           g.group_id,
+                           g.group_name
+                    FROM clients c
+                             LEFT OUTER JOIN grant_types gt on gt.grant_id = c.grant_id
+                             LEFT OUTER JOIN profiles p on p.profile_id = c.profile_id
+                             LEFT OUTER JOIN profiles_authorities pa on p.profile_id = pa.profile_id
+                             LEFT OUTER JOIN authorities a on a.authority_id = pa.authority_id
+                             LEFT OUTER JOIN groups g on g.group_id = a.group_id;
+                    """;
+            case RETRIEVE_CLIENT -> """
+                    SELECT c.client_seq,
+                           c.client_name,
+                           c.client_id,
+                           c.client_secret,
+                           gt.grant_id,
+                           gt.grant_type,
+                           p.profile_id,
+                           p.profile_name,
+                           a.authority_id,
+                           a.authority_name,
+                           g.group_id,
+                           g.group_name
+                    FROM clients c
+                             LEFT OUTER JOIN grant_types gt on gt.grant_id = c.grant_id
+                             LEFT OUTER JOIN profiles p on p.profile_id = c.profile_id
+                             LEFT OUTER JOIN profiles_authorities pa on p.profile_id = pa.profile_id
+                             LEFT OUTER JOIN authorities a on a.authority_id = pa.authority_id
+                             LEFT OUTER JOIN groups g on g.group_id = a.group_id
+                    WHERE client_id = :client_id;
+                    """;
             case ADD_PROFILE -> """
                     INSERT INTO profiles (profile_name)
                     VALUES
@@ -147,39 +188,6 @@ public class QueryProviderImpl implements QueryProvider {
                     INSERT INTO users(username, email, password, phone, country, city, street)
                     VALUES (:username, :email, :password, :phone, :country, :city, :street);
                     """;
-            case RETRIEVE_ALL_CLIENTS -> """
-                    SELECT c.client_seq,
-                           c.client_id,
-                           c.client_secret,
-                           gt.grant_id,
-                           gt.grant_type,
-                           p.profile_id,
-                           p.profile_name,
-                           a.authority_id,
-                           a.authority_name
-                    FROM clients c
-                             LEFT OUTER JOIN grant_types gt on gt.grant_id = c.grant_id
-                             LEFT OUTER JOIN profiles p on p.profile_id = c.profile_id
-                             LEFT OUTER JOIN profiles_authorities pa on p.profile_id = pa.profile_id
-                             LEFT OUTER JOIN authorities a on a.authority_id = pa.authority_id;
-                    """;
-            case RETRIEVE_CLIENT -> """
-                    SELECT c.client_seq,
-                           c.client_id,
-                           c.client_secret,
-                           gt.grant_id,
-                           gt.grant_type,
-                           p.profile_id,
-                           p.profile_name,
-                           a.authority_id,
-                           a.authority_name
-                    FROM clients c
-                             LEFT OUTER JOIN grant_types gt on gt.grant_id = c.grant_id
-                             LEFT OUTER JOIN profiles p on p.profile_id = c.profile_id
-                             LEFT OUTER JOIN profiles_authorities pa on p.profile_id = pa.profile_id
-                             LEFT OUTER JOIN authorities a on a.authority_id = pa.authority_id
-                    WHERE client_id = :client_id;
-                    """;
             case RETRIEVE_GRANT_TYPES -> """
                     SELECT grant_id,
                            grant_type
@@ -193,6 +201,17 @@ public class QueryProviderImpl implements QueryProvider {
             case ADD_GRANT_TYPE -> """
                     INSERT INTO grant_types (grant_type)
                     VALUES (:grant_type);
+                    """;
+            case ADD_CLIENT -> """
+                    INSERT INTO clients (client_id, client_name, client_secret, profile_id, grant_id)
+                    VALUES (:client_id, :client_name, :client_secret, (
+                                        SELECT profile_id
+                                        FROM profiles
+                                        WHERE profile_name = :profile_name), (
+                                        SELECT grant_id
+                                        FROM grant_types
+                                        WHERE grant_type = :grant_type)
+                                        );
                     """;
             case DELETE_PROFILE -> """
                     DELETE
@@ -225,6 +244,11 @@ public class QueryProviderImpl implements QueryProvider {
                     SELECT count(*) AS count
                     FROM users
                     where LOWER(email) = LOWER(:email);
+                    """;
+            case IS_CLIENT_NAME_EXISTS -> """
+                    SELECT count(*) AS count
+                    FROM clients
+                    WHERE client_name = :client_name;
                     """;
             case ADD_PROFILE_AUTHORITIES -> """
                     INSERT INTO profiles_authorities (profile_id, authority_id)
@@ -280,6 +304,10 @@ public class QueryProviderImpl implements QueryProvider {
                     FROM grant_types
                     WHERE grant_type = :grant_type;
                     """;
+            case DELETE_CLIENT -> """
+                    DELETE FROM clients
+                    WHERE client_id = :client_id;
+                    """;
             case UPDATE_PROFILE_NAME -> """
                     UPDATE
                         profiles
@@ -312,6 +340,16 @@ public class QueryProviderImpl implements QueryProvider {
                     UPDATE users
                     SET password = :password
                     WHERE username = :username;
+                    """;
+            case UPDATE_CLIENT_PROFILE -> """
+                    UPDATE clients
+                    SET profile_id = (SELECT profile_id FROM profiles WHERE profile_name = :profile_name)
+                    WHERE client_id = :client_id;
+                    """;
+            case UPDATE_CLIENT_GRANT_TYPE -> """
+                    UPDATE clients
+                    SET grant_id = (SELECT grant_id FROM grant_types WHERE grant_type = :grant_type)
+                    WHERE client_id = :client_id;
                     """;
             case ASSIGN_USER_PROFILE -> """
                     UPDATE users

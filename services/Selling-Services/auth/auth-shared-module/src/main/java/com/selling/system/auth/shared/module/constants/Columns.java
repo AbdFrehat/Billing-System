@@ -39,6 +39,14 @@ public final class Columns {
         public static final String GRANT_TYPE = "grant_type";
     }
 
+    public static class Client {
+        public static final String CLIENT_SEQ = "client_seq";
+        public static final String CLIENT_NAME = "client_name";
+        public static final String CLIENT_ID = "client_id";
+        public static final String CLIENT_SECRET = "client_secret";
+
+    }
+
     public static final class Bind {
         public static final String UPDATED_PROFILE_NAME = "updated_profile_name";
         public static final String UPDATED_USERNAME = "updated_username";

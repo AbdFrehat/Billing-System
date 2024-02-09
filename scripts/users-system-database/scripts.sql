@@ -67,12 +67,14 @@ CREATE TABLE users
 CREATE TABLE clients
 (
     client_seq    INTEGER DEFAULT NEXTVAL('clients_seq'),
+    client_name   VARCHAR(64),
     client_id     VARCHAR(64)  NOT NULL,
     client_secret VARCHAR(255) NOT NULL,
     profile_id    INTEGER,
     grant_id      INTEGER      NOT NULL,
     PRIMARY KEY (client_seq),
     UNIQUE (client_id),
+    UNIQUE (client_name),
     FOREIGN KEY (profile_id) REFERENCES profiles (profile_id)
         ON DELETE SET NULL,
     FOREIGN KEY (grant_id) REFERENCES grant_types (grant_id)

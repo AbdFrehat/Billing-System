@@ -2,10 +2,7 @@ package com.selling.system.auth.shared.module.mapper.impl;
 
 import com.selling.system.auth.shared.module.mapper.api.Mapper;
 import com.selling.system.auth.shared.module.models.dto.*;
-import com.selling.system.auth.shared.module.models.entities.Authority;
-import com.selling.system.auth.shared.module.models.entities.Group;
-import com.selling.system.auth.shared.module.models.entities.Profile;
-import com.selling.system.auth.shared.module.models.entities.User;
+import com.selling.system.auth.shared.module.models.entities.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -28,6 +25,22 @@ public class AuthMapper implements Mapper {
     @Override
     public ProfilesDto profilesToProfilesDto(List<ProfileDto> profiles) {
         return ProfilesDto.builder().profilesDto(profiles).build();
+    }
+
+    @Override
+    public ClientDto clientToClientDto(Client client) {
+        return ClientDto.builder()
+                .clientId(client.getClientId())
+                .clientName(client.getClientName())
+                .clientSecret(client.getClientSecret())
+                .profileDto(profileToProfileDto(client.getProfile()))
+                .grantTypes(client.getGrantType().getGrantTypes())
+                .build();
+    }
+
+    @Override
+    public ClientsDto clientsToClientsDto(List<ClientDto> clients) {
+        return ClientsDto.builder().clients(clients).build();
     }
 
     @Override

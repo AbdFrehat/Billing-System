@@ -13,6 +13,8 @@ public class Client {
 
     private int clientSeq;
 
+    private String clientName;
+
     private String clientId;
 
     private String clientSecret;
