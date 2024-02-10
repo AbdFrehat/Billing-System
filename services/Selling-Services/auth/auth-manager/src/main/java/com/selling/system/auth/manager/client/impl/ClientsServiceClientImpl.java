@@ -1,19 +1,16 @@
 package com.selling.system.auth.manager.client.impl;
 
 import com.selling.system.auth.manager.client.api.ClientsServiceClient;
-import com.selling.system.auth.manager.config.AppConfig;
 import com.selling.system.auth.manager.model.client.response.ClientResponse;
+import com.selling.system.shared.module.config.AppConfig;
 import com.selling.system.shared.module.handlers.ClientExceptionHandler;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Component;
-import org.springframework.vault.client.WebClientBuilder;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.util.UriComponentsBuilder;
 import reactor.core.publisher.Mono;
-
-import java.util.Arrays;
 
 @Component
 @Slf4j

@@ -1,8 +1,6 @@
 package com.selling.system.auth.manager.controller.impl;
 
-import com.selling.system.auth.manager.client.api.ClientsServiceClient;
 import com.selling.system.auth.manager.controller.api.AuthenticationApi;
-import com.selling.system.auth.manager.model.client.response.ClientResponse;
 import com.selling.system.auth.manager.model.request.IssueClientTokenRequest;
 import com.selling.system.auth.manager.model.response.ClientGrantTypeResponse;
 import com.selling.system.auth.manager.service.api.AuthenticationService;

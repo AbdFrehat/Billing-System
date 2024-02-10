@@ -1,6 +1,5 @@
 package com.selling.system.shared.module.models.commands;
 
-import com.selling.system.shared.module.models.annotations.ValidFieldTypeEnum;
 import com.selling.system.shared.module.models.enums.ExportType;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;

@@ -1,33 +1,39 @@
 package com.selling.system.shared.module.config;
 
-import org.springframework.context.MessageSource;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
-import java.util.Locale;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
-@Configuration
+@ConfigurationProperties(prefix = "config")
+@Getter
+@Setter
 public class AppConfig {
 
-    @Bean
-    public MessageSource messageSource() {
-        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-        messageSource.setBasename("classpath:messages");
-        messageSource.setDefaultEncoding("UTF-8");
-        messageSource.setDefaultLocale(Locale.US);
-        return messageSource;
+    private Auth auth;
+    private Services services;
+    private List<String> languages = new ArrayList<>(Arrays.asList("en", "ar"));
+
+    @Getter
+    @Setter
+    public static class Auth {
+        private String key;
     }
 
-    @Bean
-    public MessageSource commonMessageSource() {
-        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-        messageSource.setBasename("classpath:common.messages");
-        messageSource.setDefaultEncoding("UTF-8");
-        messageSource.setDefaultLocale(Locale.US);
-        return messageSource;
+    @Getter
+    @Setter
+    public static class Services {
+        private ContextPath contextPath;
+    }
+
+    @Getter
+    @Setter
+    public static class ContextPath {
+        private Map<String, String> paths;
     }
 
 }

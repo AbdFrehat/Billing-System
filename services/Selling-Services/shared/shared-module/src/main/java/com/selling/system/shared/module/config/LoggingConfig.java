@@ -19,9 +19,6 @@ import static org.slf4j.Logger.ROOT_LOGGER_NAME;
 @ConditionalOnProperty(name = "config.logging.enable", havingValue = "true")
 public class LoggingConfig {
 
-    @Value("${config.logging.enable}")
-    private boolean enable;
-
     @Value("${config.logging.name:${spring.application.name}.log}")
     private String fileName;
 

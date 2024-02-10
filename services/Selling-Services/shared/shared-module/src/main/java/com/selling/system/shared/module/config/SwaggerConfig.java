@@ -1,26 +1,33 @@
 package com.selling.system.shared.module.config;
 
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.examples.Example;
 import io.swagger.v3.oas.models.parameters.HeaderParameter;
-import org.springdoc.core.models.GroupedOpenApi;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import io.swagger.v3.oas.models.parameters.Parameter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import org.springdoc.core.customizers.OpenApiCustomizer;
+import org.springframework.stereotype.Component;
 
-@Configuration
-public class SwaggerConfig {
 
-    @Bean
-    public GroupedOpenApi publicApi() {
-        return GroupedOpenApi.builder()
-                .group("add-user-id-header")
-                .addOperationCustomizer((operation, $) -> {
-                    operation.addParametersItem(
-                            new HeaderParameter()
-                                    .name("Accept-Language")
-                                    .description("The Language of The Locale")
-                                    .required(false)
-                    );
-                    return operation;
-                })
-                .build();
+@Component
+@Setter
+@RequiredArgsConstructor
+public class SwaggerConfig implements OpenApiCustomizer {
+
+    private final AppConfig appConfig;
+
+    @Override
+    public void customise(OpenAPI openApi) {
+        Parameter acceptLangHeader = new HeaderParameter().name("Accept-Language")
+                .description("The Language of The Locale")
+                .required(false);
+        appConfig.getLanguages().forEach($ -> acceptLangHeader.addExample($, new Example().value($)));
+        openApi.getPaths().values().forEach(pathItem -> {
+            pathItem.readOperations().forEach(operation -> {
+                operation.addParametersItem(acceptLangHeader);
+            });
+        });
     }
+
 }

@@ -5,7 +5,6 @@ import com.selling.system.auth.manager.exception.BadCredentialException;
 import com.selling.system.auth.manager.model.request.IssueClientTokenRequest;
 import com.selling.system.auth.manager.model.response.ClientGrantTypeResponse;
 import com.selling.system.auth.manager.service.api.AuthenticationService;
-import com.selling.system.shared.module.exceptions.client.BadRequestException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;

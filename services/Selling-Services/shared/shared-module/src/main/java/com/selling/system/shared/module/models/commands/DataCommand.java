@@ -1,7 +1,6 @@
 package com.selling.system.shared.module.models.commands;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.selling.system.shared.module.models.annotations.ValidFieldTypeEnum;
 import com.selling.system.shared.module.models.enums.CommandType;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;

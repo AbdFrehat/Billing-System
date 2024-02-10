@@ -3,8 +3,6 @@ package com.selling.system.shared.module.filters.web;
 import com.selling.system.shared.module.config.CommonHeaders;
 import io.micrometer.common.lang.NonNull;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.i18n.LocaleContext;
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.WebFilter;
@@ -12,9 +10,6 @@ import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
-import java.util.Locale;
-
-import static com.selling.system.shared.module.utils.StringUtil.isNotEmpty;
 
 @Component
 @RequiredArgsConstructor

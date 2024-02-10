@@ -1,14 +1,14 @@
 package com.selling.system.auth.shared.module.models.request.user;
 
 import com.selling.system.auth.shared.module.models.enums.FlagType;
-import com.selling.system.shared.module.models.annotations.ValidFieldTypeEnum;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.io.Serializable;
 
-import static com.selling.system.auth.shared.module.constants.Validator.*;
+import static com.selling.system.auth.shared.module.constants.Validator.FLAG_NAME_VALIDATOR_MESSAGE;
+import static com.selling.system.auth.shared.module.constants.Validator.USER_NAME_VALIDATOR_MESSAGE;
 
 @Data
 public class UserUpdateFlagsRequest implements Serializable {
