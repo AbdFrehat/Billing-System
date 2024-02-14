@@ -20,4 +20,5 @@ public class ClientInsertRequest {
     @NotNull(message = GRANT_TYPE_VALIDATOR_MESSAGE)
     @ValidFieldTypeEnum(message = GRANT_TYPE_NOT_FOUND_MESSAGE, enumClass = GrantTypes.class)
     private String grantType;
+
 }

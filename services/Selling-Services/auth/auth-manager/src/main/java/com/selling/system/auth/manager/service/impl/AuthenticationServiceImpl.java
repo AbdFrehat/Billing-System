@@ -20,11 +20,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     public Mono<ClientGrantTypeResponse> authenticate(IssueClientTokenRequest issueClientTokenRequest) {
         return clientsServiceClient.retrieveClientById(issueClientTokenRequest.getClientId())
-                .doOnError(Throwable::printStackTrace)
                 .handle(($, sink) -> {
                     if (isClientMatch(issueClientTokenRequest.getClientId(), issueClientTokenRequest.getClientSecret(), $.getClientId(), $.getClientSecret())) {
                         sink.next(ClientGrantTypeResponse.builder().build());
-                        return;
                     }
                     sink.error(new BadCredentialException("Invalid Credentials"));
                 });
