@@ -13,7 +13,6 @@ services:
       - network
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/shared/eureka-server:/app/logs
-    command: java -jar eureka-server-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
   selling-system-database:
     image: mongo

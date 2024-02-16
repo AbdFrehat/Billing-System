@@ -1,21 +1,91 @@
 plugins {
-	id("java")
-	id("org.springframework.boot")
-	id("io.spring.dependency-management")
+    id("java")
+    id("org.springframework.boot") version "3.2.2"
+    id("io.spring.dependency-management") version "1.1.4"
+    id("jacoco")
+    id("maven-publish")
 }
 
 group = "com.selling.system.reports.eureka.server"
 version = "1.0.0-SNAPSHOT"
 
+extra["sharedModuleVersion"] = "1.0.0-SNAPSHOT"
+extra["springCloudVersion"] = "2023.0.0"
+extra["lombokVersion"] = "1.18.30"
+
+repositories {
+    mavenCentral()
+    maven {
+        url = project.repositories.mavenLocal().url
+    }
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+tasks.test {
+    useJUnitPlatform()
+    finalizedBy(tasks.jacocoTestReport)
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test)
+    finalizedBy(tasks.jacocoTestCoverageVerification)
+    reports {
+        html.outputLocation = layout.buildDirectory.dir("${project.layout.buildDirectory}/reports/coverage/html/")
+    }
+}
+
+tasks.jacocoTestCoverageVerification {
+    dependsOn(tasks.jacocoTestReport)
+    violationRules {
+        enabled = false
+        rule {
+            limit {
+                minimum = "0.8".toBigDecimal()
+            }
+        }
+    }
+}
+
+jacoco {
+    toolVersion = "0.8.11"
+    reportsDirectory = layout.buildDirectory.dir("${project.layout.buildDirectory}/reports/")
+}
+
+sourceSets {
+    main {
+        java.srcDirs("src/main/java")
+    }
+    test {
+        java.srcDirs("src/test/java/unit")
+        java.srcDirs("src/test/java/integration")
+    }
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            from(components["java"])
+        }
+    }
+}
+
+
+
 dependencies {
-	implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server")
-	implementation("org.springframework.boot:spring-boot-starter-actuator")
-	implementation(project(":shared:shared-module"))
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
+    implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("com.selling.system.shared.module:shared-module:${property("sharedModuleVersion")}")
+    implementation("org.projectlombok:lombok:${property("lombokVersion")}")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    annotationProcessor("org.projectlombok:lombok:${property("lombokVersion")}")
 }
 
 dependencyManagement {
-	imports {
-		mavenBom("org.springframework.cloud:spring-cloud-dependencies:${project.findProperty("springCloudVersion")}")
-	}
+    imports {
+        mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
+    }
 }
