@@ -15,7 +15,6 @@ services:
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/kafka/sales/kafka-sale-consumer:/app/logs
-    command: java -jar kafka-sale-consumer-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
   kafka-sale-producer:
     build:
@@ -31,7 +30,6 @@ services:
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/kafka/sales/kafka-sale-producer:/app/logs
-    command: java -jar kafka-sale-producer-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
 networks:
   network:

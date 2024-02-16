@@ -22,7 +22,6 @@ services:
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/export/export-data-manager:/app/logs
-    command: java -jar export-data-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
   export-data-csv:
     build:
@@ -37,8 +36,6 @@ services:
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/export/export-data-csv:/app/logs
-    command: java -jar export-data-csv-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
-
 
   export-data-xlsx:
     build:
@@ -53,7 +50,6 @@ services:
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/export/export-data-xlsx:/app/logs
-    command: java -jar export-data-xlsx-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
   export-data-json:
     build:
@@ -68,7 +64,6 @@ services:
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/export/export-data-json:/app/logs
-    command: java -jar export-data-json-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
   export-data-pdf:
     build:
@@ -83,7 +78,6 @@ services:
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/export/export-data-pdf:/app/logs
-    command: java -jar export-data-pdf-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
   export-data-xml:
     build:
@@ -98,8 +92,6 @@ services:
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/export/export-data-xml:/app/logs
-    command: java -jar export-data-xml-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
-
 
 networks:
   network:

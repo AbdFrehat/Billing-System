@@ -1,0 +1,1 @@
+rootProject.name="export-data-shared-module"
