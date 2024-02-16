@@ -19,7 +19,6 @@ services:
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/modify/modify-sales-manager:/app/logs
-    command: java -jar modify-sales-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
   modify-delete-sales:
     build:
@@ -34,7 +33,6 @@ services:
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/modify/modify-delete-sales:/app/logs
-    command: java -jar modify-delete-sales-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
   modify-update-sales:
     build:
@@ -49,7 +47,6 @@ services:
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/modify/modify-update-sales:/app/logs
-    command: java -jar modify-update-sales-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
   modify-save-sales:
     build:
@@ -64,7 +61,6 @@ services:
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/modify/modify-save-sales:/app/logs
-    command: java -jar modify-save-sales-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
 networks:
   network:

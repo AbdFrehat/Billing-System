@@ -18,7 +18,6 @@ services:
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/report/reports-receipt-generator:/app/logs
-    command: java -jar reports-receipt-generator-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
   reports-calc-price:
     build:
@@ -32,7 +31,7 @@ services:
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/report/reports-calc-price:/app/logs
-    command: java -jar reports-calc-price-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
+
 networks:
   network:
     name: selling-reports-network
