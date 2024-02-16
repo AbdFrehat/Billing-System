@@ -16,7 +16,6 @@ services:
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/auth/auth-manager:/app/logs
-    command: java -jar auth-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
     depends_on:
       - auth-clients-manager
       - auth-profiles-manager
@@ -36,7 +35,6 @@ services:
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/auth/auth-users-manager:/app/logs
-    command: java -jar auth-users-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
   auth-profiles-manager:
     build:
@@ -52,7 +50,6 @@ services:
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/auth/auth-profiles-manager:/app/logs
-    command: java -jar auth-profiles-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
   auth-clients-manager:
     build:
@@ -68,7 +65,6 @@ services:
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/auth/auth-clients-manager:/app/logs
-    command: java -jar auth-clients-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
 networks:
   network:

@@ -20,7 +20,6 @@ services:
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/data-manager:/app/logs
-    command: java -jar data-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
   data-get-manager:
     build:
@@ -38,7 +37,6 @@ services:
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/get/data-get-manager:/app/logs
-    command: java -jar data-get-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
   data-sales-get-free:
     build:
@@ -53,7 +51,6 @@ services:
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/get/data-sales-get-free:/app/logs
-    command: java -jar data-sales-get-free-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
   data-sales-get:
     build:
@@ -68,7 +65,6 @@ services:
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/get/data-sales-get:/app/logs
-    command: java -jar data-sales-get-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
   data-sales-get-opt:
     build:
@@ -83,7 +79,6 @@ services:
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/get/data-sales-get-opt:/app/logs
-    command: java -jar data-sales-get-opt-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
 
   data-save-manager:
     build:
@@ -100,8 +95,6 @@ services:
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/save/data-save-manager:/app/logs
-    command: java -jar data-save-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
-
 
   data-sale-save:
     build:
@@ -116,8 +109,6 @@ services:
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/save/data-sale-save:/app/logs
-    command: java -jar data-sale-save-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
-
 
   data-sales-save:
     build:
@@ -132,8 +123,6 @@ services:
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/save/data-sales-save:/app/logs
-    command: java -jar data-sales-save-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
-
 
   data-update-manager:
     build:
@@ -150,8 +139,6 @@ services:
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/update/data-update-manager:/app/logs
-    command: java -jar data-update-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
-
 
   data-sale-update:
     build:
@@ -166,8 +153,6 @@ services:
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/update/data-sale-update:/app/logs
-    command: java -jar data-sale-update-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
-
 
   data-sales-update:
     build:
@@ -182,8 +167,6 @@ services:
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/update/data-sales-update:/app/logs
-    command: java -jar data-sales-update-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
-
 
   data-delete-manager:
     build:
@@ -201,8 +184,6 @@ services:
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/delete/data-delete-manager:/app/logs
-    command: java -jar data-delete-manager-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
-
 
   data-sale-delete:
       build:
@@ -217,8 +198,6 @@ services:
         ENABLE_LOGGING_FILES: false
       volumes:
         - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/delete/data-sale-delete:/app/logs
-      command: java -jar data-sale-delete-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
-
 
   data-sales-delete:
       build:
@@ -233,8 +212,6 @@ services:
         ENABLE_LOGGING_FILES: false
       volumes:
         - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/delete/data-sales-delete:/app/logs
-      command: java -jar data-sales-delete-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
-
 
   data-sale-delete-query:
     build:
@@ -249,8 +226,6 @@ services:
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/delete/data-sale-delete-query:/app/logs
-    command: java -jar data-sale-delete-query-1.0.0-SNAPSHOT.jar --spring.config.location=classpath:/application.yaml,classpath:/application-prod.yaml
-
 
 networks:
   network:

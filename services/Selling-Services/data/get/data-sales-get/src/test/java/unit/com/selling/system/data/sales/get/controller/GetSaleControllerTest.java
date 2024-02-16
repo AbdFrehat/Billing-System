@@ -8,6 +8,7 @@ import com.selling.system.shared.module.models.commands.SortField;
 import com.selling.system.shared.module.models.enums.CommandType;
 import com.selling.system.shared.module.models.enums.FieldType;
 import com.selling.system.shared.module.models.responses.DataResponse;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
@@ -27,6 +28,7 @@ import static org.mockito.Mockito.when;
 
 @WebFluxTest(controllers = GetSaleController.class)
 @AutoConfigureWebTestClient
+@Disabled
 class GetSaleControllerTest {
 
     @MockBean

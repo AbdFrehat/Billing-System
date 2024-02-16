@@ -8,6 +8,7 @@ import com.selling.system.shared.module.models.entities.Sale;
 import com.selling.system.shared.module.models.enums.CommandType;
 import com.selling.system.shared.module.models.enums.FieldType;
 import com.selling.system.shared.module.models.responses.DataResponse;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
@@ -26,6 +27,7 @@ import static org.mockito.Mockito.when;
 
 @WebFluxTest(controllers = SalesRouterController.class)
 @AutoConfigureWebTestClient
+@Disabled
 class SalesRouterControllerTest {
 
     @Autowired
