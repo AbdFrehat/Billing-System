@@ -38,6 +38,8 @@ services:
       - POSTGRES_PASSWORD=123
       - POSTGRES_USER=admin
       - POSTGRES_DB=users-db
+    networks:
+      - network
 
   vault:
     build:
@@ -50,7 +52,7 @@ services:
     cap_add:
       - IPC_LOCK
     volumes:
-      - vault_data:/vault/
+      - vault_data:/vault/file
 
 volumes:
   mongodb_data:

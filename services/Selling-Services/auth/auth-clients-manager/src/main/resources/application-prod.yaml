@@ -7,3 +7,10 @@ eureka:
 config:
   logging:
     enable: ${ENABLE_LOGGING_FILES}
+spring:
+  r2dbc:
+    url: ${DATABASE_URL}
+  cloud:
+    vault:
+      host: ${VAULT_HOSTNAME}
+      port: ${VAULT_PORT}

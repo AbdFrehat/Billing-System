@@ -13,6 +13,7 @@ extra["jakartaValidationApiVersion"] = "3.0.2"
 extra["springDocOpenAPIVersion"] = "2.3.0"
 extra["springCloudVersion"] = "2023.0.0"
 extra["lombokVersion"] = "1.18.30"
+extra["jsonWebTokenVersion"] = "0.10.7"
 extra["sharedModuleVersion"] = "1.0.0-SNAPSHOT"
 
 repositories {
@@ -83,6 +84,9 @@ dependencies {
     implementation("jakarta.validation:jakarta.validation-api:${property("jakartaValidationApiVersion")}")
     implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:${property("springDocOpenAPIVersion")}")
     implementation("com.selling.system.shared.module:shared-module:${property("sharedModuleVersion")}")
+    implementation("io.jsonwebtoken:jjwt-api:${property("jsonWebTokenVersion")}")
+    implementation("io.jsonwebtoken:jjwt-impl:${property("jsonWebTokenVersion")}")
+    implementation("io.jsonwebtoken:jjwt-jackson:${property("jsonWebTokenVersion")}")
     implementation("org.projectlombok:lombok:${property("lombokVersion")}")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test")

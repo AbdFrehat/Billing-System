@@ -7,3 +7,8 @@ eureka:
 config:
   logging:
     enable: ${ENABLE_LOGGING_FILES}
+spring:
+  cloud:
+    vault:
+      host: ${VAULT_HOSTNAME}
+      port: ${VAULT_PORT}

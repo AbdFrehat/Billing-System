@@ -14,6 +14,8 @@ services:
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
       ENABLE_LOGGING_FILES: false
+      VAULT_HOSTNAME: vault
+      VAULT_PORT: 8200
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/auth/auth-manager:/app/logs
     depends_on:
@@ -63,6 +65,9 @@ services:
     environment:
       EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
       ENABLE_LOGGING_FILES: false
+      DATABASE_URL: r2dbc:postgresql://users-system-database:5432/users-db
+      VAULT_HOSTNAME: vault
+      VAULT_PORT: 8200
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/auth/auth-clients-manager:/app/logs
 

@@ -1,4 +1,4 @@
-package com.selling.system.auth.manager.constants;
+package com.selling.system.auth.manager.constant;
 
 public class Validator {
     public static final String CLIENT_ID_VALIDATOR_MESSAGE = "client id can not be empty";

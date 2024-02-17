@@ -3,6 +3,7 @@ package com.selling.system.shared.module.config;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,6 +13,7 @@ import java.util.Map;
 @ConfigurationProperties(prefix = "config")
 @Getter
 @Setter
+@Configuration
 public class AppConfig {
 
     private Auth auth;

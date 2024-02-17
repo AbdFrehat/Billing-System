@@ -3,7 +3,7 @@ package com.selling.system.auth.manager.controller.impl;
 import com.selling.system.auth.manager.controller.api.AuthenticationApi;
 import com.selling.system.auth.manager.model.request.IssueClientTokenRequest;
 import com.selling.system.auth.manager.model.response.ClientGrantTypeResponse;
-import com.selling.system.auth.manager.service.api.AuthenticationService;
+import com.selling.system.auth.manager.service.auth.api.AuthenticationService;
 import com.selling.system.shared.module.wrapper.WebResponseWrapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,6 +16,7 @@ import reactor.core.publisher.Mono;
 public class AuthenticationController extends WebResponseWrapper implements AuthenticationApi {
 
     private final AuthenticationService authenticationService;
+
     @Override
     public Mono<ResponseEntity<ClientGrantTypeResponse>> authenticate(IssueClientTokenRequest request) {
         return response(authenticationService.authenticate(request), HttpStatus.OK);

@@ -1,6 +1,6 @@
-package com.selling.system.auth.manager.client.impl;
+package com.selling.system.auth.manager.service.client.impl;
 
-import com.selling.system.auth.manager.client.api.ClientsServiceClient;
+import com.selling.system.auth.manager.service.client.api.ClientsServiceClient;
 import com.selling.system.auth.manager.model.client.response.ClientResponse;
 import com.selling.system.shared.module.config.AppConfig;
 import com.selling.system.shared.module.handlers.ClientExceptionHandler;
@@ -28,7 +28,7 @@ public class ClientsServiceClientImpl implements ClientsServiceClient {
         return webClientBuilder.build()
                 .get()
                 .uri(getUri(clientId))
-                .header("Accept-Language", "ar")
+                .header("Accept-Language", "en")
                 .retrieve()
                 .onStatus(HttpStatusCode::isError, new ClientExceptionHandler(serviceName))
                 .bodyToMono(ClientResponse.class);

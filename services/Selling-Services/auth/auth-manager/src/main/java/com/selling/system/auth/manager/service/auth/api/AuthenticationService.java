@@ -1,4 +1,4 @@
-package com.selling.system.auth.manager.service.api;
+package com.selling.system.auth.manager.service.auth.api;
 
 import com.selling.system.auth.manager.model.request.IssueClientTokenRequest;
 import com.selling.system.auth.manager.model.response.ClientGrantTypeResponse;
