@@ -1,10 +1,15 @@
 #!/bin/bash
 
-projects=()
-while IFS= read -r project; do
-    projects+=("$project")
-done < <(find "." -mindepth 2 -type f -name deploy.sh -exec dirname {} \;)
-
+projects=(
+  "shared"
+  "data"
+  "kafka"
+  "modify"
+  "source"
+  "export"
+  "reports"
+  "auth"
+)
 
 for project in "${projects[@]}"; do
     if [ -d "$project" ]; then

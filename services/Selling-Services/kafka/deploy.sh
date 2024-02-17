@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker-compose up --build -d
+docker-compose up -d
 
 projects=()
 while IFS= read -r project; do

@@ -55,7 +55,7 @@ services:
     networks:
       - network
   conduktor-platform:
-    image: conduktor/conduktor-platform:1.17.3
+    image: conduktor/conduktor-platform
     ports:
       - "8080:8080"
     volumes:

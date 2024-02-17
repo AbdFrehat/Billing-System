@@ -1,3 +1,3 @@
 #!/bin/bash
 
-./build.sh && docker-compose up --build -d
+./build.sh && docker-compose up -d
