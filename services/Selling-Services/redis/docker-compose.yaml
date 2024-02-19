@@ -1,0 +1,120 @@
+version: '3.9'
+name: selling-redis-cluster
+
+services:
+  redis-node-1:
+    build:
+      context: ./nodes/node1
+    image: redis/redis-node1:1.0.0
+    container_name: redis-node-1
+    ports:
+      - "7050:7050"
+    networks:
+      - network
+    volumes:
+      - redis-n1:/redis
+
+  redis-node-2:
+    build:
+      context: ./nodes/node2
+    image: redis/redis-node2:1.0.0
+    container_name: redis-node-2
+    ports:
+      - "7051:7051"
+    networks:
+      - network
+    volumes:
+      - redis-n2:/redis
+
+  redis-node-3:
+    build:
+      context: ./nodes/node3
+    image: redis/redis-node3:1.0.0
+    container_name: redis-node-3
+    ports:
+      - "7052:7052"
+    networks:
+      - network
+    volumes:
+      - redis-n3:/redis
+
+  redis-node-4:
+    build:
+      context: ./nodes/node4
+    image: redis/redis-node4:1.0.0
+    container_name: redis-node-4
+    ports:
+      - "7053:7053"
+    networks:
+      - network
+    volumes:
+      - redis-n4:/redis
+
+  redis-node-5:
+    build:
+      context: ./nodes/node5
+    image: redis/redis-node5:1.0.0
+    container_name: redis-node-5
+    ports:
+      - "7054:7054"
+    networks:
+      - network
+    volumes:
+      - redis-n5:/redis
+
+  redis-node-6:
+    build:
+      context: ./nodes/node6
+    image: redis/redis-node6:1.0.0
+    container_name: redis-node-6
+    ports:
+      - "7055:7055"
+    networks:
+      - network
+    volumes:
+      - redis-n6:/redis
+
+  redis-cluster-creator:
+    image: redis:latest
+    ports:
+      - "7056:6379"
+    networks:
+      - network
+    command: redis-cli -p 7050 --cluster create redis-node-1:7050 redis-node-2:7051 redis-node-3:7052 redis-node-4:7053 redis-node-5:7054 redis-node-6:7055 --cluster-replicas 1 --cluster-yes
+    depends_on:
+      - redis-node-1
+      - redis-node-2
+      - redis-node-3
+      - redis-node-4
+      - redis-node-5
+      - redis-node-6
+
+  redis-insight:
+    image: redislabs/redisinsight:1.14.0
+    ports:
+      - "7057:8001"
+    networks:
+      - network
+    volumes:
+      - redis-insight:/db
+    depends_on:
+      - redis-cluster-creator
+
+volumes:
+  redis-n1:
+    name: redis-n1-volume
+  redis-n2:
+    name: redis-n2-volume
+  redis-n3:
+    name: redis-n3-volume
+  redis-n4:
+    name: redis-n4-volume
+  redis-n5:
+    name: redis-n5-volume
+  redis-n6:
+    name: redis-n6-volume
+  redis-insight:
+    name: redis-insight-volume
+networks:
+  network:
+    name: selling-redis-network
