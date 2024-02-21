@@ -3,6 +3,10 @@ spring:
     base-path: /selling/auth/manager/v1/
   application:
     name: auth-manager
+  data:
+    redis:
+      port: 6379
+      host: localhost
   cloud:
     vault:
       host: localhost
@@ -42,4 +46,7 @@ config:
       expiration-time: 3600
     refresh-token:
       expiration-time: 2592000
+    auth-code:
+      length: 64
+      expiration-time: 10
 

@@ -20,6 +20,7 @@ public class LocalAppConfig {
         private String key;
         private AccessToken accessToken;
         private RefreshToken refreshToken;
+        private AuthCode authCode;
     }
 
     @Getter
@@ -31,6 +32,13 @@ public class LocalAppConfig {
     @Getter
     @Setter
     public static class RefreshToken {
+        private Long expirationTime;
+    }
+
+    @Getter
+    @Setter
+    public static class AuthCode {
+        private int length;
         private Long expirationTime;
     }
 

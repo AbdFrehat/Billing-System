@@ -81,6 +81,7 @@ dependencies {
     implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.cloud:spring-cloud-starter-vault-config")
+    implementation("org.springframework.boot:spring-boot-starter-data-redis-reactive")
     implementation("jakarta.validation:jakarta.validation-api:${property("jakartaValidationApiVersion")}")
     implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:${property("springDocOpenAPIVersion")}")
     implementation("com.selling.system.shared.module:shared-module:${property("sharedModuleVersion")}")

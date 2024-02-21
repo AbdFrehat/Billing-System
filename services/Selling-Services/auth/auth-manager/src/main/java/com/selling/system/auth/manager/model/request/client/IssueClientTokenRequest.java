@@ -1,4 +1,4 @@
-package com.selling.system.auth.manager.model.request;
+package com.selling.system.auth.manager.model.request.client;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;

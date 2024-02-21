@@ -1,32 +1,25 @@
-package com.selling.system.auth.shared.module.models.dto;
+package com.selling.system.auth.manager.model.client.response;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
+import com.selling.system.auth.manager.model.client.entities.Profile;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.time.OffsetDateTime;
 
-@Builder
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class UserDto {
+public class UserResponse {
 
     private String username;
     private String email;
     private String password;
     private String phone;
-    private ProfileDto profile;
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    private OffsetDateTime createdAt;
+    private Profile profile;
+    private String createdAt;
     private boolean enabled;
     private boolean accountExpired;
     private boolean credentialExpired;
     private boolean locked;
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    private OffsetDateTime lastPasswordChanged;
+    private String lastPasswordChanged;
     private String country;
     private String city;
     private String street;
