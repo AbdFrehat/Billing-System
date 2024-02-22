@@ -14,9 +14,14 @@ import SettingsIcon from "../icons/SettingsIcon.jsx";
 import UsersIcon from "../icons/UsersIcon.jsx";
 import Logo from "./Logo.jsx";
 export default function Sidebar({ color, bgColor }) {
-  const [maxSideBar, setMaxSideBar] = useState(true);
+  const [maxSideBar, setMaxSideBar] = useState(false);
+  const sidebarWidth = maxSideBar ? "w-64" : "w-32";
+  const textOpacity = maxSideBar ? "opacity-100" : "opacity-0";
+  const textMaxHeight = maxSideBar ? "max-w-20" : "max-w-0";
+
   let itemSideClass =
     "px-4 py-2 flex items-center cursor-pointer hover:bg-gray-600";
+  let descItemClass = `text-white transition-all duration-1000 ${textOpacity} ${textMaxHeight}`;
 
   function handleMaxSideBar() {
     setMaxSideBar(true);
@@ -25,76 +30,76 @@ export default function Sidebar({ color, bgColor }) {
   function handleMinSideBar() {
     setMaxSideBar(false);
   }
-  if (!maxSideBar) {
-    itemSideClass += " justify-center";
-  }
   return (
-    <div className="w-fit" style={{ backgroundColor: bgColor }}>
+    <div
+      className={`flex flex-col h-screen ${sidebarWidth} bg-gray-800 transition-all duration-1000`}
+      style={{ backgroundColor: bgColor }}
+    >
       <div className="py-8 px-6 text-white font-bold flex justify-center cursor-pointer">
         <Link to="/">
           <Logo />
         </Link>
       </div>
-      <ul className="flex flex-col h-full justify-around">
+      <ul className="flex flex-col h-full justify-around items-center">
         <div className="h-fit">
           <li>
             <Link to="orders" className={itemSideClass}>
               <OrdersIcon className="mr-2" color={color} />
-              {maxSideBar && <p className="text-white">Orders</p>}
+              <p className={descItemClass}>Orders</p>
             </Link>
           </li>
           <li>
             <Link to="reports" className={itemSideClass}>
               <ReportsIcon className="mr-2" color={color} />
-              {maxSideBar && <p className="text-white">Report</p>}
+              <p className={descItemClass}>Report</p>
             </Link>
           </li>
           <li>
             <Link to="dashboard" className={itemSideClass}>
               <DashboardIcon className="mr-2" color={color} />
-              {maxSideBar && <p className="text-white">Dashboard</p>}
+              <p className={descItemClass}>Dashboard</p>
             </Link>
           </li>
           <li>
             <Link to="export" className={itemSideClass}>
               <ExportIcon className="mr-2" color={color} />
-              {maxSideBar && <p className="text-white">Export</p>}
+              <p className={descItemClass}>Export</p>
             </Link>
           </li>
           <li>
             <Link to="notifications" className={itemSideClass}>
               <NotificationsIcon className="mr-2" color={color} />
-              {maxSideBar && <p className="text-white">Notifications</p>}
+              <p className={descItemClass}>Notifications</p>
             </Link>
           </li>
           <li>
             <Link to="users" className={itemSideClass}>
               <UsersIcon className="mr-2" color={color} />
-              {maxSideBar && <p className="text-white">Users</p>}
+              <p className={descItemClass}>Users</p>
             </Link>
           </li>
           <li>
             <Link to="profiles" className={itemSideClass}>
               <ProfilesIcon className="mr-2" color={color} />
-              {maxSideBar && <p className="text-white">Profiles</p>}
+              <p className={descItemClass}>Profiles</p>
             </Link>
           </li>
           <li>
             <Link to="settings" className={itemSideClass}>
               <SettingsIcon className="mr-2" color={color} />
-              {maxSideBar && <p className="text-white">Settings</p>}
+              <p className={descItemClass}>Settings</p>
             </Link>
           </li>
           <li>
             <Link to="monitor" className={itemSideClass}>
               <MonitorIcon className="mr-2" color={color} />
-              {maxSideBar && <p className="text-white">Monitor</p>}
+              <p className={descItemClass}>Monitor</p>
             </Link>
           </li>
           <li>
             <Link to="logout" className={itemSideClass}>
               <LogoutIcon className="mr-2" color={color} />
-              {maxSideBar && <p className="text-white">Logout</p>}
+              <p className={descItemClass}>Logout</p>
             </Link>
           </li>
         </div>

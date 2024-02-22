@@ -8,7 +8,7 @@ export default function ProfilesIcon({ color, ...props }) {
         fill="#ffffff"
         stroke="#ffffff"
         transform="matrix(1, 0, 0, 1, 0, 0)"
-        className="h-8 w-8"
+        className="h-10 w-10"
       >
         <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
         <g
