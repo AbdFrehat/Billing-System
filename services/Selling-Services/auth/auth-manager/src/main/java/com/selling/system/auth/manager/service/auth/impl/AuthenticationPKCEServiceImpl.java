@@ -2,7 +2,6 @@ package com.selling.system.auth.manager.service.auth.impl;
 
 import com.selling.system.auth.manager.config.LocalAppConfig;
 import com.selling.system.auth.manager.exception.*;
-import com.selling.system.auth.manager.model.client.response.ClientResponse;
 import com.selling.system.auth.manager.model.client.response.UserResponse;
 import com.selling.system.auth.manager.model.entities.AuthDetails;
 import com.selling.system.auth.manager.model.request.common.RefreshTokenRequest;
@@ -78,36 +77,30 @@ public class AuthenticationPKCEServiceImpl implements AuthenticationPKCEService 
         return Mono.zip(clientsServiceClient.retrieveClientById(request.getClientId()),
                         usersServiceClient.retrieveUserByUsername(request.getUsername()))
                 .flatMap($ -> {
-                    ClientResponse clientResponse = $.getT1();
-                    UserResponse userResponse = $.getT2();
-                    if (passwordEncoder.matches(request.getPassword(), userResponse.getPassword())) {
-                        return validUser(userResponse).flatMap($$ -> {
-                            String authCode = CodeUtil.generateAuthCode(localAppConfig.getAuth().getAuthCode().getLength());
-                            AuthDetails authDetails = AuthDetails.builder().authCode(authCode)
-                                    .clientId(clientResponse.getClientId())
-                                    .codeChallenge(request.getCodeChallenge())
-                                    .user(userResponse)
-                                    .build();
-                            return Mono.zip(redisOperations.opsForValue()
-                                            .set(buildKeyName(
-                                                            environment.getProperty("spring.application.name"),
-                                                            clientResponse.getClientId(),
-                                                            userResponse.getUsername(),
-                                                            request.getState()),
-                                                    authDetails,
-                                                    Duration.ofSeconds(localAppConfig.getAuth().getAuthCode().getExpirationTime())),
-                                    Mono.just(AuthorizationResponse.builder()
-                                            .authorizationCode(authCode)
-                                            .state(request.getState())
-                                            .build()
-                                    )).handle(($$$, sink) -> {
-                                if ($$$.getT1()) {
-                                    sink.next($$$.getT2());
-                                    return;
-                                }
-                                sink.error(new TechnicalException());
-                            });
-                        });
+                    if (passwordEncoder.matches(request.getPassword(), $.getT2().getPassword())) {
+                        return validUser($.getT2()).flatMap($$ -> Mono.zip(redisOperations.opsForValue()
+                                        .set(buildKeyName(
+                                                        environment.getProperty("spring.application.name"),
+                                                        $.getT1().getClientId(),
+                                                        $.getT2().getUsername(),
+                                                        request.getState()),
+                                                AuthDetails.builder().authCode(CodeUtil.generateAuthCode(localAppConfig.getAuth().getAuthCode().getLength()))
+                                                        .clientId($.getT1().getClientId())
+                                                        .codeChallenge(request.getCodeChallenge())
+                                                        .user($.getT2())
+                                                        .build(),
+                                                Duration.ofSeconds(localAppConfig.getAuth().getAuthCode().getExpirationTime())),
+                                Mono.just(AuthorizationResponse.builder()
+                                        .authorizationCode(CodeUtil.generateAuthCode(localAppConfig.getAuth().getAuthCode().getLength()))
+                                        .state(request.getState())
+                                        .build()
+                                )).handle(($$$, sink) -> {
+                            if ($$$.getT1()) {
+                                sink.next($$$.getT2());
+                                return;
+                            }
+                            sink.error(new TechnicalException());
+                        }));
                     } else {
                         return Mono.error(new BadCredentialException("The provided password is wrong"));
                     }
