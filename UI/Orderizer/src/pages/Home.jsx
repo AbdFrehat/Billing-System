@@ -6,7 +6,7 @@ export default function HomePage() {
       <Logo className="w-96 h-96" />
       <h1
         className="text-5xl py-16 font-bold tracking-wide"
-        style={{ color: "#5cab7d" }}
+        style={{ color: "#1f2937" }}
       >
         Orderizer
       </h1>

@@ -30,7 +30,7 @@ export default function Sidebar({ color, bgColor }) {
   }
   return (
     <div
-      className={`flex flex-col fixed h-screen ${sidebarWidth} bg-gray-800 transition-all duration-1000`}
+      className={`flex flex-col  h-screen ${sidebarWidth} bg-gray-800 transition-all duration-1000`}
       style={{ backgroundColor: bgColor }}
     >
       <div>
