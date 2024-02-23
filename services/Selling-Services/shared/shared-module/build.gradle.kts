@@ -73,15 +73,15 @@ publishing {
     }
 }
 
-
-
 dependencies {
+    implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:${property("springDocOpenAPIVersion")}")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:${property("fasterxmlJacksonVersion")}")
     implementation("org.projectlombok:lombok:${property("lombokVersion")}")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.springframework.security:spring-security-test")
     annotationProcessor("org.projectlombok:lombok:${property("lombokVersion")}")
 }
 
