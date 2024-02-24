@@ -78,7 +78,6 @@ publishing {
 dependencies {
     implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
-    implementation("com.selling.system.shared.module:shared-module:${property("sharedModuleVersion")}")
     implementation("org.projectlombok:lombok:${property("lombokVersion")}")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     annotationProcessor("org.projectlombok:lombok:${property("lombokVersion")}")

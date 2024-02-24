@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import DashboardIcon from "../icons/DashboardIcon.jsx";
 import ExportIcon from "../icons/ExportIcon.jsx";
@@ -12,26 +12,26 @@ import ProfilesIcon from "../icons/ProfilesIcon.jsx";
 import ReportsIcon from "../icons/ReportsIcon.jsx";
 import SettingsIcon from "../icons/SettingsIcon.jsx";
 import UsersIcon from "../icons/UsersIcon.jsx";
+import { uiActions } from "../store/ui-slice.js";
 import Logo from "./Logo.jsx";
 export default function Sidebar({ color, bgColor }) {
-  const [maxSideBar, setMaxSideBar] = useState(false);
+  const maxSideBar = useSelector((state) => state.ui.maxSideBar);
+  const dispatch = useDispatch();
   const sidebarWidth = maxSideBar ? "w-64" : "w-32";
   const textOpacity = maxSideBar ? "opacity-100" : "opacity-0";
   const textMaxHeight = maxSideBar ? "max-w-20" : "max-w-0";
+
   let itemSideClass =
     "px-4 py-2 flex items-center cursor-pointer hover:bg-gray-600";
   let descItemClass = `text-white transition-all duration-1000 ${textOpacity} ${textMaxHeight}`;
-  function handleMaxSideBar() {
-    setMaxSideBar(true);
+  function toggle() {
+    dispatch(uiActions.toggle());
   }
 
-  function handleMinSideBar() {
-    setMaxSideBar(false);
-  }
   return (
     <div
-      className={`flex flex-col  h-screen ${sidebarWidth} bg-gray-800 transition-all duration-1000`}
-      style={{ backgroundColor: bgColor }}
+      className={`flex flex-col h-full ${sidebarWidth} bg-gray-800 transition-all duration-1000`}
+      style={{ backgroundColor: bgColor, zIndex: 1 }}
     >
       <div>
         <div className="py-8 px-6 text-white font-bold flex justify-center cursor-pointer">
@@ -39,8 +39,8 @@ export default function Sidebar({ color, bgColor }) {
             <Logo />
           </Link>
         </div>
-        <ul className="flex flex-col h-full justify-around items-center">
-          <div className="h-fit">
+        <ul className="flex flex-col justify-around items-center">
+          <div>
             <li>
               <Link to="orders" className={itemSideClass}>
                 <OrdersIcon className="mr-2" color={color} />
@@ -106,7 +106,7 @@ export default function Sidebar({ color, bgColor }) {
             {!maxSideBar && (
               <li
                 className={`${itemSideClass} hover:bg-gray-800`}
-                onClick={handleMaxSideBar}
+                onClick={toggle}
               >
                 <MaxIcon className="mr-2" color={color} />
               </li>
@@ -114,7 +114,7 @@ export default function Sidebar({ color, bgColor }) {
             {maxSideBar && (
               <li
                 className={`${itemSideClass} hover:bg-gray-800`}
-                onClick={handleMinSideBar}
+                onClick={toggle}
               >
                 <MinIcon className="mr-2" color={color} />
               </li>
