@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         mainColor: "#1f2937",
+        textColor: "#5cab7d",
       },
     },
   },

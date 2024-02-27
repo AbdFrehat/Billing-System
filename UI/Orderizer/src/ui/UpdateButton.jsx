@@ -1,6 +1,6 @@
-export default function UpdateButton({ ...props }) {
+export default function UpdateButton({ onClick, ...props }) {
   return (
-    <div {...props}>
+    <div {...props} onClick={onClick}>
       <svg
         fill="#5cab7d"
         viewBox="0 0 24 24"
