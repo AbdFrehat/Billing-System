@@ -80,7 +80,6 @@ publishing {
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
-	implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("net.sf.jasperreports:jasperreports:${property("jasperReportsVersion")}")
 	implementation("com.github.librepdf:openpdf:${property("openPdfVersion")}")

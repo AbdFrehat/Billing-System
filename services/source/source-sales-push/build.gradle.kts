@@ -78,7 +78,6 @@ publishing {
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
-	implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
 	implementation("com.selling.system.shared.module:shared-module:${property("sharedModuleVersion")}")
 	implementation("com.selling.system.source.random.generator.sales:source-sales-random-generator:${property("sourceSalesRandomGeneratorVersion")}")
 	implementation("org.projectlombok:lombok:${property("lombokVersion")}")

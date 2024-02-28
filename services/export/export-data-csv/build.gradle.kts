@@ -80,7 +80,6 @@ publishing {
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
-	implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-csv:${property("fasterxmlJacksonVersion")}")
 	implementation("jakarta.validation:jakarta.validation-api:${property("jakartaValidationApiVersion")}")

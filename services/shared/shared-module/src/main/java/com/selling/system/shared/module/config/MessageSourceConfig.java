@@ -10,7 +10,7 @@ import java.util.Locale;
 @Configuration
 public class MessageSourceConfig {
 
-    @Bean
+    @Bean("messageSource")
     public MessageSource messageSource() {
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
         messageSource.setBasename("classpath:messages");
@@ -19,7 +19,7 @@ public class MessageSourceConfig {
         return messageSource;
     }
 
-    @Bean
+    @Bean("commonMessageSource")
     public MessageSource commonMessageSource() {
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
         messageSource.setBasename("classpath:common.messages");

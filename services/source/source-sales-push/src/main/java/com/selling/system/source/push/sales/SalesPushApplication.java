@@ -2,7 +2,6 @@ package com.selling.system.source.push.sales;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication(scanBasePackages = {
@@ -11,7 +10,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
         "com.selling.system.shared.module"
 })
 @EnableScheduling
-@EnableDiscoveryClient
+
 public class SalesPushApplication {
 
     public static void main(String[] args) {

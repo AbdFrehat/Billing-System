@@ -1,7 +1,6 @@
 package com.selling.system.auth.clients.manager.service.impl;
 
 import com.selling.system.auth.clients.manager.service.api.ClientsService;
-import com.selling.system.auth.shared.module.UpdateRowsResponseWrapper;
 import com.selling.system.auth.shared.module.mapper.api.Mapper;
 import com.selling.system.auth.shared.module.models.dto.ClientDto;
 import com.selling.system.auth.shared.module.models.dto.ClientsDto;
@@ -15,6 +14,7 @@ import com.selling.system.auth.shared.module.models.response.UpdatedRowsResponse
 import com.selling.system.auth.shared.module.repository.api.ClientsRepository;
 import com.selling.system.auth.shared.module.util.ClientsUtil;
 import com.selling.system.auth.shared.module.util.NameExistenceResponseWrapper;
+import com.selling.system.auth.shared.module.wrapper.UpdateRowsResponseWrapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;

@@ -1,9 +1,11 @@
 server:
   port: 7042
-eureka:
-  client:
-    service-url:
-      defaultZone: ${EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE}
 config:
   logging:
     enable: ${ENABLE_LOGGING_FILES}
+spring:
+  r2dbc:
+    url: ${POSTGRES_URL}
+    password: ${POSTGRES_PASSWORD}
+    username: ${POSTGRES_USER}
+    name: ${POSTGRES_DB}

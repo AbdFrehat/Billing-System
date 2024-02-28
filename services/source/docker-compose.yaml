@@ -14,7 +14,7 @@ services:
       NUMBER_ITEMS: 10
       EMIT_DURATION: 1000
       NUMBER_TAGS: 3
-      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/source/source-sales-pull:/app/logs
@@ -31,7 +31,7 @@ services:
       NUMBER_ITEMS: 10
       NUMBER_TAGS: 3
       EMIT_DURATION: 1000
-      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/source/source-sales-push:/app/logs

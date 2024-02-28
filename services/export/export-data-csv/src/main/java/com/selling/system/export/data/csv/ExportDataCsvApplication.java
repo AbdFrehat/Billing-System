@@ -2,7 +2,7 @@ package com.selling.system.export.data.csv;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+
 
 @SpringBootApplication(
         scanBasePackages = {
@@ -11,7 +11,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
                 "com.selling.system.shared.module"
         }
 )
-@EnableDiscoveryClient
+
 public class ExportDataCsvApplication {
 
     public static void main(String[] args) {

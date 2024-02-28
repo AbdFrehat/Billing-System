@@ -65,10 +65,7 @@ findProject(":data:update:data-sales-update")?.name = "data-sales-update"
 
 //Shared
 include(":shared:shared-module")
-include("shared:eureka-server")
 findProject(":shared:shared-module")?.name = "shared-module"
-findProject(":eureka-server")?.name = "eureka-server"
-
 
 //Modify
 include(":modify:modify-sales-manager")

@@ -21,25 +21,25 @@ public class LocalAppConfig {
         private AccessToken accessToken;
         private RefreshToken refreshToken;
         private AuthCode authCode;
-    }
 
-    @Getter
-    @Setter
-    public static class AccessToken {
-        private Long expirationTime;
-    }
+        @Getter
+        @Setter
+        public static class AccessToken {
+            private Long expirationTime;
+        }
 
-    @Getter
-    @Setter
-    public static class RefreshToken {
-        private Long expirationTime;
-    }
+        @Getter
+        @Setter
+        public static class RefreshToken {
+            private Long expirationTime;
+        }
 
-    @Getter
-    @Setter
-    public static class AuthCode {
-        private int length;
-        private Long expirationTime;
+        @Getter
+        @Setter
+        public static class AuthCode {
+            private int length;
+            private Long expirationTime;
+        }
     }
 
 

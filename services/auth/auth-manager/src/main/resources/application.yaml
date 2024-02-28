@@ -7,27 +7,10 @@ spring:
     redis:
       port: 6379
       host: localhost
-  cloud:
-    vault:
-      host: localhost
-      port: 8200
-      token: hvs.fR2VweCctXKiMheXN4fzCHvx
-      scheme: http
-      kv:
-        backend: kv
-        default-context: auth-manager
-  config:
-    import: optional:vault://
 server:
   port: 7040
   servlet:
     context-path: /selling/auth/manager/v1/
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:6010/selling/eureka/
 springdoc:
   swagger-ui:
     path: /swagger-ui
@@ -39,8 +22,8 @@ config:
   services:
     context-path:
       paths:
-        auth-clients-manager: "http://AUTH-CLIENTS-MANAGER/selling/auth/clients/manager/v1/"
-        auth-users-manager: "http://AUTH-USERS-MANAGER/selling/auth/users/manager/v1/"
+        auth-clients-manager: "http://localhost:7043/selling/auth/clients/manager/v1/"
+        auth-users-manager: "http://localhost:7041/selling/auth/users/manager/v1/"
   auth:
     access-token:
       expiration-time: 3600
@@ -48,5 +31,6 @@ config:
       expiration-time: 2592000
     auth-code:
       length: 64
-      expiration-time: 10
+      expiration-time: 100
+    key: LdwIIgwAKgM72rVn=lE5bKRuciGpIAwDvFdrU55rS4-iiP/=c6ikvO2zOOJF0FBQjERqnuKmKd!n!xidfWULk2gYCTjBw4=u9HRjfHHxa0J/z5tbyRNdi6mK075WN=DhYpM/5wFRt9DyIefD-nIOXaMSgTjXmrvOrfc!t8D?9Atwbvt71PnJJuIZ8BIVqmdOck?PkI?vz0oVGwpg3yF5SNfwQb3rd/Hp7YEdKhquiXUHY7i0cpWPp4cmV=5L6o/8
 

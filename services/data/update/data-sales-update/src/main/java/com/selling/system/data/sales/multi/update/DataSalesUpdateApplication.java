@@ -3,7 +3,7 @@ package com.selling.system.data.sales.multi.update;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+
 
 
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class,
@@ -12,7 +12,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
                 "com.selling.system.shared.module",
                 "com.selling.system.data.sales.multi.update"
         })
-@EnableDiscoveryClient
+
 public class DataSalesUpdateApplication {
 
 

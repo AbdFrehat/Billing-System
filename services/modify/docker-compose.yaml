@@ -15,7 +15,7 @@ services:
       - modify-save-sales
       - modify-update-sales
     environment:
-      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/modify/modify-sales-manager:/app/logs
@@ -29,7 +29,7 @@ services:
       - selling-shared-network
       - selling-kafka-sales-network
     environment:
-      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/modify/modify-delete-sales:/app/logs
@@ -43,7 +43,7 @@ services:
       - selling-shared-network
       - selling-kafka-sales-network
     environment:
-      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/modify/modify-update-sales:/app/logs
@@ -57,7 +57,7 @@ services:
       - selling-shared-network
       - selling-kafka-sales-network
     environment:
-      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/modify/modify-save-sales:/app/logs

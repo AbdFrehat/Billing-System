@@ -5,7 +5,7 @@ import com.selling.system.shared.module.exceptions.general.BusinessException;
 import com.selling.system.shared.module.exceptions.general.ClientException;
 import com.selling.system.shared.module.exceptions.general.TechnicalException;
 import com.selling.system.shared.module.models.responses.ErrorResponse;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
@@ -23,7 +23,6 @@ import static com.selling.system.shared.module.utils.ResourceBundlesUtil.getExce
 
 
 @ControllerAdvice
-@RequiredArgsConstructor
 public class GlobalExceptionHandlers {
 
     private final MessageSource messageSource;
@@ -31,6 +30,14 @@ public class GlobalExceptionHandlers {
     private final MessageSource commonMessageSource;
 
     private final CommonHeaders commonHeaders;
+
+    public GlobalExceptionHandlers(@Qualifier("messageSource") MessageSource messageSource,
+                                   @Qualifier("commonMessageSource") MessageSource commonMessageSource,
+                                   CommonHeaders commonHeaders) {
+        this.messageSource = messageSource;
+        this.commonMessageSource = commonMessageSource;
+        this.commonHeaders = commonHeaders;
+    }
 
     @ExceptionHandler(Exception.class)
     public <T extends Exception> ResponseEntity<ErrorResponse> handleGenericException(T t) {

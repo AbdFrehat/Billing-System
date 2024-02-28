@@ -5,12 +5,7 @@ spring:
     name: export-data-csv
 server:
   port: 7031
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:6010/selling/eureka/
+
 springdoc:
   swagger-ui:
     path: /swagger-ui

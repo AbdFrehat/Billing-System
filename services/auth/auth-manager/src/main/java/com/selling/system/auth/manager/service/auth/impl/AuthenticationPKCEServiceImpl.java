@@ -78,20 +78,21 @@ public class AuthenticationPKCEServiceImpl implements AuthenticationPKCEService 
                         usersServiceClient.retrieveUserByUsername(request.getUsername()))
                 .flatMap($ -> {
                     if (passwordEncoder.matches(request.getPassword(), $.getT2().getPassword())) {
+                        final String authCode = CodeUtil.generateAuthCode(localAppConfig.getAuth().getAuthCode().getLength());
                         return validUser($.getT2()).flatMap($$ -> Mono.zip(redisOperations.opsForValue()
                                         .set(buildKeyName(
                                                         environment.getProperty("spring.application.name"),
                                                         $.getT1().getClientId(),
                                                         $.getT2().getUsername(),
                                                         request.getState()),
-                                                AuthDetails.builder().authCode(CodeUtil.generateAuthCode(localAppConfig.getAuth().getAuthCode().getLength()))
+                                                AuthDetails.builder().authCode(authCode)
                                                         .clientId($.getT1().getClientId())
                                                         .codeChallenge(request.getCodeChallenge())
                                                         .user($.getT2())
                                                         .build(),
                                                 Duration.ofSeconds(localAppConfig.getAuth().getAuthCode().getExpirationTime())),
                                 Mono.just(AuthorizationResponse.builder()
-                                        .authorizationCode(CodeUtil.generateAuthCode(localAppConfig.getAuth().getAuthCode().getLength()))
+                                        .authorizationCode(authCode)
                                         .state(request.getState())
                                         .build()
                                 )).handle(($$$, sink) -> {

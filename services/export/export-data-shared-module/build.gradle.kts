@@ -78,7 +78,6 @@ publishing {
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
-	implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
 	implementation("jakarta.validation:jakarta.validation-api:${property("jakartaValidationApiVersion")}")
 	implementation("com.selling.system.shared.module:shared-module:${property("sharedModuleVersion")}")
 	implementation("org.projectlombok:lombok:${property("lombokVersion")}")

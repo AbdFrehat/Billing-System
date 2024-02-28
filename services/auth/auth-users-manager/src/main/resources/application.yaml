@@ -17,12 +17,7 @@ server:
   port: 7041
   servlet:
     context-path: /selling/auth/users/manager/v1/
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:6010/selling/eureka/
+
 springdoc:
   swagger-ui:
     path: /swagger-ui

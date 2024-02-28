@@ -1,10 +1,7 @@
 package com.selling.system.auth.manager.model.client.response;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.selling.system.auth.manager.model.client.entities.Profile;
 import lombok.Data;
-
-import java.time.OffsetDateTime;
 
 @Data
 public class UserResponse {

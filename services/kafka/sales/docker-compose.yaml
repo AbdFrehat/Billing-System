@@ -11,7 +11,7 @@ services:
       - selling-kafka-network
     environment:
       KAFKA_BOOTSTRAP_SERVER: kafka1:19092
-      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/kafka/sales/kafka-sale-consumer:/app/logs
@@ -26,7 +26,7 @@ services:
       - selling-shared-network
     environment:
       KAFKA_BOOTSTRAP_SERVER: kafka1:19092
-      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/kafka/sales/kafka-sale-producer:/app/logs

@@ -1,7 +1,6 @@
 package com.selling.system.data.get.manager.sales.config;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -16,7 +15,7 @@ public class WebClientInit {
      * @return {@link WebClient.Builder}
      */
     @Bean
-    @LoadBalanced
+    
     public WebClient.Builder webClientBuilder() {
         return WebClient.builder();
     }

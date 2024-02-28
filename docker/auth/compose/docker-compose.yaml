@@ -1,0 +1,72 @@
+version: '3.9'
+name: selling-auth-category
+
+services:
+  auth-manager:
+    image: aalfrihat/auth-manager:1.0.0
+    ports:
+      - "7040:7040"
+    networks:
+      - network
+    env_file:
+      - ../auth-manager/.env
+    volumes:
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/auth/auth-manager:/app/logs
+    depends_on:
+      - auth-clients-manager
+      - auth-profiles-manager
+      - auth-users-manager
+      - auth-system-database
+  auth-users-manager:
+    image: aalfrihat/auth-users-manager:1.0.0
+    ports:
+      - "7041:7041"
+    networks:
+      - network
+    env_file:
+      - ../auth-users-manager/.env
+    volumes:
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/auth/auth-users-manager:/app/logs
+    depends_on:
+      - auth-system-database
+  auth-profiles-manager:
+    image: aalfrihat/auth-profiles-manager:1.0.0
+    ports:
+      - "7042:7042"
+    networks:
+      - network
+    env_file:
+      - ../auth-profiles-manager/.env
+    volumes:
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/auth/auth-profiles-manager:/app/logs
+    depends_on:
+      - auth-system-database
+  auth-clients-manager:
+    image: aalfrihat/auth-clients-manager:1.0.0
+    ports:
+      - "7043:7043"
+    networks:
+      - network
+    env_file:
+      - ../auth-clients-manager/.env
+    volumes:
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/auth/auth-clients-manager:/app/logs
+    depends_on:
+      - auth-system-database
+  auth-system-database:
+    image: postgres:16-alpine
+    container_name: auth-system-database
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgresdb_volume:/var/lib/postgresql/data
+    env_file:
+      - ./env/db.env
+    networks:
+      - network
+volumes:
+  postgresdb_volume:
+    name: selling-shared-category_postgresdb_data
+networks:
+  network:
+    name: selling-auth-network

@@ -1,0 +1,20 @@
+version: '3.9'
+name: 'selling-vault-category'
+services:
+  vault:
+    image: aalfrihat/vault:1.0.0
+    container_name: vault
+    ports:
+      - "8200:8200"
+    cap_add:
+      - IPC_LOCK
+    volumes:
+      - vault_data:/vault/file
+    networks:
+      - network
+volumes:
+  vault_data:
+    name: vault-volume
+networks:
+  network:
+    name: selling-vault-network

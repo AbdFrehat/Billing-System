@@ -5,12 +5,7 @@ spring:
     name: export-data-xlsx
 server:
   port: 7032
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:6010/selling/eureka/
+
 springdoc:
   swagger-ui:
     path: /swagger-ui

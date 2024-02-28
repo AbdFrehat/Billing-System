@@ -4,7 +4,3 @@ spring:
       uri: ${SPRING_DATA_MONGO_URI}
 server:
   port: 6087
-eureka:
-  client:
-    service-url:
-      defaultZone: ${EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE}

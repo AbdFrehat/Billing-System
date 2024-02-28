@@ -17,12 +17,7 @@ spring:
               default:
                 type: 'com.selling.system.shared.module.models.commands.ModifyCommand'
       client-id: 1
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:6010/selling/eureka/
+
 config:
   services:
     context-path:

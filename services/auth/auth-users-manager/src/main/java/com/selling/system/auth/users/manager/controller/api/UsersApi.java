@@ -6,7 +6,6 @@ import com.selling.system.auth.shared.module.models.request.user.*;
 import com.selling.system.auth.shared.module.models.response.NameExistenceResponse;
 import com.selling.system.auth.shared.module.models.response.UpdatedRowsResponse;
 import jakarta.validation.Valid;
-import jakarta.ws.rs.QueryParam;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
@@ -38,5 +37,5 @@ public interface UsersApi {
     Mono<ResponseEntity<UpdatedRowsResponse>> updateUserFlags(@RequestBody @Valid UserUpdateFlagsRequest request);
 
     @GetMapping("/exist")
-    Mono<ResponseEntity<NameExistenceResponse>> isFieldExists(@QueryParam("fieldName") String fieldName, @QueryParam("value") String value);
+    Mono<ResponseEntity<NameExistenceResponse>> isFieldExists(@RequestParam("fieldName") String fieldName, @RequestParam("value") String value);
 }

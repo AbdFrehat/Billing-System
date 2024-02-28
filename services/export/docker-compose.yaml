@@ -17,7 +17,7 @@ services:
       - export-data-xlsx
       - export-data-csv
     environment:
-      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      
       WEB_CLIENT_BUFFER_SIZE: 16MB
       ENABLE_LOGGING_FILES: false
     volumes:
@@ -32,7 +32,7 @@ services:
       - selling-shared-network
       - selling-data-network
     environment:
-      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/export/export-data-csv:/app/logs
@@ -46,7 +46,7 @@ services:
       - selling-shared-network
       - selling-data-network
     environment:
-      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/export/export-data-xlsx:/app/logs
@@ -60,7 +60,7 @@ services:
       - selling-shared-network
       - selling-data-network
     environment:
-      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/export/export-data-json:/app/logs
@@ -74,7 +74,7 @@ services:
       - selling-shared-network
       - selling-data-network
     environment:
-      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/export/export-data-pdf:/app/logs
@@ -88,7 +88,7 @@ services:
       - selling-shared-network
       - selling-data-network
     environment:
-      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://eureka-server:6010/selling/eureka/
+      
       ENABLE_LOGGING_FILES: false
     volumes:
       - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/export/export-data-xml:/app/logs

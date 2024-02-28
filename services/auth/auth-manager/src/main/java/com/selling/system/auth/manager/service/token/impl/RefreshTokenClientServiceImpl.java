@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
-import static com.selling.system.auth.manager.constant.TokensConstants.ACCESS_TOKEN_SUBJECT;
 import static com.selling.system.auth.manager.constant.TokensConstants.REFRESH_TOKEN_SUBJECT;
 
 @Service("clientRefreshToken")

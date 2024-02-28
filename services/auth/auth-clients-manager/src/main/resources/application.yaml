@@ -5,33 +5,20 @@ spring:
     name: auth-clients-manager
   r2dbc:
     url: r2dbc:postgresql://localhost:5432/users-db
+    username: admin
+    password: 123
   jpa:
     hibernate:
       ddl-auto: none
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-  cloud:
-    vault:
-      host: localhost
-      port: 8200
-      token: hvs.fR2VweCctXKiMheXN4fzCHvx
-      scheme: http
-      kv:
-        backend: kv
-        default-context: auth-clients-manager
   config:
     import: optional:vault://
 server:
   port: 7043
   servlet:
     context-path: /selling/auth/clients/manager/v1/
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:6010/selling/eureka/
 springdoc:
   swagger-ui:
     path: /swagger-ui
