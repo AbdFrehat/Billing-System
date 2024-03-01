@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: auth-users-manager-secrets
+  labels:
+    namespace: auth
+    app: auth-users-manager
+data:
+  POSTGRES_PASSWORD: '123'
+  POSTGRES_USER: 'admin'
+  POSTGRES_DB: 'users-db'
+  POSTGRES_URL: 'r2dbc:postgresql://postgres-service:5432/'
+  ENABLE_LOGGING_FILES: 'false'
+  PORT: '7041'

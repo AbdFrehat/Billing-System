@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-profiles-manager-deployment
+  labels:
+    namespace: auth
+    app: auth-profiles-manager
+spec:
+  selector:
+    matchLabels:
+      namespace: auth
+      app: auth-profiles-manager
+  template:
+    metadata:
+      labels:
+        namespace: auth
+        app: auth-profiles-manager
+    spec:
+      containers:
+        - name: auth-clients-manager
+          image: aalfrihat/auth-profiles-manager:1.0.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 7042
+          envFrom:
+            - configMapRef:
+                name: auth-profiles-manager-secrets
+          volumeMounts:
+            - mountPath: /app/logs
+              name: auth-profiles-manager-volume
+      volumes:
+        - name: auth-profiles-manager-volume
+          hostPath:
+            path: /data/logs/auth/auth-profiles-manager
+            type: DirectoryOrCreate
+

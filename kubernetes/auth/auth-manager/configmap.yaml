@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: auth-manager-secrets
+  labels:
+    namespace: auth
+    app: auth-manager
+data:
+  PORT: '7040'
+  auth-clients-manager-url: "http://auth-clients-manager-service:7043/selling/auth/clients/manager/v1/"
+  auth-users-manager-url: "http://auth-users-manager-service:7041/selling/auth/users/manager/v1/"
+  ENABLE_LOGGING_FILES: 'false'
+  AUTH_KEY: 'LdwIIgwAKgM72rVn=lE5bKRuciGpIAwDvFdrU55rS4-iiP/=c6ikvO2zOOJF0FBQjERqnuKmKd!n!xidfWULk2gYCTjBw4=u9HRjfHHxa0J/z5tbyRNdi6mK075WN=DhYpM/5wFRt9DyIefD-nIOXaMSgTjXmrvOrfc!t8D?9Atwbvt71PnJJuIZ8BIVqmdOck?PkI?vz0oVGwpg3yF5SNfwQb3rd/Hp7YEdKhquiXUHY7i0cpWPp4cmV=5L6o/8'

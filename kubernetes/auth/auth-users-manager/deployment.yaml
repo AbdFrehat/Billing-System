@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-users-manager-deployment
+  labels:
+    namespace: auth
+    app: auth-users-manager
+spec:
+  selector:
+    matchLabels:
+      namespace: auth
+      app: auth-users-manager
+  template:
+    metadata:
+      labels:
+        namespace: auth
+        app: auth-users-manager
+    spec:
+      containers:
+        - name: auth-users-manager
+          image: aalfrihat/auth-users-manager:1.0.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 7041
+          envFrom:
+            - configMapRef:
+                name: auth-users-manager-secrets
+          volumeMounts:
+            - mountPath: /app/logs
+              name: auth-users-manager-volume
+      volumes:
+        - name: auth-users-manager-volume
+          hostPath:
+            path: /data/logs/auth/auth-users-manager
+            type: DirectoryOrCreate
+

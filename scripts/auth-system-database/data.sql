@@ -105,7 +105,7 @@ VALUES (1, 19);
 ALTER SEQUENCE users_seq RESTART WITH 1;
 
 INSERT INTO users(username, email, password, phone, profile_id, country, city, street)
-VALUES ('abdFrehat', 'abood512543@gmail.com', '$2a$12$rqoOPFbeTdjOA3Pg87K80O3yG.aGT6oi.tDeIb.elGCmoBAwCqbV6
+VALUES ('abdFrehat', 'abood512543@gmail.com', '$2a$10$BVpBjnxAZXFpX7WC/v98r.RNSUe5U39lCXxEmh9/4EMMhRrC/uiWC
 ', '00926782450415', 1, 'Jordan', 'Amman', 'A12-34');
 
 ALTER SEQUENCE grants_seq RESTART WITH 1;

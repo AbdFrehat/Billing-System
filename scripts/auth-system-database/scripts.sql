@@ -64,6 +64,14 @@ CREATE TABLE users
         ON DELETE SET NULL
 );
 
+CREATE TABLE grant_types
+(
+    grant_id   INTEGER     DEFAULT NEXTVAL('grants_seq'),
+    grant_type VARCHAR(32) NOT NULL,
+    PRIMARY KEY (grant_id),
+    UNIQUE (grant_type)
+);
+
 CREATE TABLE clients
 (
     client_seq    INTEGER DEFAULT NEXTVAL('clients_seq'),
@@ -82,13 +90,7 @@ CREATE TABLE clients
 );
 
 
-CREATE TABLE grant_types
-(
-    grant_id   INTEGER     DEFAULT NEXTVAL('grants_seq'),
-    grant_type VARCHAR(32) NOT NULL,
-    PRIMARY KEY (grant_id),
-    UNIQUE (grant_type),
-);
+
 
 
 
