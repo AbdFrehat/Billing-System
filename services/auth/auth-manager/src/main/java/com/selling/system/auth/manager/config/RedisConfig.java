@@ -15,6 +15,7 @@ public class RedisConfig {
 
     @Bean
     public ReactiveRedisOperations<String, AuthDetails> redisOperations(ReactiveRedisConnectionFactory connectionFactory) {
+        connectionFactory.getReactiveConnection().ping();
         Jackson2JsonRedisSerializer<AuthDetails> serializer = new Jackson2JsonRedisSerializer<>(AuthDetails.class);
         RedisSerializationContext.RedisSerializationContextBuilder<String, AuthDetails> builder =
                 RedisSerializationContext.newSerializationContext(new StringRedisSerializer());
