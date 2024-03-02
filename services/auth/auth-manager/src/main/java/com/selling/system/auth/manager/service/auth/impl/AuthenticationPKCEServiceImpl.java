@@ -60,6 +60,7 @@ public class AuthenticationPKCEServiceImpl implements AuthenticationPKCEService 
                                          @Qualifier("pkceAccessToken") TokenService<AuthDetails> accessTokenPKCEService,
                                          @Qualifier("pkceIdentityToken") TokenService<AuthDetails> identityTokenPKCEService,
                                          @Qualifier("pkceRefreshToken") TokenService<AuthDetails> refreshTokenPKCEService) {
+        
         this.clientsServiceClient = clientsServiceClient;
         this.usersServiceClient = usersServiceClient;
         this.passwordEncoder = passwordEncoder;

@@ -5,8 +5,9 @@ spring:
     name: auth-manager
   data:
     redis:
-      port: 6379
-      host: localhost
+      cluster:
+        nodes:
+          - localhost:6379
 server:
   port: 7040
   servlet:

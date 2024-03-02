@@ -8,6 +8,7 @@ services:
       - "7040:7040"
     networks:
       - network
+      - selling-redis-network
     env_file:
       - ../auth-manager/.env
     volumes:
@@ -70,3 +71,5 @@ volumes:
 networks:
   network:
     name: selling-auth-network
+  selling-redis-network:
+    external: true

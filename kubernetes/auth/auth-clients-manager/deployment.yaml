@@ -19,7 +19,7 @@ spec:
       containers:
         - name: auth-clients-manager
           image: aalfrihat/auth-clients-manager:1.0.0
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
             - containerPort: 7043
           envFrom:
