@@ -1,10 +1,12 @@
+spring:
+
 server:
-  port: 6081
+  port: ${PORT}
 config:
   services:
     context-path:
-      data-get-free-ms: "http://DATA-SALES-GET-FREE/selling/data/get/free/sale/v1/"
-      data-get-ms: "http://DATA-SALES-GET/selling/data/get/query/sale/v1/"
-      data-get-opt-ms: "http://DATA-SALES-GET-OPT/selling/data/get/opt/sale/v1/"
+      data-get-free-ms: ${DATA_SALES_GET_FREE_URL}
+      data-get-ms: ${DATA_SALES_GET_URL}
+      data-get-opt-ms: ${DATA_SALES_GET_OPT_URL}
   logging:
     enable: ${ENABLE_LOGGING_FILES}

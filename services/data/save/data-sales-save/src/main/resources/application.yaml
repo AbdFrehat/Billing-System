@@ -9,10 +9,7 @@ spring:
     name: data-sales-save
 server:
   port: 6087
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:6010/selling/eureka/
+
 springdoc:
   swagger-ui:
     path: /swagger-ui

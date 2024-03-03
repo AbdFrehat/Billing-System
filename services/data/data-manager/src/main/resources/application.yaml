@@ -18,7 +18,7 @@ springdoc:
 config:
   services:
     context-path:
-      data-get-manager-ms: "http://DATA-GET-MANAGER/selling/data/get/manager/sale/v1/"
-      data-save-manager-ms: "http://DATA-SAVE-MANAGER/selling/data/save/manager/sale/v1/"
-      data-update-manager-ms: "http://DATA-UPDATE-MANAGER/selling/data/update/manager/sale/v1/"
-      data-delete-manager-ms: "http://DATA-DELETE-MANAGER/selling/data/delete/manager/sale/v1/"
+      data-get-manager-ms: "http://localhost:6081/selling/data/get/manager/sale/v1/"
+      data-save-manager-ms: "http://localhost:6085/selling/data/save/manager/sale/v1/"
+      data-update-manager-ms: "http://localhost:6092/selling/data/update/manager/sale/v1/"
+      data-delete-manager-ms: "http://localhost:6088/selling/data/delete/manager/sale/v1/"

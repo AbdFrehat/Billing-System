@@ -1,9 +1,10 @@
 spring:
+
   data:
     mongodb:
       uri: ${SPRING_DATA_MONGO_URI}
 server:
-  port: 6083
+  port: ${PORT}
 config:
   logging:
     enable: ${ENABLE_LOGGING_FILES}

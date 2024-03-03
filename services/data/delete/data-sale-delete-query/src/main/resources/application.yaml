@@ -9,10 +9,6 @@ spring:
       database: sample_supplies
 server:
   port: 6091
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:6010/selling/eureka/
 springdoc:
   swagger-ui:
     path: /swagger-ui

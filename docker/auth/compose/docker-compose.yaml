@@ -62,7 +62,7 @@ services:
     volumes:
       - postgresdb_volume:/var/lib/postgresql/data
     env_file:
-      - ./env/db.env
+      - ../auth-system-database/.env
     networks:
       - network
 volumes:

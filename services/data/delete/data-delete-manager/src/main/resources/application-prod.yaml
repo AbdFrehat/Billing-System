@@ -1,10 +1,10 @@
 server:
-  port: 6088
+  port: ${PORT}
 config:
   services:
     context-path:
-      data-delete-ms: "http://DATA-SALE-DELETE/selling/data/delete/sale/v1/"
-      data-delete-multi-ms: "http://DATA-SALES-DELETE/selling/data/delete/sales/v1/"
-      data-delete-query-ms: "http://DATA-SALES-DELETE-QUERY/selling/data/delete/sales/query/v1/"
+      data-delete-ms: ${DATA_SALES_DELETE_QUERY_URL}
+      data-delete-multi-ms: ${DATA_SALES_DELETE_URL}
+      data-delete-query-ms: ${DATA_SALES_DELETE_QUERY_URL}
   logging:
     enable: ${ENABLE_LOGGING_FILES}

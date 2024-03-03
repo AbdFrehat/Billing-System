@@ -11,10 +11,7 @@ spring:
     exclude:
 server:
   port: 6084
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:6010/selling/eureka/
+
 springdoc:
   swagger-ui:
     path: /swagger-ui

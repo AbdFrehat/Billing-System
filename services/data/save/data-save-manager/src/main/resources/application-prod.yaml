@@ -1,9 +1,11 @@
+spring:
+
 server:
-  port: 6085
+  port: ${PORT}
 config:
   services:
     context-path:
-      data-save-ms: "http://DATA-SALE-SAVE/selling/data/save/sale/v1/"
-      data-save-multi-ms: "http://DATA-SALES-SAVE/selling/data/save/sales/v1/"
+      data-save-ms: ${DATA_SALE_SAVE_URL}
+      data-save-multi-ms: ${DATA_SALES_SAVE_URL}
   logging:
     enable: ${ENABLE_LOGGING_FILES}

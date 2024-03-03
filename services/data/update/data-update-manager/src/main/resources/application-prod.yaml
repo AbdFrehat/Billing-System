@@ -1,9 +1,11 @@
+spring:
+
 server:
-  port: 6092
+  port: ${PORT}
 config:
   services:
     context-path:
-      data-update-ms: "http://DATA-SALE-UPDATE/selling/data/update/sale/v1/"
-      data-update-multi-ms: "http://DATA-SALES-UPDATE/selling/data/update/sales/v1/"
+      data-update-ms: ${DATA_SALE_UPDATE_URL}
+      data-update-multi-ms: ${DATA_SALES_UPDATE_URL}
   logging:
     enable: ${ENABLE_LOGGING_FILES}

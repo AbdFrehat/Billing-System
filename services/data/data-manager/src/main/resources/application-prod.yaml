@@ -1,11 +1,11 @@
 server:
-  port: 6080
+  port: ${PORT}
 config:
   services:
     context-path:
-      data-get-manager-ms: "http://DATA-GET-MANAGER/selling/data/get/manager/sale/v1/"
-      data-save-manager-ms: "http://DATA-SAVE-MANAGER/selling/data/save/manager/sale/v1/"
-      data-update-manager-ms: "http://DATA-UPDATE-MANAGER/selling/data/update/manager/sale/v1/"
-      data-delete-manager-ms: "http://DATA-DELETE-MANAGER/selling/data/delete/manager/sale/v1/"
+      data-get-manager-ms: ${DATA_GET_MANAGER_URL}
+      data-save-manager-ms: ${DATA_SAVE_MANAGER_URL}
+      data-update-manager-ms: ${DATA_UPDATE_MANAGER_URL}
+      data-delete-manager-ms: ${DATA_DELETE_MANAGER_URL}
   logging:
     enable: ${ENABLE_LOGGING_FILES}
