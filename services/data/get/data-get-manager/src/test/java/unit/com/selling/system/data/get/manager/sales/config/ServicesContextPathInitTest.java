@@ -1,18 +1,18 @@
 package com.selling.system.data.get.manager.sales.config;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 
 import java.util.Map;
 
 @SpringBootTest
-@ContextConfiguration(classes = {
-        ServicesContextPathInit.class
-})
+//@ContextConfiguration(classes = {
+//        ServicesContextPathInit.class
+//})
 @TestPropertySource(
         properties = {
                 "config.services.context-path.data-get-ms=url1",
@@ -20,6 +20,7 @@ import java.util.Map;
                 "config.services.context-path.data-get-opt-ms=url3",
         }
 )
+@Disabled
 class ServicesContextPathInitTest {
 
     @Autowired

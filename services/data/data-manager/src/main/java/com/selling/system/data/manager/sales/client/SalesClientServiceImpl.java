@@ -1,16 +1,16 @@
 package com.selling.system.data.manager.sales.client;
 
+import com.selling.system.data.manager.sales.config.ServicesContextPathInit;
 import com.selling.system.shared.module.handlers.ClientExceptionHandler;
 import com.selling.system.shared.module.models.commands.DataCommand;
 import com.selling.system.shared.module.models.enums.CommandType;
 import com.selling.system.shared.module.models.responses.DataResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
-
-import java.util.Map;
 
 /**
  * This service class implements {@link SalesClientService} which the main goal for it to pass the query command based on the
@@ -20,15 +20,17 @@ import java.util.Map;
  * @since 1.0
  */
 @Service
+@Slf4j
 public class SalesClientServiceImpl implements SalesClientService {
+
 
     private final WebClient webClient;
 
-    private final Map<String, String> servicesContextPath;
+    private final ServicesContextPathInit servicesContextPathInit;
 
-    public SalesClientServiceImpl(WebClient.Builder webClientBuilder, Map<String, String> servicesContextPath) {
+    public SalesClientServiceImpl(WebClient.Builder webClientBuilder, ServicesContextPathInit servicesContextPathInit) {
         this.webClient = webClientBuilder.build();
-        this.servicesContextPath = servicesContextPath;
+        this.servicesContextPathInit = servicesContextPathInit;
     }
 
     /**
@@ -51,10 +53,10 @@ public class SalesClientServiceImpl implements SalesClientService {
 
     private String getUri(CommandType commandType) {
         return switch (commandType) {
-            case GET_SALES, GET_FREE_SALES, GET_OPT_SALES -> servicesContextPath.get("data-get-manager-ms");
-            case SAVE_SALE, SAVE_SALES -> servicesContextPath.get("data-save-manager-ms");
-            case UPDATE_SALE, UPDATE_SALES -> servicesContextPath.get("data-update-manager-ms");
-            case DELETE_SALE, DELETE_SALES, DELETE_QUERY_SALES -> servicesContextPath.get("data-delete-manager-ms");
+            case GET_SALES, GET_FREE_SALES, GET_OPT_SALES -> servicesContextPathInit.getDataGetManagerMs();
+            case SAVE_SALE, SAVE_SALES -> servicesContextPathInit.getDataSaveManagerMs();
+            case UPDATE_SALE, UPDATE_SALES -> servicesContextPathInit.getDataUpdateManagerMs();
+            case DELETE_SALE, DELETE_SALES, DELETE_QUERY_SALES -> servicesContextPathInit.getDataDeleteManagerMs();
         };
     }
 }

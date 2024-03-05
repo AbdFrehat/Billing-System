@@ -4,6 +4,7 @@ plugins {
     id("io.spring.dependency-management") version "1.1.4"
     id("jacoco")
     id("maven-publish")
+    id("org.sonarqube") version "3.3"
 }
 
 group = "com.selling.system.auth.manager"
@@ -97,5 +98,13 @@ dependencies {
 dependencyManagement {
     imports {
         mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
+    }
+}
+
+sonarqube {
+    properties {
+        property("sonar.host.url", "http://your-sonarqube-server:9000")
+        property("sonar.projectKey", rootProject.name)
+        property("sonar.login", "sqp_d41597085099d18cabcd9b16bc04b1abb51d29be")
     }
 }

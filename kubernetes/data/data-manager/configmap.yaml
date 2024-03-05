@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: data-manager
+  labels:
+    namespace: data
+    app: data-manager
+data:
+  application.properties: |-
+    server.port=8080
+    config.logging.enable=false
+    config.services.context-path.data-get-manager-ms=http://data-get-manager:8080/selling/data/get/manager/sale/v1/
+    config.services.context-path.data-update-manager-ms=http://data-update-manager:8080/selling/data/update/manager/sale/v1/
+    config.services.context-path.data-save-manager-ms=http://data-save-manager:8080/selling/data/save/manager/sale/v1/
+    config.services.context-path.data-delete-manager-ms=http://data-delete-manager:8080/selling/data/delete/manager/sale/v1/

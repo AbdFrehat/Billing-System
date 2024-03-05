@@ -1,33 +1,22 @@
 package com.selling.system.data.manager.sales.config;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.Map;
-
+@ConfigurationProperties(prefix = "config.services.context-path")
 @Configuration
+@Slf4j
+@Data
 public class ServicesContextPathInit {
 
-    @Value("${config.services.context-path.data-get-manager-ms}")
-    private String dataGetManagerMsContextPath;
+    private String DataGetManagerMs;
 
-    @Value("${config.services.context-path.data-update-manager-ms}")
-    private String dataUpdateManagerMsContextPath;
+    private String DataDeleteManagerMs;
 
-    @Value("${config.services.context-path.data-save-manager-ms}")
-    private String dataSaveManagerMsContextPath;
+    private String DataSaveManagerMs;
 
-    @Value("${config.services.context-path.data-delete-manager-ms}")
-    private String dataDeleteManagerMsContextPath;
+    private String DataUpdateManagerMs;
 
-    @Bean
-    public Map<String, String> servicesContextPath() {
-        return Map.of(
-                "data-get-manager-ms", dataGetManagerMsContextPath,
-                "data-save-manager-ms", dataSaveManagerMsContextPath,
-                "data-update-manager-ms", dataUpdateManagerMsContextPath,
-                "data-delete-manager-ms", dataDeleteManagerMsContextPath
-        );
-    }
 }

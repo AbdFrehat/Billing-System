@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: data-sale-delete
+  labels:
+    namespace: data
+    app: data-sale-delete
+spec:
+  selector:
+    matchLabels:
+      namespace: data
+      app: data-sale-delete
+  template:
+    metadata:
+      labels:
+        namespace: data
+        app: data-sale-delete
+    spec:
+      serviceAccountName: spring-cloud-kubernetes
+      containers:
+        - name: data-sale-delete
+          image: aalfrihat/data-sale-delete:1.0.0
+          imagePullPolicy: Always
+          env:
+            - name: SPRING_CLOUD_BOOTSTRAP_ENABLED # (3)
+              value: "true"
+            - name: SPRING_CLOUD_KUBERNETES_SECRETS_ENABLEAPI # (4)
+              value: "true"
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - mountPath: /app/logs
+              name: data-sale-delete-volume
+      volumes:
+        - name: data-sale-delete-volume
+          hostPath:
+            path: /data/logs/data/data-sale-delete
+            type: DirectoryOrCreate
+

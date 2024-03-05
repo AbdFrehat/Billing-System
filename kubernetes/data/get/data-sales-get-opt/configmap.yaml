@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: data-sales-get-opt
+  labels:
+    namespace: data
+    app: data-sales-get-opt
+data:
+  application.properties: |-
+    server.port=8080
+    config.logging.enable=false
+    spring.data.mongodb.authentication-database="admin"
+    spring.data.mongodb.uri=mongodb://${DB_USERNAME}:${DB_PASSWORD}@mongodb:27017/orders?authSource=admin
+    spring.cloud.kubernetes.secrets.name=db-secret

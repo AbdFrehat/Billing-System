@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: data-sale-save
+  labels:
+    namespace: data
+    app: data-sale-save
+spec:
+  selector:
+    matchLabels:
+      namespace: data
+      app: data-sale-save
+  template:
+    metadata:
+      labels:
+        namespace: data
+        app: data-sale-save
+    spec:
+      serviceAccountName: spring-cloud-kubernetes
+      containers:
+        - name: data-sale-save
+          image: aalfrihat/data-sale-save:1.0.0
+          imagePullPolicy: Always
+          env:
+            - name: SPRING_CLOUD_BOOTSTRAP_ENABLED # (3)
+              value: "true"
+            - name: SPRING_CLOUD_KUBERNETES_SECRETS_ENABLEAPI # (4)
+              value: "true"
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - mountPath: /app/logs
+              name: data-sale-save-volume
+      volumes:
+        - name: data-sale-save-volume
+          hostPath:
+            path: /data/logs/auth/auth-manager
+            type: DirectoryOrCreate
+

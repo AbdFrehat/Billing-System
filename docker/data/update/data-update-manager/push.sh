@@ -1,2 +1,2 @@
 #!/bin/bash
-docker push aalfrihat/data-save-manager:1.0.0
+docker push aalfrihat/data-update-manager:1.0.0

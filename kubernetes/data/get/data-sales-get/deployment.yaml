@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: data-sales-get
+  labels:
+    namespace: data
+    app: data-sales-get
+spec:
+  selector:
+    matchLabels:
+      namespace: data
+      app: data-sales-get
+  template:
+    metadata:
+      labels:
+        namespace: data
+        app: data-sales-get
+    spec:
+      serviceAccountName: spring-cloud-kubernetes
+      containers:
+        - name: data-sales-get
+          image: aalfrihat/data-sales-get:1.0.0
+          imagePullPolicy: Always
+          env:
+            - name: SPRING_CLOUD_BOOTSTRAP_ENABLED # (3)
+              value: "true"
+            - name: SPRING_CLOUD_KUBERNETES_SECRETS_ENABLEAPI # (4)
+              value: "true"
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - mountPath: /app/logs
+              name: data-sales-get-volume
+      volumes:
+        - name: data-sales-get-volume
+          hostPath:
+            path: /data/logs/auth/auth-manager
+            type: DirectoryOrCreate
+

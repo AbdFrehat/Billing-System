@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: data-sale-save
+  labels:
+    namespace: data
+    app: data-sale-save
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+  selector:
+    namespace: data
+    app: data-sale-save

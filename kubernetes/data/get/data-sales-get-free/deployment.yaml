@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: data-sales-get-free
+  labels:
+    namespace: data
+    app: data-sales-get-free
+spec:
+  selector:
+    matchLabels:
+      namespace: data
+      app: data-sales-get-free
+  template:
+    metadata:
+      labels:
+        namespace: data
+        app: data-sales-get-free
+    spec:
+      serviceAccountName: spring-cloud-kubernetes
+      containers:
+        - name: data-sales-get-free
+          image: aalfrihat/data-sales-get-free:1.0.0
+          imagePullPolicy: Always
+          env:
+            - name: SPRING_CLOUD_BOOTSTRAP_ENABLED # (3)
+              value: "true"
+            - name: SPRING_CLOUD_KUBERNETES_SECRETS_ENABLEAPI # (4)
+              value: "true"
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  key: username
+                  name: db-secret
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: db-secret
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - mountPath: /app/logs
+              name: data-sales-get-free-volume
+      volumes:
+        - name: data-sales-get-free-volume
+          hostPath:
+            path: /data/logs/auth/auth-manager
+            type: DirectoryOrCreate
+
