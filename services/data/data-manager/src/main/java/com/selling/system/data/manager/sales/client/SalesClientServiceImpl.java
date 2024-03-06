@@ -1,6 +1,6 @@
 package com.selling.system.data.manager.sales.client;
 
-import com.selling.system.data.manager.sales.config.ServicesContextPathInit;
+import com.selling.system.data.manager.sales.config.ServicesContextPathConfig;
 import com.selling.system.shared.module.handlers.ClientExceptionHandler;
 import com.selling.system.shared.module.models.commands.DataCommand;
 import com.selling.system.shared.module.models.enums.CommandType;
@@ -26,11 +26,11 @@ public class SalesClientServiceImpl implements SalesClientService {
 
     private final WebClient webClient;
 
-    private final ServicesContextPathInit servicesContextPathInit;
+    private final ServicesContextPathConfig servicesContextPathConfig;
 
-    public SalesClientServiceImpl(WebClient.Builder webClientBuilder, ServicesContextPathInit servicesContextPathInit) {
+    public SalesClientServiceImpl(WebClient.Builder webClientBuilder, ServicesContextPathConfig servicesContextPathConfig) {
         this.webClient = webClientBuilder.build();
-        this.servicesContextPathInit = servicesContextPathInit;
+        this.servicesContextPathConfig = servicesContextPathConfig;
     }
 
     /**
@@ -53,10 +53,10 @@ public class SalesClientServiceImpl implements SalesClientService {
 
     private String getUri(CommandType commandType) {
         return switch (commandType) {
-            case GET_SALES, GET_FREE_SALES, GET_OPT_SALES -> servicesContextPathInit.getDataGetManagerMs();
-            case SAVE_SALE, SAVE_SALES -> servicesContextPathInit.getDataSaveManagerMs();
-            case UPDATE_SALE, UPDATE_SALES -> servicesContextPathInit.getDataUpdateManagerMs();
-            case DELETE_SALE, DELETE_SALES, DELETE_QUERY_SALES -> servicesContextPathInit.getDataDeleteManagerMs();
+            case GET_SALES, GET_FREE_SALES, GET_OPT_SALES -> servicesContextPathConfig.getDataGetManagerMs();
+            case SAVE_SALE, SAVE_SALES -> servicesContextPathConfig.getDataSaveManagerMs();
+            case UPDATE_SALE, UPDATE_SALES -> servicesContextPathConfig.getDataUpdateManagerMs();
+            case DELETE_SALE, DELETE_SALES, DELETE_QUERY_SALES -> servicesContextPathConfig.getDataDeleteManagerMs();
         };
     }
 }

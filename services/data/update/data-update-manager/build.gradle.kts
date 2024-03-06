@@ -82,9 +82,11 @@ dependencies {
     implementation("jakarta.validation:jakarta.validation-api:${property("jakartaValidationApiVersion")}")
     implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:${property("springDocOpenAPIVersion")}")
     implementation("com.selling.system.shared.module:shared-module:${property("sharedModuleVersion")}")
+    implementation("org.projectlombok:lombok:${property("lombokVersion")}")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
+    annotationProcessor("org.projectlombok:lombok:${property("lombokVersion")}")
 }
 
 dependencyManagement {

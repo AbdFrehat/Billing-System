@@ -9,5 +9,5 @@ data:
   application.properties: |-
     server.port=8080
     config.logging.enable=false
-    config.services.context-path.data-save-ms=http://data-sales-save/selling/data/save/sale/v1/
-    config.services.context-path.data-save-multi-ms=http://data-sale-save:8080/selling/data/save/sales/v1/
+    config.services.context-path.data-save-ms=http://data-sale-save:8080/selling/data/save/sale/v1/
+    config.services.context-path.data-save-multi-ms=http://data-sales-save:8080/selling/data/save/sales/v1/

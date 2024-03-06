@@ -1,5 +1,6 @@
 package com.selling.system.data.delete.manager.sales.service;
 
+import com.selling.system.data.delete.manager.sales.config.ServicesContextPathConfig;
 import com.selling.system.shared.module.handlers.ClientExceptionHandler;
 import com.selling.system.shared.module.models.commands.DataCommand;
 import com.selling.system.shared.module.models.enums.CommandType;
@@ -9,8 +10,6 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
-
-import java.util.Map;
 
 /**
  * This service class implements {@link SalesClientService} which the main goal for it to pass the query command based on the
@@ -24,11 +23,11 @@ public class SalesClientServiceImpl implements SalesClientService {
 
     private final WebClient webClient;
 
-    private final Map<String, String> servicesContextPath;
+    private final ServicesContextPathConfig servicesContextPathConfig;
 
-    public SalesClientServiceImpl(WebClient.Builder webClientBuilder, Map<String, String> servicesContextPath) {
+    public SalesClientServiceImpl(WebClient.Builder webClientBuilder, ServicesContextPathConfig servicesContextPathConfig) {
         this.webClient = webClientBuilder.build();
-        this.servicesContextPath = servicesContextPath;
+        this.servicesContextPathConfig = servicesContextPathConfig;
     }
 
     /**
@@ -51,9 +50,9 @@ public class SalesClientServiceImpl implements SalesClientService {
 
     private String getUri(CommandType commandType) {
         return switch (commandType) {
-            case DELETE_SALE -> servicesContextPath.get("data-delete-ms");
-            case DELETE_SALES -> servicesContextPath.get("data-delete-multi-ms");
-            case DELETE_QUERY_SALES -> servicesContextPath.get("data-delete-query-ms");
+            case DELETE_SALE -> servicesContextPathConfig.getDataDeleteMs();
+            case DELETE_SALES -> servicesContextPathConfig.getDataDeleteMultiMs();
+            case DELETE_QUERY_SALES -> servicesContextPathConfig.getDataDeleteQueryMs();
             default -> throw new IllegalArgumentException();
         };
     }

@@ -9,5 +9,5 @@ data:
   application.properties: |-
     server.port=8080
     config.logging.enable=false
-    config.services.context-path.data-update-ms=http://data-sales-update/selling/data/update/sale/v1/
-    config.services.context-path.data-update-multi-ms=http://data-sale-update:8080/selling/data/update/sales/v1/
+    config.services.context-path.data-update-ms=http://data-sale-update:8080/selling/data/update/sale/v1/
+    config.services.context-path.data-update-multi-ms=http://data-sales-update:8080/selling/data/update/sales/v1/

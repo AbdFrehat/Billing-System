@@ -26,6 +26,16 @@ spec:
               value: "true"
             - name: SPRING_CLOUD_KUBERNETES_SECRETS_ENABLEAPI # (4)
               value: "true"
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  key: username
+                  name: db-secret
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: db-secret
           ports:
             - containerPort: 8080
           volumeMounts:

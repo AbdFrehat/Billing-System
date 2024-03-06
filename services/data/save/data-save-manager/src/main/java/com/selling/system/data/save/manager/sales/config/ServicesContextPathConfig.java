@@ -1,19 +1,16 @@
-package com.selling.system.data.get.manager.sales.config;
+package com.selling.system.data.save.manager.sales.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
-@ConfigurationProperties(prefix = "config.services.context-path")
 @Configuration
+@ConfigurationProperties(prefix = "config.services.context-path")
 @Data
 public class ServicesContextPathConfig {
 
-    private String dataGetFreeMs;
+    private String dataSaveMs;
 
-    private String dataGetMs;
-
-    private String dataGetOptMs;
-
+    private String dataSaveMultiMs;
 
 }
