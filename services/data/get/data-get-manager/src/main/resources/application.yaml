@@ -22,5 +22,5 @@ config:
   services:
     context-path:
       data-get-free-ms: "http://DATA-SALES-GET-FREE/selling/data/get/free/sale/v1/"
-      data-get-ms: "http://DATA-SALES-GET/selling/data/get/query/sale/v1/"
+      data-get-ms: "http://localhost:6082/selling/data/get/query/sale/v1/"
       data-get-opt-ms: "http://DATA-SALES-GET-OPT/selling/data/get/opt/sale/v1/"
