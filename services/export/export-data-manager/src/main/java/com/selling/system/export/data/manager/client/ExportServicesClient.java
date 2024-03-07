@@ -1,5 +1,6 @@
 package com.selling.system.export.data.manager.client;
 
+import com.selling.system.export.data.manager.config.ServicesContextPathConfig;
 import com.selling.system.shared.module.handlers.ClientExceptionHandler;
 import com.selling.system.shared.module.models.commands.ExportDataCommand;
 import com.selling.system.shared.module.models.enums.ExportType;
@@ -11,18 +12,16 @@ import org.springframework.web.util.UriComponentsBuilder;
 import reactor.core.publisher.Mono;
 
 import java.net.URI;
-import java.util.Map;
 
 @Service
 public class ExportServicesClient {
 
     private final WebClient webClient;
 
-    private final Map<String, String> servicesContextPath;
-
-    public ExportServicesClient(WebClient.Builder webClientBuilder, Map<String, String> servicesContextPath) {
+    private final ServicesContextPathConfig servicesContextPathConfig;
+    public ExportServicesClient(WebClient.Builder webClientBuilder, ServicesContextPathConfig servicesContextPathConfig) {
         this.webClient = webClientBuilder.build();
-        this.servicesContextPath = servicesContextPath;
+        this.servicesContextPathConfig = servicesContextPathConfig;
     }
 
     public Mono<byte[]> sendCommand(ExportDataCommand exportDataCommand) {
@@ -38,11 +37,11 @@ public class ExportServicesClient {
 
     private String getUri(ExportType exportType) {
         return switch (exportType) {
-            case XLSX -> servicesContextPath.get("export-data-xlsx");
-            case PDF -> servicesContextPath.get("export-data-pdf");
-            case JSON -> servicesContextPath.get("export-data-json");
-            case CSV -> servicesContextPath.get("export-data-csv");
-            case XML -> servicesContextPath.get("export-data-xml");
+            case XLSX -> servicesContextPathConfig.getExportDataXlsx();
+            case PDF -> servicesContextPathConfig.getExportDataPdf();
+            case JSON -> servicesContextPathConfig.getExportDataJson();
+            case CSV -> servicesContextPathConfig.getExportDataCsv();
+            case XML -> servicesContextPathConfig.getExportDataXml();
         };
     }
 

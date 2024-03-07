@@ -40,6 +40,9 @@ public class LoggingConfig {
     @Value("${config.logging.archive.numberOfFiles:10}")
     private int maxHistory;
 
+    @Value("config.logging.enable:false")
+    private boolean enable;
+
     private LoggerContext loggerContext;
 
     @PostConstruct

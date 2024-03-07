@@ -1,8 +1,8 @@
 server:
-  port: 7033
+  port: ${PORT}
 config:
   services:
     context-path:
-      data-manager-ms: "http://DATA-MANAGER/selling/data/manager/sale/v1/"
+      data-manager-ms: ${DATA_MANAGER_URL}
   logging:
     enable: ${ENABLE_LOGGING_FILES}

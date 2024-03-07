@@ -1,0 +1,86 @@
+version: '3.9'
+name: selling-export-category
+
+services:
+  export-data-manager:
+    image: aalfrihat/export-data-manager:1.0.0
+    ports:
+      - "7035:7035"
+    depends_on:
+      - export-data-xml
+      - export-data-pdf
+      - export-data-json
+      - export-data-xlsx
+      - export-data-csv
+    env_file:
+      - ../export-data-manager/.env
+    volumes:
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/export/export-data-manager:/app/logs
+    networks:
+      - network
+
+  export-data-csv:
+    image: aalfrihat/export-data-csv:1.0.0
+    ports:
+      - "7031:7031"
+    env_file:
+      - ../export-data-csv/.env
+    volumes:
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/export/export-data-csv:/app/logs
+    networks:
+      - network
+      - selling-data-network
+
+  export-data-xlsx:
+    image: aalfrihat/export-data-xlsx:1.0.0
+    ports:
+      - "7032:7032"
+    env_file:
+      - ../export-data-xlsx/.env
+    volumes:
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/export/export-data-xlsx:/app/logs
+    networks:
+      - network
+      - selling-data-network
+
+  export-data-json:
+    image: aalfrihat/export-data-json:1.0.0
+    ports:
+      - "7033:7033"
+    env_file:
+      - ../export-data-json/.env
+    volumes:
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/export/export-data-json:/app/logs
+    networks:
+      - network
+      - selling-data-network
+
+  export-data-pdf:
+    image: aalfrihat/export-data-pdf:1.0.0
+    ports:
+      - "7030:7030"
+    env_file:
+      - ../export-data-pdf/.env
+    volumes:
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/export/export-data-pdf:/app/logs
+    networks:
+      - network
+      - selling-data-network
+
+  export-data-xml:
+    image: aalfrihat/export-data-xml:1.0.0
+    ports:
+      - "7034:7034"
+    env_file:
+      - ../export-data-xml/.env
+    volumes:
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/export/export-data-xml:/app/logs
+    networks:
+      - network
+      - selling-data-network
+
+networks:
+  network:
+    name: selling-export-network
+  selling-data-network:
+    external: true
