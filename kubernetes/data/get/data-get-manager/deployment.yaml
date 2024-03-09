@@ -16,7 +16,7 @@ spec:
         namespace: data
         app: data-get-manager
     spec:
-      serviceAccountName: spring-cloud-kubernetes
+      serviceAccountName: data-service-account
       containers:
         - name: data-get-manager
           image: aalfrihat/data-get-manager:1.0.0

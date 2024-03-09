@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: export-data-manager
+  labels:
+    namespace: export
+    app: export-data-manager
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+  selector:
+    namespace: export
+    app: export-data-manager

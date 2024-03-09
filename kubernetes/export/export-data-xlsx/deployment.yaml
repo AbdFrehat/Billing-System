@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: export-data-xlsx
+  labels:
+    namespace: export
+    app: export-data-xlsx
+spec:
+  selector:
+    matchLabels:
+      namespace: export
+      app: export-data-xlsx
+  template:
+    metadata:
+      labels:
+        namespace: export
+        app: export-data-xlsx
+    spec:
+      serviceAccountName: export-service-account
+      containers:
+        - name: export-data-xlsx
+          image: aalfrihat/export-data-xlsx:1.0.0
+          imagePullPolicy: Always
+          env:
+            - name: SPRING_CLOUD_BOOTSTRAP_ENABLED # (3)
+              value: "true"
+            - name: SPRING_CLOUD_KUBERNETES_SECRETS_ENABLEAPI # (4)
+              value: "true"
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - mountPath: /app/logs
+              name: export-data-xlsx-volume
+      volumes:
+        - name: export-data-xlsx-volume
+          hostPath:
+            path: /data/logs/data/export-data-xlsx
+            type: DirectoryOrCreate
+

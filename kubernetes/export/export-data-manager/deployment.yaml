@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: export-data-manager
+  labels:
+    namespace: export
+    app: export-data-manager
+spec:
+  selector:
+    matchLabels:
+      namespace: export
+      app: export-data-manager
+  template:
+    metadata:
+      labels:
+        namespace: export
+        app: export-data-manager
+    spec:
+      serviceAccountName: export-service-account
+      containers:
+        - name: export-data-manager
+          image: aalfrihat/export-data-manager:1.0.0
+          imagePullPolicy: Always
+          env:
+            - name: SPRING_CLOUD_BOOTSTRAP_ENABLED # (3)
+              value: "true"
+            - name: SPRING_CLOUD_KUBERNETES_SECRETS_ENABLEAPI # (4)
+              value: "true"
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - mountPath: /app/logs
+              name: export-data-manager-volume
+      volumes:
+        - name: export-data-manager-volume
+          hostPath:
+            path: /data/logs/data/export-data-manager
+            type: DirectoryOrCreate
+

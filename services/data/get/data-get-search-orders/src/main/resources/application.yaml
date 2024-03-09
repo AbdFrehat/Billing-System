@@ -1,0 +1,23 @@
+spring:
+  webflux:
+    base-path: /orderizer/data/get/query/orders/v1/
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/orders_data
+  application:
+    name: data-get-orders
+  autoconfigure:
+    exclude:
+server:
+  port: 6082
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
+  api-docs:
+    groups:
+      enabled: true
+    path: /api/docs
+logging:
+  level:
+    org.springframework.data.mongodb.core.MongoTemplate: ERROR
+

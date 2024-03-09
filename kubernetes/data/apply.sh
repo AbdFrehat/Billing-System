@@ -11,7 +11,7 @@ projects=()
 echo "Creating the namespace data"
 kubectl apply -f ./namespace.yaml
 echo "Creating the Privileges data"
-kubectl apply -f ./privileges.yaml
+kubectl apply -f ./privileges.yaml --namespace=data
 echo "Creating the Secrets"
 cd ./secrets || exit
 ./apply.sh

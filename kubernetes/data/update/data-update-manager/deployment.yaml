@@ -16,7 +16,7 @@ spec:
         namespace: data
         app: data-update-manager
     spec:
-      serviceAccountName: spring-cloud-kubernetes
+      serviceAccountName: data-service-account
       containers:
         - name: data-update-manager
           image: aalfrihat/data-update-manager:1.0.0

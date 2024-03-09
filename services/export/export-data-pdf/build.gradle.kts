@@ -85,6 +85,7 @@ publishing {
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
+	implementation("org.springframework.cloud:spring-cloud-starter-kubernetes-client-all")
 	implementation("jakarta.validation:jakarta.validation-api:${property("jakartaValidationApiVersion")}")
 	implementation("net.sf.jasperreports:jasperreports:${property("jasperReportsVersion")}")
 	implementation("com.github.librepdf:openpdf:${property("librepdfOpenpdfVersion")}")

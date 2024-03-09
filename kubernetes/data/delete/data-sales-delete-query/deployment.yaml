@@ -16,7 +16,7 @@ spec:
         namespace: data
         app: data-sales-delete-query
     spec:
-      serviceAccountName: spring-cloud-kubernetes
+      serviceAccountName: data-service-account
       containers:
         - name: data-sales-delete-query
           image: aalfrihat/data-sales-delete-query:1.0.0

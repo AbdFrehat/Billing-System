@@ -33,7 +33,8 @@ public class QueryField implements QueryFieldAbstract, Serializable {
     private FieldType fieldType;
 
     public Object getValue() {
-        if ((fieldType.equals(FieldType.RANGE) | (fieldType.equals(FieldType.RANGE_DATE))) && !(this.value instanceof Range<?>)) {
+        if ((fieldType.equals(FieldType.RANGE) | (fieldType.equals(FieldType.RANGE_DATE))) &&
+                !(this.value instanceof Range<?>)) {
             this.value = ObjectToObjectsConvertor.toRange(this.value);
             return this.value;
         }

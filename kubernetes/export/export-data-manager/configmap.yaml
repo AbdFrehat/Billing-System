@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: export-data-manager
+  labels:
+    namespace: export
+    app: export-data-manager
+data:
+  application.properties: |-
+    server.port=8080
+    config.logging.enable=false
+    config.services.context-path.export-data-csv=http://export-data-csv:8080/selling/export/sales/csv/v1/
+    config.services.context-path.export-data-xlsx=http://export-data-xlsx:8080/selling/export/sales/xlsx/v1/
+    config.services.context-path.export-data-json=http://export-data-json:8080/selling/export/sales/json/v1/
+    config.services.context-path.export-data-xml=http://export-data-xml:8080/selling/export/sales/xml/v1/
+    config.services.context-path.export-data-pdf=http://export-data-pdf:8080/selling/export/sales/pdf/v1/

@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: export-data-csv
+  labels:
+    namespace: export
+    app: export-data-csv
+spec:
+  selector:
+    matchLabels:
+      namespace: export
+      app: export-data-csv
+  template:
+    metadata:
+      labels:
+        namespace: export
+        app: export-data-csv
+    spec:
+      serviceAccountName: export-service-account
+      containers:
+        - name: export-data-csv
+          image: aalfrihat/export-data-csv:1.0.0
+          imagePullPolicy: Always
+          env:
+            - name: SPRING_CLOUD_BOOTSTRAP_ENABLED # (3)
+              value: "true"
+            - name: SPRING_CLOUD_KUBERNETES_SECRETS_ENABLEAPI # (4)
+              value: "true"
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - mountPath: /app/logs
+              name: export-data-csv-volume
+      volumes:
+        - name: export-data-csv-volume
+          hostPath:
+            path: /data/logs/data/export-data-csv
+            type: DirectoryOrCreate
+

@@ -5,8 +5,6 @@ spring:
     name: data-manager
 server:
   port: 6080
-  servlet:
-    context-path: /selling/data/manager/sale/v1/
 springdoc:
   swagger-ui:
     path: /swagger-ui

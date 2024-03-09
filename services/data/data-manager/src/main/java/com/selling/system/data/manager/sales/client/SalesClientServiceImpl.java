@@ -1,6 +1,6 @@
 package com.selling.system.data.manager.sales.client;
 
-import com.selling.system.data.manager.sales.config.ServicesContextPathConfig;
+import com.selling.system.data.manager.sales.config.LocalAppConfig;
 import com.selling.system.shared.module.handlers.ClientExceptionHandler;
 import com.selling.system.shared.module.models.commands.DataCommand;
 import com.selling.system.shared.module.models.enums.CommandType;
@@ -26,11 +26,11 @@ public class SalesClientServiceImpl implements SalesClientService {
 
     private final WebClient webClient;
 
-    private final ServicesContextPathConfig servicesContextPathConfig;
+    private final LocalAppConfig localAppConfig;
 
-    public SalesClientServiceImpl(WebClient.Builder webClientBuilder, ServicesContextPathConfig servicesContextPathConfig) {
-        this.webClient = webClientBuilder.build();
-        this.servicesContextPathConfig = servicesContextPathConfig;
+    public SalesClientServiceImpl(WebClient webClient, LocalAppConfig localAppConfig) {
+        this.webClient = webClient;
+        this.localAppConfig = localAppConfig;
     }
 
     /**
@@ -53,10 +53,10 @@ public class SalesClientServiceImpl implements SalesClientService {
 
     private String getUri(CommandType commandType) {
         return switch (commandType) {
-            case GET_SALES, GET_FREE_SALES, GET_OPT_SALES -> servicesContextPathConfig.getDataGetManagerMs();
-            case SAVE_SALE, SAVE_SALES -> servicesContextPathConfig.getDataSaveManagerMs();
-            case UPDATE_SALE, UPDATE_SALES -> servicesContextPathConfig.getDataUpdateManagerMs();
-            case DELETE_SALE, DELETE_SALES, DELETE_QUERY_SALES -> servicesContextPathConfig.getDataDeleteManagerMs();
+            case GET_SALES, GET_FREE_SALES, GET_OPT_SALES -> localAppConfig.getServices().getContextPath().getDataGetManagerMs();
+            case SAVE_SALE, SAVE_SALES -> localAppConfig.getServices().getContextPath().getDataSaveManagerMs();
+            case UPDATE_SALE, UPDATE_SALES -> localAppConfig.getServices().getContextPath().getDataUpdateManagerMs();
+            case DELETE_SALE, DELETE_SALES, DELETE_QUERY_SALES -> localAppConfig.getServices().getContextPath().getDataDeleteManagerMs();
         };
     }
 }

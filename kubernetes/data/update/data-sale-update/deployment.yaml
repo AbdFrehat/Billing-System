@@ -16,7 +16,7 @@ spec:
         namespace: data
         app: data-sale-update
     spec:
-      serviceAccountName: spring-cloud-kubernetes
+      serviceAccountName: data-service-account
       containers:
         - name: data-sale-update
           image: aalfrihat/data-sale-update:1.0.0

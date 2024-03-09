@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: export-data-json
+  labels:
+    namespace: export
+    app: export-data-json
+spec:
+  selector:
+    matchLabels:
+      namespace: export
+      app: export-data-json
+  template:
+    metadata:
+      labels:
+        namespace: export
+        app: export-data-json
+    spec:
+      serviceAccountName: export-service-account
+      containers:
+        - name: export-data-json
+          image: aalfrihat/export-data-json:1.0.0
+          imagePullPolicy: Always
+          env:
+            - name: SPRING_CLOUD_BOOTSTRAP_ENABLED # (3)
+              value: "true"
+            - name: SPRING_CLOUD_KUBERNETES_SECRETS_ENABLEAPI # (4)
+              value: "true"
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - mountPath: /app/logs
+              name: export-data-json-volume
+      volumes:
+        - name: export-data-json-volume
+          hostPath:
+            path: /data/logs/data/export-data-json
+            type: DirectoryOrCreate
+

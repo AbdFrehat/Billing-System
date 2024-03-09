@@ -10,5 +10,5 @@ data:
     server.port=8080
     config.logging.enable=false
     config.services.context-path.data-get-free-ms=http://data-sales-get-free:8080/selling/data/get/free/sale/v1/
-    config.services.context-path.data-get-ms=http://data-sales-get:8080/selling/data/get/free/sale/v1/
-    config.services.context-path.data-get-opt-ms=http://data-sales-get-opt:8080/selling/data/get/free/sale/v1/
+    config.services.context-path.data-get-ms=http://data-sales-get:8080/selling/data/get/query/sale/v1/
+    config.services.context-path.data-get-opt-ms=http://data-sales-get-opt:8080/selling/data/get/opt/sale/v1/
