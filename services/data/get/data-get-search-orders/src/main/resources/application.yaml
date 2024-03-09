@@ -1,11 +1,11 @@
 spring:
   webflux:
-    base-path: /orderizer/data/get/query/orders/v1/
+    base-path: /orderizer/data/get/search/orders/v1/
   data:
     mongodb:
       uri: mongodb://localhost:27017/orders_data
   application:
-    name: data-get-orders
+    name: data-get-search-orders
   autoconfigure:
     exclude:
 server:
