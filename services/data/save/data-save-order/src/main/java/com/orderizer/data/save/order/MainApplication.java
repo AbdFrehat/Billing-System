@@ -1,5 +1,7 @@
-package com.selling.system.data.sale.save;
+package com.orderizer.data.save.order;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -9,13 +11,13 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
         scanBasePackages = {
                 "com.selling.system.data.shared.module",
                 "com.selling.system.shared.module",
-                "com.selling.system.data.sale.save"
+                "com.orderizer.data.save.order"
         })
-
-public class DataSaleSaveApplication {
+@OpenAPIDefinition(info = @Info(title = "data-save-order", version = "1.0", description = "Documentation APIs v1.0"))
+public class MainApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DataSaleSaveApplication.class, args);
+        SpringApplication.run(MainApplication.class, args);
     }
 
 }

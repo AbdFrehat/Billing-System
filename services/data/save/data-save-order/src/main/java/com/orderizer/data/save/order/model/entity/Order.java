@@ -1,24 +1,29 @@
-package com.orderizer.data.get.search.orders.model.entity;
+package com.orderizer.data.save.order.model.entity;
 
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @Data
-@Document("orders")
+@Document(collection = "orders")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Order {
 
     @Id
     private String id;
 
-    private String globalIdentifier;
+    private long globalIdentifier;
 
-    private Long localIdentifier;
+    private long localIdentifier;
 
     private LocalDateTime orderDate;
 

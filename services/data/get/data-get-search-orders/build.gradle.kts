@@ -15,7 +15,6 @@ extra["springDocOpenAPIVersion"] = "2.3.0"
 extra["springCloudVersion"] = "2023.0.0"
 extra["lombokVersion"] = "1.18.30"
 extra["sharedModuleVersion"] = "1.0.0-SNAPSHOT"
-extra["dataSharedModuleVersion"] = "1.0.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -88,7 +87,6 @@ dependencies {
     implementation("jakarta.validation:jakarta.validation-api:${property("jakartaValidationApiVersion")}")
     implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:${property("springDocOpenAPIVersion")}")
     implementation("com.selling.system.shared.module:shared-module:${property("sharedModuleVersion")}")
-    implementation("com.selling.system.data.shared.module:data-shared-module:${property("dataSharedModuleVersion")}")
     implementation("org.projectlombok:lombok:${property("lombokVersion")}")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test")

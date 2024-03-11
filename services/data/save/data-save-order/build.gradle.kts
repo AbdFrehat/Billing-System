@@ -5,7 +5,7 @@ plugins {
     id("jacoco")
     id("maven-publish")
 }
-group = "com.selling.system.data.sales.save"
+group = "com.orderizer.data.get.search.orders"
 version = "1.0.0-SNAPSHOT"
 
 extra["jakartaValidationApiVersion"] = "3.0.2"

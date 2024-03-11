@@ -13,6 +13,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import static org.springframework.data.mongodb.core.query.Criteria.where;
+import static org.springframework.data.mongodb.core.query.Query.query;
 
 @Repository
 @RequiredArgsConstructor
@@ -36,7 +37,7 @@ public class OrdersMongoRepositoryImpl implements OrdersRepository {
 
     @Override
     public Mono<Order> findOrderByGlobalIdentifier(String globalIdentifier) {
-        return reactiveMongoTemplate.find(Query.query(where("globalIdentifier")
+        return reactiveMongoTemplate.find(query(where("globalIdentifier")
                         .is(globalIdentifier)), Order.class)
                 .singleOrEmpty()
                 .switchIfEmpty(Mono.error(OrderNotFoundException::new));
@@ -44,7 +45,7 @@ public class OrdersMongoRepositoryImpl implements OrdersRepository {
 
     @Override
     public Mono<Order> findOrderByLocalIdentifier(String localIdentifier, String storeLocation) {
-        return reactiveMongoTemplate.find(Query.query(where("localIdentifier")
+        return reactiveMongoTemplate.find(query(where("localIdentifier")
                         .is(localIdentifier)
                         .and("storeLocation")
                         .is(storeLocation)), Order.class)

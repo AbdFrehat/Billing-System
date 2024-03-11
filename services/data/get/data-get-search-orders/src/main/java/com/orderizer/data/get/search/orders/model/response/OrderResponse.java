@@ -5,6 +5,8 @@ import com.orderizer.data.get.search.orders.model.entity.Item;
 import lombok.Builder;
 import lombok.Data;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -16,11 +18,13 @@ public class OrderResponse {
 
     private Long localIdentifier;
 
-    private Date orderDate;
+    private LocalDateTime orderDate;
 
     private List<Item> items;
 
     private String storeLocation;
+
+    private BigDecimal totalPrice;
 
     private Customer customer;
 
