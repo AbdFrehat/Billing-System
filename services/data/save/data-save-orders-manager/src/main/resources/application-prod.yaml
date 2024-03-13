@@ -1,0 +1,11 @@
+spring:
+
+server:
+  port: ${PORT}
+config:
+  services:
+    context-path:
+      data-save-order: ${DATA_SALE_SAVE_URL}
+      data-save-orders: ${DATA_SALES_SAVE_URL}
+  logging:
+    enable: ${ENABLE_LOGGING_FILES}

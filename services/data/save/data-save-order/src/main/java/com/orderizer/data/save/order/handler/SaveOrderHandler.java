@@ -5,7 +5,6 @@ import com.orderizer.data.save.order.model.entity.Order;
 import com.orderizer.data.save.order.model.request.OrderSaveRequest;
 import com.orderizer.data.save.order.model.response.OrderSaveResponse;
 import com.orderizer.data.save.order.repository.api.OrdersRepository;
-import com.orderizer.data.save.order.validator.api.Validator;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.http.HttpStatus;
@@ -23,13 +22,11 @@ public class SaveOrderHandler implements HandlerFunction<ServerResponse> {
 
     private final Mapper<Order, OrderSaveResponse> mapper;
 
-    private final Validator<OrderSaveRequest> validator;
 
     @NotNull
     @Override
     public Mono<ServerResponse> handle(@NotNull ServerRequest request) {
         return request.bodyToMono(OrderSaveRequest.class)
-                .flatMap(validator::validate)
                 .flatMap(ordersRepository::saveOrder)
                 .flatMap(mapper::map)
                 .flatMap(ServerResponse.status(HttpStatus.CREATED)::bodyValue);

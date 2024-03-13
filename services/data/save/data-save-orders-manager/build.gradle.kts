@@ -6,14 +6,14 @@ plugins {
     id("maven-publish")
 }
 
-group = "com.orderizer.data.save.orders"
-version = "1.0.0-SNAPSHOT"
-
 extra["jakartaValidationApiVersion"] = "3.0.2"
 extra["springDocOpenAPIVersion"] = "2.3.0"
 extra["springCloudVersion"] = "2023.0.0"
 extra["lombokVersion"] = "1.18.30"
 extra["sharedModuleVersion"] = "1.0.0-SNAPSHOT"
+
+group = "com.orderizer.data.save.manager"
+version = "1.0.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -76,11 +76,9 @@ publishing {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
-    implementation("org.springframework.cloud:spring-cloud-starter-kubernetes-client-all")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("org.springframework.cloud:spring-cloud-starter-kubernetes-client-all")
     implementation("jakarta.validation:jakarta.validation-api:${property("jakartaValidationApiVersion")}")
     implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:${property("springDocOpenAPIVersion")}")
     implementation("com.selling.system.shared.module:shared-module:${property("sharedModuleVersion")}")
@@ -93,6 +91,6 @@ dependencies {
 
 dependencyManagement {
     imports {
-        mavenBom("org.springframework.cloud:spring-cloud-dependencies:${project.findProperty("springCloudVersion")}")
+        mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
     }
 }
