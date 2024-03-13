@@ -5,7 +5,8 @@ plugins {
     id("jacoco")
     id("maven-publish")
 }
-group = "com.orderizer.data.save.order"
+
+group = "com.orderizer.data.save.orders"
 version = "1.0.0-SNAPSHOT"
 
 extra["jakartaValidationApiVersion"] = "3.0.2"
@@ -79,13 +80,13 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
-    implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.cloud:spring-cloud-starter-kubernetes-client-all")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("jakarta.validation:jakarta.validation-api:${property("jakartaValidationApiVersion")}")
     implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:${property("springDocOpenAPIVersion")}")
     implementation("com.selling.system.shared.module:shared-module:${property("sharedModuleVersion")}")
-    implementation("com.selling.system.data.shared.module:data-shared-module:${property("dataSharedModuleVersion")}")
     implementation("org.projectlombok:lombok:${property("lombokVersion")}")
+    implementation("com.selling.system.data.shared.module:data-shared-module:${property("dataSharedModuleVersion")}")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test")
     developmentOnly("org.springframework.boot:spring-boot-devtools")

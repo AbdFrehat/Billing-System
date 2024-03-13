@@ -43,6 +43,9 @@ public class OrderSaveRequestValidator implements Validator<OrderSaveRequest> {
             if (!itemsWithEmptyName.isEmpty()) {
                 return Mono.error(new RequestBodyInvalidException("One or more items has an empty name."));
             }
+            if(orderSaveRequest.getCustomer().getSatisfaction() < 0 || orderSaveRequest.getCustomer().getSatisfaction() > 5) {
+                return Mono.error(new RequestBodyInvalidException("Satisfaction must be between 0 and 5."));
+            }
             List<Item> itemsWithInvalidPrice = orderSaveRequest.getItems().stream()
                     .filter(item -> item.getPrice().compareTo(BigDecimal.ZERO) < 0).toList();
             if (!itemsWithInvalidPrice.isEmpty()) {
