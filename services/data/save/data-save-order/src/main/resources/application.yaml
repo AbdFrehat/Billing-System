@@ -1,6 +1,6 @@
 spring:
   webflux:
-    base-path:  /orderizer/data/save/order/v1/
+    base-path: /orderizer/data/save/order/v1/
   data:
     mongodb:
       uri: mongodb://localhost:27017/orderizer_orders_db
