@@ -1,202 +1,206 @@
 version: '3.9'
 name: selling-data-category
 services:
-  data-manager:
-    image: aalfrihat/data-manager:1.0.0
-    ports:
-      - "6080:6080"
-    env_file:
-      - ../data-manager/.env
-    volumes:
-      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/data-manager:/app/logs
-    networks:
-      - network
-    depends_on:
-      - data-delete-manager
-      - data-update-manager
-      - data-save-manager
-      - data-get-manager
+#  data-manager:
+#    image: aalfrihat/data-manager:1.0.0
+#    ports:
+#      - "6080:6080"
+#    env_file:
+#      - ../data-manager/.env
+#    volumes:
+#      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/data-manager:/app/logs
+#    networks:
+#      - network
+#    depends_on:
+#      - data-delete-manager
+#      - data-update-manager
+#      - data-save-manager
+#      - data-get-manager
+#
+#  data-get-manager:
+#    image: aalfrihat/data-get-manager:1.0.0
+#    ports:
+#      - "6081:6081"
+#    env_file:
+#      - ../get/data-get-manager/.env
+#    volumes:
+#      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/get/data-get-manager:/app/logs
+#    networks:
+#      - network
+#    depends_on:
+#      - data-sales-get
+#      - data-sales-get-free
+#      - data-sales-get-opt
+#
+#  data-sales-get-free:
+#    image: aalfrihat/data-sales-get-free:1.0.0
+#    ports:
+#      - "6083:6083"
+#    env_file:
+#      - ../get/data-sales-get-free/.env
+#    volumes:
+#      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/get/data-sales-get-free:/app/logs
+#    networks:
+#      - network
+#
+#  data-sales-get:
+#    image: aalfrihat/data-sales-get:1.0.0
+#    ports:
+#      - "6082:6082"
+#    env_file:
+#      - ../get/data-sales-get/.env
+#    volumes:
+#      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/get/data-sales-get:/app/logs
+#    networks:
+#      - network
+#
+#  data-sales-get-opt:
+#    image: aalfrihat/data-sales-get-opt:1.0.0
+#    ports:
+#      - "6084:6084"
+#    env_file:
+#      - ../get/data-sales-get-opt/.env
+#    volumes:
+#      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/get/data-sales-get-opt:/app/logs
+#    networks:
+#      - network
 
-  data-get-manager:
-    image: aalfrihat/data-get-manager:1.0.0
-    ports:
-      - "6081:6081"
-    env_file:
-      - ../get/data-get-manager/.env
-    volumes:
-      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/get/data-get-manager:/app/logs
-    networks:
-      - network
-    depends_on:
-      - data-sales-get
-      - data-sales-get-free
-      - data-sales-get-opt
-
-  data-sales-get-free:
-    image: aalfrihat/data-sales-get-free:1.0.0
-    ports:
-      - "6083:6083"
-    env_file:
-      - ../get/data-sales-get-free/.env
-    volumes:
-      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/get/data-sales-get-free:/app/logs
-    networks:
-      - network
-
-  data-sales-get:
-    image: aalfrihat/data-sales-get:1.0.0
-    ports:
-      - "6082:6082"
-    env_file:
-      - ../get/data-sales-get/.env
-    volumes:
-      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/get/data-sales-get:/app/logs
-    networks:
-      - network
-
-  data-sales-get-opt:
-    image: aalfrihat/data-sales-get-opt:1.0.0
-    ports:
-      - "6084:6084"
-    env_file:
-      - ../get/data-sales-get-opt/.env
-    volumes:
-      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/get/data-sales-get-opt:/app/logs
-    networks:
-      - network
-
-  data-save-manager:
-    image: aalfrihat/data-save-manager:1.0.0
+  data-save-orders-manager:
+    image: aalfrihat/data-save-orders-manager:1.0.0
     ports:
       - "6085:6085"
     environment:
       ENABLE_LOGGING_FILES: false
     env_file:
-      - ../save/data-save-manager/.env
+      - ../save/data-save-orders-manager/.env
     volumes:
-      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/save/data-save-manager:/app/logs
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/save/data-save-orders-manager:/app/logs
     networks:
      - network
     depends_on:
-      - data-sale-save
-      - data-sales-save
+      - data-save-order
+      - data-save-orders
 
-  data-sale-save:
-    image: aalfrihat/data-sale-save:1.0.0
+  data-save-order:
+    image: aalfrihat/data-save-order:1.0.0
     ports:
       - "6086:6086"
     env_file:
-      - ../save/data-sale-save/.env
+      - ../save/data-save-order/.env
     volumes:
-      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/save/data-sale-save:/app/logs
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/save/data-save-order:/app/logs
     networks:
       - network
+    depends_on:
+      - orderizer-orders-db
 
-  data-sales-save:
-    image: aalfrihat/data-sales-save:1.0.0
+  data-save-orders:
+    image: aalfrihat/data-save-orders:1.0.0
     ports:
       - "6087:6087"
     env_file:
-      - ../save/data-sales-save/.env
+      - ../save/data-save-orders/.env
     volumes:
-      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/save/data-sales-save:/app/logs
-    networks:
-      - network
-
-  data-update-manager:
-    image: aalfrihat/data-update-manager:1.0.0
-    ports:
-      - "6092:6092"
-    environment:
-      ENABLE_LOGGING_FILES: false
-    env_file:
-      - ../update/data-update-manager/.env
-    volumes:
-      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/update/data-update-manager:/app/logs
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/save/data-save-orders:/app/logs
     networks:
       - network
     depends_on:
-      - data-sale-update
-      - data-sales-update
+      - orderizer-orders-db
 
-  data-sale-update:
-    image: aalfrihat/data-sale-update:1.0.0
-    ports:
-      - "6093:6093"
-    env_file:
-      - ../update/data-sale-update/.env
-    volumes:
-      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/update/data-sale-update:/app/logs
-    networks:
-    - network
+  #  data-update-manager:
+#    image: aalfrihat/data-update-manager:1.0.0
+#    ports:
+#      - "6092:6092"
+#    environment:
+#      ENABLE_LOGGING_FILES: false
+#    env_file:
+#      - ../update/data-update-manager/.env
+#    volumes:
+#      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/update/data-update-manager:/app/logs
+#    networks:
+#      - network
+#    depends_on:
+#      - data-sale-update
+#      - data-sales-update
 
-  data-sales-update:
-    image: aalfrihat/data-sales-update:1.0.0
-    ports:
-      - "6094:6094"
-    env_file:
-      - ../update/data-sales-update/.env
-    volumes:
-      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/update/data-sales-update:/app/logs
-    networks:
-      - network
+#  data-sale-update:
+#    image: aalfrihat/data-sale-update:1.0.0
+#    ports:
+#      - "6093:6093"
+#    env_file:
+#      - ../update/data-sale-update/.env
+#    volumes:
+#      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/update/data-sale-update:/app/logs
+#    networks:
+#    - network
+#
+#  data-sales-update:
+#    image: aalfrihat/data-sales-update:1.0.0
+#    ports:
+#      - "6094:6094"
+#    env_file:
+#      - ../update/data-sales-update/.env
+#    volumes:
+#      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/update/data-sales-update:/app/logs
+#    networks:
+#      - network
 
-  data-delete-manager:
-    image: aalfrihat/data-delete-manager:1.0.0
-    ports:
-      - "6088:6088"
-    environment:
-      ENABLE_LOGGING_FILES: false
-    env_file:
-      - ../delete/data-delete-manager/.env
-    volumes:
-      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/delete/data-delete-manager:/app/logs
-    networks:
-      - network
-    depends_on:
-      - data-sale-delete
-      - data-sales-delete
-      - data-sale-delete-query
+#  data-delete-manager:
+#    image: aalfrihat/data-delete-manager:1.0.0
+#    ports:
+#      - "6088:6088"
+#    environment:
+#      ENABLE_LOGGING_FILES: false
+#    env_file:
+#      - ../delete/data-delete-manager/.env
+#    volumes:
+#      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/delete/data-delete-manager:/app/logs
+#    networks:
+#      - network
+#    depends_on:
+#      - data-sale-delete
+#      - data-sales-delete
+#      - data-sale-delete-query
 
-  data-sale-delete:
-      image: aalfrihat/data-sale-delete:1.0.0
-      ports:
-        - "6089:6089"
-      env_file:
-        - ../delete/data-sale-delete/.env
-      volumes:
-        - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/delete/data-sale-delete:/app/logs
-      networks:
-        - network
+#  data-sale-delete:
+#      image: aalfrihat/data-sale-delete:1.0.0
+#      ports:
+#        - "6089:6089"
+#      env_file:
+#        - ../delete/data-sale-delete/.env
+#      volumes:
+#        - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/delete/data-sale-delete:/app/logs
+#      networks:
+#        - network
 
-  data-sales-delete:
-      image: aalfrihat/data-sales-delete:1.0.0
-      ports:
-        - "6090:6090"
-      env_file:
-        - ../delete/data-sales-delete/.env
-      volumes:
-        - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/delete/data-sales-delete:/app/logs
-      networks:
-        - network
+#  data-sales-delete:
+#      image: aalfrihat/data-sales-delete:1.0.0
+#      ports:
+#        - "6090:6090"
+#      env_file:
+#        - ../delete/data-sales-delete/.env
+#      volumes:
+#        - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/delete/data-sales-delete:/app/logs
+#      networks:
+#        - network
+#
+#  data-sale-delete-query:
+#    image: aalfrihat/data-sale-delete-query:1.0.0
+#    ports:
+#      - "6091:6091"
+#    env_file:
+#      - ../delete/data-sale-delete-query/.env
+#    volumes:
+#      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/delete/data-sale-delete-query:/app/logs
+#    networks:
+#      - network
 
-  data-sale-delete-query:
-    image: aalfrihat/data-sale-delete-query:1.0.0
-    ports:
-      - "6091:6091"
-    env_file:
-      - ../delete/data-sale-delete-query/.env
-    volumes:
-      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/delete/data-sale-delete-query:/app/logs
-    networks:
-      - network
-
-  selling-system-database:
+  orderizer-orders-db:
     image: mongo
     ports:
       - "27017:27017"
     env_file:
-      - ../selling-system-database/.env
+      - ../orderizer-orders-db/.env
     volumes:
       - mongodb_data:/data/db
     networks:

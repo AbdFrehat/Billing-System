@@ -1,4 +1,4 @@
-package com.orderizer.data.save.orders;
+package com.orderizer.data.delete.order;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,8 +9,9 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
         scanBasePackages = {
                 "com.selling.system.data.shared.module",
                 "com.selling.system.shared.module",
-                "com.orderizer.data.save.orders"
+                "com.orderizer.data.delete.order"
         })
+
 public class MainApplication {
 
     public static void main(String[] args) {

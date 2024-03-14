@@ -46,14 +46,14 @@ findProject(":data:save:data-save-order")?.name = "data-save-order"
 findProject(":data:save:data-save-orders")?.name = "data-save-orders"
 
 //Delete Sub-Category
-include("data:delete:data-delete-manager")
-include("data:delete:data-sale-delete")
-include("data:delete:data-sales-delete")
-include("data:delete:data-sale-delete-query")
-findProject(":data:delete:data-delete-manager")?.name = "data-delete-manager"
-findProject(":data:delete:data-sale-delete")?.name = "data-sale-delete"
-findProject(":data:delete:data-sales-delete")?.name = "data-sales-delete"
-findProject(":data:delete:data-sale-delete-query")?.name = "data-sale-delete-query"
+include("data:delete:data-delete-orders-manager")
+include("data:delete:data-delete-order")
+include("data:delete:data-delete-orders")
+include("data:delete:data-delete-search-orders")
+findProject(":data:delete:data-delete-orders-manager")?.name = "data-delete-orders-manager"
+findProject(":data:delete:data-delete-order")?.name = "data-delete-order"
+findProject(":data:delete:data-delete-orders")?.name = "data-delete-orders"
+findProject(":data:delete:data-delete-search-orders")?.name = "data-delete-search-orders"
 
 //Update Sub-Category
 include("data:update:data-update-manager")
