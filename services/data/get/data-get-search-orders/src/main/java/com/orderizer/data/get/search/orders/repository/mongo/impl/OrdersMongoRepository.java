@@ -7,7 +7,6 @@ import com.orderizer.data.get.search.orders.repository.api.OrdersRepository;
 import com.orderizer.data.get.search.orders.repository.mongo.api.QueryBuilder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -17,7 +16,7 @@ import static org.springframework.data.mongodb.core.query.Query.query;
 
 @Repository
 @RequiredArgsConstructor
-public class OrdersMongoRepositoryImpl implements OrdersRepository {
+public class OrdersMongoRepository implements OrdersRepository {
 
     private final ReactiveMongoTemplate reactiveMongoTemplate;
 
@@ -36,7 +35,7 @@ public class OrdersMongoRepositoryImpl implements OrdersRepository {
     }
 
     @Override
-    public Mono<Order> findOrderByGlobalIdentifier(String globalIdentifier) {
+    public Mono<Order> findOrderByGlobalIdentifier(Long globalIdentifier) {
         return reactiveMongoTemplate.find(query(where("globalIdentifier")
                         .is(globalIdentifier)), Order.class)
                 .singleOrEmpty()
@@ -44,7 +43,7 @@ public class OrdersMongoRepositoryImpl implements OrdersRepository {
     }
 
     @Override
-    public Mono<Order> findOrderByLocalIdentifier(String localIdentifier, String storeLocation) {
+    public Mono<Order> findOrderByLocalIdentifier(Long localIdentifier, String storeLocation) {
         return reactiveMongoTemplate.find(query(where("localIdentifier")
                         .is(localIdentifier)
                         .and("storeLocation")

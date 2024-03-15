@@ -3,11 +3,9 @@ spring:
     base-path: /orderizer/data/get/search/orders/v1/
   data:
     mongodb:
-      uri: mongodb://localhost:27017/orders_data
+      uri: mongodb://localhost:27017/orderizer_orders_db
   application:
     name: data-get-search-orders
-  autoconfigure:
-    exclude:
 server:
   port: 6082
 springdoc:

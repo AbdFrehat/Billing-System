@@ -25,10 +25,15 @@ public class QueryBuilderImpl implements QueryBuilder {
         return Mono.defer(() -> {
             Query query = new Query();
             return Mono.when(
-                            processFields(ordersGetRequest.getExactFields(), query),
-                            processFields(ordersGetRequest.getMatchFields(), query),
-                            processFields(ordersGetRequest.getRangeFields(), query)
-                    ).thenReturn(query);
+                    processFields(ordersGetRequest.getExactFields(), query),
+                    processFields(ordersGetRequest.getMatchFields(), query),
+                    processFields(ordersGetRequest.getRangeFields(), query),
+                    processFields(ordersGetRequest.getRangeDateFields(), query),
+                    processFields(ordersGetRequest.getListExactFields(), query),
+                    processFields(ordersGetRequest.getListMatchFields(), query),
+                    processFields(ordersGetRequest.getListRangeFields(), query),
+                    processFields(ordersGetRequest.getListRangeDateFields(), query)
+            ).thenReturn(query);
         });
     }
 

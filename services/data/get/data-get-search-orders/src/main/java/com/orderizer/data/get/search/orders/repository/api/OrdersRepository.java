@@ -11,8 +11,8 @@ public interface OrdersRepository {
 
     Mono<Long> countOrders(OrdersGetRequest ordersGetRequest);
 
-    Mono<Order> findOrderByGlobalIdentifier(String globalIdentifier);
+    Mono<Order> findOrderByGlobalIdentifier(Long globalIdentifier);
 
-    Mono<Order> findOrderByLocalIdentifier(String localIdentifier, String storeLocation);
+    Mono<Order> findOrderByLocalIdentifier(Long localIdentifier, String storeLocation);
 
 }
