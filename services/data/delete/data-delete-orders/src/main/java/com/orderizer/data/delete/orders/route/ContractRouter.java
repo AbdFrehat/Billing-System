@@ -19,12 +19,12 @@ public interface ContractRouter {
 
     @RouterOperations({
             @RouterOperation(path = "/global", produces = MediaType.APPLICATION_JSON_VALUE,
-                    method = RequestMethod.DELETE, beanClass = DeleteOrdersByGlobalIdentifierHandler.class, beanMethod = "handle",
+                    method = RequestMethod.POST, beanClass = DeleteOrdersByGlobalIdentifierHandler.class, beanMethod = "handle",
                     operation = @Operation(operationId = "DeleteOrdersByGlobalIdentifierHandler", requestBody = @RequestBody(
                             content = @Content(schema = @Schema(implementation = DeleteOrdersByGlobalIdentifiersRequest.class))
                     ))),
             @RouterOperation(path = "/local", produces = MediaType.APPLICATION_JSON_VALUE,
-                    method = RequestMethod.DELETE, beanClass = DeleteOrdersByLocalIdentifierHandler.class, beanMethod = "handle",
+                    method = RequestMethod.POST, beanClass = DeleteOrdersByLocalIdentifierHandler.class, beanMethod = "handle",
                     operation = @Operation(operationId = "DeleteOrdersByLocalIdentifierHandler", requestBody = @RequestBody(
                             content = @Content(schema = @Schema(implementation = DeleteOrdersByLocalIdentifiersRequest.class))
                     )))

@@ -23,7 +23,7 @@ public class DeleteOrdersByLocalIdentifierHandler implements HandlerFunction<Ser
         return request.bodyToMono(DeleteOrdersByLocalIdentifiersRequest.class)
                 .map(ordersRepository::deleteOrdersByLocalIdentifier)
                 .flatMap(Flux::collectList)
-                .flatMap(deleteResults -> ServerResponse.noContent().build());
+                .then(ServerResponse.noContent().build());
     }
 
 

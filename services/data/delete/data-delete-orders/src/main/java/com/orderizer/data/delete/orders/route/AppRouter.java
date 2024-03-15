@@ -16,8 +16,8 @@ public class AppRouter implements ContractRouter {
     @Override
     public RouterFunction<ServerResponse> appRoute(DeleteOrdersByLocalIdentifierHandler deleteOrdersByLocalIdentifierHandler,
                                                    DeleteOrdersByGlobalIdentifierHandler deleteOrdersByGlobalIdentifierHandler) {
-        return route().DELETE("/global", deleteOrdersByGlobalIdentifierHandler)
-                .DELETE("/local", deleteOrdersByLocalIdentifierHandler)
+        return route().POST("/global", deleteOrdersByGlobalIdentifierHandler)
+                .POST("/local", deleteOrdersByLocalIdentifierHandler)
                 .build();
     }
 }

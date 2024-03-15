@@ -1,5 +1,6 @@
 package com.orderizer.data.delete.orders.manager;
 
+import com.orderizer.data.delete.orders.manager.config.LocalAppConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

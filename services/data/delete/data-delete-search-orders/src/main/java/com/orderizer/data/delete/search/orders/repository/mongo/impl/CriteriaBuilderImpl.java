@@ -25,24 +25,19 @@ public class CriteriaBuilderImpl implements CriteriaBuilder {
                 return Mono.just(Criteria.where(rangeDateField.getField()).lte(rangeDateField.getMax()).gte(rangeDateField.getMin()));
             }
             if (field instanceof ListExactField listExactField) {
-                return buildListCriteria(listExactField);
+                return build(listExactField.getExactField()).map(Criteria.where(field.getField())::elemMatch);
             }
             if (field instanceof ListMatchField listMatchField) {
-                return buildListCriteria(listMatchField);
+                return build(listMatchField.getMatchField()).map(Criteria.where(field.getField())::elemMatch);
             }
             if (field instanceof ListRangeField listRangeField) {
-                return buildListCriteria(listRangeField);
+                return build(listRangeField.getRangeField()).map(Criteria.where(field.getField())::elemMatch);
             }
             if (field instanceof ListRangeDateField listRangeDateField) {
-                return buildListCriteria(listRangeDateField);
+                return build(listRangeDateField.getRangeDateField()).map(Criteria.where(field.getField())::elemMatch);
             }
             return Mono.error(FieldTypeNotSupportedException::new);
         });
     }
-
-    private Mono<Criteria> buildListCriteria(Field field) {
-        return build(field).map(Criteria.where(field.getField())::elemMatch);
-    }
-
 
 }

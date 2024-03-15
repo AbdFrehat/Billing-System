@@ -23,6 +23,6 @@ public class DeleteOrdersByGlobalIdentifierHandler implements HandlerFunction<Se
         return request.bodyToMono(DeleteOrdersByGlobalIdentifiersRequest.class)
                 .map(ordersRepository::deleteOrdersByGlobalIdentifier)
                 .flatMap(Flux::collectList)
-                .flatMap(deleteResults -> ServerResponse.noContent().build());
+                .then(ServerResponse.noContent().build());
     }
 }

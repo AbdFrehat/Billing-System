@@ -3,8 +3,8 @@ server:
 config:
   services:
     context-path:
-      data-delete-ms: ${DATA_SALES_DELETE_QUERY_URL}
-      data-delete-multi-ms: ${DATA_SALES_DELETE_URL}
-      data-delete-query-ms: ${DATA_SALES_DELETE_QUERY_URL}
+      data-delete-order: ${DATA_DELETE_ORDER_URL}
+      data-delete-orders: ${DATA_DELETE_ORDERS_URL}
+      data-delete-search-orders: ${DATA_DELETE_SEARCH_ORDERS_URL}
   logging:
     enable: ${ENABLE_LOGGING_FILES}

@@ -1,6 +1,6 @@
 package com.orderizer.data.delete.search.orders.handler;
 
-import com.orderizer.data.delete.search.orders.model.request.OrdersDeleteRequest;
+import com.orderizer.data.delete.search.orders.model.request.DeleteOrdersRequest;
 import com.orderizer.data.delete.search.orders.repository.api.OrdersRepository;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
@@ -19,9 +19,9 @@ public class DeleteOrdersSearchHandler implements HandlerFunction<ServerResponse
     @NotNull
     @Override
     public Mono<ServerResponse> handle(@NotNull ServerRequest request) {
-        return request.bodyToMono(OrdersDeleteRequest.class)
+        return request.bodyToMono(DeleteOrdersRequest.class)
                 .flatMap(ordersDeleteRequest -> ordersRepository.deleteOrders(ordersDeleteRequest)
                         .collectList()
-                        .flatMap(deleteResults -> ServerResponse.noContent().build()));
+                        .then(ServerResponse.noContent().build()));
     }
 }

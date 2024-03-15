@@ -23,10 +23,8 @@ public class DeleteOrderByLocalIdentifierHandler implements HandlerFunction<Serv
     @Override
     public Mono<ServerResponse> handle(@NotNull ServerRequest request) {
         return Mono.zip(getQueryParam(request, "local-identifier", Long::parseLong), getQueryParam(request, "store-location", Function.identity()))
-                .flatMap(tuple ->
-                        ordersRepository.deleteOrderByLocalIdentifier(tuple.getT1(), tuple.getT2())
-                                .flatMap(deleteResult -> ServerResponse.noContent().build())
-                );
+                .flatMap(tuple -> ordersRepository.deleteOrderByLocalIdentifier(tuple.getT1(), tuple.getT2()))
+                .then(ServerResponse.noContent().build());
     }
 
 

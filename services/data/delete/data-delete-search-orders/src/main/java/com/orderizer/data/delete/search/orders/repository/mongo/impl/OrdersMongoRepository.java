@@ -2,7 +2,7 @@ package com.orderizer.data.delete.search.orders.repository.mongo.impl;
 
 import com.mongodb.client.result.DeleteResult;
 import com.orderizer.data.delete.search.orders.model.entity.Order;
-import com.orderizer.data.delete.search.orders.model.request.OrdersDeleteRequest;
+import com.orderizer.data.delete.search.orders.model.request.DeleteOrdersRequest;
 import com.orderizer.data.delete.search.orders.repository.api.OrdersRepository;
 import com.orderizer.data.delete.search.orders.repository.mongo.api.QueryBuilder;
 import lombok.RequiredArgsConstructor;
@@ -19,8 +19,8 @@ public class OrdersMongoRepository implements OrdersRepository {
     private final QueryBuilder queryBuilder;
 
     @Override
-    public Flux<DeleteResult> deleteOrders(OrdersDeleteRequest ordersDeleteRequest) {
-        return queryBuilder.build(ordersDeleteRequest)
+    public Flux<DeleteResult> deleteOrders(DeleteOrdersRequest deleteOrdersRequest) {
+        return queryBuilder.build(deleteOrdersRequest)
                 .flatMapMany(query -> reactiveMongoTemplate.remove(query, Order.class));
     }
 

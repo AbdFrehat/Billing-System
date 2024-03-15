@@ -14,6 +14,6 @@ public class AppRouter implements ContractRouter {
     @Override
     @Bean
     public RouterFunction<ServerResponse> appRoute(DeleteOrdersSearchHandler deleteOrdersSearchHandler) {
-        return route().DELETE("/", deleteOrdersSearchHandler).build();
+        return route().POST("/", deleteOrdersSearchHandler).build();
     }
 }

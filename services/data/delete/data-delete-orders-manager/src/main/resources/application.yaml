@@ -15,9 +15,9 @@ springdoc:
 config:
   services:
     context-path:
-      data-delete-ms: "http://DATA-SALE-DELETE/selling/data/delete/sale/v1/"
-      data-delete-multi-ms: "http://DATA-SALES-DELETE/selling/data/delete/sales/v1/"
-      data-delete-query-ms: "http://DATA-SALES-DELETE-QUERY/selling/data/delete/sales/query/v1/"
+      data-delete-order: "http://localhost:6089/orderizer/data/delete/order/v1/"
+      data-delete-orders: "http://localhost:6090/orderizer/data/delete/orders/v1/"
+      data-delete-search-orders: "http://localhost:6091/orderizer/data/delete/search/orders/v1/"
 management:
   endpoints:
     web:
