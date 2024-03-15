@@ -18,6 +18,8 @@ config:
       data-delete-order: "http://localhost:6089/orderizer/data/delete/order/v1/"
       data-delete-orders: "http://localhost:6090/orderizer/data/delete/orders/v1/"
       data-delete-search-orders: "http://localhost:6091/orderizer/data/delete/search/orders/v1/"
+  logging:
+    enable: true
 management:
   endpoints:
     web:

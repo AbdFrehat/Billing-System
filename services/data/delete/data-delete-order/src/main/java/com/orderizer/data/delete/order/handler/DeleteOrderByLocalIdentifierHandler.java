@@ -27,5 +27,4 @@ public class DeleteOrderByLocalIdentifierHandler implements HandlerFunction<Serv
                 .then(ServerResponse.noContent().build());
     }
 
-
 }

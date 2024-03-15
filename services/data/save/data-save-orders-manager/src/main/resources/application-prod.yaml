@@ -5,7 +5,7 @@ server:
 config:
   services:
     context-path:
-      data-save-order: ${DATA_SALE_SAVE_URL}
-      data-save-orders: ${DATA_SALES_SAVE_URL}
+      data-save-order: ${DATA_SAVE_ORDER_URL}
+      data-save-orders: ${DATA_SAVE_ORDERS_URL}
   logging:
     enable: ${ENABLE_LOGGING_FILES}

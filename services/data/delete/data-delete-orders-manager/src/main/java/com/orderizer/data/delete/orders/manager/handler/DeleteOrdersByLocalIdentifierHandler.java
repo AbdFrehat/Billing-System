@@ -2,6 +2,7 @@ package com.orderizer.data.delete.orders.manager.handler;
 
 import com.orderizer.data.delete.orders.manager.config.LocalAppConfig;
 import com.orderizer.data.delete.orders.manager.model.request.DeleteOrdersByLocalIdentifiersRequest;
+import com.orderizer.data.delete.orders.manager.validator.api.Validator;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -15,7 +16,10 @@ public class DeleteOrdersByLocalIdentifierHandler implements HandlerFunction<Ser
 
     private final WebClient webClient;
 
-    public DeleteOrdersByLocalIdentifierHandler(LocalAppConfig localAppConfig, WebClient.Builder webClient) {
+    private final Validator<DeleteOrdersByLocalIdentifiersRequest> validator;
+
+    public DeleteOrdersByLocalIdentifierHandler(LocalAppConfig localAppConfig, WebClient.Builder webClient, Validator<DeleteOrdersByLocalIdentifiersRequest> validator) {
+        this.validator = validator;
         this.webClient = webClient.baseUrl(localAppConfig.getServices().getContextPath().getDataDeleteOrders()).build();
     }
 
@@ -23,6 +27,7 @@ public class DeleteOrdersByLocalIdentifierHandler implements HandlerFunction<Ser
     @Override
     public Mono<ServerResponse> handle(@NotNull ServerRequest request) {
         return request.bodyToMono(DeleteOrdersByLocalIdentifiersRequest.class)
+                .flatMap(validator::validate)
                 .flatMap(deleteOrdersByLocalIdentifiersRequest -> webClient.post()
                         .uri(uriBuilder -> uriBuilder.path("/local").build())
                         .bodyValue(deleteOrdersByLocalIdentifiersRequest)

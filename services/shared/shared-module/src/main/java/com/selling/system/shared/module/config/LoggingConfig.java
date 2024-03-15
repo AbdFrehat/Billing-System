@@ -8,8 +8,8 @@ import ch.qos.logback.core.rolling.RollingFileAppender;
 import ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy;
 import ch.qos.logback.core.util.FileSize;
 import jakarta.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;
 
@@ -17,33 +17,12 @@ import static org.slf4j.Logger.ROOT_LOGGER_NAME;
 
 @Configuration
 @ConditionalOnProperty(name = "config.logging.enable", havingValue = "true")
+@RequiredArgsConstructor
 public class LoggingConfig {
 
-    @Value("${config.logging.name:${spring.application.name}.log}")
-    private String fileName;
-
-    @Value("${config.logging.path:./logs/}")
-    private String logFilePath;
-
-    @Value("${config.logging.pattern:%d [%thread] %-5level %logger{35} - %msg%n}")
-    private String logPattern;
-
-    @Value("${config.logging.archive.pattern:.%d{yyyy-MM-dd}.%i.gz}")
-    private String archivePattern;
-
-    @Value("${config.logging.archive.totalSize:10MB}")
-    private String totalSize;
-
-    @Value("${config.logging.archive.maxSize:1MB}")
-    private String maxSize;
-
-    @Value("${config.logging.archive.numberOfFiles:10}")
-    private int maxHistory;
-
-    @Value("config.logging.enable:false")
-    private boolean enable;
-
     private LoggerContext loggerContext;
+
+    private final AppConfig appConfig;
 
     @PostConstruct
     public void init() {
@@ -53,9 +32,9 @@ public class LoggingConfig {
 
     private void initRollingAppender() {
         RollingFileAppender<String> appender = new RollingFileAppender<>();
-        appender.setFile(logFilePath + fileName);
+        appender.setFile(appConfig.getLogging().getLogFilePath() + appConfig.getLogging().getFileName());
         PatternLayoutEncoder encoder = new PatternLayoutEncoder();
-        encoder.setPattern(logPattern);
+        encoder.setPattern(appConfig.getLogging().getLogPattern());
         encoder.setContext(loggerContext);
         encoder.start();
         initRollingPolicy(appender, (Encoder) encoder);
@@ -63,10 +42,10 @@ public class LoggingConfig {
 
     private void initRollingPolicy(RollingFileAppender<String> appender, Encoder<String> encoder) {
         SizeAndTimeBasedRollingPolicy<String> rollingPolicy = new SizeAndTimeBasedRollingPolicy<>();
-        rollingPolicy.setFileNamePattern(logFilePath + fileName.replaceAll("\\..*", "") + archivePattern);
-        rollingPolicy.setTotalSizeCap(FileSize.valueOf(totalSize));
-        rollingPolicy.setMaxFileSize(FileSize.valueOf(maxSize));
-        rollingPolicy.setMaxHistory(maxHistory);
+        rollingPolicy.setFileNamePattern(appConfig.getLogging().getLogFilePath() + appConfig.getLogging().getFileName().replaceAll("\\..*", "") + appConfig.getLogging().getArchivePattern());
+        rollingPolicy.setTotalSizeCap(FileSize.valueOf(appConfig.getLogging().getTotalSize()));
+        rollingPolicy.setMaxFileSize(FileSize.valueOf(appConfig.getLogging().getMaxSize()));
+        rollingPolicy.setMaxHistory(appConfig.getLogging().getMaxHistory());
         rollingPolicy.setParent(appender);
         rollingPolicy.setContext(loggerContext);
         rollingPolicy.start();
