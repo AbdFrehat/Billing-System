@@ -24,9 +24,8 @@ springdoc:
 config:
   services:
     context-path:
-      paths:
-        auth-clients-manager: "http://localhost:7043/selling/auth/clients/manager/v1/"
-        auth-users-manager: "http://localhost:7041/selling/auth/users/manager/v1/"
+      auth-clients-manager: "http://localhost:7043/selling/auth/clients/manager/v1/"
+      auth-users-manager: "http://localhost:7041/selling/auth/users/manager/v1/"
   auth:
     access-token:
       expiration-time: 3600

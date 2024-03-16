@@ -1,5 +1,6 @@
 package com.selling.system.auth.manager.config;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -13,6 +14,23 @@ import org.springframework.context.annotation.Configuration;
 public class LocalAppConfig {
 
     private Auth auth;
+
+    private Services services;
+
+    @Data
+    public static class Services {
+
+        private ContextPath contextPath;
+
+        @Data
+        public static class ContextPath {
+
+            private String authClientsManager;
+
+            private String authUsersManager;
+
+        }
+    }
 
     @Getter
     @Setter

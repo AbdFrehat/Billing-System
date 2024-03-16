@@ -6,7 +6,7 @@ plugins {
     id("maven-publish")
 }
 
-group = "com.selling.system.auth.shared.module"
+group = "com.orderizer.data.update.order"
 version = "1.0.0-SNAPSHOT"
 
 extra["jakartaValidationApiVersion"] = "3.0.2"
@@ -14,8 +14,6 @@ extra["springDocOpenAPIVersion"] = "2.3.0"
 extra["springCloudVersion"] = "2023.0.0"
 extra["lombokVersion"] = "1.18.30"
 extra["sharedModuleVersion"] = "1.0.0-SNAPSHOT"
-extra["authSharedModuleVersion"] = "1.0.0-SNAPSHOT"
-
 
 repositories {
     mavenCentral()
@@ -78,14 +76,15 @@ publishing {
 }
 
 dependencies {
-    runtimeOnly("org.postgresql:postgresql")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
-    implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
-    implementation("org.postgresql:r2dbc-postgresql:1.0.4.RELEASE")
-    implementation("org.hibernate:hibernate-validator:8.0.1.Final")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("org.springframework.cloud:spring-cloud-starter-kubernetes-client-all")
     implementation("jakarta.validation:jakarta.validation-api:${property("jakartaValidationApiVersion")}")
-    implementation("org.projectlombok:lombok:${property("lombokVersion")}")
+    implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:${property("springDocOpenAPIVersion")}")
     implementation("com.selling.system.shared.module:shared-module:${property("sharedModuleVersion")}")
+    implementation("org.projectlombok:lombok:${property("lombokVersion")}")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
@@ -97,5 +96,3 @@ dependencyManagement {
         mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
     }
 }
-
-

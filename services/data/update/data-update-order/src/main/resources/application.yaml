@@ -1,0 +1,24 @@
+spring:
+  webflux:
+    base-path: /orderizer/data/update/order/v1/
+  application:
+    name: data-update-order
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/orderizer_orders_db
+server:
+  port: 6093
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
+  api-docs:
+    groups:
+      enabled: true
+    path: /api/docs
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: health, restart, refresh, metrics, prometheus
+    enabled-by-default: true

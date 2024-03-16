@@ -1,8 +1,8 @@
 package com.selling.system.auth.manager.service.client.impl;
 
+import com.selling.system.auth.manager.config.LocalAppConfig;
 import com.selling.system.auth.manager.model.client.response.ClientResponse;
 import com.selling.system.auth.manager.service.client.api.ClientsServiceClient;
-import com.selling.system.shared.module.config.AppConfig;
 import com.selling.system.shared.module.handlers.ClientExceptionHandler;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +18,7 @@ import reactor.core.publisher.Mono;
 public class ClientsServiceClientImpl implements ClientsServiceClient {
 
     private final WebClient.Builder webClientBuilder;
-    private final AppConfig appConfig;
+    private final LocalAppConfig localAppConfig;
     private static final String serviceName = "auth-clients-manager";
 
     @Override
@@ -33,10 +33,9 @@ public class ClientsServiceClientImpl implements ClientsServiceClient {
     }
 
     private String getUri(String clientId) {
-        return UriComponentsBuilder.fromHttpUrl(appConfig.getServices()
+        return UriComponentsBuilder.fromHttpUrl(localAppConfig.getServices()
                         .getContextPath()
-                        .getPaths()
-                        .get(serviceName) + clientId)
+                        .getAuthClientsManager() + clientId)
                 .toUriString();
     }
 }

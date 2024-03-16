@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 
 import static org.slf4j.Logger.ROOT_LOGGER_NAME;
 
@@ -24,6 +25,8 @@ public class LoggingConfig {
 
     private final AppConfig appConfig;
 
+    private final Environment environment;
+
     @PostConstruct
     public void init() {
         loggerContext = (LoggerContext) LoggerFactory.getILoggerFactory();
@@ -31,6 +34,9 @@ public class LoggingConfig {
     }
 
     private void initRollingAppender() {
+        if(appConfig.getLogging() != null && appConfig.getLogging().getFileName() == null) {
+            appConfig.getLogging().setFileName(environment.getProperty("spring.application.name") + ".log");
+        }
         RollingFileAppender<String> appender = new RollingFileAppender<>();
         appender.setFile(appConfig.getLogging().getLogFilePath() + appConfig.getLogging().getFileName());
         PatternLayoutEncoder encoder = new PatternLayoutEncoder();

@@ -56,12 +56,12 @@ findProject(":data:delete:data-delete-orders")?.name = "data-delete-orders"
 findProject(":data:delete:data-delete-search-orders")?.name = "data-delete-search-orders"
 
 //Update Sub-Category
-include("data:update:data-update-manager")
-include("data:update:data-sale-update")
-include("data:update:data-sales-update")
-findProject(":data:update:data-update-manager")?.name = "data-update-manager"
-findProject(":data:update:data-sale-update")?.name = "data-sale-update"
-findProject(":data:update:data-sales-update")?.name = "data-sales-update"
+include("data:update:data-update-orders-manager")
+include("data:update:data-update-order")
+include("data:update:data-update-orders")
+findProject(":data:update:data-update-orders-manager")?.name = "data-update-orders-manager"
+findProject(":data:update:data-update-order")?.name = "data-update-order"
+findProject(":data:update:data-update-orders")?.name = "data-update-orders"
 
 //Shared
 include(":shared:shared-module")
