@@ -1,7 +1,6 @@
-package com.orderizer.data.save.manager.route;
+package com.orderizer.data.delete.search.orders.router;
 
-import com.orderizer.data.save.manager.handler.SaveOrderHandler;
-import com.orderizer.data.save.manager.handler.SaveOrdersHandler;
+import com.orderizer.data.delete.search.orders.handler.DeleteOrdersSearchHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.server.RouterFunction;
@@ -12,10 +11,9 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 @Configuration
 public class AppRouter implements ContractRouter {
 
-
+    @Override
     @Bean
-    public RouterFunction<ServerResponse> appRoute(SaveOrderHandler saveOrderHandler, SaveOrdersHandler saveOrdersHandler) {
-        return route().POST("/", saveOrderHandler)
-                .POST("/batch", saveOrdersHandler).build();
+    public RouterFunction<ServerResponse> appRoute(DeleteOrdersSearchHandler deleteOrdersSearchHandler) {
+        return route().POST("/", deleteOrdersSearchHandler).build();
     }
 }

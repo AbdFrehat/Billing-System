@@ -13,6 +13,6 @@ public class OrderUtil {
 
     }
     public static Mono<BigDecimal> calculateTotalPrice(List<Item> items) {
-        return Flux.fromIterable(items).map(Item::getPrice).reduce(BigDecimal.ZERO, BigDecimal::add);
+        return Flux.fromIterable(items).map(item -> item.getPrice().multiply(BigDecimal.valueOf(item.getQuantity()))).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 }

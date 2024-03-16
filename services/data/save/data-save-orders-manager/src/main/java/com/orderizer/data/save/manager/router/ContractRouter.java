@@ -1,4 +1,4 @@
-package com.orderizer.data.save.manager.route;
+package com.orderizer.data.save.manager.router;
 
 import com.orderizer.data.save.manager.handler.SaveOrderHandler;
 import com.orderizer.data.save.manager.handler.SaveOrdersHandler;

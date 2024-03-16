@@ -1,4 +1,4 @@
-package com.orderizer.data.delete.orders.manager.route;
+package com.orderizer.data.delete.orders.manager.router;
 
 import com.orderizer.data.delete.orders.manager.handler.*;
 import org.springframework.context.annotation.Bean;

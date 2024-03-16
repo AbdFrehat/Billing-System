@@ -1,19 +1,21 @@
-package com.orderizer.data.save.orders.route;
+package com.orderizer.data.save.manager.router;
 
-import com.orderizer.data.save.orders.handler.SaveOrdersHandler;
+import com.orderizer.data.save.manager.handler.SaveOrderHandler;
+import com.orderizer.data.save.manager.handler.SaveOrdersHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
-import static org.springframework.web.reactive.function.server.RequestPredicates.path;
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
 @Configuration
 public class AppRouter implements ContractRouter {
+
+
     @Bean
-    @Override
-    public RouterFunction<ServerResponse> appRoute(SaveOrdersHandler saveOrdersHandler) {
-        return route().POST(path("/"), saveOrdersHandler).build();
+    public RouterFunction<ServerResponse> appRoute(SaveOrderHandler saveOrderHandler, SaveOrdersHandler saveOrdersHandler) {
+        return route().POST("/", saveOrderHandler)
+                .POST("/batch", saveOrdersHandler).build();
     }
 }

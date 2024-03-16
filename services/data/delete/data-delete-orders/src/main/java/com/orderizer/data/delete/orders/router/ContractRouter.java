@@ -1,4 +1,4 @@
-package com.orderizer.data.delete.orders.route;
+package com.orderizer.data.delete.orders.router;
 
 import com.orderizer.data.delete.orders.handler.DeleteOrdersByGlobalIdentifierHandler;
 import com.orderizer.data.delete.orders.handler.DeleteOrdersByLocalIdentifierHandler;

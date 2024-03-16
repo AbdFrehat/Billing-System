@@ -1,4 +1,4 @@
-package com.orderizer.data.delete.search.orders.route;
+package com.orderizer.data.delete.search.orders.router;
 
 import com.orderizer.data.delete.search.orders.handler.DeleteOrdersSearchHandler;
 import com.orderizer.data.delete.search.orders.model.request.DeleteOrdersRequest;

@@ -1,6 +1,6 @@
-package com.orderizer.data.save.order.util;
+package com.orderizer.data.update.order.util;
 
-import com.orderizer.data.save.order.model.entity.Item;
+import com.orderizer.data.update.order.model.entity.Item;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -12,6 +12,7 @@ public class OrderUtil {
     private OrderUtil() {
 
     }
+
     public static Mono<BigDecimal> calculateTotalPrice(List<Item> items) {
         return Flux.fromIterable(items).map(item -> item.getPrice().multiply(BigDecimal.valueOf(item.getQuantity()))).reduce(BigDecimal.ZERO, BigDecimal::add);
     }

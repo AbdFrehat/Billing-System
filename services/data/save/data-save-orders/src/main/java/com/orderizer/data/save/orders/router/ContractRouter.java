@@ -1,4 +1,4 @@
-package com.orderizer.data.save.orders.route;
+package com.orderizer.data.save.orders.router;
 
 import com.orderizer.data.save.orders.handler.SaveOrdersHandler;
 import com.orderizer.data.save.orders.model.request.OrdersSaveRequest;
