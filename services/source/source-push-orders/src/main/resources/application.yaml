@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: source-orders-push
+  webflux:
+    base-path:  /orderizer/source/push/orders/v1/
+server:
+  port: 6061
+config:
+  emit:
+    duration: 10
+    max:
+      items: 10
+      tags: 3
+  services:
+    context-path:
+      destination: "http://localhost:6085/orderizer/data/save/orders/manager/v1/"

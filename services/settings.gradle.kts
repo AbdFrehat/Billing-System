@@ -14,12 +14,12 @@ findProject(":kafka:sales:kafka-sale-consumer")?.name = "kafka-sale-consumer"
 
 
 //Source Category
-include("source:source-sales-pull")
-include("source:source-sales-push")
-include("source:source-sales-random-generator")
-findProject(":source:source-sales-pull")?.name = "source-sales-pull"
-findProject(":source:source-sales-push")?.name = "source-sales-push"
-findProject(":source:source-sales-random-generator")?.name = "source-sales-random-generator"
+include("source:source-pull-orders")
+include("source:source-push-orders")
+include("source:source-orders-random-generator")
+findProject(":source:source-pull-orders")?.name = "source-pull-orders"
+findProject(":source:source-push-orders")?.name = "source-push-orders"
+findProject(":source:source-orders-random-generator")?.name = "source-orders-random-generator"
 
 //Data Category
 include("data:data-shared-module")

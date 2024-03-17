@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: source-sales-pull
+  webflux:
+    base-path: /orderizer/source/pull/orders/v1/
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
+  api-docs:
+    groups:
+      enabled: true
+    path: /api/docs
+server:
+  port: 6060
+config:
+  emit:
+    duration: 10
+    max:
+      items: 10
+      tags: 3
