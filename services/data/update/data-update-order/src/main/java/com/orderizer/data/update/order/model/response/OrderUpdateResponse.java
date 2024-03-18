@@ -11,11 +11,11 @@ import java.util.List;
 
 @Data
 @Builder
-public class OrderResponse {
+public class OrderUpdateResponse {
 
-    private String globalIdentifier;
+    private long globalIdentifier;
 
-    private Long localIdentifier;
+    private long localIdentifier;
 
     private LocalDateTime orderDate;
 

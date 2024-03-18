@@ -1,4 +1,4 @@
-package com.orderizer.data.update.order.modification.api;
+package com.orderizer.data.update.orders.modification.api;
 
 import reactor.core.publisher.Mono;
 
