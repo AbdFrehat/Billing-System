@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "com.orderizer.data.delete.search.orders"
-version = "1.0.0-SNAPSHOT"
+version = "1.0.0-RELEASE"
 
 extra["jakartaValidationApiVersion"] = "3.0.2"
 extra["springDocOpenAPIVersion"] = "2.3.0"

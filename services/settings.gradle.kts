@@ -23,19 +23,19 @@ findProject(":source:source-orders-random-generator")?.name = "source-orders-ran
 
 //Data Category
 include("data:data-shared-module")
-include("data:data-manager")
+include("data:data-orders-manager")
 findProject(":data:data-shared-module")?.name = "data-shared-module"
-findProject(":data:data-manager")?.name = "data-manager"
+findProject(":data:data-orders-manager")?.name = "data-orders-manager"
 
 //Get Sub-Category
-include("data:get:data-get-manager")
+include("data:get:data-get-orders-manager")
 include("data:get:data-get-search-orders")
-include("data:get:data-sales-get-free")
-include("data:get:data-sales-get-opt")
-findProject(":data:get:data-get-manager")?.name = "data-get-manager"
-findProject(":data:get:data-sales-get")?.name = "data-sales-get"
-findProject(":data:get:data-sales-get-free")?.name = "data-sales-get-free"
-findProject(":data:get:data-sales-get-opt")?.name = "data-sales-get-opt"
+include("data:get:data-get-free-orders")
+include("data:get:data-get-operation-orders")
+findProject(":data:get:data-get-orders-manager")?.name = "data-get-orders-manager"
+findProject(":data:get:data-get-search-orders")?.name = "data-get-search-orders"
+findProject(":data:get:data-get-free-orders")?.name = "data-get-free-orders"
+findProject(":data:get:data-get-operation-orders")?.name = "data-get-operation-orders"
 
 //Save Sub-Category
 include("data:save:data-save-orders-manager")

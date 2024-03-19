@@ -13,7 +13,7 @@ extra["lombokVersion"] = "1.18.30"
 extra["sharedModuleVersion"] = "1.0.0-SNAPSHOT"
 
 group = "com.orderizer.data.save.manager"
-version = "1.0.0-SNAPSHOT"
+version = "1.0.0-RELEASE"
 
 repositories {
     mavenCentral()

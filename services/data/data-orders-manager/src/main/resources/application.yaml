@@ -1,0 +1,21 @@
+spring:
+  webflux:
+    base-path: /orderizer/data/orders/manager/v1/
+  application:
+    name: data-orders-manager
+server:
+  port: 6080
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
+  api-docs:
+    groups:
+      enabled: true
+    path: /api/docs
+config:
+  services:
+    context-path:
+      data-get-manager-ms: "http://localhost:6081/orderizer/data/get/orders/manager/v1/"
+      data-save-manager-ms: "http://localhost:6085/orderizer/data/save/orders/manager/v1/"
+      data-update-manager-ms: "http://localhost:6092/orderizer/data/update/orders/manager/v1/"
+      data-delete-manager-ms: "http://localhost:6088/orderizer/data/delete/orders/manager/v1/"
