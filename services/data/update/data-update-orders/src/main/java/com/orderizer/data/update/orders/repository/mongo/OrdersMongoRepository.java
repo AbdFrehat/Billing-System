@@ -23,7 +23,7 @@ public class OrdersMongoRepository implements OrdersRepository {
     }
 
     @Override
-    public Mono<Order> findOrderByGlobalIdentifier(long localIdentifier, String storeLocation) {
+    public Mono<Order> findOrderByLocalIdentifier(long localIdentifier, String storeLocation) {
         return reactiveMongoTemplate.find(Query.query(where("localIdentifier").is(localIdentifier).and("storeLocation").is(storeLocation)), Order.class)
                 .singleOrEmpty()
                 .switchIfEmpty(Mono.error(OrderNotFoundException::new));

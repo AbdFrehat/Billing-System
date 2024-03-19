@@ -14,8 +14,6 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
-import static com.selling.system.shared.module.utils.QueryParamsUtil.getQueryParam;
-
 @Component
 @RequiredArgsConstructor
 public class UpdateOrderHandler implements HandlerFunction<ServerResponse> {
@@ -29,10 +27,9 @@ public class UpdateOrderHandler implements HandlerFunction<ServerResponse> {
     @NotNull
     @Override
     public Mono<ServerResponse> handle(@NotNull ServerRequest request) {
-        return Mono.zip(request.bodyToMono(OrderUpdateRequest.class),
-                        getQueryParam(request, "global-identifier", Long::parseLong))
-                .flatMap(tuple -> ordersRepository.findOrderByGlobalIdentifier(tuple.getT2())
-                        .flatMap(order -> modifier.modify(tuple.getT1(), order)))
+        return request.bodyToMono(OrderUpdateRequest.class)
+                .flatMap(orderUpdateRequest -> ordersRepository.findOrderByLocalIdentifier(orderUpdateRequest.getLocalIdentifier(), orderUpdateRequest.getStoreLocation())
+                        .flatMap(order -> modifier.modify(orderUpdateRequest, order)))
                 .flatMap(ordersRepository::updateOrder)
                 .flatMap(mapper::map)
                 .flatMap(order -> ServerResponse.accepted().bodyValue(order));

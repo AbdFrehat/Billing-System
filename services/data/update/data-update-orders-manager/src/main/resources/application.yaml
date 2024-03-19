@@ -15,8 +15,8 @@ springdoc:
 config:
   services:
     context-path:
-      data-update-ms: "http://DATA-SALE-UPDATE/selling/data/update/sale/v1/"
-      data-update-multi-ms: "http://DATA-SALES-UPDATE/selling/data/update/sales/v1/"
+      data-update-order: "http://localhost:6093/orderizer/data/update/order/v1/"
+      data-update-orders: "http://localhost:6094/orderizer/data/update/orders/v1/"
 management:
   endpoints:
     web:

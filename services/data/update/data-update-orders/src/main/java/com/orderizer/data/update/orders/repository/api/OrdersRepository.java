@@ -8,5 +8,5 @@ public interface OrdersRepository {
 
     Mono<Order> updateOrder(Order order);
 
-    Mono<Order> findOrderByGlobalIdentifier(long localIdentifier, String storeLocation);
+    Mono<Order> findOrderByLocalIdentifier(long localIdentifier, String storeLocation);
 }

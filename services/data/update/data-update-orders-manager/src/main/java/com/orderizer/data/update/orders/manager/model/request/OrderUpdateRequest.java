@@ -1,7 +1,7 @@
-package com.orderizer.data.update.order.model.request;
+package com.orderizer.data.update.orders.manager.model.request;
 
-import com.orderizer.data.update.order.model.entity.Customer;
-import com.orderizer.data.update.order.model.entity.Item;
+import com.orderizer.data.update.orders.manager.model.common.Customer;
+import com.orderizer.data.update.orders.manager.model.common.Item;
 import lombok.Data;
 
 import java.util.List;

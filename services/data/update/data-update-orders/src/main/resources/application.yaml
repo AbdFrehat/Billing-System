@@ -7,7 +7,7 @@ spring:
     mongodb:
       uri: mongodb://localhost:27017/orderizer_orders_db
 server:
-  port: 6095
+  port: 6094
 springdoc:
   swagger-ui:
     path: /swagger-ui

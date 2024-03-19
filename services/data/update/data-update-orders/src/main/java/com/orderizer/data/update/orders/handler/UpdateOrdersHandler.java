@@ -34,7 +34,7 @@ public class UpdateOrdersHandler implements HandlerFunction<ServerResponse> {
         return request.bodyToMono(OrdersUpdateRequest.class).map(ordersUpdateRequest -> Flux.fromIterable(ordersUpdateRequest.getOrders()))
                 .flatMap(orderRequestFlux ->
                         orderRequestFlux.flatMap(orderRequest ->
-                                        ordersRepository.findOrderByGlobalIdentifier(orderRequest.getLocalIdentifier(), orderRequest.getStoreLocation())
+                                        ordersRepository.findOrderByLocalIdentifier(orderRequest.getLocalIdentifier(), orderRequest.getStoreLocation())
                                                 .flatMap(order -> modifier.modify(orderRequest, order))
                                                 .flatMap(ordersRepository::updateOrder))
                                 .flatMap(orderResponseMapper::map)
