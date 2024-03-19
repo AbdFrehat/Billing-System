@@ -1,0 +1,15 @@
+spring:
+  webflux:
+    base-path: /orderizer/data/sync/orders/v1/
+  application:
+    name: data-sync-orders
+server:
+  port: 6095
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: health, restart, refresh, metrics, prometheus
+    enabled-by-default: true
+

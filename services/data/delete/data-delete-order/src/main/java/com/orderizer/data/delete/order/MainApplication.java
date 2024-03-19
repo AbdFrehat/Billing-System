@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class,
         scanBasePackages = {
-                "com.selling.system.data.shared.module",
                 "com.selling.system.shared.module",
                 "com.orderizer.data.delete.order"
         })
