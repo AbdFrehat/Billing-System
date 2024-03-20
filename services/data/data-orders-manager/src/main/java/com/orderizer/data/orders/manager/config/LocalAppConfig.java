@@ -18,14 +18,10 @@ public class LocalAppConfig {
 
         @Data
         public static class ContextPath {
-
-            private String DataGetManagerMs;
-
-            private String DataDeleteManagerMs;
-
-            private String DataSaveManagerMs;
-
-            private String DataUpdateManagerMs;
+            private String dataGetOrdersManager;
+            private String dataDeleteOrdersManager;
+            private String dataSaveOrdersManager;
+            private String dataUpdateOrdersManager;
         }
 
     }

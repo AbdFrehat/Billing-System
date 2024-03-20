@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class LocalIdentifierCriteria {
-    private Long localIdentifier;
+    private long localIdentifier;
     private String storeLocation;
 }

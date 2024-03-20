@@ -14,6 +14,8 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
+import static com.selling.system.shared.module.utils.QueryParamsUtil.getQueryParam;
+
 @Component
 @RequiredArgsConstructor
 public class GetOrdersSearchHandler implements HandlerFunction<ServerResponse> {
@@ -26,11 +28,12 @@ public class GetOrdersSearchHandler implements HandlerFunction<ServerResponse> {
     @NotNull
     @Override
     public Mono<ServerResponse> handle(@NotNull ServerRequest request) {
-        return request.bodyToMono(OrdersGetRequest.class)
-                .map(ordersRepository::findOrders)
+        return Mono.zip(request.bodyToMono(OrdersGetRequest.class),
+                        getQueryParam(request, "page", Integer::parseInt).onErrorReturn(0),
+                        getQueryParam(request, "size", Integer::parseInt).onErrorReturn(10))
+                .map(tuple -> ordersRepository.findOrders(tuple.getT1(), tuple.getT2(), tuple.getT3()))
                 .flatMap(orderFlux -> orderFlux.flatMap(mapper::map).collectList())
                 .map(orderResponses -> OrdersResponse.builder().orders(orderResponses).build())
                 .flatMap(ordersResponse -> ServerResponse.ok().bodyValue(ordersResponse));
-
     }
 }

@@ -1,5 +1,6 @@
 package com.orderizer.data.get.search.orders.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Id;
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -15,9 +16,9 @@ public class Order {
     @Id
     private String id;
 
-    private String globalIdentifier;
+    private long globalIdentifier;
 
-    private Long localIdentifier;
+    private long localIdentifier;
 
     private LocalDateTime orderDate;
 

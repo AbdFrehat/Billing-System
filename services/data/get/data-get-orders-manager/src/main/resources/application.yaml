@@ -10,7 +10,6 @@ server:
   port: 6081
   servlet:
     context-path: /selling/data/get/manager/sale/v1/
-
 springdoc:
   swagger-ui:
     path: /swagger-ui
@@ -21,6 +20,6 @@ springdoc:
 config:
   services:
     context-path:
-      data-get-free-ms: "http://DATA-SALES-GET-FREE/selling/data/get/free/sale/v1/"
-      data-get-ms: "http://localhost:6082/selling/data/get/query/sale/v1/"
-      data-get-opt-ms: "http://DATA-SALES-GET-OPT/selling/data/get/opt/sale/v1/"
+      data-get-free-orders: "http://localhost:6083/orderizer/data/get/free/orders/v1/"
+      data-get-search-orders: "http://localhost:6082/orderizer/data/get/search/orders/v1/"
+      data-get-operation-orders: "http://localhost:6084/orderizer/data/get/opt/orders/v1/"

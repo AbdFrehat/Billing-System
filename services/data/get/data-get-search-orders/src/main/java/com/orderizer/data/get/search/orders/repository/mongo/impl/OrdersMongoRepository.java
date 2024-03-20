@@ -6,6 +6,7 @@ import com.orderizer.data.get.search.orders.model.request.OrdersGetRequest;
 import com.orderizer.data.get.search.orders.repository.api.OrdersRepository;
 import com.orderizer.data.get.search.orders.repository.mongo.api.QueryBuilder;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
@@ -23,9 +24,9 @@ public class OrdersMongoRepository implements OrdersRepository {
     private final QueryBuilder queryBuilder;
 
     @Override
-    public Flux<Order> findOrders(OrdersGetRequest ordersGetRequest) {
+    public Flux<Order> findOrders(OrdersGetRequest ordersGetRequest, int pageNumber, int pageSize) {
         return queryBuilder.build(ordersGetRequest)
-                .flatMapMany(query -> reactiveMongoTemplate.find(query, Order.class));
+                .flatMapMany(query -> reactiveMongoTemplate.find(query.with(PageRequest.of(pageNumber, pageSize)), Order.class));
     }
 
     @Override

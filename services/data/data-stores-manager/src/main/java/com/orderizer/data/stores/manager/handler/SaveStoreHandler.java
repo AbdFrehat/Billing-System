@@ -8,6 +8,7 @@ import com.selling.system.shared.module.api.Mapper;
 import com.selling.system.shared.module.api.Validator;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.HandlerFunction;
 import org.springframework.web.reactive.function.server.ServerRequest;
@@ -31,6 +32,6 @@ public class SaveStoreHandler implements HandlerFunction<ServerResponse> {
                 .flatMap(validator::validate)
                 .flatMap(storesRepository::saveStore)
                 .flatMap(mapper::map)
-                .flatMap(body -> ServerResponse.accepted().bodyValue(body));
+                .flatMap(body -> ServerResponse.status(HttpStatus.CREATED).bodyValue(body));
     }
 }

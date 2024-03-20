@@ -15,7 +15,7 @@ springdoc:
 config:
   services:
     context-path:
-      data-get-manager-ms: "http://localhost:6081/orderizer/data/get/orders/manager/v1/"
-      data-save-manager-ms: "http://localhost:6085/orderizer/data/save/orders/manager/v1/"
-      data-update-manager-ms: "http://localhost:6092/orderizer/data/update/orders/manager/v1/"
-      data-delete-manager-ms: "http://localhost:6088/orderizer/data/delete/orders/manager/v1/"
+      data-get-orders-manager: "http://localhost:6081/orderizer/data/get/orders/manager/v1/"
+      data-save-orders-manager: "http://localhost:6085/orderizer/data/save/orders/manager/v1/"
+      data-update-orders-manager: "http://localhost:6092/orderizer/data/update/orders/manager/v1/"
+      data-delete-orders-manager: "http://localhost:6088/orderizer/data/delete/orders/manager/v1/"

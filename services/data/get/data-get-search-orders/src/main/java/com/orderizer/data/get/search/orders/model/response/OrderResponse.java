@@ -13,9 +13,9 @@ import java.util.List;
 @Builder
 public class OrderResponse {
 
-    private String globalIdentifier;
+    private long globalIdentifier;
 
-    private Long localIdentifier;
+    private long localIdentifier;
 
     private LocalDateTime orderDate;
 

@@ -10,7 +10,8 @@ group = "com.selling.system.shared.module"
 version = "1.0.0-SNAPSHOT"
 
 extra["springDocOpenAPIVersion"] = "2.3.0"
-extra["fasterxmlJacksonVersion"] = "2.15.3"
+extra["fasterXmlJacksonVersion"] = "2.17.0"
+extra["fasterJacksonDataTypeVersion"] = "2.17.0"
 extra["lombokVersion"] = "1.18.30"
 
 repositories {
@@ -79,7 +80,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:${property("springDocOpenAPIVersion")}")
-    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:${property("fasterxmlJacksonVersion")}")
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:${property("fasterXmlJacksonVersion")}")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${property("fasterJacksonDataTypeVersion")}")
     implementation("org.projectlombok:lombok:${property("lombokVersion")}")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.security:spring-security-test")

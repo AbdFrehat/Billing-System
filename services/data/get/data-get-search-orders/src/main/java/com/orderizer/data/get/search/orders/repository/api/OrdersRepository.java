@@ -7,7 +7,7 @@ import reactor.core.publisher.Mono;
 
 public interface OrdersRepository {
 
-    Flux<Order> findOrders(OrdersGetRequest ordersGetRequest);
+    Flux<Order> findOrders(OrdersGetRequest ordersGetRequest, int pageNumber, int pageSize);
 
     Mono<Long> countOrders(OrdersGetRequest ordersGetRequest);
 
