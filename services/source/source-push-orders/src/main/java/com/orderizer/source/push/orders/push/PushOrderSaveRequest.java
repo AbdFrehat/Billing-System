@@ -1,8 +1,8 @@
 package com.orderizer.source.push.orders.push;
 
+import com.orderizer.source.push.orders.config.LocalAppConfig;
 import com.orderizer.source.random.generator.orders.generator.api.OrdersGenerator;
 import com.orderizer.source.random.generator.orders.model.emit.Max;
-import com.orderizer.source.push.orders.config.LocalAppConfig;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;

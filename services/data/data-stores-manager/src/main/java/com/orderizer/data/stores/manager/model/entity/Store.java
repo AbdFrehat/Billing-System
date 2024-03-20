@@ -1,6 +1,5 @@
 package com.orderizer.data.stores.manager.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

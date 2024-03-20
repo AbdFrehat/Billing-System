@@ -1,6 +1,5 @@
 package com.orderizer.data.get.orders.manager.model.response;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.orderizer.data.get.orders.manager.model.common.Customer;
 import com.orderizer.data.get.orders.manager.model.common.Item;
 import lombok.Builder;
