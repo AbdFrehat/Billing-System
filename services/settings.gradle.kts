@@ -24,9 +24,11 @@ findProject(":source:source-orders-random-generator")?.name = "source-orders-ran
 //Data Category
 include("data:data-shared-module")
 include("data:data-orders-manager")
+include("data:data-stores-manager")
 include("data:data-sync-orders")
 findProject(":data:data-shared-module")?.name = "data-shared-module"
 findProject(":data:data-orders-manager")?.name = "data-orders-manager"
+findProject(":data:data-stores-manager")?.name = "data-stores-manager"
 findProject(":data:data-sync-orders")?.name = "data-sync-orders"
 
 //Get Sub-Category

@@ -1,4 +1,4 @@
-package com.orderizer.data.save.order.model.entity;
+package com.orderizer.data.stores.manager.model.entity;
 
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
@@ -7,15 +7,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "globalIdentifiers")
+@Document(collection = "identifiers")
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class GlobalIdentifier {
+public class Identifier {
 
     @Id
     private String id;
 
-    private long identifier;
+    private int identifier;
 }

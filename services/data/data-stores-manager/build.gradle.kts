@@ -6,11 +6,14 @@ plugins {
     id("maven-publish")
 }
 
-group = "com.orderizer.data.orders.manager"
+group = "com.orderizer.data.delete.order"
 version = "1.0.0-RELEASE"
 
+extra["jakartaValidationApiVersion"] = "3.0.2"
+extra["springDocOpenAPIVersion"] = "2.3.0"
 extra["springCloudVersion"] = "2023.0.0"
 extra["lombokVersion"] = "1.18.30"
+extra["sharedModuleVersion"] = "1.0.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -74,11 +77,14 @@ publishing {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-webflux")
-    implementation("org.springframework.boot:spring-boot-starter-actuator")
-    implementation("org.springframework.boot:spring-boot-starter-data-elasticsearch")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
     implementation("org.springframework.cloud:spring-cloud-starter-kubernetes-client-all")
+    implementation("org.springframework.boot:spring-boot-starter-webflux")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("jakarta.validation:jakarta.validation-api:${property("jakartaValidationApiVersion")}")
+    implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:${property("springDocOpenAPIVersion")}")
+    implementation("com.selling.system.shared.module:shared-module:${property("sharedModuleVersion")}")
     implementation("org.projectlombok:lombok:${property("lombokVersion")}")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test")
@@ -91,4 +97,3 @@ dependencyManagement {
         mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
     }
 }
-

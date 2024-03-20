@@ -3,6 +3,9 @@ spring:
     base-path: /orderizer/data/sync/orders/v1/
   application:
     name: data-sync-orders
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/orderizer_orders_db
 server:
   port: 6095
 management:
@@ -12,4 +15,7 @@ management:
       exposure:
         include: health, restart, refresh, metrics, prometheus
     enabled-by-default: true
+  health:
+    elasticsearch:
+      enabled: false
 
