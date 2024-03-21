@@ -45,7 +45,7 @@ public interface ContractRouter {
                                     @Parameter(in = ParameterIn.QUERY, name = "count")
                             })
             ),
-            @RouterOperation(path = "/get/local", produces = MediaType.APPLICATION_JSON_VALUE,
+            @RouterOperation(path = "/get/search/local", produces = MediaType.APPLICATION_JSON_VALUE,
                     method = RequestMethod.GET, beanClass = GetOrderByLocalIdentifierHandler.class, beanMethod = "handle",
                     operation = @Operation(operationId = "GetOrderByLocalIdentifierHandler",
                             parameters = {
@@ -53,7 +53,7 @@ public interface ContractRouter {
                                     @Parameter(in = ParameterIn.QUERY, name = "store-location"),
                             })
             ),
-            @RouterOperation(path = "/get/global", produces = MediaType.APPLICATION_JSON_VALUE,
+            @RouterOperation(path = "/get/search/global", produces = MediaType.APPLICATION_JSON_VALUE,
                     method = RequestMethod.GET, beanClass = GetOrderByGlobalIdentifierHandler.class, beanMethod = "handle",
                     operation = @Operation(operationId = "GetOrderByGlobalIdentifierHandler",
                             parameters = {

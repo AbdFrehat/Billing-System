@@ -30,8 +30,8 @@ public class AppRouter implements ContractRouter {
     @Bean
     public RouterFunction<ServerResponse> dataManagerRoute(Map<String, HandlerFunction<ServerResponse>> handlers) {
         return route().nest(path(""), nestL1 -> nestL1.nest(path("/get"), nestL2 ->
-                                nestL2.nest(path(""), nestL3 ->
-                                                nestL3.POST("/search", extract(handlers, GetOrdersSearchHandler.class))
+                                nestL2.nest(path("/search"), nestL3 ->
+                                                nestL3.POST("/", extract(handlers, GetOrdersSearchHandler.class))
                                                         .POST("/count", extract(handlers, GetOrdersCountHandler.class))
                                                         .GET("/local", extract(handlers, GetOrderByLocalIdentifierHandler.class))
                                                         .GET("/global", extract(handlers, GetOrderByGlobalIdentifierHandler.class))

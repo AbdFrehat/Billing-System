@@ -35,7 +35,7 @@ public class DeleteOrderByLocalIdentifierHandler implements HandlerFunction<Serv
                                 .queryParam("store-location", tuple.getT2())
                                 .build())
                         .retrieve()
-                        .onStatus(HttpStatusCode::isError, new ClientExceptionHandler("data-delete-order"))
+                        .onStatus(HttpStatusCode::isError, new ClientExceptionHandler("data-delete-orders-manager"))
                         .toBodilessEntity()
                         .then(ServerResponse.noContent().build()));
     }

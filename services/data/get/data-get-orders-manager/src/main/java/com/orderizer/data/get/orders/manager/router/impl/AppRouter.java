@@ -14,6 +14,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import java.util.Map;
 
 import static com.selling.system.shared.module.utils.BeansUtil.extract;
+import static org.springframework.web.reactive.function.server.RequestPredicates.path;
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
 @Configuration
@@ -21,10 +22,12 @@ public class AppRouter implements ContractRouter {
     @Bean
     @Override
     public RouterFunction<ServerResponse> appRoute(Map<String, HandlerFunction<ServerResponse>> handlers) {
-        return route().POST("/search", extract(handlers, GetOrdersSearchHandler.class))
-                .POST("/count", extract(handlers, GetOrdersCountHandler.class))
-                .GET("/local", extract(handlers, GetOrderByLocalIdentifierHandler.class))
-                .GET("/global", extract(handlers, GetOrderByGlobalIdentifierHandler.class))
+        return route().nest(path("/search"), nestL1 -> nestL1
+                        .POST(path(""), extract(handlers, GetOrdersSearchHandler.class))
+                        .POST(path("/count"), extract(handlers, GetOrdersCountHandler.class))
+                        .GET(path("/local"), extract(handlers, GetOrderByLocalIdentifierHandler.class))
+                        .GET(path("/global"), extract(handlers, GetOrderByGlobalIdentifierHandler.class))
+                        .build())
                 .build();
     }
 }

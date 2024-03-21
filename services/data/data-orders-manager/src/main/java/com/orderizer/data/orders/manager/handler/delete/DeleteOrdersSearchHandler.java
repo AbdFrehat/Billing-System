@@ -2,7 +2,9 @@ package com.orderizer.data.orders.manager.handler.delete;
 
 import com.orderizer.data.orders.manager.config.LocalAppConfig;
 import com.orderizer.data.orders.manager.model.request.DeleteOrdersSearchRequest;
+import com.selling.system.shared.module.handlers.ClientExceptionHandler;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.server.HandlerFunction;
@@ -26,6 +28,7 @@ public class DeleteOrdersSearchHandler implements HandlerFunction<ServerResponse
                 .flatMap(deleteOrdersSearchRequest -> webClient.post()
                         .bodyValue(deleteOrdersSearchRequest)
                         .retrieve()
+                        .onStatus(HttpStatusCode::isError, new ClientExceptionHandler("data-delete-orders-manager"))
                         .toBodilessEntity()
                         .then(ServerResponse.noContent().build()));
     }

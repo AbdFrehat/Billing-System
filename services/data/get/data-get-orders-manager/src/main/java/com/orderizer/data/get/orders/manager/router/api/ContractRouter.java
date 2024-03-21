@@ -24,14 +24,14 @@ import java.util.Map;
 public interface ContractRouter {
 
     @RouterOperations({
-            @RouterOperation(path = "/global", produces = MediaType.APPLICATION_JSON_VALUE,
+            @RouterOperation(path = "/search/global", produces = MediaType.APPLICATION_JSON_VALUE,
                     method = RequestMethod.GET, beanClass = GetOrderByGlobalIdentifierHandler.class, beanMethod = "handle",
                     operation = @Operation(operationId = "GetOrderByGlobalIdentifierHandler",
                             parameters = {
                                     @Parameter(in = ParameterIn.QUERY, name = "global-identifier")
                             })
             ),
-            @RouterOperation(path = "/local", produces = MediaType.APPLICATION_JSON_VALUE,
+            @RouterOperation(path = "/search/local", produces = MediaType.APPLICATION_JSON_VALUE,
                     method = RequestMethod.GET, beanClass = GetOrderByLocalIdentifierHandler.class, beanMethod = "handle",
                     operation = @Operation(operationId = "GetOrderByLocalIdentifierHandler",
                             parameters = {
@@ -39,7 +39,7 @@ public interface ContractRouter {
                                     @Parameter(in = ParameterIn.QUERY, name = "store-location"),
                             })
             ),
-            @RouterOperation(path = "/count", produces = MediaType.APPLICATION_JSON_VALUE,
+            @RouterOperation(path = "/search/count", produces = MediaType.APPLICATION_JSON_VALUE,
                     method = RequestMethod.POST, beanClass = GetOrdersCountHandler.class, beanMethod = "handle",
                     operation = @Operation(operationId = "GetOrdersCountHandler", requestBody = @RequestBody(
                             content = @Content(schema = @Schema(implementation = OrdersGetRequest.class))))

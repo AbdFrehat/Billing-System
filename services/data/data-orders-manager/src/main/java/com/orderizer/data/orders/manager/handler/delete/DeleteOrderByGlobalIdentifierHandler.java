@@ -31,7 +31,7 @@ public class DeleteOrderByGlobalIdentifierHandler implements HandlerFunction<Ser
                                 .queryParam("global-identifier", globalIdentifier)
                                 .build())
                         .retrieve()
-                        .onStatus(HttpStatusCode::isError, new ClientExceptionHandler("data-delete-order"))
+                        .onStatus(HttpStatusCode::isError, new ClientExceptionHandler("data-delete-orders-manager"))
                         .toBodilessEntity()
                         .then(ServerResponse.noContent().build()));
     }
