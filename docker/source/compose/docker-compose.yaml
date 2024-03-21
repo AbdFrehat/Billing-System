@@ -1,0 +1,28 @@
+version: '3.9'
+name: orderizer-source-ns
+services:
+  source-pull-orders:
+    image: aalfrihat/source-pull-orders:1.0.0
+    ports:
+      - "6060:6060"
+    env_file:
+      - ../source-pull-orders/.env
+    volumes:
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/source/source-pull-orders:/app/logs
+    networks:
+      - network
+
+  source-push-orders:
+    image: aalfrihat/source-push-orders:1.0.0
+    env_file:
+      - ../source-push-orders/.env
+    volumes:
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/source/source-push-orders:/app/logs
+    networks:
+      - network
+      - orderizer-data-network
+
+networks:
+  network:
+  orderizer-data-network:
+    external: true

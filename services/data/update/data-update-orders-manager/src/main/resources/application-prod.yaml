@@ -5,7 +5,7 @@ server:
 config:
   services:
     context-path:
-      data-update-ms: ${DATA_SALE_UPDATE_URL}
-      data-update-multi-ms: ${DATA_SALES_UPDATE_URL}
+      data-update-order: ${DATA_UPDATE_ORDER_URL}
+      data-update-orders: ${DATA_UPDATE_ORDERS_URL}
   logging:
     enable: ${ENABLE_LOGGING_FILES}

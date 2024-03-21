@@ -1,13 +1,13 @@
 server:
   port: 6061
-emit:
-  duration: ${EMIT_DURATION}
-  max:
-    items: ${NUMBER_ITEMS}
-    tags: ${NUMBER_TAGS}
 config:
   services:
     context-path:
-      kafka-sale-producer-ms: "http://KAFKA-SALE-PRODUCER/selling/kafka/sale/v1/"
+      destination: ${DESTINATION_URL}
+  emit:
+    duration: ${EMIT_DURATION}
+    max:
+      items: ${NUMBER_ITEMS}
+      tags: ${NUMBER_TAGS}
   logging:
     enable: ${ENABLE_LOGGING_FILES}

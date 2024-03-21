@@ -1,10 +1,10 @@
 server:
   port: 6060
-emit:
-  duration: ${EMIT_DURATION}
-  max:
-    items: ${NUMBER_ITEMS}
-    tags: ${NUMBER_TAGS}
 config:
+  emit:
+    duration: ${EMIT_DURATION}
+    max:
+      items: ${NUMBER_ITEMS}
+      tags: ${NUMBER_TAGS}
   logging:
     enable: ${ENABLE_LOGGING_FILES}

@@ -5,8 +5,8 @@ server:
 config:
   services:
     context-path:
-      data-get-free-ms: ${DATA_SALES_GET_FREE_URL}
-      data-get-ms: ${DATA_SALES_GET_URL}
-      data-get-opt-ms: ${DATA_SALES_GET_OPT_URL}
+      data-get-free-orders: ${DATA_GET_FREE_ORDERS_URL}
+      data-get-search-orders: ${DATA_GET_SEARCH_ORDERS_URL}
+      data-get-operation-orders: ${DATA_GET_OPERATION_ORDERS_URL}
   logging:
     enable: ${ENABLE_LOGGING_FILES}

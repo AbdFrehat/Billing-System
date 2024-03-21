@@ -1,5 +1,5 @@
 version: '3.9'
-name: selling-data-category
+name: orderizer-data-ns
 services:
 #  data-manager:
 #    image: aalfrihat/data-manager:1.0.0
@@ -13,22 +13,22 @@ services:
 #      - network
 #    depends_on:
 #      - data-delete-manager
-#      - data-update-manager
+#      - data-update-orders-manager
 #      - data-save-manager
-#      - data-get-manager
+#      - data-get-orders-manager
 #
-#  data-get-manager:
-#    image: aalfrihat/data-get-manager:1.0.0
-#    ports:
-#      - "6081:6081"
-#    env_file:
-#      - ../get/data-get-manager/.env
-#    volumes:
-#      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/get/data-get-manager:/app/logs
-#    networks:
-#      - network
-#    depends_on:
-#      - data-sales-get
+  data-get-orders-manager:
+    image: aalfrihat/data-get-orders-manager:1.0.0
+    ports:
+      - "6081:6081"
+    env_file:
+      - ../get/data-get-orders-manager/.env
+    volumes:
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/get/data-get-orders-manager:/app/logs
+    networks:
+      - network
+    depends_on:
+      - data-get-search-orders
 #      - data-sales-get-free
 #      - data-sales-get-opt
 #
@@ -43,16 +43,16 @@ services:
 #    networks:
 #      - network
 #
-#  data-sales-get:
-#    image: aalfrihat/data-sales-get:1.0.0
-#    ports:
-#      - "6082:6082"
-#    env_file:
-#      - ../get/data-sales-get/.env
-#    volumes:
-#      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/get/data-sales-get:/app/logs
-#    networks:
-#      - network
+  data-get-search-orders:
+    image: aalfrihat/data-get-search-orders:1.0.0
+    ports:
+      - "6082:6082"
+    env_file:
+      - ../get/data-get-search-orders/.env
+    volumes:
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/get/data-get-search-orders:/app/logs
+    networks:
+      - network
 #
 #  data-sales-get-opt:
 #    image: aalfrihat/data-sales-get-opt:1.0.0
@@ -107,43 +107,43 @@ services:
     depends_on:
       - orderizer-orders-db
 
-  #  data-update-manager:
-#    image: aalfrihat/data-update-manager:1.0.0
-#    ports:
-#      - "6092:6092"
-#    environment:
-#      ENABLE_LOGGING_FILES: false
-#    env_file:
-#      - ../update/data-update-manager/.env
-#    volumes:
-#      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/update/data-update-manager:/app/logs
-#    networks:
-#      - network
-#    depends_on:
-#      - data-sale-update
-#      - data-sales-update
+  data-update-orders-manager:
+    image: aalfrihat/data-update-orders-manager:1.0.0
+    ports:
+      - "6092:6092"
+    environment:
+      ENABLE_LOGGING_FILES: false
+    env_file:
+      - ../update/data-update-orders-manager/.env
+    volumes:
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/update/data-update-orders-manager:/app/logs
+    networks:
+      - network
+    depends_on:
+      - data-update-order
+      - data-update-orders
 
-#  data-sale-update:
-#    image: aalfrihat/data-sale-update:1.0.0
-#    ports:
-#      - "6093:6093"
-#    env_file:
-#      - ../update/data-sale-update/.env
-#    volumes:
-#      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/update/data-sale-update:/app/logs
-#    networks:
-#    - network
-#
-#  data-sales-update:
-#    image: aalfrihat/data-sales-update:1.0.0
-#    ports:
-#      - "6094:6094"
-#    env_file:
-#      - ../update/data-sales-update/.env
-#    volumes:
-#      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/update/data-sales-update:/app/logs
-#    networks:
-#      - network
+  data-update-order:
+    image: aalfrihat/data-update-order:1.0.0
+    ports:
+      - "6093:6093"
+    env_file:
+      - ../update/data-update-order/.env
+    volumes:
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/update/data-update-order:/app/logs
+    networks:
+    - network
+
+  data-update-orders:
+    image: aalfrihat/data-update-orders:1.0.0
+    ports:
+      - "6094:6094"
+    env_file:
+      - ../update/data-update-orders/.env
+    volumes:
+      - /Users/abdfrehat/Frehat/Code/Projects/Selling-System/logs/data/update/data-update-orders:/app/logs
+    networks:
+      - network
 
   data-delete-orders-manager:
     image: aalfrihat/data-delete-orders-manager:1.0.0
@@ -216,5 +216,5 @@ volumes:
   mongodb_data:
 networks:
   network:
-    name: selling-data-network
+    name: orderizer-data-network
 
