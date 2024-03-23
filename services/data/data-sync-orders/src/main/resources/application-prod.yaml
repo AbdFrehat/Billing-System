@@ -1,11 +1,5 @@
 server:
   port: ${PORT}
 config:
-  services:
-    context-path:
-      data-get-manager-ms: ${DATA_GET_MANAGER_URL}
-      data-save-manager-ms: ${DATA_SAVE_MANAGER_URL}
-      data-update-manager-ms: ${DATA_UPDATE_MANAGER_URL}
-      data-delete-manager-ms: ${DATA_DELETE_MANAGER_URL}
   logging:
     enable: ${ENABLE_LOGGING_FILES}

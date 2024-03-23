@@ -18,4 +18,11 @@ management:
   health:
     elasticsearch:
       enabled: false
+config:
+  services:
+    context-path:
+      data-stores-manager: http://localhost:6096/orderizer/data/stores/manager/v1/
+  batch:
+    size: 1000
+    delay: 10
 
