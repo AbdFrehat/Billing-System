@@ -12,14 +12,12 @@ import java.util.concurrent.Executors;
 @RequiredArgsConstructor
 public class AppStarter implements CommandLineRunner {
 
-    private final List<Runnable> runnables;
-
-
+    private final List<Runnable> runnable;
 
     @Override
     public void run(String... args) throws Exception {
         try (ExecutorService executorService = Executors.newVirtualThreadPerTaskExecutor()) {
-            runnables.forEach(executorService::submit);
+            runnable.forEach(executorService::submit);
         }
     }
 }

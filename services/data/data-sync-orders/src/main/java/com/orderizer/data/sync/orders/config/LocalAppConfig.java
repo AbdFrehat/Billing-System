@@ -13,6 +13,10 @@ public class LocalAppConfig {
 
     private Batch batch;
 
+    private Delay delay;
+
+    private Queue queue;
+
     @Data
     public static class Services {
 
@@ -27,6 +31,17 @@ public class LocalAppConfig {
     @Data
     public static class Batch {
         private int size;
-        private int delay;
+    }
+
+    @Data
+    public static class Delay {
+        private int storesReader;
+        private int mongoReader;
+        private int elasticWriter;
+    }
+
+    @Data
+    public static class Queue {
+        private int size;
     }
 }

@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.Queue;
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -19,7 +20,7 @@ public class MongoReaders implements Runnable {
 
     private final LocalAppConfig localAppConfig;
 
-    private final Queue<List<Order>> orderQueue;
+    private final ArrayBlockingQueue<List<Order>> orderQueue;
 
     private final Queue<Store> storesQueue;
 

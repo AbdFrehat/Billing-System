@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 import java.util.Queue;
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 @Configuration
@@ -19,8 +20,8 @@ public class ResourcesConfig {
 
 
     @Bean
-    public Queue<List<Order>> ordersQueue() {
-        return new LinkedBlockingQueue<>();
+    public ArrayBlockingQueue<List<Order>> ordersQueue(LocalAppConfig localAppConfig) {
+        return new ArrayBlockingQueue<>(localAppConfig.getQueue().getSize());
     }
 
     @Bean
@@ -29,18 +30,18 @@ public class ResourcesConfig {
     }
 
     @Bean
-    public Runnable mongoReaders(OrdersRepository ordersRepository, LocalAppConfig localAppConfig, Queue<Store> storesQueue) {
-        return new MongoReaders(ordersRepository, localAppConfig, ordersQueue(), storesQueue);
+    public Runnable mongoReaders(OrdersRepository ordersRepository, LocalAppConfig localAppConfig) {
+        return new MongoReaders(ordersRepository, localAppConfig, ordersQueue(localAppConfig), storesQueue());
     }
 
     @Bean
-    public Runnable storesReader(StoresService storesService, Queue<Store> storesQueue) {
-        return new StoresReader(storesService, storesQueue);
+    public Runnable storesReader(StoresService storesService, LocalAppConfig localAppConfig) {
+        return new StoresReader(storesService, storesQueue(), localAppConfig);
     }
 
     @Bean
-    public Runnable elasticSearchWriter() {
-        return new ElasticSearchWriter(ordersQueue());
+    public Runnable elasticSearchWriter(LocalAppConfig localAppConfig) {
+        return new ElasticSearchWriter(ordersQueue(localAppConfig), localAppConfig);
     }
 
 }
