@@ -27,7 +27,14 @@ config:
   delay:
     stores-reader: 10000
     mongo-reader: 100
-    elastic-writer: 1000
+    elastic-writer: 100
   queue:
     size: 10
-
+  elastic-search:
+    ca-fingerprint: 3ff898e6dfaf702fe6a53c1012f4c1013a5d59327bdbbd1ac0df63fd5d247b7a
+    username: elastic
+    password: i2O=V-SVj3Kgap5xN4i+
+    uri: localhost:9200
+  threads:
+    elasticsearch:
+      size: 10

@@ -1,5 +1,7 @@
-package com.orderizer.data.sync.orders.model.entity;
+package com.orderizer.data.sync.orders.model.entity.mongo;
 
+import com.orderizer.data.sync.orders.model.common.Customer;
+import com.orderizer.data.sync.orders.model.common.Item;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,7 +18,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Order {
+public class MongoOrder {
 
     @Id
     private String id;

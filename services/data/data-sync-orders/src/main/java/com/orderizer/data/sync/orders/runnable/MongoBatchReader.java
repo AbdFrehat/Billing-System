@@ -2,8 +2,9 @@ package com.orderizer.data.sync.orders.runnable;
 
 
 import com.orderizer.data.sync.orders.config.LocalAppConfig;
-import com.orderizer.data.sync.orders.model.entity.Order;
-import com.orderizer.data.sync.orders.repository.api.OrdersRepository;
+import com.orderizer.data.sync.orders.model.entity.mongo.MongoOrder;
+import com.orderizer.data.sync.orders.model.queue.OrdersBatch;
+import com.orderizer.data.sync.orders.repository.api.OrdersMongoRepository;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
@@ -12,16 +13,16 @@ import java.util.concurrent.ArrayBlockingQueue;
 @Slf4j
 public class MongoBatchReader implements Runnable {
 
-    private final OrdersRepository ordersRepository;
+    private final OrdersMongoRepository ordersMongoRepository;
     private final String storeLocation;
-    private final ArrayBlockingQueue<List<Order>> orderQueue;
+    private final ArrayBlockingQueue<OrdersBatch> orderQueue;
     private final int batch;
     private final int delay;
     private int start;
     private int end;
 
-    public MongoBatchReader(OrdersRepository ordersRepository, String storeLocation, ArrayBlockingQueue<List<Order>> orderQueue, LocalAppConfig localAppConfig) {
-        this.ordersRepository = ordersRepository;
+    public MongoBatchReader(OrdersMongoRepository ordersMongoRepository, String storeLocation, ArrayBlockingQueue<OrdersBatch> orderQueue, LocalAppConfig localAppConfig) {
+        this.ordersMongoRepository = ordersMongoRepository;
         this.storeLocation = storeLocation;
         this.orderQueue = orderQueue;
         this.batch = localAppConfig.getBatch().getSize();
@@ -40,14 +41,19 @@ public class MongoBatchReader implements Runnable {
     }
 
     private void fetchOrders() {
-        List<Order> orders = ordersRepository.fetchOrders(storeLocation, start, end).collectList().block();
-        if (orders == null || orders.isEmpty()) {
+        List<MongoOrder> mongoOrders = ordersMongoRepository.fetchOrders(storeLocation, start, end).collectList().block();
+        if (mongoOrders == null || mongoOrders.isEmpty()) {
             Thread.currentThread().interrupt();
             return;
         }
-        log.info("#{} orders are fetched from {} to {} of store {}", orders.size(), start, start + orders.size() - 1, storeLocation);
+        log.info("#{} orders are fetched from {} to {} of store {}", mongoOrders.size(), start, start + mongoOrders.size() - 1, storeLocation);
         try {
-            orderQueue.put(orders);
+            orderQueue.put(OrdersBatch.builder()
+                    .start(start)
+                    .end(end)
+                    .storeLocation(storeLocation)
+                    .mongoOrders(mongoOrders)
+                    .build());
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

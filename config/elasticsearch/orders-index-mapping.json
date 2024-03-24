@@ -1,0 +1,61 @@
+{
+  "mappings": {
+    "properties": {
+      "globalIdentifier": {
+        "type": "long"
+      },
+      "localIdentifier": {
+        "type": "long"
+      },
+      "orderDate": {
+        "type": "date",
+        "format": "yyyy-MM-dd'T'HH:mm:ss'Z'"
+      },
+      "items": {
+        "type": "nested",
+        "properties": {
+          "name": {
+            "type": "keyword"
+          },
+          "tags": {
+            "type": "keyword"
+          },
+          "price": {
+            "type": "float"
+          },
+          "quantity": {
+            "type": "integer"
+          }
+        }
+      },
+      "totalPrice": {
+        "type": "float"
+      },
+      "storeLocation": {
+        "type": "keyword"
+      },
+      "customer": {
+        "properties": {
+          "gender": {
+            "type": "keyword"
+          },
+          "age": {
+            "type": "integer"
+          },
+          "email": {
+            "type": "keyword"
+          },
+          "satisfaction": {
+            "type": "integer"
+          }
+        }
+      },
+      "couponUsed": {
+        "type": "boolean"
+      },
+      "purchaseMethod": {
+        "type": "keyword"
+      }
+    }
+  }
+}

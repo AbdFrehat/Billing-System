@@ -10,12 +10,11 @@ import org.springframework.context.annotation.Configuration;
 public class LocalAppConfig {
 
     private Services services;
-
     private Batch batch;
-
     private Delay delay;
-
     private Queue queue;
+    private Elasticsearch elasticsearch;
+    private Threads threads;
 
     @Data
     public static class Services {
@@ -43,5 +42,24 @@ public class LocalAppConfig {
     @Data
     public static class Queue {
         private int size;
+    }
+
+    @Data
+    public static class Elasticsearch {
+        private String caFingerprint;
+        private String username;
+        private String password;
+        private String uri;
+    }
+
+    @Data
+    public static class Threads {
+
+        private Elasticsearch elasticsearch;
+
+        @Data
+        public static class Elasticsearch {
+            private int size;
+        }
     }
 }

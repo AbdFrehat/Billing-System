@@ -1,20 +1,26 @@
 package com.orderizer.data.sync.orders.config;
 
+import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.elasticsearch.client.ClientConfiguration;
 import org.springframework.data.elasticsearch.client.elc.ReactiveElasticsearchConfiguration;
 
 @Configuration
+@RequiredArgsConstructor
 public class ElasticsearchConfig extends ReactiveElasticsearchConfiguration {
+
+    private final LocalAppConfig localAppConfig;
+
     @NotNull
     @Override
     public ClientConfiguration clientConfiguration() {
+        var elasticsearch = localAppConfig.getElasticsearch();
         return ClientConfiguration.builder()
-                .connectedTo("localhost:9200")
-                .withBasicAuth("elastic", "5eC_3wwg=02v*sgeVQWU")
+                .connectedTo(elasticsearch.getUri())
+                .usingSsl(elasticsearch.getCaFingerprint())
+                .withBasicAuth(elasticsearch.getUsername(), elasticsearch.getPassword())
                 .build();
     }
-
 
 }
