@@ -1,0 +1,1 @@
+apply(from = "orders/settings.gradle.kts")

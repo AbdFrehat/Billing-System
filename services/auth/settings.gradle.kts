@@ -1,0 +1,5 @@
+include(":auth:auth-manager")
+include(":auth:auth-users-manager")
+include(":auth:auth-profiles-manager")
+include(":auth:auth-clients-manager")
+include(":auth:auth-shared-module")
