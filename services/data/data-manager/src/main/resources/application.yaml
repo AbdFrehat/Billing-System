@@ -1,8 +1,8 @@
 spring:
   webflux:
-    base-path: /orderizer/data/orders/manager/v1/
+    base-path: /orderizer/data/manager/v1/
   application:
-    name: data-orders-manager
+    name: data-manager
 server:
   port: 6080
 springdoc:

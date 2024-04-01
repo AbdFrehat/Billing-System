@@ -35,8 +35,8 @@ public class AppRouter implements ContractRouter {
                 nestL1.DELETE(path("/local"), extract(handlers, DeleteOrderByGlobalIdentifierHandler.class))
                         .DELETE(path("/global"), extract(handlers, DeleteOrderByGlobalIdentifierHandler.class))
                         .nest(path("/batch"), nestL3 ->
-                                nestL3.DELETE(path("/local"), extract(handlers, DeleteOrdersByLocalIdentifierHandler.class))
-                                        .DELETE(path("/global"), extract(handlers, DeleteOrdersByGlobalIdentifierHandler.class))
+                                nestL3.POST(path("/local"), extract(handlers, DeleteOrdersByLocalIdentifierHandler.class))
+                                        .POST(path("/global"), extract(handlers, DeleteOrdersByGlobalIdentifierHandler.class))
                                         .build())
                         .POST(path("/search"), extract(handlers, DeleteOrdersSearchHandler.class))
                         .build()

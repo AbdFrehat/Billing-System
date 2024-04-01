@@ -33,13 +33,13 @@ public interface ContractRouter {
 
     @RouterOperations({
             @RouterOperation(path = "/orders/delete/global", produces = MediaType.APPLICATION_JSON_VALUE,
-                    method = RequestMethod.POST, beanClass = DeleteOrderByGlobalIdentifierHandler.class, beanMethod = "handle",
+                    method = RequestMethod.DELETE, beanClass = DeleteOrderByGlobalIdentifierHandler.class, beanMethod = "handle",
                     operation = @Operation(
                             operationId = "DeleteOrderByGlobalIdentifierHandler", parameters = {
                             @Parameter(name = "global-identifier", in = ParameterIn.QUERY)})
             ),
             @RouterOperation(path = "/orders/delete/local", produces = MediaType.APPLICATION_JSON_VALUE,
-                    method = RequestMethod.POST, beanClass = DeleteOrderByLocalIdentifierHandler.class, beanMethod = "handle",
+                    method = RequestMethod.DELETE, beanClass = DeleteOrderByLocalIdentifierHandler.class, beanMethod = "handle",
                     operation = @Operation(
                             operationId = "DeleteOrderByLocalIdentifierHandler", parameters = {
                             @Parameter(name = "local-identifier", in = ParameterIn.QUERY),

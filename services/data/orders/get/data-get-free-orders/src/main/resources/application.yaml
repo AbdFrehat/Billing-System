@@ -1,14 +1,10 @@
 spring:
   webflux:
     base-path: /orderizer/data/get/free/orders/v1/
-  data:
-    mongodb:
-      uri: mongodb://localhost:27017/orderizer_orders_db
   application:
     name: data-get-free-orders
 server:
   port: 6083
-
 springdoc:
   swagger-ui:
     path: /swagger-ui
@@ -16,6 +12,3 @@ springdoc:
     groups:
       enabled: true
     path: /api/docs
-logging:
-  level:
-    org.springframework.data.mongodb.core.MongoTemplate: ERROR

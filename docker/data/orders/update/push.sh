@@ -9,19 +9,20 @@ status=()
 projects=()
 
 while IFS= read -r project; do
-  projects+=("$project")
-done < <(find "." -mindepth 2 -maxdepth 2 -type f -name build.sh -exec dirname {} \;)
+      projects+=("$project")
+done < <(find "." -mindepth 2 -maxdepth 2 -type f -name push.sh -exec dirname {} \;)
+
 
 for project in "${projects[@]}"; do
     if [ -d "$project" ]; then
-        echo "Building project in $project..."
+        echo "Push project in $project..."
         cd "$project" || exit
-        if ./build.sh; then
+        if ./push.sh; then
           status+=("Passed")
         else
           status+=("Failed")
         fi
-        echo "Build complete for $project."
+        echo "Push is completed for $project."
         echo
         cd - || exit
     else
