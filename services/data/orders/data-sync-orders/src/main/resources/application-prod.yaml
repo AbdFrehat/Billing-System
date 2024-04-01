@@ -1,5 +1,29 @@
 server:
   port: ${PORT}
+spring:
+  data:
+    mongodb:
+      uri: ${SPRING_DATA_MONGO_URI}
 config:
+  services:
+    context-path:
+      data-stores-manager: ${DATA_STORES_MANAGER_URL}
+  batch:
+    size: ${BATCH_SIZE}
+  delay:
+    stores-reader: ${STORES_READER_DELAY}
+    mongo-reader: ${MONGO_READER_DELAY}
+    elastic-writer: ${ELASTIC_WRITER_DELAY}
+  queue:
+    size: ${QUEUE_SIZE}
+  elastic-search:
+    ca-fingerprint: ${ELASTIC_SEARCH_FINGER_PRINT}
+    username: ${ELASTIC_USERNAME}
+    password: ${ELASTIC_PASSWORD}
+    uri: ${ELASTIC_URL}
+    security-enabled: ${ELASTIC_SECURITY_ENABLED}
+  threads:
+    elasticsearch:
+      size: ${ELASTIC_SEARCH_THREADS_SIZE}
   logging:
     enable: ${ENABLE_LOGGING_FILES}

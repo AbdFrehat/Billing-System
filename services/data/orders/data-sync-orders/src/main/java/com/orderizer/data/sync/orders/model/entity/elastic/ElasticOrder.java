@@ -49,7 +49,6 @@ public class ElasticOrder {
 
     private String purchaseMethod;
 
-
     public boolean equals(MongoOrder mongoOrder) {
         if (mongoOrder == null) return false;
         if (globalIdentifier != mongoOrder.getGlobalIdentifier()) return false;
@@ -63,5 +62,20 @@ public class ElasticOrder {
         if (!(mongoOrder.getStoreLocation().equals(this.getStoreLocation()))) return false;
         if (!Objects.equals(customer, mongoOrder.getCustomer())) return false;
         return mongoOrder.getPurchaseMethod().equals(this.getPurchaseMethod());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (int) (globalIdentifier ^ (globalIdentifier >>> 32));
+        result = 31 * result + (int) (localIdentifier ^ (localIdentifier >>> 32));
+        result = 31 * result + (orderDate != null ? orderDate.hashCode() : 0);
+        result = 31 * result + (items != null ? items.hashCode() : 0);
+        result = 31 * result + (totalPrice != null ? totalPrice.hashCode() : 0);
+        result = 31 * result + (storeLocation != null ? storeLocation.hashCode() : 0);
+        result = 31 * result + (customer != null ? customer.hashCode() : 0);
+        result = 31 * result + (couponUsed ? 1 : 0);
+        result = 31 * result + (purchaseMethod != null ? purchaseMethod.hashCode() : 0);
+        return result;
     }
 }

@@ -8,10 +8,8 @@ import com.orderizer.data.sync.orders.model.queue.OrdersBatch;
 import com.orderizer.data.sync.orders.repository.api.OrdersElasticRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -36,6 +34,7 @@ public class ElasticBatchWriter implements Runnable {
                 List<ElasticOrder> elasticOrders = ordersElasticRepository.fetchOrders(ordersBatch.getStoreLocation(), ordersBatch.getStart(), ordersBatch.getEnd())
                         .collectList()
                         .switchIfEmpty(Mono.just(List.of()))
+                        .doOnError((Throwable::printStackTrace))
                         .block();
                 List<MongoOrder> mongoOrders = ordersBatch.getMongoOrders();
                 List<ElasticOrder> updatedOrders = new ArrayList<>();

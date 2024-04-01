@@ -16,10 +16,15 @@ public class ElasticsearchConfig extends ReactiveElasticsearchConfiguration {
     @Override
     public ClientConfiguration clientConfiguration() {
         var elasticsearch = localAppConfig.getElasticsearch();
+        if (elasticsearch.isSecurityEnabled()) {
+            return ClientConfiguration.builder()
+                    .connectedTo(elasticsearch.getUri())
+                    .usingSsl(elasticsearch.getCaFingerprint())
+                    .withBasicAuth(elasticsearch.getUsername(), elasticsearch.getPassword())
+                    .build();
+        }
         return ClientConfiguration.builder()
                 .connectedTo(elasticsearch.getUri())
-                .usingSsl(elasticsearch.getCaFingerprint())
-                .withBasicAuth(elasticsearch.getUsername(), elasticsearch.getPassword())
                 .build();
     }
 

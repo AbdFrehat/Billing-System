@@ -50,6 +50,7 @@ public class LocalAppConfig {
         private String username;
         private String password;
         private String uri;
+        private boolean securityEnabled;
     }
 
     @Data

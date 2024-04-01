@@ -8,8 +8,7 @@
         "type": "long"
       },
       "orderDate": {
-        "type": "date",
-        "format": "yyyy-MM-dd'T'HH:mm:ss'Z'"
+        "type": "date"
       },
       "items": {
         "type": "nested",

@@ -5,7 +5,7 @@ spring:
     name: data-sync-orders
   data:
     mongodb:
-      uri: mongodb://localhost:27017/orderizer_orders_db
+      uri: mongodb://admin:123@localhost:27017/orderizer_orders_db?authSource=admin
 server:
   port: 6095
 management:
@@ -35,6 +35,7 @@ config:
     username: elastic
     password: i2O=V-SVj3Kgap5xN4i+
     uri: localhost:9200
+    security-enabled: false
   threads:
     elasticsearch:
       size: 10
