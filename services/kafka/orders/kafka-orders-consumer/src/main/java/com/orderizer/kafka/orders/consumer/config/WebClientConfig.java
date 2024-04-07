@@ -1,11 +1,11 @@
-package com.selling.sales.kafka.sales.consumer.config;
+package com.orderizer.kafka.orders.consumer.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
-public class WebClientInit {
+public class WebClientConfig {
 
     /**
      * Creates a web client builder bean to be used by the service to call other ones.
@@ -13,7 +13,6 @@ public class WebClientInit {
      * @return {@link WebClient.Builder}
      */
     @Bean
-    
     WebClient.Builder webClientBuilder() {
         return WebClient.builder();
     }

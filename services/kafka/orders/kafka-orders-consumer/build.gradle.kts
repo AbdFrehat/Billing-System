@@ -11,7 +11,7 @@ version = "1.0.0-SNAPSHOT"
 
 extra["jakartaValidationApiVersion"] = "3.0.2"
 extra["springDocOpenAPIVersion"] = "2.3.0"
-extra["springCloudVersion"] = "2023.0.0"
+extra["springCloudVersion"] = "2023.0.1"
 extra["lombokVersion"] = "1.18.30"
 extra["sharedModuleVersion"] = "1.0.0-SNAPSHOT"
 extra["fasterxmlJacksonVersion"] = "2.15.3"
@@ -81,7 +81,9 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-databind:${property("fasterxmlJacksonVersion")}")
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("org.springframework.cloud:spring-cloud-stream-binder-kafka")
     implementation("org.springframework.kafka:spring-kafka")
+    implementation("org.springframework.cloud:spring-cloud-stream")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("jakarta.validation:jakarta.validation-api:${property("jakartaValidationApiVersion")}")
     implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:${property("springDocOpenAPIVersion")}")
