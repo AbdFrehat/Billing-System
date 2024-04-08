@@ -1,8 +1,8 @@
 server:
   port: 6041
-  servlet:
-    context-path: /orderizer/kafka/orders/consumer
 spring:
+  webflux:
+    base-path: /orderizer/kafka/orders/consumer
   application:
     name: kafka-orders-consumer
   cloud:
@@ -40,23 +40,28 @@ spring:
           auto-create-topics: true
           min-partition-count: 3
           replication-factor: 1
+          auto-add-partitions: true
           consumer-properties:
-            spring.deserializer.value.delegate.class: org.springframework.kafka.support.serializer.JsonDeserializer
             key.deserializer: org.apache.kafka.common.serialization.StringDeserializer
             value.deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+            spring.deserializer.value.delegate.class: org.springframework.kafka.support.serializer.JsonDeserializer
         bindings:
           data-delete-orders-in-0:
             consumer:
               start-offset: latest
               configuration:
-                spring.json.value.default.type: com.selling.sales.kafka.sales.consumer.model.entity.DataDeleteOrderEntity
+                spring.json.value.default.type: com.orderizer.kafka.orders.consumer.model.entity.DataDeleteOrderEntity
           data-update-orders-in-0:
             consumer:
               start-offset: latest
               configuration:
-                spring.json.value.default.type: com.selling.sales.kafka.sales.consumer.model.entity.DataUpdateOrderEntity
+                spring.json.value.default.type: com.orderizer.kafka.orders.consumer.model.entity.DataUpdateOrderEntity
           data-save-orders-in-0:
             consumer:
               start-offset: latest
               configuration:
-                spring.json.value.default.type: com.selling.sales.kafka.sales.consumer.model.entity.DataSaveOrderEntity
+                spring.json.value.default.type: com.orderizer.kafka.orders.consumer.model.entity.DataSaveOrderEntity
+config:
+  services:
+    context-path:
+      data-manager: "http://localhost:6080/orderizer/data/manager/v1/"

@@ -1,8 +1,8 @@
-package com.orderizer.data.save.orders.mapper.impl;
+package com.orderizer.data.save.orders.mapper;
 
-import com.orderizer.data.save.orders.mapper.api.Mapper;
 import com.orderizer.data.save.orders.model.entity.Order;
 import com.orderizer.data.save.orders.model.response.OrderResponse;
+import com.selling.system.shared.module.api.Mapper;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 

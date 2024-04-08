@@ -30,11 +30,11 @@ public interface ContractRouter {
             @RouterOperation(path = "/global", method = RequestMethod.DELETE, beanClass = DeleteOrderByGlobalIdentifierHandler.class, beanMethod = "handle", operation = @Operation(
                     operationId = "DeleteOrderByGlobalIdentifierHandler", parameters = {
                     @Parameter(name = "global-identifier", in = ParameterIn.QUERY)})),
-            @RouterOperation(path = "/batch/local", method = RequestMethod.DELETE, beanClass = DeleteOrdersByLocalIdentifierHandler.class, beanMethod = "handle", operation = @Operation(
+            @RouterOperation(path = "/batch/local", method = RequestMethod.POST, beanClass = DeleteOrdersByLocalIdentifierHandler.class, beanMethod = "handle", operation = @Operation(
                     operationId = "DeleteOrderByLocalIdentifierHandler", requestBody = @RequestBody(content = @Content(schema = @Schema(implementation = DeleteOrdersByLocalIdentifiersRequest.class))))),
-            @RouterOperation(path = "/batch/global", method = RequestMethod.DELETE, beanClass = DeleteOrdersByGlobalIdentifierHandler.class, beanMethod = "handle", operation = @Operation(
+            @RouterOperation(path = "/batch/global", method = RequestMethod.POST, beanClass = DeleteOrdersByGlobalIdentifierHandler.class, beanMethod = "handle", operation = @Operation(
                     operationId = "DeleteOrderByGlobalIdentifierHandler", requestBody = @RequestBody(content = @Content(schema = @Schema(implementation = DeleteOrdersByGlobalIdentifiersRequest.class))))),
-            @RouterOperation(path = "/search", method = RequestMethod.DELETE, beanClass = DeleteOrdersSearchHandler.class, beanMethod = "handle", operation = @Operation(
+            @RouterOperation(path = "/search", method = RequestMethod.POST, beanClass = DeleteOrdersSearchHandler.class, beanMethod = "handle", operation = @Operation(
                     operationId = "DeleteOrdersSearchHandler", requestBody = @RequestBody(content = @Content(schema = @Schema(implementation = DeleteOrdersSearchRequest.class)))))
     })
     RouterFunction<ServerResponse> appRoute(Map<String, HandlerFunction<ServerResponse>> handlers);

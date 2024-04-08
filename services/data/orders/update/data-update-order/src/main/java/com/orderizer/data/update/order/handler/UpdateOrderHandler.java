@@ -1,11 +1,11 @@
 package com.orderizer.data.update.order.handler;
 
-import com.orderizer.data.update.order.mapper.api.Mapper;
 import com.orderizer.data.update.order.model.entity.Order;
 import com.orderizer.data.update.order.model.request.OrderUpdateRequest;
 import com.orderizer.data.update.order.model.response.OrderUpdateResponse;
 import com.orderizer.data.update.order.modification.api.Modifier;
 import com.orderizer.data.update.order.repository.api.OrdersRepository;
+import com.selling.system.shared.module.api.Mapper;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;

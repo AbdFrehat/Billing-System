@@ -2,13 +2,14 @@ package com.orderizer.kafka.orders.consumer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.kafka.annotation.EnableKafka;
 
-@SpringBootApplication(exclude = DataSourceAutoConfiguration.class,
+@SpringBootApplication(
         scanBasePackages = {
                 "com.orderizer.kafka.orders.consumer",
                 "com.selling.system.shared.module"
         })
+@EnableKafka
 public class MainApplication {
 
     public static void main(String[] args) {

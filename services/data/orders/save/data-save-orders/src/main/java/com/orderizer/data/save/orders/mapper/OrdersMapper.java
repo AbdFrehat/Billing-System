@@ -1,4 +1,4 @@
-package com.orderizer.data.save.orders.mapper.impl;
+package com.orderizer.data.save.orders.mapper;
 
 import com.orderizer.data.save.orders.mapper.api.Mapper;
 import com.orderizer.data.save.orders.model.response.OrderResponse;

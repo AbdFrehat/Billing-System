@@ -1,12 +1,5 @@
 server:
   port: 6041
-spring:
-  kafka:
-    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVER}
-config:
-  services:
-    context-path:
-      data-manager-ms: "http://DATA-MANAGER/selling/data/manager/sale/v1/"
-  logging:
-    enable: ${ENABLE_LOGGING_FILES}
+
+
 

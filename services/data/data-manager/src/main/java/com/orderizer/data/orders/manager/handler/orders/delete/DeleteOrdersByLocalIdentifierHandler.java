@@ -27,7 +27,7 @@ public class DeleteOrdersByLocalIdentifierHandler implements HandlerFunction<Ser
     public Mono<ServerResponse> handle(@NotNull ServerRequest request) {
         return request.bodyToMono(DeleteOrdersByLocalIdentifiersRequest.class)
                 .flatMap(deleteOrdersByLocalIdentifiersRequest -> webClient.post()
-                        .uri(uriBuilder -> uriBuilder.path("/local").build())
+                        .uri(uriBuilder -> uriBuilder.path("/batch/local").build())
                         .bodyValue(deleteOrdersByLocalIdentifiersRequest)
                         .retrieve()
                         .onStatus(HttpStatusCode::isError, new ClientExceptionHandler("data-delete-orders-manager"))

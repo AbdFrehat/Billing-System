@@ -27,7 +27,7 @@ public class DeleteOrdersByGlobalIdentifierHandler implements HandlerFunction<Se
     public Mono<ServerResponse> handle(@NotNull ServerRequest request) {
         return request.bodyToMono(DeleteOrdersByGlobalIdentifiersRequest.class)
                 .flatMap(deleteOrdersByGlobalIdentifiersRequest -> webClient.post()
-                        .uri(uriBuilder -> uriBuilder.path("/global").build())
+                        .uri(uriBuilder -> uriBuilder.path("/batch/global").build())
                         .bodyValue(deleteOrdersByGlobalIdentifiersRequest)
                         .retrieve()
                         .onStatus(HttpStatusCode::isError, new ClientExceptionHandler("data-delete-orders-manager"))
