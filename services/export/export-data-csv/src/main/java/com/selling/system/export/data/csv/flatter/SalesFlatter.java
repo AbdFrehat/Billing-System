@@ -1,7 +1,7 @@
 package com.selling.system.export.data.csv.flatter;
 
 import com.selling.system.export.data.csv.model.FlattedSale;
-import com.selling.system.shared.module.models.entities.Sale;
+import com.orderizer.core.models.entities.Sale;
 import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;

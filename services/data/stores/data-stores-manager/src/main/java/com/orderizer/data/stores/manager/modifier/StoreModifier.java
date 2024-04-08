@@ -2,7 +2,7 @@ package com.orderizer.data.stores.manager.modifier;
 
 import com.orderizer.data.stores.manager.model.entity.Store;
 import com.orderizer.data.stores.manager.model.request.UpdateStoreRequest;
-import com.selling.system.shared.module.api.Modifier;
+import com.orderizer.core.api.Modifier;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 

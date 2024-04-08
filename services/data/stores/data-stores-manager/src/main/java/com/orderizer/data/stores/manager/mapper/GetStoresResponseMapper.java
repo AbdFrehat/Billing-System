@@ -2,7 +2,7 @@ package com.orderizer.data.stores.manager.mapper;
 
 import com.orderizer.data.stores.manager.model.response.GetStoresResponse;
 import com.orderizer.data.stores.manager.model.response.StoreResponse;
-import com.selling.system.shared.module.api.Mapper;
+import com.orderizer.core.api.Mapper;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 

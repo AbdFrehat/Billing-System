@@ -11,7 +11,7 @@ version = "1.0.0-SNAPSHOT"
 
 extra["fasterxmlJacksonVersion"] = "2.15.3"
 extra["lombokVersion"] = "1.18.30"
-extra["sharedModuleVersion"] = "1.0.0-SNAPSHOT"
+extra["coreVersion"] = "1.0.0-RELEASE"
 extra["reactorCoreVersion"] = "3.6.4"
 
 repositories {
@@ -81,7 +81,7 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-core:${property("fasterxmlJacksonVersion")}")
     implementation("io.projectreactor:reactor-core:${property("reactorCoreVersion")}")
     implementation("com.fasterxml.jackson.core:jackson-databind:${property("fasterxmlJacksonVersion")}")
-    implementation("com.selling.system.shared.module:shared-module:${property("sharedModuleVersion")}")
+    implementation("com.orderizer.core:orderizer-core:${property("coreVersion")}")
     implementation("org.projectlombok:lombok:${property("lombokVersion")}")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     annotationProcessor("org.projectlombok:lombok:${property("lombokVersion")}")

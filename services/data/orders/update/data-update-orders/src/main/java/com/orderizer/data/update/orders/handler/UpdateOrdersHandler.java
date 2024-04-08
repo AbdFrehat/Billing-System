@@ -1,6 +1,6 @@
 package com.orderizer.data.update.orders.handler;
 
-import com.selling.system.shared.module.api.Mapper;
+import com.orderizer.core.api.Mapper;
 import com.orderizer.data.update.orders.model.entity.Order;
 import com.orderizer.data.update.orders.model.request.OrderRequest;
 import com.orderizer.data.update.orders.model.request.OrdersUpdateRequest;

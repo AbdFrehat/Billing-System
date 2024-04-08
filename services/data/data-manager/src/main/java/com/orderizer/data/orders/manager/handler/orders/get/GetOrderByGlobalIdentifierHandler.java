@@ -2,7 +2,7 @@ package com.orderizer.data.orders.manager.handler.orders.get;
 
 import com.orderizer.data.orders.manager.config.LocalAppConfig;
 import com.orderizer.data.orders.manager.model.response.OrderResponse;
-import com.selling.system.shared.module.handlers.ClientExceptionHandler;
+import com.orderizer.core.handlers.ClientExceptionHandler;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Component;
@@ -12,7 +12,7 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
-import static com.selling.system.shared.module.utils.QueryParamsUtil.getQueryParam;
+import static com.orderizer.core.utils.QueryParamsUtil.getQueryParam;
 
 @Component
 

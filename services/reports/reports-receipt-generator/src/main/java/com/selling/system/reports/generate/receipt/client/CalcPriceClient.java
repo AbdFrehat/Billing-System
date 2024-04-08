@@ -1,7 +1,7 @@
 package com.selling.system.reports.generate.receipt.client;
 
 import com.selling.system.reports.generate.receipt.models.responses.CalcPriceResponse;
-import com.selling.system.shared.module.models.entities.Item;
+import com.orderizer.core.models.entities.Item;
 import reactor.core.publisher.Mono;
 
 import java.util.List;

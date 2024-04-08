@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono;
 
 import java.util.function.Function;
 
-import static com.selling.system.shared.module.utils.QueryParamsUtil.getQueryParam;
+import static com.orderizer.core.utils.QueryParamsUtil.getQueryParam;
 
 @Component
 @RequiredArgsConstructor

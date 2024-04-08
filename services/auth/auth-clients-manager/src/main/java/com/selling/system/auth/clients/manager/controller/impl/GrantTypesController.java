@@ -6,7 +6,7 @@ import com.selling.system.auth.shared.module.models.dto.GrantTypesDto;
 import com.selling.system.auth.shared.module.models.request.grant.GrantTypeCreateRequest;
 import com.selling.system.auth.shared.module.models.request.grant.GrantTypeDeleteRequest;
 import com.selling.system.auth.shared.module.models.response.UpdatedRowsResponse;
-import com.selling.system.shared.module.wrapper.WebResponseWrapper;
+import com.orderizer.core.wrapper.WebResponseWrapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

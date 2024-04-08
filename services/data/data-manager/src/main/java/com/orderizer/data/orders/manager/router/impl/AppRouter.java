@@ -20,7 +20,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 
 import java.util.Map;
 
-import static com.selling.system.shared.module.utils.BeansUtil.extract;
+import static com.orderizer.core.utils.BeansUtil.extract;
 import static org.springframework.web.reactive.function.server.RequestPredicates.path;
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 

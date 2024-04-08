@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Queue;
 
-import static com.selling.system.shared.module.utils.CollectionUtil.isEmpty;
+import static com.orderizer.core.utils.CollectionUtil.isEmpty;
 
 @RequiredArgsConstructor
 @Slf4j

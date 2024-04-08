@@ -1,1 +1,1 @@
-rootProject.name="modify-sales-manager"
+rootProject.name="modify-manager"

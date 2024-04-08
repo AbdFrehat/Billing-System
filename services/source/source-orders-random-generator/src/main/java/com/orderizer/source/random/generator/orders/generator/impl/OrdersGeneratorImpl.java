@@ -9,7 +9,7 @@ import com.orderizer.source.random.generator.orders.model.data.ItemsData;
 import com.orderizer.source.random.generator.orders.model.data.OrdersData;
 import com.orderizer.source.random.generator.orders.model.emit.Max;
 import com.orderizer.source.random.generator.orders.model.request.OrderSaveRequest;
-import com.selling.system.shared.module.models.enums.PurchaseMethod;
+import com.orderizer.core.models.enums.PurchaseMethod;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

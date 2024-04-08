@@ -1,6 +1,6 @@
 package com.selling.system.reports.generate.receipt.client;
 
-import com.selling.system.shared.module.models.entities.Sale;
+import com.orderizer.core.models.entities.Sale;
 import reactor.core.publisher.Mono;
 
 public interface DataManagerClient {

@@ -1,9 +1,9 @@
 package com.selling.system.export.data.manager.client;
 
 import com.selling.system.export.data.manager.config.ServicesContextPathConfig;
-import com.selling.system.shared.module.handlers.ClientExceptionHandler;
-import com.selling.system.shared.module.models.commands.ExportDataCommand;
-import com.selling.system.shared.module.models.enums.ExportType;
+import com.orderizer.core.handlers.ClientExceptionHandler;
+import com.orderizer.core.models.commands.ExportDataCommand;
+import com.orderizer.core.models.enums.ExportType;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;

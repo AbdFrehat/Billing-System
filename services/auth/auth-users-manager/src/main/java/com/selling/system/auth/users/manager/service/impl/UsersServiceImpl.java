@@ -8,8 +8,8 @@ import com.selling.system.auth.shared.module.models.response.NameExistenceRespon
 import com.selling.system.auth.shared.module.models.response.UpdatedRowsResponse;
 import com.selling.system.auth.shared.module.repository.api.UsersRepository;
 import com.selling.system.auth.users.manager.service.api.UsersService;
-import com.selling.system.shared.module.exceptions.business.PasswordNotMatchedException;
-import com.selling.system.shared.module.exceptions.client.BadRequestException;
+import com.orderizer.core.exceptions.business.PasswordNotMatchedException;
+import com.orderizer.core.exceptions.client.BadRequestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

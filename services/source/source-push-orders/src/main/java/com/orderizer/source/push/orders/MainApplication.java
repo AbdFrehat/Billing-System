@@ -7,7 +7,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication(scanBasePackages = {
         "com.orderizer.source.push.orders",
         "com.orderizer.source.random.generator.orders",
-        "com.selling.system.shared.module"
+        "com.orderizer.core"
 })
 @EnableScheduling
 public class MainApplication {

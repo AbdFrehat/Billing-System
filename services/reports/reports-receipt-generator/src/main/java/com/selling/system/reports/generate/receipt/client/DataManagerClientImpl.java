@@ -1,11 +1,11 @@
 package com.selling.system.reports.generate.receipt.client;
 
-import com.selling.system.shared.module.models.commands.DataCommand;
-import com.selling.system.shared.module.models.commands.QueryField;
-import com.selling.system.shared.module.models.entities.Sale;
-import com.selling.system.shared.module.models.enums.CommandType;
-import com.selling.system.shared.module.models.enums.FieldType;
-import com.selling.system.shared.module.models.responses.DataResponse;
+import com.orderizer.core.models.commands.DataCommand;
+import com.orderizer.core.models.commands.QueryField;
+import com.orderizer.core.models.entities.Sale;
+import com.orderizer.core.models.enums.CommandType;
+import com.orderizer.core.models.enums.FieldType;
+import com.orderizer.core.models.responses.DataResponse;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -13,7 +13,7 @@ import reactor.core.publisher.Mono;
 
 import java.util.Map;
 
-import static com.selling.system.shared.module.convertors.ObjectToSalesConvertor.toSales;
+import static com.orderizer.core.convertors.ObjectToSalesConvertor.toSales;
 
 @Component
 public class DataManagerClientImpl implements DataManagerClient {

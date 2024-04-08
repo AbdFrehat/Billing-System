@@ -3,8 +3,8 @@ package com.selling.system.export.data.pdf.convertor;
 
 import com.selling.system.export.data.pdf.mapper.JasperMapper;
 import com.selling.system.export.shared.convertor.DataConvertor;
-import com.selling.system.shared.module.models.commands.ExportDataFilter;
-import com.selling.system.shared.module.models.entities.Sale;
+import com.orderizer.core.models.commands.ExportDataFilter;
+import com.orderizer.core.models.entities.Sale;
 import net.sf.jasperreports.engine.*;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;

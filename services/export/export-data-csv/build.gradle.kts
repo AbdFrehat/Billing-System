@@ -13,7 +13,7 @@ extra["jakartaValidationApiVersion"] = "3.0.2"
 extra["springDocOpenAPIVersion"] = "2.3.0"
 extra["springCloudVersion"] = "2023.0.0"
 extra["lombokVersion"] = "1.18.30"
-extra["sharedModuleVersion"] = "1.0.0-SNAPSHOT"
+extra["coreVersion"] = "1.0.0-RELEASE"
 extra["exportDataSharedModuleVersion"] = "1.0.0-SNAPSHOT"
 extra["fasterxmlJacksonVersion"] = "2.15.3"
 
@@ -86,7 +86,7 @@ dependencies {
 	implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-csv:${property("fasterxmlJacksonVersion")}")
 	implementation("jakarta.validation:jakarta.validation-api:${property("jakartaValidationApiVersion")}")
 	implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:${property("springDocOpenAPIVersion")}")
-	implementation("com.selling.system.shared.module:shared-module:${property("sharedModuleVersion")}")
+	implementation("com.orderizer.core:orderizer-core:${property("coreVersion")}")
 	implementation("com.selling.system.export.shared:export-data-shared-module:${property("exportDataSharedModuleVersion")}")
 	implementation("org.projectlombok:lombok:${property("lombokVersion")}")
 	testImplementation("io.projectreactor:reactor-test")

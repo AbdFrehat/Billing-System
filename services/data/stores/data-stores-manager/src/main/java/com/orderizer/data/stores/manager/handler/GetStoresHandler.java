@@ -4,7 +4,7 @@ import com.orderizer.data.stores.manager.model.entity.Store;
 import com.orderizer.data.stores.manager.model.response.GetStoresResponse;
 import com.orderizer.data.stores.manager.model.response.StoreResponse;
 import com.orderizer.data.stores.manager.repository.api.StoresRepository;
-import com.selling.system.shared.module.api.Mapper;
+import com.orderizer.core.api.Mapper;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;

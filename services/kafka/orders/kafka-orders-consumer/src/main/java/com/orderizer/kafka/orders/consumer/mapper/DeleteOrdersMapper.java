@@ -1,7 +1,7 @@
 package com.orderizer.kafka.orders.consumer.mapper;
 
 import com.orderizer.kafka.orders.consumer.model.request.DeleteOrdersByGlobalIdentifiersRequest;
-import com.selling.system.shared.module.api.Mapper;
+import com.orderizer.core.api.Mapper;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 

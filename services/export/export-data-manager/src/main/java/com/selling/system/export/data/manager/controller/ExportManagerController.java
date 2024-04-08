@@ -1,7 +1,7 @@
 package com.selling.system.export.data.manager.controller;
 
 import com.selling.system.export.data.manager.client.ExportServicesClient;
-import com.selling.system.shared.module.models.commands.ExportDataCommand;
+import com.orderizer.core.models.commands.ExportDataCommand;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

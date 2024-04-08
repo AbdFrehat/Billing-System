@@ -1,12 +1,12 @@
 package com.orderizer.data.stores.manager.validator;
 
 import com.orderizer.data.stores.manager.model.request.SaveStoreRequest;
-import com.selling.system.shared.module.api.Validator;
-import com.selling.system.shared.module.exceptions.Technical.RequestBodyInvalidException;
+import com.orderizer.core.api.Validator;
+import com.orderizer.core.exceptions.Technical.RequestBodyInvalidException;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
-import static com.selling.system.shared.module.utils.StringUtil.isEmpty;
+import static com.orderizer.core.utils.StringUtil.isEmpty;
 
 @Component
 public class SaveStoreRequestValidator implements Validator<SaveStoreRequest> {

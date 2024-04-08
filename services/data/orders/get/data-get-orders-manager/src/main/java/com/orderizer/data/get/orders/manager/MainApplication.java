@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication(scanBasePackages = {
         "com.orderizer.data.get.orders.manager",
-        "com.selling.system.shared.module"
+        "com.orderizer.core"
 })
 @OpenAPIDefinition(info = @Info(title = "data-get-orders-manager", version = "1.0", description = "Documentation APIs v1.0"))
 public class MainApplication {

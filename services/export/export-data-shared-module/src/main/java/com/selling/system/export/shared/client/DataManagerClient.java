@@ -1,9 +1,9 @@
 package com.selling.system.export.shared.client;
 
-import com.selling.system.shared.module.handlers.ClientExceptionHandler;
-import com.selling.system.shared.module.models.commands.DataCommand;
-import com.selling.system.shared.module.models.entities.Sale;
-import com.selling.system.shared.module.models.responses.DataResponse;
+import com.orderizer.core.handlers.ClientExceptionHandler;
+import com.orderizer.core.models.commands.DataCommand;
+import com.orderizer.core.models.entities.Sale;
+import com.orderizer.core.models.responses.DataResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
@@ -13,7 +13,7 @@ import reactor.core.publisher.Flux;
 
 import java.util.List;
 
-import static com.selling.system.shared.module.convertors.ObjectToSalesConvertor.toSales;
+import static com.orderizer.core.convertors.ObjectToSalesConvertor.toSales;
 
 @Component
 public class DataManagerClient {

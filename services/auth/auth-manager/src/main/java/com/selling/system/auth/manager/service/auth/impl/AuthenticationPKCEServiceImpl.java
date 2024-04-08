@@ -16,7 +16,7 @@ import com.selling.system.auth.manager.service.token.api.TokenService;
 import com.selling.system.auth.manager.util.CodeUtil;
 import com.selling.system.auth.manager.util.DateUtil;
 import com.selling.system.auth.manager.util.JWTsUtil;
-import com.selling.system.shared.module.exceptions.general.TechnicalException;
+import com.orderizer.core.exceptions.general.TechnicalException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.beans.factory.annotation.Qualifier;

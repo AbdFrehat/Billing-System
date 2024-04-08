@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication(scanBasePackages = {
 		"com.selling.system.reports.generate.receipt",
-		"com.selling.system.shared.module"
+		"com.orderizer.core"
 })
 public class ReceiptGeneratorMsApplication {
 

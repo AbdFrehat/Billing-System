@@ -5,7 +5,7 @@ import com.selling.system.auth.manager.model.request.client.IssueClientTokenRequ
 import com.selling.system.auth.manager.model.request.common.RefreshTokenRequest;
 import com.selling.system.auth.manager.model.response.client.ClientGrantTypeResponse;
 import com.selling.system.auth.manager.service.auth.api.AuthenticationClientService;
-import com.selling.system.shared.module.wrapper.WebResponseWrapper;
+import com.orderizer.core.wrapper.WebResponseWrapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

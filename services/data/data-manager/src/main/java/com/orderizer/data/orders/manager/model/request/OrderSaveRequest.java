@@ -1,7 +1,7 @@
 package com.orderizer.data.orders.manager.model.request;
 
-import com.selling.system.shared.module.models.entities.Customer;
-import com.selling.system.shared.module.models.entities.Item;
+import com.orderizer.core.models.entities.Customer;
+import com.orderizer.core.models.entities.Item;
 import lombok.Data;
 
 import java.util.List;

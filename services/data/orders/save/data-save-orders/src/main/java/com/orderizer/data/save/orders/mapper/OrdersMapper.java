@@ -1,6 +1,6 @@
 package com.orderizer.data.save.orders.mapper;
 
-import com.orderizer.data.save.orders.mapper.api.Mapper;
+import com.orderizer.core.api.Mapper;
 import com.orderizer.data.save.orders.model.response.OrderResponse;
 import com.orderizer.data.save.orders.model.response.OrdersSaveResponse;
 import org.springframework.stereotype.Component;

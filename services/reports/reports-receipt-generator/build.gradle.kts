@@ -15,7 +15,7 @@ extra["springCloudVersion"] = "2023.0.0"
 extra["lombokVersion"] = "1.18.30"
 extra["openPdfVersion"] = "1.3.22"
 extra["jasperReportsVersion"] = "6.20.6"
-extra["sharedModuleVersion"] = "1.0.0-SNAPSHOT"
+extra["coreVersion"] = "1.0.0-RELEASE"
 
 repositories {
 	mavenCentral()
@@ -85,7 +85,7 @@ dependencies {
 	implementation("net.sf.jasperreports:jasperreports:${property("jasperReportsVersion")}")
 	implementation("com.github.librepdf:openpdf:${property("openPdfVersion")}")
 	implementation("jakarta.validation:jakarta.validation-api:${property("jakartaValidationApiVersion")}")
-	implementation("com.selling.system.shared.module:shared-module:${property("sharedModuleVersion")}")
+	implementation("com.orderizer.core:orderizer-core:${property("coreVersion")}")
 	implementation("org.projectlombok:lombok:${property("lombokVersion")}")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")

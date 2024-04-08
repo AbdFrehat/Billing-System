@@ -5,7 +5,7 @@ import com.orderizer.data.save.orders.model.request.OrdersSaveRequest;
 import com.orderizer.data.save.orders.model.response.OrderResponse;
 import com.orderizer.data.save.orders.model.response.OrdersSaveResponse;
 import com.orderizer.data.save.orders.repository.api.OrdersRepository;
-import com.selling.system.shared.module.api.Mapper;
+import com.orderizer.core.api.Mapper;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.http.HttpStatus;

@@ -1,8 +1,8 @@
 package com.selling.system.export.data.manager.config;
 
-import com.selling.system.shared.module.exceptions.Technical.BufferSizeInvalidException;
-import com.selling.system.shared.module.exceptions.Technical.SizeInvalidException;
-import com.selling.system.shared.module.utils.SizeUtil;
+import com.orderizer.core.exceptions.Technical.BufferSizeInvalidException;
+import com.orderizer.core.exceptions.Technical.SizeInvalidException;
+import com.orderizer.core.utils.SizeUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

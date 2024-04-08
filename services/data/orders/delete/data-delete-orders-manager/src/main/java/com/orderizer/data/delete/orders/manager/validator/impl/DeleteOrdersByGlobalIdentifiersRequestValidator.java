@@ -2,11 +2,11 @@ package com.orderizer.data.delete.orders.manager.validator.impl;
 
 import com.orderizer.data.delete.orders.manager.model.request.DeleteOrdersByGlobalIdentifiersRequest;
 import com.orderizer.data.delete.orders.manager.validator.api.Validator;
-import com.selling.system.shared.module.exceptions.Technical.RequestBodyInvalidException;
+import com.orderizer.core.exceptions.Technical.RequestBodyInvalidException;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
-import static com.selling.system.shared.module.utils.CollectionUtil.isEmpty;
+import static com.orderizer.core.utils.CollectionUtil.isEmpty;
 
 @Component
 public class DeleteOrdersByGlobalIdentifiersRequestValidator implements Validator<DeleteOrdersByGlobalIdentifiersRequest> {

@@ -3,7 +3,7 @@ package com.selling.system.auth.manager.service.client.impl;
 import com.selling.system.auth.manager.config.LocalAppConfig;
 import com.selling.system.auth.manager.model.client.response.UserResponse;
 import com.selling.system.auth.manager.service.client.api.UsersServiceClient;
-import com.selling.system.shared.module.handlers.ClientExceptionHandler;
+import com.orderizer.core.handlers.ClientExceptionHandler;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatusCode;

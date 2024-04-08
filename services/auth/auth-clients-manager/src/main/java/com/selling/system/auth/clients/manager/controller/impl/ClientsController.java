@@ -10,7 +10,7 @@ import com.selling.system.auth.shared.module.models.request.client.ClientUpdateG
 import com.selling.system.auth.shared.module.models.request.client.ClientUpdateProfileRequest;
 import com.selling.system.auth.shared.module.models.response.NameExistenceResponse;
 import com.selling.system.auth.shared.module.models.response.UpdatedRowsResponse;
-import com.selling.system.shared.module.wrapper.WebResponseWrapper;
+import com.orderizer.core.wrapper.WebResponseWrapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

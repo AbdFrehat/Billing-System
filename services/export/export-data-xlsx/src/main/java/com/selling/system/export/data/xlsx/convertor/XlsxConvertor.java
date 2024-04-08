@@ -3,8 +3,8 @@ package com.selling.system.export.data.xlsx.convertor;
 
 import com.selling.system.export.data.xlsx.mapper.JasperMapper;
 import com.selling.system.export.shared.convertor.DataConvertor;
-import com.selling.system.shared.module.models.commands.ExportDataFilter;
-import com.selling.system.shared.module.models.entities.Sale;
+import com.orderizer.core.models.commands.ExportDataFilter;
+import com.orderizer.core.models.entities.Sale;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.export.ooxml.JRXlsxExporter;
 import net.sf.jasperreports.export.SimpleExporterInput;

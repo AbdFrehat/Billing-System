@@ -7,8 +7,8 @@ import com.selling.system.auth.shared.module.models.entities.Profile;
 import com.selling.system.auth.shared.module.models.enums.Query;
 import com.selling.system.auth.shared.module.provider.api.QueryProvider;
 import com.selling.system.auth.shared.module.repository.api.ProfilesRepository;
-import com.selling.system.shared.module.exceptions.Technical.AuthoritiesEmptyException;
-import com.selling.system.shared.module.exceptions.business.ProfileNotFoundException;
+import com.orderizer.core.exceptions.Technical.AuthoritiesEmptyException;
+import com.orderizer.core.exceptions.business.ProfileNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.r2dbc.core.DatabaseClient;
 import org.springframework.stereotype.Repository;
@@ -23,8 +23,8 @@ import static com.selling.system.auth.shared.module.constants.Columns.Bind.UPDAT
 import static com.selling.system.auth.shared.module.constants.Columns.Profile.PROFILE_ID;
 import static com.selling.system.auth.shared.module.constants.Columns.Profile.PROFILE_NAME;
 import static com.selling.system.auth.shared.module.models.enums.Query.*;
-import static com.selling.system.shared.module.utils.CollectionUtil.isEmpty;
-import static com.selling.system.shared.module.utils.StringUtil.isEmpty;
+import static com.orderizer.core.utils.CollectionUtil.isEmpty;
+import static com.orderizer.core.utils.StringUtil.isEmpty;
 
 @Repository
 @RequiredArgsConstructor

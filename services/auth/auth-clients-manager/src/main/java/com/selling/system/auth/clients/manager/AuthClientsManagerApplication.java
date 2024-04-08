@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication(scanBasePackages = {
         "com.selling.system.auth.clients.manager",
         "com.selling.system.auth.shared.module",
-        "com.selling.system.shared.module"
+        "com.orderizer.core"
 })
 
 public class AuthClientsManagerApplication {

@@ -4,7 +4,7 @@ import com.selling.system.auth.shared.module.builder.api.QueryBuilder;
 import com.selling.system.auth.shared.module.models.enums.Query;
 import com.selling.system.auth.shared.module.models.request.authority.AuthorityData;
 import com.selling.system.auth.shared.module.provider.api.QueryProvider;
-import com.selling.system.shared.module.exceptions.Technical.AuthoritiesEmptyException;
+import com.orderizer.core.exceptions.Technical.AuthoritiesEmptyException;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
@@ -15,7 +15,7 @@ import static com.selling.system.auth.shared.module.constants.Columns.Group.GROU
 import static com.selling.system.auth.shared.module.constants.SQL.UNION_ALL;
 import static com.selling.system.auth.shared.module.models.enums.Query.*;
 import static com.selling.system.auth.shared.module.util.QueryUtil.buildBindColumnName;
-import static com.selling.system.shared.module.utils.CollectionUtil.isEmpty;
+import static com.orderizer.core.utils.CollectionUtil.isEmpty;
 
 @Component
 public class QueryBuilderImpl implements QueryBuilder {

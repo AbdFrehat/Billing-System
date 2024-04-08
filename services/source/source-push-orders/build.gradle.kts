@@ -11,7 +11,7 @@ version = "1.0.0-SNAPSHOT"
 
 extra["lombokVersion"] = "1.18.30"
 extra["springCloudVersion"] = "2023.0.0"
-extra["sharedModuleVersion"] = "1.0.0-SNAPSHOT"
+extra["coreVersion"] = "1.0.0-RELEASE"
 extra["sourceOrdersRandomGeneratorVersion"] = "1.0.0-SNAPSHOT"
 
 repositories {
@@ -79,7 +79,7 @@ publishing {
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
-	implementation("com.selling.system.shared.module:shared-module:${property("sharedModuleVersion")}")
+	implementation("com.orderizer.core:orderizer-core:${property("coreVersion")}")
 	implementation("com.orderizer.source.random.generator.orders:source-orders-random-generator:${property("sourceOrdersRandomGeneratorVersion")}")
 	implementation("org.projectlombok:lombok:${property("lombokVersion")}")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")

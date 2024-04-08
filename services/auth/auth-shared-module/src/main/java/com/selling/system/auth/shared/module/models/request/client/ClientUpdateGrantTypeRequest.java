@@ -1,7 +1,7 @@
 package com.selling.system.auth.shared.module.models.request.client;
 
 import com.selling.system.auth.shared.module.models.enums.GrantTypes;
-import com.selling.system.shared.module.models.annotations.ValidFieldTypeEnum;
+import com.orderizer.core.models.annotations.ValidFieldTypeEnum;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;

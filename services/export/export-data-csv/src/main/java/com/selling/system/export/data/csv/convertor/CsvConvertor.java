@@ -5,8 +5,8 @@ import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import com.selling.system.export.data.csv.flatter.SalesFlatter;
 import com.selling.system.export.data.csv.model.FlattedSale;
 import com.selling.system.export.shared.convertor.DataConvertor;
-import com.selling.system.shared.module.models.commands.ExportDataFilter;
-import com.selling.system.shared.module.models.entities.Sale;
+import com.orderizer.core.models.commands.ExportDataFilter;
+import com.orderizer.core.models.entities.Sale;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -59,4 +59,6 @@ public class CsvConvertor implements DataConvertor {
                 .setUseHeader(true)
                 .build();
     }
+
+
 }

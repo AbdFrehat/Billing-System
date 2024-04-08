@@ -4,7 +4,7 @@ import com.orderizer.kafka.orders.consumer.config.LocalAppConfig;
 import com.orderizer.kafka.orders.consumer.constant.Channels;
 import com.orderizer.kafka.orders.consumer.model.entity.DataDeleteOrderEntity;
 import com.orderizer.kafka.orders.consumer.model.request.DeleteOrdersByGlobalIdentifiersRequest;
-import com.selling.system.shared.module.api.Mapper;
+import com.orderizer.core.api.Mapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

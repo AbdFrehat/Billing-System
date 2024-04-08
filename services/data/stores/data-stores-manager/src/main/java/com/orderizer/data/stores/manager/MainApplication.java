@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class,
         scanBasePackages = {
-                "com.selling.system.shared.module",
+                "com.orderizer.core",
                 "com.orderizer.data.stores.manager"
         })
 @OpenAPIDefinition(info = @Info(title = "data-stores-manager", version = "1.0", description = "Documentation APIs v1.0"))

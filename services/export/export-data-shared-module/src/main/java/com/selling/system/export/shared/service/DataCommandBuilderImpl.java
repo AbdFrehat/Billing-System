@@ -1,17 +1,17 @@
 package com.selling.system.export.shared.service;
 
-import com.selling.system.shared.module.models.commands.DataCommand;
-import com.selling.system.shared.module.models.commands.ExportDataFilter;
-import com.selling.system.shared.module.models.commands.QueryField;
-import com.selling.system.shared.module.models.commons.Range;
-import com.selling.system.shared.module.models.enums.CommandType;
-import com.selling.system.shared.module.models.enums.FieldType;
+import com.orderizer.core.models.commands.DataCommand;
+import com.orderizer.core.models.commands.ExportDataFilter;
+import com.orderizer.core.models.commands.QueryField;
+import com.orderizer.core.models.commons.Range;
+import com.orderizer.core.models.enums.CommandType;
+import com.orderizer.core.models.enums.FieldType;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.selling.system.shared.module.utils.StringUtil.isNotEmpty;
+import static com.orderizer.core.utils.StringUtil.isNotEmpty;
 
 @Service
 public class DataCommandBuilderImpl implements DataCommandBuilder {

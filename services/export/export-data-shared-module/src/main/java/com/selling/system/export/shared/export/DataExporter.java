@@ -3,7 +3,7 @@ package com.selling.system.export.shared.export;
 import com.selling.system.export.shared.client.DataManagerClient;
 import com.selling.system.export.shared.convertor.DataConvertor;
 import com.selling.system.export.shared.service.DataCommandBuilder;
-import com.selling.system.shared.module.models.commands.ExportDataFilter;
+import com.orderizer.core.models.commands.ExportDataFilter;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

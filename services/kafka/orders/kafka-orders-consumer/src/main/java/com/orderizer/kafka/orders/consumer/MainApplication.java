@@ -7,7 +7,7 @@ import org.springframework.kafka.annotation.EnableKafka;
 @SpringBootApplication(
         scanBasePackages = {
                 "com.orderizer.kafka.orders.consumer",
-                "com.selling.system.shared.module"
+                "com.orderizer.core"
         })
 @EnableKafka
 public class MainApplication {

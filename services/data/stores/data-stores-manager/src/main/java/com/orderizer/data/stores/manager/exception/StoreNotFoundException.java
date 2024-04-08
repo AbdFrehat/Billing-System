@@ -1,6 +1,6 @@
 package com.orderizer.data.stores.manager.exception;
 
-import com.selling.system.shared.module.exceptions.general.BusinessException;
+import com.orderizer.core.exceptions.general.BusinessException;
 
 public class StoreNotFoundException extends BusinessException {
 }

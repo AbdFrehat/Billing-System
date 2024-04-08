@@ -1,7 +1,7 @@
 package com.orderizer.data.delete.orders.manager.handler;
 
 import com.orderizer.data.delete.orders.manager.config.LocalAppConfig;
-import com.selling.system.shared.module.handlers.ClientExceptionHandler;
+import com.orderizer.core.handlers.ClientExceptionHandler;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Component;
@@ -13,7 +13,7 @@ import reactor.core.publisher.Mono;
 
 import java.util.function.Function;
 
-import static com.selling.system.shared.module.utils.QueryParamsUtil.getQueryParam;
+import static com.orderizer.core.utils.QueryParamsUtil.getQueryParam;
 
 @Component
 public class DeleteOrderByLocalIdentifierHandler implements HandlerFunction<ServerResponse> {

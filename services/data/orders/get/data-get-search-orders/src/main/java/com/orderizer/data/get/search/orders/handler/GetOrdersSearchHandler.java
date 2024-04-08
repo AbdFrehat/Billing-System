@@ -14,7 +14,7 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
-import static com.selling.system.shared.module.utils.QueryParamsUtil.getQueryParam;
+import static com.orderizer.core.utils.QueryParamsUtil.getQueryParam;
 
 @Component
 @RequiredArgsConstructor

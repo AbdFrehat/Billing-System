@@ -5,7 +5,7 @@ import com.orderizer.data.update.order.model.request.OrderUpdateRequest;
 import com.orderizer.data.update.order.model.response.OrderUpdateResponse;
 import com.orderizer.data.update.order.modification.api.Modifier;
 import com.orderizer.data.update.order.repository.api.OrdersRepository;
-import com.selling.system.shared.module.api.Mapper;
+import com.orderizer.core.api.Mapper;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;

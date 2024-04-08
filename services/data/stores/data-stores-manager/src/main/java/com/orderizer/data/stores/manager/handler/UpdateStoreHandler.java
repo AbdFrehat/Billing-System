@@ -4,9 +4,9 @@ import com.orderizer.data.stores.manager.model.entity.Store;
 import com.orderizer.data.stores.manager.model.request.UpdateStoreRequest;
 import com.orderizer.data.stores.manager.model.response.StoreResponse;
 import com.orderizer.data.stores.manager.repository.api.StoresRepository;
-import com.selling.system.shared.module.api.Mapper;
-import com.selling.system.shared.module.api.Modifier;
-import com.selling.system.shared.module.api.Validator;
+import com.orderizer.core.api.Mapper;
+import com.orderizer.core.api.Modifier;
+import com.orderizer.core.api.Validator;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
@@ -15,7 +15,7 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
-import static com.selling.system.shared.module.utils.QueryParamsUtil.getQueryParam;
+import static com.orderizer.core.utils.QueryParamsUtil.getQueryParam;
 
 @Component
 @RequiredArgsConstructor

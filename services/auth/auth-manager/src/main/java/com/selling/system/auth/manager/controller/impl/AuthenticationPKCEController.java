@@ -7,7 +7,7 @@ import com.selling.system.auth.manager.model.request.pkce.PKCETokenRequest;
 import com.selling.system.auth.manager.model.response.pkce.AuthorizationResponse;
 import com.selling.system.auth.manager.model.response.pkce.PKCEGrantTypeResponse;
 import com.selling.system.auth.manager.service.auth.api.AuthenticationPKCEService;
-import com.selling.system.shared.module.wrapper.WebResponseWrapper;
+import com.orderizer.core.wrapper.WebResponseWrapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

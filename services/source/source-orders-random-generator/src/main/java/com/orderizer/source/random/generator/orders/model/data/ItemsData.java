@@ -1,6 +1,6 @@
 package com.orderizer.source.random.generator.orders.model.data;
 
-import com.selling.system.shared.module.models.commons.Range;
+import com.orderizer.core.models.commons.Range;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -7,7 +7,7 @@ import com.selling.system.auth.shared.module.models.request.user.UserInsertReque
 import com.selling.system.auth.shared.module.models.request.user.UserUpdateInfoRequest;
 import com.selling.system.auth.shared.module.provider.api.QueryProvider;
 import com.selling.system.auth.shared.module.repository.api.UsersRepository;
-import com.selling.system.shared.module.exceptions.business.UserNotFoundException;
+import com.orderizer.core.exceptions.business.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.r2dbc.core.DatabaseClient;
 import org.springframework.web.bind.annotation.RestController;

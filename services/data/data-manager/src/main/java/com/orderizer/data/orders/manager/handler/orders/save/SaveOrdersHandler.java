@@ -3,7 +3,7 @@ package com.orderizer.data.orders.manager.handler.orders.save;
 import com.orderizer.data.orders.manager.config.LocalAppConfig;
 import com.orderizer.data.orders.manager.model.request.OrdersSaveRequest;
 import com.orderizer.data.orders.manager.model.response.OrdersSaveResponse;
-import com.selling.system.shared.module.handlers.ClientExceptionHandler;
+import com.orderizer.core.handlers.ClientExceptionHandler;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;

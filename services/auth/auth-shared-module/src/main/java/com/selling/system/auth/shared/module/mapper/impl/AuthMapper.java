@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static com.selling.system.shared.module.utils.CollectionUtil.isEmpty;
+import static com.orderizer.core.utils.CollectionUtil.isEmpty;
 
 @Component
 public class AuthMapper implements Mapper {

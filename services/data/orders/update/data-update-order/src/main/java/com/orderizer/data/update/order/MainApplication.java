@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class,
         scanBasePackages = {
                 "com.orderizer.data.update.order",
-                "com.selling.system.shared.module",
+                "com.orderizer.core",
         })
 
 public class MainApplication {

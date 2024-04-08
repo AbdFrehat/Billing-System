@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 @SpringBootApplication(scanBasePackages = {
         "com.selling.system.auth.manager",
-        "com.selling.system.shared.module"
+        "com.orderizer.core"
 }, exclude = DataSourceAutoConfiguration.class)
 public class AuthManagerApplication {
 

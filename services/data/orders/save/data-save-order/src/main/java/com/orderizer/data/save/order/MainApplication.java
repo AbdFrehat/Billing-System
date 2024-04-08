@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class,
         scanBasePackages = {
                 "com.selling.system.data.shared.module",
-                "com.selling.system.shared.module",
+                "com.orderizer.core",
                 "com.orderizer.data.save.order"
         })
 @OpenAPIDefinition(info = @Info(title = "data-save-order", version = "1.0", description = "Documentation APIs v1.0"))

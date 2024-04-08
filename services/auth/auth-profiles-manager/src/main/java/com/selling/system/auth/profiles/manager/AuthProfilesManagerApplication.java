@@ -8,7 +8,7 @@ import org.springframework.data.r2dbc.repository.config.EnableR2dbcRepositories;
 @SpringBootApplication(scanBasePackages = {
         "com.selling.system.auth.profiles.manager",
         "com.selling.system.auth.shared.module",
-        "com.selling.system.shared.module",
+        "com.orderizer.core",
 })
 @EnableR2dbcRepositories
 public class AuthProfilesManagerApplication {

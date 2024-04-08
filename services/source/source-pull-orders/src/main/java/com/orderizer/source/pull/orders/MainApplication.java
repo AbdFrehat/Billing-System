@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication(scanBasePackages = {
         "com.orderizer.source.pull.orders",
         "com.orderizer.source.random.generator.orders",
-        "com.selling.system.shared.module"
+        "com.orderizer.core"
 }
 )
 

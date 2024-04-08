@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
         scanBasePackages = {
                 "com.selling.system.export.data.json",
                 "com.selling.system.export.shared",
-                "com.selling.system.shared.module"
+                "com.orderizer.core"
         }
 )
 

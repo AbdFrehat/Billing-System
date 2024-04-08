@@ -4,7 +4,7 @@ import com.orderizer.data.save.orders.manager.config.LocalAppConfig;
 import com.orderizer.data.save.orders.manager.model.request.OrdersSaveRequest;
 import com.orderizer.data.save.orders.manager.model.response.OrdersSaveResponse;
 import com.orderizer.data.save.orders.manager.validator.api.Validator;
-import com.selling.system.shared.module.handlers.ClientExceptionHandler;
+import com.orderizer.core.handlers.ClientExceptionHandler;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;

@@ -7,8 +7,8 @@ apply(from = "auth/settings.gradle.kts")
 apply(from = "source/settings.gradle.kts")
 apply(from = "reports/settings.gradle.kts")
 apply(from = "kafka/settings.gradle.kts")
+apply(from = "shared/settings.gradle.kts")
 
-include(":shared:shared-module")
 
 
 

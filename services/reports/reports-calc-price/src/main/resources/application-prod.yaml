@@ -1,5 +1,0 @@
-server:
-  port: 6021
-config:
-  logging:
-    enable: ${ENABLE_LOGGING_FILES}

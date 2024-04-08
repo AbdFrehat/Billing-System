@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication(scanBasePackages = {
-		"com.selling.system.modify.sales.manager",
-		"com.selling.system.shared.module"
+		"com.orderizer.modify.manager",
+		"com.orderizer.core"
 })
 public class MainApplication {
 

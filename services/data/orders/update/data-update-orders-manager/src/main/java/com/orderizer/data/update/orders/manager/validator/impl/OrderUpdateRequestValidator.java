@@ -3,7 +3,7 @@ package com.orderizer.data.update.orders.manager.validator.impl;
 import com.orderizer.data.update.orders.manager.model.common.Item;
 import com.orderizer.data.update.orders.manager.model.request.OrderUpdateRequest;
 import com.orderizer.data.update.orders.manager.validator.api.Validator;
-import com.selling.system.shared.module.exceptions.Technical.RequestBodyInvalidException;
+import com.orderizer.core.exceptions.Technical.RequestBodyInvalidException;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;

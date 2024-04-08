@@ -1,6 +1,6 @@
 package com.selling.system.auth.manager.exception;
 
-import com.selling.system.shared.module.exceptions.general.BusinessException;
+import com.orderizer.core.exceptions.general.BusinessException;
 
 public class UserDisabledException extends BusinessException {
 }

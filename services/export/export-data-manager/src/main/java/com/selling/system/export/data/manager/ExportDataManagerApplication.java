@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication(
         scanBasePackages = {
                 "com.selling.system.export.data.manager",
-                "com.selling.system.shared.module",
+                "com.orderizer.core",
         }
 )
 

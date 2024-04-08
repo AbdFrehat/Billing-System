@@ -1,7 +1,7 @@
 package com.selling.system.export.shared.convertor;
 
-import com.selling.system.shared.module.models.commands.ExportDataFilter;
-import com.selling.system.shared.module.models.entities.Sale;
+import com.orderizer.core.models.commands.ExportDataFilter;
+import com.orderizer.core.models.entities.Sale;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

@@ -2,7 +2,7 @@ package com.selling.system.export.data.csv.controller;
 
 import com.selling.system.export.shared.convertor.DataConvertor;
 import com.selling.system.export.shared.export.DataExporter;
-import com.selling.system.shared.module.models.commands.ExportDataFilter;
+import com.orderizer.core.models.commands.ExportDataFilter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
