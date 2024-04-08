@@ -1,8 +1,0 @@
-server:
-  port: 7023
-config:
-  services:
-    context-path:
-      kafka-sale-producer-ms: http://KAFKA-SALE-PRODUCER/selling/kafka/sale/v1/
-  logging:
-    enable: ${ENABLE_LOGGING_FILES}

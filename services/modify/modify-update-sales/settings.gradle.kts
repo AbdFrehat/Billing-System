@@ -1,1 +1,0 @@
-rootProject.name="modify-update-sales"

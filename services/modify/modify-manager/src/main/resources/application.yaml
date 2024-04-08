@@ -1,0 +1,15 @@
+spring:
+  webflux:
+    base-path: /orderizer/modify/v1/
+  application:
+    name: modify-manager
+server:
+  port: 7020
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
+  api-docs:
+    groups:
+      enabled: true
+    path: /api/docs
+

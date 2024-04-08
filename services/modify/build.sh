@@ -7,11 +7,10 @@ max_project_length=0
 max_status_length=0
 status=()
 projects=()
-projects+=("./modify-shared-sales")
 
 while IFS= read -r project; do
   projects+=("$project")
-done < <(find "." -mindepth 2 -maxdepth 2 -type f -name build.sh -not -path "./modify-shared-sales/*" -exec dirname {} \;)
+done < <(find "." -mindepth 2 -maxdepth 2 -type f -name build.sh -exec dirname {} \;)
 
 for project in "${projects[@]}"; do
     if [ -d "$project" ]; then

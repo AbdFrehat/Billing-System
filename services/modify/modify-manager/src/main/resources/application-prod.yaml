@@ -1,0 +1,5 @@
+server:
+  port: 7020
+config:
+  logging:
+    enable: ${ENABLE_LOGGING_FILES}
