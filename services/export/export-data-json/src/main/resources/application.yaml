@@ -1,11 +1,10 @@
 spring:
   webflux:
-    base-path: /selling/export/sales/json/v1/
+    base-path: /orderizer/export/data/json/v1/
   application:
     name: export-data-json
 server:
   port: 7033
-
 springdoc:
   swagger-ui:
     path: /swagger-ui
@@ -16,5 +15,6 @@ springdoc:
 config:
   services:
     context-path:
-      data-manager-ms: "http://DATA-MANAGER/selling/data/manager/sale/v1/"
-
+      data-manager: "http://localhost:6080/orderizer/data/manager/v1/"
+  pagination:
+    size: 100

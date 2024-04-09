@@ -48,7 +48,7 @@ public class AppRouter implements ContractRouter {
     public RouterFunction<ServerResponse> getOrdersRoute(Map<String, HandlerFunction<ServerResponse>> handlers) {
         return route().nest(path("/orders/get"), nestL1 ->
                 nestL1.nest(path("/search"), nestL2 ->
-                        nestL2.POST("/", extract(handlers, GetOrdersSearchHandler.class))
+                        nestL2.POST("", extract(handlers, GetOrdersSearchHandler.class))
                                 .POST("/count", extract(handlers, GetOrdersCountHandler.class))
                                 .GET("/local", extract(handlers, GetOrderByLocalIdentifierHandler.class))
                                 .GET("/global", extract(handlers, GetOrderByGlobalIdentifierHandler.class))

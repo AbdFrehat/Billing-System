@@ -10,7 +10,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
         "com.orderizer.data.orders.manager",
         "com.orderizer.core"
 })
-@OpenAPIDefinition(info = @Info(title = "data-orders-manager", version = "1.0", description = "Documentation APIs v1.0"))
 public class MainApplication {
 
     public static void main(String[] args) {

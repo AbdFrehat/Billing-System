@@ -1,21 +1,22 @@
 package com.orderizer.data.sync.orders.runnable;
 
-import com.orderizer.data.sync.orders.config.LocalAppConfig;
-import com.orderizer.data.sync.orders.mapper.Mapper;
-import com.orderizer.data.sync.orders.model.entity.elastic.ElasticOrder;
-import com.orderizer.data.sync.orders.model.entity.mongo.MongoOrder;
-import com.orderizer.data.sync.orders.model.queue.OrdersBatch;
-import com.orderizer.data.sync.orders.repository.api.OrdersElasticRepository;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import reactor.core.publisher.Mono;
+import static com.orderizer.core.utils.CollectionUtil.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Queue;
 
-import static com.orderizer.core.utils.CollectionUtil.isEmpty;
+import com.orderizer.data.sync.orders.config.LocalAppConfig;
+import com.orderizer.data.sync.orders.mapper.Mapper;
+import com.orderizer.data.sync.orders.model.entity.elastic.ElasticOrder;
+import com.orderizer.data.sync.orders.model.entity.mongo.MongoOrder;
+import com.orderizer.data.sync.orders.model.queue.OrdersBatch;
+import com.orderizer.data.sync.orders.repository.api.OrdersElasticRepository;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import reactor.core.publisher.Mono;
 
 @RequiredArgsConstructor
 @Slf4j

@@ -1,4 +1,4 @@
-package com.selling.system.export.data.json;
+package com.orderizer.export.data.json;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,16 +6,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication(
         scanBasePackages = {
-                "com.selling.system.export.data.json",
-                "com.selling.system.export.shared",
+                "com.orderizer.export.data.json",
                 "com.orderizer.core"
         }
 )
 
-public class ExportDataJsonApplication {
+public class MainApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ExportDataJsonApplication.class, args);
+        SpringApplication.run(MainApplication.class, args);
     }
 
 }

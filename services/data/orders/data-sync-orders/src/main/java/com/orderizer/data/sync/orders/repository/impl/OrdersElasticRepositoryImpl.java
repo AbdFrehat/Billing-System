@@ -1,8 +1,7 @@
 package com.orderizer.data.sync.orders.repository.impl;
 
-import com.orderizer.data.sync.orders.model.entity.elastic.ElasticOrder;
-import com.orderizer.data.sync.orders.repository.api.OrdersElasticRepository;
-import lombok.RequiredArgsConstructor;
+import java.util.List;
+
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.elasticsearch.core.ReactiveElasticsearchOperations;
 import org.springframework.data.elasticsearch.core.SearchHit;
@@ -10,9 +9,12 @@ import org.springframework.data.elasticsearch.core.query.Criteria;
 import org.springframework.data.elasticsearch.core.query.CriteriaQuery;
 import org.springframework.data.elasticsearch.core.query.Query;
 import org.springframework.stereotype.Repository;
-import reactor.core.publisher.Flux;
 
-import java.util.List;
+import com.orderizer.data.sync.orders.model.entity.elastic.ElasticOrder;
+import com.orderizer.data.sync.orders.repository.api.OrdersElasticRepository;
+
+import lombok.RequiredArgsConstructor;
+import reactor.core.publisher.Flux;
 
 @Repository
 @RequiredArgsConstructor
